@@ -4,3 +4,5 @@ l'art j'ai trop la flemme :p
 
 tomo.pdf : perso.telecom-paristech.fr/~bloch/ATIM/tomo.pdf
 wikipedia : detection de zones d'interet
+document sur les projections :
+image.maths.cnrs.fr/La-lentille-et-le-capitaine-autrichien.html
