@@ -1,0 +1,1034 @@
+<html>
+<head>
+  <meta name="author" content="Nicolas JANEY, nicolas.janey@univ-fcomte.fr">
+  <meta name="description" content="Tutoriel infographie, traitement d'image">
+  <meta name="keywords" content="tutoriel, tutorial, infographie, traitement, image ">
+  <title>Le traitement d'images</title>
+  <style type="text/css">
+    body
+    {
+      font-family: "Comic Sans MS";
+      font-size: 14pt;
+    }
+    table
+    {
+      font-family: "Comic Sans MS";
+      font-size: 14pt;
+    }
+    p
+    {
+      font-family: "Comic Sans MS";
+      font-size: 14pt;
+    }
+    tr
+    {
+      font-family: "Comic Sans MS";
+      font-size: 14pt;
+    }
+    td
+    {
+      font-family: "Comic Sans MS";
+      font-size: 14pt;
+    }
+    dl
+    {
+      font-family: "Comic Sans MS";
+      font-size: 12pt;
+    }
+    dt
+    {
+      font-family: "Comic Sans MS";
+      font-size: 12pt;
+    }
+  </style>
+</head>
+<body background="bg.jpg" bgcolor="#FFFF99" text="#333399" link="#990033" vlink="#009966" alink="#FF6600">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+      <td align="right" valign="top" height="120" colspan="2">
+        <p align="center">
+          <font size="7">Le traitement d'images</font>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" width="200">
+        <p align="left">
+          <a href="#Introduction"><font size="3">INTRODUCTION</font></a></p>
+        <p align="left">
+          <a href="#Definitions"><font size="3">DEFINITIONS</font></a></p>
+        <p align="left">
+          <a href="#Base"><font size="3">OPERATIONS<br>
+            DE BASE</font></a></p>
+        <p align="left">
+          <font size="3"><a href="#spectral">FILTRAGE<br>
+            SPECTRAL</a><br>
+            <a href="#Negatif">Négation</a><br>
+            <a href="#luminosite">Luminosité</a><br>
+            <a href="#contraste">Contraste</a></font></p>
+        <p align="left">
+          <font size="3"><a href="#matriciel">FILTRAGE<br>
+            MATRICIEL</a><br>
+            <a href="#passebas">Filtres passe-bas</a><br>
+            <a href="#passehaut">Filtres passe-haut</a></font></p>
+        <p align="left">
+          <font size="3"><a href="#Morphologie">MORPHOLOGIE<br>
+            MATHEMATIQUE</a><br>
+            <a href="#Dilatation">Dilatation</a><br>
+            <a href="#Erosion">Erosion</a><br>
+            <a href="#Ouverture">Ouverture</a><br>
+            <a href="#Fermeture">Fermeture</a><br>
+            <a href="#Squelettisation">Squelettisation</a></font></p>
+        <p align="left">
+          &nbsp;</p>
+        <p align="center">
+          <font size="3">
+            <img src="Fleche.gif" width="41" height="28">
+            <a href="../Default.htm">RETOUR</a></font></p>
+        <p>
+          &nbsp;</p>
+        <p align="center">
+          Dernière modification<br>
+          <!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%d/%m/%y %H:%M:%S" startspan -->
+          11/09/09 14:16:59<!--webbot bot="Timestamp" endspan i-checksum="27370" -->
+      </td>
+      <td valign="top">
+        <b>
+          <p align="left">
+            <a name="Introduction">Introduction</a>
+        </b></p>
+        <p align="left">
+          On désigne par &quot;technique de traitement d'images&quot; toutes les techniques ayant pour but la modification des caractéristiques
+          chromatiques des pixels des images bitmap.</p>
+        <p align="left">
+          Traitement d'images est souvent synonyme d'amélioration des images avec pour but l'obtention d'une plus grande lisibilité.
+          Il n'y a pas création d'informations, mais mise en évidence de l'information pertinente déjà présente.</p>
+        <b>
+          <p align="left">
+            <a name="Definitions">Définitions</a></p>
+          <p align="left">
+          Image RVB : </b>On appelle image RVB une image où chaque pixel est défini par trois valeurs de rouge de vert et de bleu.
+        Les écrans 16 millions de couleurs sont des écrans RVB à 8 bits, soit 256 couleurs par teinte de base.</p> <b>
+          <p align="left">
+          Image indexée : </b>On appelle image indexée, une image où la teinte de chaque pixel est déterminée par une valeur d'indice
+        à l'intérieur d'un tableau de teintes RVB (palette). La modification d'une entrée de la palette entraîne la modification
+        de la couleur de tous les pixels référant à cette entrée. Les écrans 16, 256, 4096 couleurs sont des écrans indexés.</p>
+        <b>
+          <p align="left">
+          L.U.T.,C.L.U.T. : </b>On appelle Look Up Table (L.U.T.) la palette de couleurs d'un écran à niveaux de gris. On appelle
+        Color Look Up Table (C.L.U.T.) la palette de couleurs d'un écran couleur.</p>
+        <p align="left">
+          <strong>Pavage carré, pavage hexagonal</strong> : Les images sont habituellement plaquée sur des pavages régulier carré
+          ou hexagonaux.</p>
+        <b>
+          <p align="left">
+            <a name="Base">Opérations de base</a>
+        </b></p>
+        <p align="left">
+          Opérations réalisées composante par composante sur les images:</p>
+        <ul>
+          <li>
+            <p align="left">
+              addition : p(x,y) = p1(x,y)+p2(x,y) (seuillage à la valeur maximum)</p>
+          </li>
+          <li>
+            <p align="left">
+              soustraction : p(x,y) = p1(x,y)-p2(x,y) (seuillage à la valeur minimum)</p>
+          </li>
+        </ul>
+        <p align="center">
+          <img src="Images/ThermesSmall1.gif" width="158" height="127">&nbsp;&nbsp;
+          <img src="Images/AB2.gif" width="158" height="127">&nbsp;&nbsp;
+          <img src="Images/Addition.gif" width="158" height="127"></p>
+        <p align="center">
+          Addition</p>
+        <p align="center">
+          <img src="Images/ThermesSmall1.gif" width="158" height="127">&nbsp;&nbsp;
+          <img src="Images/ABNegatif2.gif" width="158" height="127">&nbsp;&nbsp;
+          <img src="Images/Soustraction.gif" width="158" height="127"></p>
+        <p align="center">
+          Soustraction</p>
+        <p align="left">
+          Opérations réalisées bit par bit sur les images:</p>
+        <ul>
+          <li>
+            <p align="left">
+              et : p(x,y) = p1(x,y) et p2(x,y) (&amp;)</p>
+          </li>
+          <li>
+            <p align="left">
+              ou : p(x,y) = p1(x,y) ou p2(x,y) (|)</p>
+          </li>
+          <li>
+            <p align="left">
+              xor : p(x,y) = p1(x,y) xor p2(x,y) (^)</p>
+          </li>
+          <li>
+            <p align="left">
+              not : p(x,y) = not(p1(x,y)) (~)</p>
+          </li>
+        </ul>
+        <table border="0" cellpadding="10" cellspacing="0" width="90%">
+          <tr>
+            <td width="50%" align="center">
+              <table border="1" cellpadding="4" cellspacing="1" width="180">
+                <tr>
+                  <td width="33%">
+                    <p align="center">
+                    et
+                  </td>
+                  <td width="33%">
+                    <p align="center">
+                    0
+                  </td>
+                  <td width="34%" align="center">
+                    <p align="center">
+                    1
+                  </td>
+                </tr>
+                <tr>
+                  <td width="33%">
+                    <p align="center">
+                    0
+                  </td>
+                  <td width="33%">
+                    <p align="center">
+                    0
+                  </td>
+                  <td width="34%">
+                    <p align="center">
+                    0
+                  </td>
+                </tr>
+                <tr>
+                  <td width="33%">
+                    <p align="center">
+                    1
+                  </td>
+                  <td width="33%">
+                    <p align="center">
+                    0
+                  </td>
+                  <td width="34%">
+                    <p align="center">
+                    1
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td width="50%" align="center">
+              <table border="1" cellpadding="4" cellspacing="1" width="180">
+                <tr>
+                  <td width="33%">
+                    <p align="center">
+                    ou
+                  </td>
+                  <td width="33%">
+                    <p align="center">
+                    0
+                  </td>
+                  <td width="34%" align="center">
+                    <p align="center">
+                    1
+                  </td>
+                </tr>
+                <tr>
+                  <td width="33%">
+                    <p align="center">
+                    0
+                  </td>
+                  <td width="33%">
+                    <p align="center">
+                    0
+                  </td>
+                  <td width="34%">
+                    <p align="center">
+                    1
+                  </td>
+                </tr>
+                <tr>
+                  <td width="33%">
+                    <p align="center">
+                    1
+                  </td>
+                  <td width="33%">
+                    <p align="center">
+                    1
+                  </td>
+                  <td width="34%">
+                    <p align="center">
+                    1
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td width="50%" align="center">
+              <table border="1" cellpadding="4" cellspacing="1" width="180">
+                <tr>
+                  <td width="33%">
+                    <p align="center">
+                    xor
+                  </td>
+                  <td width="33%">
+                    <p align="center">
+                    0
+                  </td>
+                  <td width="34%" align="center">
+                    <p align="center">
+                    1
+                  </td>
+                </tr>
+                <tr>
+                  <td width="33%">
+                    <p align="center">
+                    0
+                  </td>
+                  <td width="33%">
+                    <p align="center">
+                    0
+                  </td>
+                  <td width="34%">
+                    <p align="center">
+                    1
+                  </td>
+                </tr>
+                <tr>
+                  <td width="33%">
+                    <p align="center">
+                    1
+                  </td>
+                  <td width="33%">
+                    <p align="center">
+                    1
+                  </td>
+                  <td width="34%">
+                    <p align="center">
+                    0
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td width="50%" align="center">
+              <table border="1" cellpadding="4" cellspacing="1" width="120">
+                <tr>
+                  <td width="50%">
+                    <p align="center">
+                    -
+                  </td>
+                  <td width="50%">
+                    <p align="center">
+                    not
+                  </td>
+                </tr>
+                <tr>
+                  <td width="50%">
+                    <p align="center">
+                    0
+                  </td>
+                  <td width="50%">
+                    <p align="center">
+                    1
+                  </td>
+                </tr>
+                <tr>
+                  <td width="50%">
+                    <p align="center">
+                    1
+                  </td>
+                  <td width="50%">
+                    <p align="center">
+                    0
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <p align="center">
+          <img src="Images/AB.gif" width="158" height="127">&nbsp;&nbsp;
+          <img src="Images/ABNegatif.gif" width="158" height="127"></p>
+        <p align="center">
+          Not</p>
+        <p align="center">
+          <img src="Images/ABNegatif1.gif" width="158" height="127">&nbsp;&nbsp;
+          <img src="Images/ThermesSmall2.gif" width="158" height="127">&nbsp;&nbsp;
+          <img src="Images/Et.gif" width="158" height="127"></p>
+        <p align="center">
+          Et</p>
+        <p align="center">
+          <img src="Images/AB1.gif" height="127">&nbsp;&nbsp;
+          <img src="Images/ThermesSmall2.gif" width="158" height="127">&nbsp;&nbsp;
+          <img src="Images/Ou.gif" width="158" height="127"></p>
+        <p align="center">
+          Ou</p>
+        <p align="center">
+          <img src="Images/ABNegatif1.gif" width="158" height="127">&nbsp;&nbsp;
+          <img src="Images/ThermesSmall2.gif" width="158" height="127">&nbsp;&nbsp;
+          <img src="Images/Xor.gif" width="158" height="127"></p>
+        <p align="center">
+          Xor</p>
+        <p align="center">
+          <img src="Images/ABNegatif1.gif" width="158" height="127">&nbsp;&nbsp;
+          <img src="Images/Xor2.gif" width="158" height="127">&nbsp;&nbsp;
+          <img src="Images/ThermesSmall.gif" width="158" height="127"></p>
+        <p align="center">
+          Xor</p>
+        <div align="center">
+          <center>
+            <table border="1" cellpadding="5" width="520">
+              <tr>
+                <td>
+                  <p align="center">
+                    <a href="ExemplesGLUt/TraitementImagesBasique.htm" name="TraitementImagesBasique">Le programme GLUt pour le traitement d'images
+                      basique</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p align="center">
+                    <a href="ExemplesGLUt/TraitementImagesBasique.exe">Exécutable GLUt pour le traitement d'images basique</a>
+                </td>
+              </tr>
+            </table>
+          </center>
+        </div>
+        <p align="left">
+          <b>L<a name="spectral">e filtrage spectral</a></b></p>
+        <p align="left">
+          On appelle spectre d'une image, la courbe de répartition des couleurs d'une image : niveau de gris en x, nombre de pixels
+          en y.</p>
+        <p align="left">
+          Sur une image noir et blanc (à niveaux de gris), il existe un seul spectre. Sur une image en couleurs, on peut calculer
+          un spectre par teinte de base ou utiliser la moyenne des trois composantes pour chaque pixel.</p>
+        <p align="center">
+          <img src="Images/Thermes.jpg" width="368" height="264"></p>
+        <p align="center">
+          <img src="Images/SpectreThermes.gif" width="264" height="227"></p>
+        <p align="center">
+          Exemples de spectre d'une image couleur<br>
+          avec moyenne des composantes</p>
+        <p align="left">
+          Effectuer un filtrage spectral consiste à modifier, selon une fonction f(teinte), la teinte de chaque pixel de l'image de
+          manière à modifier son spectre.</p>
+        <p align="center">
+          <img src="Images/ModificationSpectre.gif" width="355" height="306"></p>
+        <b>
+          <p>
+            <a name="Negatif">Le négation</a>
+        </b></p>
+        <p>
+          La teinte des pixels est modifiée de manière à être négativée.</p>
+        <p align="center">
+          <img src="Images/Negatif.jpg" width="368" height="264"></p>
+        <p align="center">
+          <img src="Images/NegatifFonction.gif" width="263" height="282">
+          <img src="Images/NegatifSpectre.gif" width="264" height="227"></p>
+        <p align="center">
+          Négation (Inversion du spectre)</p>
+        <p>
+          <a name="luminosite"><b>La luminosité</b></a></p>
+        <p>
+          La teinte des pixels est déplacée de manière à rapprocher, généralement dans les mêmes proportions, les composantes de vert,
+          de rouge et de bleu du minimum (resp. du maximum) pour assombrir (resp. éclaircir) l'image.</p>
+        <p align="center">
+          <img src="Images/LuminositeMoins.jpg" width="368" height="264"></p>
+        <p align="center">
+          <img src="Images/LuminositeMoinsFonction.gif" width="263" height="282">
+          <img src="Images/LuminositeMoinsSpectre.gif" width="264" height="227"></p>
+        <p align="center">
+          Assombrissement (Tassement du spectre vers la gauche)</p>
+        <p align="center">
+          <img src="Images/LuminositePlus.jpg" width="368" height="264"></p>
+        <p align="center">
+          <img src="Images/LuminositePlusFonction.gif" width="263" height="282">
+          <img src="Images/LuminositePlusSpectre.gif" width="264" height="227"></p>
+        <p align="center">
+          Eclaircissement (Tassement du spectre vers la droite)</p>
+        <b>
+          <p align="left">
+            <a name="contraste">Le contraste</a>
+        </b></p>
+        <p align="left">
+          Si on diminue le contraste, la teinte des pixels est déplacée pou rapprocher vers la teinte moyenne, et généralement dans
+          les mêmes proportions, les composantes de vert, de rouge et de bleu.</p>
+        <p align="left">
+          Si on augmente le contraste, la teinte des pixels est déplacée pour rapprocher du maximum (resp. minimum), , généralement
+          dans les mêmes proportions, les composantes de valeur supérieure (resp. inférieure) à la moyenne.</p>
+        <p align="center">
+          <img src="Images/ContrasteMoins.jpg" width="368" height="264"></p>
+        <p align="center">
+          <img src="Images/ContrasteMoinsFonction.gif" width="263" height="282">
+          <img src="Images/ContrasteMoinsSpectre.gif" width="264" height="227"></p>
+        <p align="center">
+          Diminution du contraste (Tassement du spectre vers le centre)</p>
+        <p align="center">
+          <img src="Images/ContrastePlus.jpg" width="368" height="264"></p>
+        <p align="center">
+          <img src="Images/ContrastePlusFonction.gif" width="263" height="282">
+          <img src="Images/ContrastePlusSpectre.gif" width="264" height="227"></p>
+        <p align="center">
+          Augmentation du contraste (Tassement du spectre vers les bords)</p>
+        <div align="center">
+          <center>
+            <table border="1" cellpadding="5" width="480">
+              <tr>
+                <td>
+                  <p align="center">
+                    <a href="ExemplesGLUt/FiltrageSpectral.htm" name="FiltrageSpectral">Le programme GLUt pour le filtrage spectral</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p align="center">
+                    <a href="ExemplesGLUt/FiltrageSpectral.exe">Exécutable GLUt pour le filtrage spectral</a>
+                </td>
+              </tr>
+            </table>
+          </center>
+        </div>
+        <b>
+          <p align="left">
+            <a name="matriciel">Le filtrage matriciel</a>
+        </b></p>
+        <p align="left">
+          Cette technique consiste à appliquer une matrice Mij (0 <font face="Symbol">£</font> i &lt; n, 0 <font face="Symbol">£</font>
+          j &lt; m) à chaque pixel de l'image à transformer.</p>
+        <p align="left">
+          Soit une bitmap B<sub>yx</sub> (0 <font face="Symbol">£</font> x &lt; rx, 0 <font face="Symbol">£</font> y &lt; ry).</p>
+        <p align="left">
+          <img src="Images/FormuleFiltrageMatriciel.gif" align="center" width="218" height="63">
+          (0 <font face="Symbol">£</font> y &lt; ry-n+1, 0 <font face="Symbol">£</font> x &lt; rx-m+1)</p>
+        <p align="left">
+          Si la valeur obtenue est supérieure à la valeur limite, on seuille à cette valeur.</p>
+        <p align="left">
+          Si la valeur obtenue est inférieure à zéro, soit on seuille à zéro, soit on prend la valeur absolue.</p>
+        <b>
+          <p align="left">
+            <a name="passebas">Filtres passe-bas : Moyenne</a>
+        </b></p>
+        <p align="left">
+          Ces filtres ont généralement pour but de réduire les parasites (bruits de mesure). Ils agissent par moyenne sur un voisinage
+          et suppriment donc les détails.</p>
+        <b>
+          <p align="left">
+          Filtres simples</b></p>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tr>
+            <td width="33%" align="center">
+              <img src="Images/FiltreMoyenneCarre.gif" width="95" height="84">
+            </td>
+            <td width="33%" align="center">
+              <img src="Images/FiltreMoyenneOctogonal.gif" width="95" height="84">
+            </td>
+            <td width="34%" align="center">
+              <img src="Images/FiltreMoyenneHexagonal.gif" width="105" height="84">
+            </td>
+          </tr>
+          <tr>
+            <td width="33%" align="center">
+              Carré
+            </td>
+            <td width="33%" align="center">
+              Octogonal
+            </td>
+            <td width="34%" align="center">
+              Hexagonal
+            </td>
+          </tr>
+        </table>
+        <b>
+          <p align="left">
+          Filtres pondérés</b></p>
+        <p align="center">
+          <img src="Images/FiltreMoyennePonderee2.gif" width="105" height="84">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <img src="Images/FiltreMoyennePonderee1.gif" width="99" height="84"></p>
+        <p align="left">
+          Problème : On doit réaliser un compromis entre élimination du bruit et conservation des détails.</p>
+        <table border="0" cellpadding="3" cellspacing="0" width="100%">
+          <tr>
+            <td align="center">
+              Filtre
+            </td>
+            <td width="10%" align="center">
+              <p align="center">
+              Image n°1
+            </td>
+            <td width="10%" align="center">
+              <p align="center">
+              Image n°2
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p align="center">
+              -
+            </td>
+            <td width="10%">
+              <p align="center">
+                <img src="Images/Quadrillage.gif" width="183" height="177">
+            </td>
+            <td width="10%">
+              <p align="center">
+                <img src="Images/Lignes.gif" width="183" height="177">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p align="center">
+                &nbsp;<img src="Images/FiltreMoyenneOctogonal.gif" align="center" width="95" height="84">
+            </td>
+            <td width="10%">
+              <p align="center">
+                <img src="Images/QuadrillageMoyenne3x3.gif" width="179" height="173">
+            </td>
+            <td width="10%">
+              <p align="center">
+                <img src="Images/LignesMoyenne3x3.gif" width="179" height="173">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p align="center">
+                <img src="Images/FiltreMoyenne5x5.gif" align="center" width="140" height="144">
+            </td>
+            <td width="10%">
+              <p align="center">
+                <img src="Images/QuadrillageMoyenne5x5.gif" width="175" height="169">
+            </td>
+            <td width="10%">
+              <p align="center">
+                <img src="Images/LignesMoyenne5x5.gif" width="175" height="169">
+            </td>
+          </tr>
+        </table>
+        <b>
+          <p align="left">
+        </b><strong><a name="passehaut">Filtres </a>passe-haut</strong></p>
+        <p align="left">
+          Ces filtres ont pour but d'augmenter le contraste et de mettre en évidence les contours.</p>
+        <p align="left">
+          On définit un contour comme une discontinuité locale de l'intensité lumineuse.</p>
+        <p align="left">
+          Les techniques permettant de détecter un contour sont basées sur l'utilisation:</p>
+        <ul>
+          <li>
+            <p align="left">
+              de filtres gradients,</p>
+          </li>
+          <li>
+            <p align="left">
+              de filtres Laplaciens.</p>
+          </li>
+        </ul>
+        <p align="left">
+          Les contours sont les lignes de maximum locaux pour les filtres de gradient.</p>
+        <p align="left">
+          Pour les filtres Laplaciens, les contours seront les suites de points à 0.</p>
+        <p align="center">
+          <img src="Images/SpectreFiltreGradiant.gif" width="426" height="660"></p>
+        <b>
+          <p align="left">
+          Filtres de gradients</b></p>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tr>
+            <td width="33%" align="center">
+              <img src="Images/FiltreGradiantCroix.gif" width="90" height="84">
+            </td>
+            <td width="33%" align="center">
+              <img src="Images/FiltreGradiantPrewitt.gif" width="85" height="84">
+            </td>
+            <td width="34%" align="center">
+              <img src="Images/FiltreGradiantSobel.gif" width="91" height="84">
+            </td>
+          </tr>
+          <tr>
+            <td width="33%" align="center">
+              Croix
+            </td>
+            <td width="33%" align="center">
+              Prewitt
+            </td>
+            <td width="34%" align="center">
+              Sobel
+            </td>
+          </tr>
+        </table>
+        <p align="left">
+          Extraction du gradient dans la direction de l'axe des x.</p>
+        <b>
+          <p align="left">
+          Filtres de gradients directionnel</b></p>
+        <p align="left">
+          Obtention des filtres par rotations successives de <font face="Symbol">p</font>/4.</p>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tr>
+            <td width="33%" align="center">
+              <img src="Images/FiltreGradiantPrewitt1.gif" align="middle" width="85" height="84">
+            </td>
+            <td width="33%" align="center">
+              <img src="Images/FiltreGradiantPrewitt2.gif" align="middle" width="97" height="83">
+            </td>
+            <td width="34%" align="center">
+              <img src="Images/FiltreGradiantPrewitt3.gif" align="middle" width="104" height="84">
+            </td>
+          </tr>
+          <tr>
+            <td width="33%" align="center">
+              (1)
+            </td>
+            <td width="33%" align="center">
+              (2)
+            </td>
+            <td width="34%" align="center">
+              (3)
+            </td>
+          </tr>
+        </table>
+        <b>
+          <p align="left">
+          Filtres Laplaciens</b></p>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tr>
+            <td width="33%" align="center">
+              <img src="Images/FiltreLaplacienCarre.gif" width="95" height="84">
+            </td>
+            <td width="33%" align="center">
+              <img src="Images/FiltreLaplacienOctogonal.gif" width="83" height="84">
+            </td>
+            <td width="34%" align="center">
+              <img src="Images/FiltreLaplacienHexagonal.gif" width="89" height="84">
+            </td>
+          </tr>
+          <tr>
+            <td width="33%" align="center">
+              Carré
+            </td>
+            <td width="33%" align="center">
+              Octogonal
+            </td>
+            <td width="34%" align="center">
+              Hexagonal
+            </td>
+          </tr>
+        </table>
+        <b>
+          <p align="center">
+        </b>
+        <img src="Images/ABCD.gif" width="368" height="147"></p>
+        <p align="center">
+          Image initiale</p>
+        <font size="5">
+          <p align="CENTER">
+        </font>
+        <img src="Images/ABCDCroix.gif" width="364" height="143"></p>
+        <p align="CENTER">
+          Gradient en croix</p>
+        <p align="CENTER">
+          <img src="Images/ABCDPrewitt.gif" width="364" height="143"></p>
+        <p align="CENTER">
+          Gradient de Prewitt</p>
+        <p align="CENTER">
+          <img src="Images/ABCDSobel.gif" width="364" height="143"></p>
+        <p align="CENTER">
+          Gradient de Sobel</p>
+        <font size="5">
+          <p align="CENTER">
+            <img src="Images/ABCDPrewitt.gif" width="364" height="143">
+        </font></p>
+        <p align="center">
+          Gradient directionnel vertical</p>
+        <p align="center">
+          <img src="Images/ABCDPrewittHorizontal.gif" width="364" height="143"></p>
+        <p align="center">
+          Gradient directionnel horizontal</p>
+        <p align="center">
+          <img src="Images/ABCDPrewittDiagonal.gif" width="364" height="143"></p>
+        <p align="center">
+          Gradient directionnel diagonal</p>
+        <p align="center">
+          <img src="Images/ABCDOuPrewitts.gif" width="366" height="145"></p>
+        <p align="center">
+          Ou de ces trois images</p>
+        <font size="5">
+          <p align="CENTER">
+        </font>&nbsp;</p>
+        <p align="center">
+          <font size="5">
+            <img src="Images/ABCDLaplacienCarre.gif" width="364" height="143"></font></p>
+        <p align="center">
+          Laplacien carré</p>
+        <p align="center">
+          <font size="5">
+            <img src="Images/ABCDLaplacienOrthogonal.gif" width="364" height="143"></font></p>
+        <p align="center">
+          Laplacien octogonal</p>
+        <p align="center">
+          <img src="Images/Formes.gif" width="458" height="337"></p>
+        <p align="center">
+          Image Initiale</p>
+        <p align="center">
+          <img src="Images/FormesLaplacien.gif" width="454" height="333"></p>
+        <p align="center">
+          Image après Laplacien</p>
+        <div align="center">
+          <center>
+            <table border="1" cellpadding="5" width="480">
+              <tr>
+                <td>
+                  <p align="center">
+                    <a href="ExemplesGLUt/FiltrageMatriciel.htm" name="FiltrageMatriciel">Le programme GLUt pour le filtrage matriciel</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p align="center">
+                    <a href="ExemplesGLUt/FiltrageMatriciel.exe">Exécutable GLUt pour le filtrage matriciel</a>
+                </td>
+              </tr>
+            </table>
+          </center>
+        </div>
+        <b>
+          <p align="left">
+          Renforcement</b></p>
+        <p align="left">
+          Un effet de renforcement des contours et donc des détails sur une image I est obtenu en retranchant à I le résultat de la
+          réalisation d'un filtre Laplacien sur I:</p>
+        <p align="left">
+          I' = I - Lap(I).</p>
+        <p align="center">
+          <img src="Images/Temple.gif" width="358" height="375"></p>
+        <p align="center">
+          <img src="Images/TempleRenforce.gif" width="356" height="373"></p>
+        <b>
+          <p align="left">
+            <a name="Morphologie">Morphologie mathématique</a>
+        </b></p>
+        <p align="left">
+          Les algorithmes de morphologie mathématique permettent de travailler sur les images 1 bit (noir et blanc) pour mettre en
+          évidence leurs propriétés particulières.</p>
+        <p align="left">
+          Dans les exemples donnés ici, on travaille sur des images plaquées sur pavage hexagonal.</p>
+        <p align="left">
+          Ces algorithmes sont basés sur l'utilisation d'&quot;éléments structurants&quot; (notés B), c'est à dire des configurations
+          élémentaires de pixels à rechercher dans l'image.</p>
+        <p align="center">
+          <img src="Images/ES01.gif" width="80" height="71">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <img src="Images/ES02.gif" width="80" height="78"></p>
+        <p align="left">
+          <img src="Images/ESPixelPresent.gif" width="24" height="24">
+          : Pixel devant appartenir à l'image initiale.</p>
+        <p align="left">
+          <img src="Images/ESPixelAbsent.gif" width="24" height="23">
+          : Pixel ne devant pas appartenir à l'image initiale.</p>
+        <p align="left">
+          <img src="Images/ESPixelIndifferent.gif" width="6" height="6">
+          : Pixel indifférent.</p>
+        <p align="left">
+          <img src="Images/ESPixelOrigine.gif" width="10" height="35">
+          : Origine.</p>
+        <p align="left">
+          On note
+          <img src="Images/TransposeeB.gif" width="10" height="18">
+          la transposée de B (symétrie par rapport à l'origine).</p>
+        <b>
+          <p align="left">
+            <a name="Dilatation">Dilatation</a>
+        </b></p>
+        <p align="left">
+          Pour chaque position de B sur l'image X, si un, au moins, des pixels de B fait partie de X, alors l'origine de B appartient
+          à l'image générée.</p>
+        <p align="left">
+          Notation : Y = X
+          <img src="Images/SigneDilatation.gif" width="15" height="15">
+          B</p>
+        <p align="center">
+          <img src="Images/DilatationInit.gif" width="369" height="288"></p>
+        <p align="center">
+          Image initiale</p>
+        <p align="center">
+          <img src="Images/Dilatation.gif" width="369" height="288"></p>
+        <p align="center">
+          Image après dilatation par
+          <img src="Images/ES01.gif" align="middle" width="80" height="71"></p>
+        <b>
+          <p align="left">
+            <a name="Erosion">Erosion</a>
+        </b></p>
+        <p align="left">
+          Pour chaque position de B sur l'image X, si tous les pixels de B font partie de X, alors l'origine de B appartient à l'image
+          générée.</p>
+        <p align="left">
+          Notation : Y = X
+          <img src="Images/SigneErosion.gif" width="13" height="14">
+          B.</p>
+        <p align="center">
+          <img src="Images/DilatationInit.gif" width="369" height="288"></p>
+        <p align="center">
+          Image initiale</p>
+        <p align="center">
+          <img src="Images/Erosion.gif" width="369" height="288"></p>
+        <p align="center">
+          Image après érosion par
+          <img src="Images/ES01.gif" align="middle" width="80" height="71"></p>
+        <p align="center">
+          <img src="Images/ErosionDroit.gif" width="369" height="288"></p>
+        <p align="center">
+          Image après érosion par
+          <img src="Images/ESErosion.gif" width="47" height="46"></p>
+        <b>
+          <p align="left">
+            <a name="Ouverture">Ouverture</a>
+        </b></p>
+        <p align="left">
+          But : Isoler les surfaces présentes dans l'image, lisser les contours.</p>
+        <p align="left">
+          Y = X<sub>B</sub> = (X
+          <img src="Images/SigneErosion.gif" width="13" height="14">
+          B)
+          <img src="Images/SigneDilatation.gif" width="15" height="15">
+          <img src="Images/TransposeeB.gif" width="10" height="18">.</p>
+        <p align="left">
+          On réalise une érosion par B puis une dilatation par la transposée de B.</p>
+        <p align="center">
+          <img src="Images/OuvertureInit.gif" width="369" height="288"></p>
+        <p align="center">
+          Image initiale</p>
+        <p align="center">
+          <img src="Images/Ouverture.gif" width="369" height="288"></p>
+        <p align="center">
+          Image après ouverture par
+          <img src="Images/ES01.gif" align="middle" width="80" height="71"></p>
+        <b>
+          <p align="left">
+            <a name="Fermeture">Fermeture</a>
+        </b></p>
+        <p align="left">
+          But : Recoller des morceaux de surfaces proches de manière à fermer des contours disjoints, lisser les contours.</p>
+        <p align="left">
+          Y = X<sup>B</sup> = (X
+          <img src="Images/SigneDilatation.gif" width="15" height="15">
+          B)
+          <img src="Images/SigneErosion.gif" width="13" height="14">
+          <img src="Images/TransposeeB.gif" width="10" height="18">.</p>
+        <p align="left">
+          On réalise une dilatation par B puis une érosion par la transposée de B.</p>
+        <p align="center">
+          <img src="Images/FermetureInit.gif" width="369" height="288"></p>
+        <p align="center">
+          Image initiale</p>
+        <p align="center">
+          <img src="Images/Fermeture.gif" width="369" height="288"></p>
+        <p align="center">
+          Image après fermeture par
+          <img src="Images/ES01.gif" align="middle" width="80" height="71"></p>
+        <b>
+          <p align="left">
+            <a name="Squelettisation">Squelettisation</a>
+        </b></p>
+        <p align="left">
+          (1) L'amincissement Y de X par l'élément structurant B est obtenu en retranchant à X le résultat de l'érosion de X par B.</p>
+        <p align="left">
+          Y = X <font face="Symbol">O</font> B = X <font face="Symbol">/</font> (X
+          <img src="Images/SigneErosion.gif" width="13" height="14">
+          B).</p>
+        <p align="left">
+          (2) L'amincissement séquentiel de X par l'élément structurant B est défini comme :</p>
+        <p align="left">
+          X <font face="Symbol">O</font> {B<sup>i</sup>} = [(X <font face="Symbol">O</font> B<sup>1</sup>) <font face="Symbol">O</font>
+          B<sup>2</sup>] <font face="Symbol">O</font> B<sup>3</sup>&#133;</p>
+        <p align="left">
+          Les Bi sont les éléments structurants obtenus par rotation de <font face="Symbol">p</font>/3 autour de l'origine pour un
+          maillage hexagonal -&gt; il y a 6 éléments structurants successifs.</p>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tr>
+            <td width="33%" align="center">
+              <img src="Images/ESSqueletisation1.gif" width="95" height="87">
+            </td>
+            <td width="33%" align="center">
+              <img src="Images/ESSqueletisation2.gif" width="95" height="87">
+            </td>
+            <td width="34%" align="center">
+              <img src="Images/ESSqueletisation3.gif" width="95" height="87">
+            </td>
+          </tr>
+          <tr>
+            <td width="33%" align="center">
+              B<sup>1</sup>
+            </td>
+            <td width="33%" align="center">
+              B<sup>2</sup>
+            </td>
+            <td width="34%" align="center">
+              B<sup>3</sup>
+            </td>
+          </tr>
+        </table>
+        <p align="left">
+          L'amincissement séquentiel est une opération visant à retirer - sauf en certains points caractéristiques - une couche de
+          pixels autour de l'image.</p>
+        <p align="left">
+          (3) La squelettisation d'une image est obtenue par réalisation itérative d'amincissements séquentiels jusqu'à idempotence
+          (i.e. l'image n'est plus modifiée).</p>
+        <p align="left">
+          Un squelette d'une image X peut être obtenu par itération d'amincissements séquentiels selon l'élément structurant L :
+          <img src="Images/ESSqueletisation.gif" align="center" width="61" height="70"></p>
+        <p align="center">
+          <img src="Images/SquelletisationInit.gif" width="369" height="288"></p>
+        <p align="center">
+          Image initiale</p>
+        <p align="center">
+          <img src="Images/Squelletisation1.gif" width="246" height="192">&nbsp;
+          <img src="Images/Squelletisation2.gif" width="246" height="192"></p>
+        <p align="center">
+          <img src="Images/Squelletisation3.gif" width="246" height="192">&nbsp;
+          <img src="Images/Squelletisation4.gif" width="246" height="192"></p>
+        <p align="center">
+          <img src="Images/Squelletisation.gif" width="369" height="288"></p>
+        <p align="center">
+          Image après 5 itérations et idempotence</p>
+        <p align="center">
+          <img src="Images/OuvertureInit.gif" width="369" height="288"></p>
+        <p align="center">
+          Image initiale</p>
+        <p align="center">
+          <img src="Images/SquelletisationBis.gif" width="369" height="288"></p>
+        <p align="center">
+          Image finale</p>
+        <p align="center">
+          Squelettisation par l'élément structurant
+          <img src="Images/ESSqueletisation.gif" align="center" width="61" height="70"></p>
+        <p align="center">
+          <img src="Images/FermetureInit.gif" width="369" height="288"></p>
+        <p align="center">
+          Image initiale</p>
+        <p align="center">
+          <img src="Images/SquelletisationTer.gif" width="369" height="288"></p>
+        <p align="center">
+          Image finale</p>
+        <p align="center">
+          Squelettisation par l'élément structurant
+          <img src="Images/ESSqueletisation.gif" align="center" width="61" height="70"></p>
+        <p align="center">
+          <img src="Images/SquelletisationInit.gif" width="369" height="288"></p>
+        <p align="center">
+          Image initiale</p>
+        <p align="center">
+          <img src="Images/SquelletisationQuad.gif" width="369" height="288"></p>
+        <p align="center">
+          Image finale</p>
+        <p align="center">
+          Squelettisation par l'élément structurant
+          <img src="Images/ESSqueletisationBis.gif" align="middle" width="84" height="78"></p>
+        <p align="center">
+          <a href="Programmes/MorphologieMathematique.zip">Un programme OpenGL<br>
+            pour les opérations élémentaires<br>
+            de morphologie mathématique</a>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
