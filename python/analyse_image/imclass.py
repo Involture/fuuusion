@@ -1,6 +1,7 @@
 import PIL.Image as img
 import numpy as np
 import matplotlib.pyplot as plt
+emptya = np.array(None)
 
 "ploting functions"
 
@@ -23,24 +24,23 @@ def _plotisp(subp, spectrum, c, n):
 
 class Image:
     """A custom Image class, mainly an RGB array"""
-    def __init__(self, name, array):
-        s = np.shape(array)
-        sx = s[1]
-        sy = s[0]
+    def __init__(self, name, array, shape = None, _isp = emptya, _fsp = emptya):
+        if size == None:
+            self.shape = np.shape(array)
+        else:
+            self.shape = shape
         self.name = name
         self.array = array
-        self.size = (sx, sy)
-        self._initsp = np.zeros((2,1))
-        self._isp = np.zeros((256, 3))
-        self._fsp = np.zeros((sy, sx, 3))
+        self._isp = _isp
+        self._fsp = _fsp
     def __str__(self):
-        return ("%s ; size %s")
+        return ("%s ; size %s"%(self.name, self.shape))
     def _initIsp(self):
-        if self._initsp[0] == 0:
+        if self._isp == emptya:
+            self._isp = np.zeros((256,3))
             for colour in range(3):
                 for pix in self.array[:,:,colour]:
                     self.isp[pix, colour] += 1
-            self._initsp[0] = 1
     def show(self):
         fig = plt.figure()
         subp = fig.add_subplot(111)
@@ -49,22 +49,19 @@ class Image:
         fig.subplots_adjust(left = 0, bottom = 0, right = 1, top = 1)
         fig.show()
     def __repr__(self):
-        return ("%s ; size %s")
+        return ("%s ; size %s"%(self.name,self.shape))
     def extract(self, colour):
         arr = np.zeros(np.shape(self.array))
         arr[:,:,colour] = np.copy(self.array[:,:,colour])
-        colorIm = Image(self.name + "%d"%colour, arr)
-        if self._initsp[0] == 1:
-            colourIm._initsp[0] = 1
-            colourIm._isp[:,:,colour] = np.copy(self._ips[:,:,colour])
-        if self._initsp[1] == 1:
-            colourIm._initsp[1] = 1
-            colourIm._fsp[:,:,colour] = np.copy(self._ifs[:,:,colour])
-        for i in range(2):
-            for j in range(3):
-                if j != colour:
-                    colorIm._initsp = 1
-        return colorIm
+        isp = emptya
+        fsp = emptya
+        if self._isp != emptya:
+            isp = np.zeros((256,3))
+            isp[:,colour] = np.copy(self._isp[:,colour])
+        if self._fsp != emptya:
+            fsp = np.zeros(self.shape)
+            fsp[:,:,colour] = np.copy(self._fsp[:,:,colour])
+        return Image(self.name + "%d"%colour, arr, self.shape, isp, fsp)
     def showc(self, colour):
         self.extract(colour).show()
     def isp(self):
@@ -80,7 +77,9 @@ class Image:
         _plotisp(sub2, self._isp[:,1], "green", self.name)
         _plotisp(sub3, self._isp[:,2], "blue", self.name)
     def save(self, fileName):
-        img.fromarray(imarray).convert('RGB').save(fileName)
+        img.fromarray(self.array).convert('RGB').save(fileName)
+    def copy(self, name):
+        return Image(name, np.copy(self.array), self.shape, np.copy(self._isp), np.copy(self._fsp))
 
 "opening fonction"
 
