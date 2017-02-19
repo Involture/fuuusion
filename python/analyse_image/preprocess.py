@@ -1,14 +1,4 @@
-from imclass import *
-im1 = open("image1.png")
-im2 = open("image2.png")
-mat1 = np.full((7,7), 1, dtype = lint)
-mat2 = np.array([[1, 2, 1], [0, 0, 0], [-1, -2, -1]], dtype = lint)
-mat3 = np.array([[-1, 0, 1], [-1, 0, 1], [-1, 0, 1]], dtype = lint)
-set1 = np.array([[False, False, True, False, False], [False, True, True, True, False ], [True, True, True, True, True], [False, True, True, True, False], [False, False, True, False, False]], dtype = np.bool)
-set2 = np.array([[True, True], [False, False]], dtype = np.bool)
-set3 = np.array([[True, True, True, True, True, True, True, True], [False, False, False, False, False, False, False, False]], dtype = np.bool)
-
-#the useless equalize function
+from filterBase import *
 
 def equalize(im):
     arr = np.copy(im.array)
@@ -111,8 +101,6 @@ def algOp(im, func, baseValue, set):
     setFilter  = lint(makeFilter(set))
     arr = ubint(im.array)
     arr = filterArr(arr, setFilter, func, baseValue)
-    print(np.min(arr))
-    print(np.max(arr))
     return Image("closed_" + im.name, reduce(arr), im.shape)
 
 def algClose(im, set):
@@ -120,6 +108,13 @@ def algClose(im, set):
 
 def algOpen(im, set):
     return algOp(im, np.minimum, 255, set)
+
+def isLink(boolArr):
+    
+
+def squeletize(binIm):
+    arr = np.bool(binIm.array)
+
 
 #filtering functions
 
@@ -175,6 +170,13 @@ def filter(im, filterList):
         arr = filterArr(arr, filter, np.add, 0)
     return Image("filtered_" + im.name, reduce(arr), im.shape)
 
+def filterSum(im, filterList):
+    arr = ubint(im.array)
+    result = filterArr(arr, filterList[0], np.add, 0)
+    for filter in filterList[1:]:
+        result += filterArr(arr, filter, np.add, 0)
+    return Image("filtered_" + im.name, reduce(result), im.shape)
+
 #transforming an image to binary image
 
 def greyAv(im):
@@ -194,8 +196,22 @@ def greyMax(im):
     return Image("greyMax_" + im.name, greyArr, im.shape)
 
 def binary(im, cutIntensity):
-    return (im.array[:,:,0] > cutIntensity)
+    arr = np.zeros(im.shape, dtype = ulint)
+    for colour in range(3):
+        arr[:,:,colour] = ulint(im.array[:,:,0] > cutIntensity) * 255
+    return Image("bin_" + im.name, arr, np.shape)
 
+#maximize intensity while keeping color
+
+def colorize(im):
+    array = np.copy(im.array)
+    maxCompArray = np.max(array, axis = 2)
+    divideArray = np.zeros(im.shape, dtype = ulint)
+    for colour in range(3):
+        divideArray[:,:,colour] = maxCompArray
+    divideArray = np.maximum(divideArray, np.ones(im.shape, dtype = ubint))
+    array = (ubint(array) * 255) // divideArray
+    return Image("colorized_" + im.name, reduce(array), im.shape)
 
 
 
