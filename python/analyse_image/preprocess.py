@@ -1,14 +1,7 @@
 import png
-import numpy as np
 import matplotlib.pyplot as plt
-Bcalc = 32 #number of bits of the hardware
-Bim = 8 #number of bits of the colors
-R = 2 ** Bcalc #range of the integers used for calculus
-N = 2 ** Bim #number of intensity levels in picture
-ulint = np.uint8 #numpy unsigned integer type corresponding
-ubint = np.uint32 #numpy unsigned integer type corresponding
-lint = np.int8 #numpy signed integer type corresponding
-bint = np.int32 #numpy signed integer type corresponding
+from glob import *
+from reader import read
 
 #opening fonction
 
@@ -82,19 +75,48 @@ def expend(array):
 
 #ploting functions
 
-def plotIsp(subp, spectrum, c, n):
+def _plotSpec(subp, spectrum, c):
     """Plot the intensity spectrum to the specified subplot
     c is the color of the plot
-    n is its name
     """
     ind = np.arange(N)
     width = 1
 
     subp.bar(ind, spectrum, width, color = c, edgecolor = c)
 
-    subp.set_title(n)
     subp.set_xlabel("pixel value")
     subp.set_ylabel("nb of pixels")
+
+def _2Disp(arr, size):
+    isp = np.zeros(N, dtype = ubint)
+    for i in range(N):
+        isp[i] = np.sum(arr == i)
+    return isp
+
+def _isp(arr):
+    shape = np.shape(arr)
+    if len(shape) >= 3:
+        size = shape[:2]
+        return (_2Disp(arr[:,:,0], size), _2Disp(arr[:,:,1], size), _2Disp(arr[:,:,0], size))
+    else:
+        size = shape
+        return _2Disp(arr, size)
+
+def plotIsp(arr):
+    isp = _isp(arr)
+    n = len(isp)
+    fig = plt.figure()
+    if n != 3:
+        sub = fig.add_subplot(111)
+        _plotSpec(sub, isp, "black")
+    else:
+        sub1 = fig.add_subplot(131)
+        sub2 = fig.add_subplot(132)
+        sub3 = fig.add_subplot(133)
+        _plotSpec(sub1, isp[0], "red")
+        _plotSpec(sub2, isp[1], "green")
+        _plotSpec(sub3, isp[2], "blue")
+    fig.show()
 
 def show(arr):
     """Display the image."""
@@ -190,12 +212,10 @@ def makeFilter(set):
                 result[i : dx + i, j : dy + j] += set 
     return result
 
-def algClose(bin, set):
-    filter = makeFilter(set)
+def algClose(bin, filter):
     return filterArr(bin, filter, (lambda x,y : y), algOr, False, np.bool)
 
-def algOpen(bin, set):
-    filter = (makeFilter(set))
+def algOpen(bin, filter):
     return filterArr(bin, filter, (lambda x,y : y), algAnd, True, np.bool)
 
 def path(ind):
@@ -220,16 +240,22 @@ def isLink(bin):
     bigShape = (Dx + 2, Dy + 2)
     changeCount = np.zeros(shape, dtype = np.uint8)
     currentVal = np.full(bigShape, True, dtype = np.bool)
-    currentVal[2:, 2:] = np.copy(bin)
+    currentVal[1 : 1 + Dx, 1 : 1 + Dy] = np.copy(bin)
+    currentTab = np.copy(currentVal[:Dx, :Dy])
     for i in range(1, 9):
         ind = path(i)
-        changeCount += np.uint8(algXor(currentVal[2 - ind[0] : 2 - ind[0] + Dx, 2 - ind[1] : 2 - ind[1] + Dy], currentVal[1 : 1 + Dx, 1 : 1 + Dy]))
-        currentVal[2 - ind[0] : 2 - ind[0] + Dx, 2 - ind[1] : 2 - ind[1] + Dy] = np.copy(bin)
-    return (currentVal >= 3)[1 : 1 + Dx, 1 : 1 + Dy]
+        nextTab = np.copy(currentVal[ind[0] : ind[0] + Dx, ind[1] : ind[1] + Dy])
+        changeCount += np.uint8(algXor(currentTab, nextTab))
+        currentTab = nextTab
+    return (changeCount >= 3)
 
 def diminish(bin):
-    return algAnd(algOr(algNot(Frontier), isLink), bin)
-    
+    return algAnd(algOr(algNot(isFrontier(bin)), isLink(bin)), bin)
+
+def squeletize(bin):
+    squelBin
+    while algAnd(squelBin, algNot(isFrontier(squelBin))).any():
+        squelBin = diminish(squelBin)
 
 #filtering functions
 
@@ -350,14 +376,9 @@ def colorize(arr):
     return array
 
 #im1 = open("image1.png")
+#camille = open("camille.png")
 #im2 = open("image2.png")
-#blur = np.ones((5,5), dtype = lint)
-#corner = np.array([[1,0,1],[0,0,0],[1,0,1]], dtype = lint)
-#grad = [np.array([[1,1,1], [0,0,0], [-1, -1, -1]], dtype = lint), np.array([[1,0,-1], [1,0,-1], [1,0,-1]], dtype = lint)]
-#im3 = filter(im1, grad)
+#filters = read("filter")
+#im3 = filter(im1, filters["grad2"])
 #im4 = greyAv(im3)
-#bin1 = binary(im4, 20)
-testbin = np.full((1000,1000), False, dtype = np.bool)
-testbin[500] = np.full((1000), True, dtype = np.bool)
-#set1 = np.array([[True,True],[True,True]])
-
+#bin1 = binary(im4, 10)
