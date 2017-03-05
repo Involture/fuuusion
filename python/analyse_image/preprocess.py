@@ -1,24 +1,7 @@
-import png
-import matplotlib.pyplot as plt
 from glob import *
 from reader import read
-
-#opening fonction
-
-def open(fileName):
-    tuple = png.Reader(fileName).asRGB8()
-    flatSize = (tuple[1], tuple[0] * 3)
-    iter = tuple[2]
-    flatArray = np.zeros(flatSize, dtype = ulint)
-    i = 0
-    for arr in iter:
-        flatArray[i] = np.fromiter(arr, dtype = ulint)
-        i += 1
-    size = (tuple[1], tuple[0], 3)
-    array = np.zeros(size, dtype = ulint)
-    for colour in range(3):
-        array[:,:,colour] = flatArray[:,colour::3]
-    return array
+from fourier import fft
+from scipy import misc
 
 #array conversion and type checking functions
 
@@ -253,9 +236,10 @@ def diminish(bin):
     return algAnd(algOr(algNot(isFrontier(bin)), isLink(bin)), bin)
 
 def squeletize(bin):
-    squelBin
+    squelBin = np.copy(bin)
     while algAnd(squelBin, algNot(isFrontier(squelBin))).any():
         squelBin = diminish(squelBin)
+    return squelBin
 
 #filtering functions
 
@@ -361,6 +345,16 @@ def filter(arr, filterList):
             array = filterArr(array, filter, (lambda x,y : x * y), np.add, 0, bint, np.abs)
     return reduce(ubint(np.abs(array)))
 
+#fourier transform filtering
+
+def cut(shape, percentage):
+    p, q = shape
+    ilim = (p * percentage) // (200)
+    jlim = (q * percentage) // (200)
+    arr = np.zeros(shape, dtype = ulint)
+    arr[ilim : -ilim, jlim : -jlim] = np.ones((p - 2 * ilim, q - 2 * jlim), dtype = ulint)
+    return arr
+
 #maximize intensity while keeping color
 
 def colorize(arr):
@@ -375,10 +369,5 @@ def colorize(arr):
     array = (ubint(array) * 255) // divideArray
     return array
 
-#im1 = open("image1.png")
-#camille = open("camille.png")
-#im2 = open("image2.png")
-#filters = read("filter")
-#im3 = filter(im1, filters["grad2"])
-#im4 = greyAv(im3)
-#bin1 = binary(im4, 10)
+im1 = greyMax(misc.imread("image1.png"))[:512,:1024]
+filters = read("filter")

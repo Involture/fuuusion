@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 Bcalc = 32 #number of bits of the hardware
 Bim = 8 #number of bits of the colors
 R = 2 ** Bcalc #range of the integers used for calculus
