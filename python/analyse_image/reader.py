@@ -1,6 +1,6 @@
 from glob import *
 
-def _charListToInt(clist):
+def charListToVal(clist):
     i = 0
     res = []
     while i < len(clist):
@@ -12,33 +12,29 @@ def _charListToInt(clist):
             i += 1
     return res
 
-def _toArr(string):
+def toArr(string):
     lines = string.split("\n")
-    return np.stack([np.fromiter(_charListToInt(list(line)), dtype = lint) for line in lines])
+    rows = []
+    for line in lines:
+        valList = charListToVal(list(line))
+        rows.append(np.fromiter(valList, dtype = lint))
+    return np.row_stack(rows)
 
-def _toArrList(l):
+def toArrList(l):
     arrList = []
     for subl in l:
-        arrList.append(_toArr(subl))
-    if len(arrList) == 1:
-        return arrList[0]
-    else:
-        return arrList
+        arrList.append(toArr(subl))
+    return arrList
 
 def read(dbaseName):
     file = open(dbaseName + ".dbase", "r")
-    string0 = file.read()
+    string0 = file.read()[:-1]
     funcs = string0.split("\n\n")
     for i in range(len(funcs)):
         split = funcs[i].split("\n!\n")
-        result = (split[0], _toArrList(split[1:]))
+        result = (split[0], toArrList(split[1:]))
         funcs[i] = result
     dic = {}
     for func in funcs:
         dic[func[0]] = func[1]
     return dic
-
-            
-        
-
-
