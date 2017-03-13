@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Traitement d'images — Wikipédia</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Traitement_d'images","wgTitle":"Traitement d'images","wgCurRevisionId":131924190,"wgRevisionId":131924190,"wgArticleId":1187584,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Article avec une section vide ou incomplète","Portail:Imagerie numérique/Articles liés","Portail:Informatique/Articles liés","Traitement d'image"],"wgBreakFrames":false,"wgPageContentLanguage":"fr","wgPageContentModel":"wikitext","wgSeparatorTransformTable":[",\t."," \t,"],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"],"wgMonthNamesShort":["","jan","fév","mar","avr","mai","juin","juil","août","sep","oct","nov","déc"],"wgRelevantPageName":"Traitement_d'images","wgRelevantArticleId":1187584,"wgRequestId":"WJivigpAMFYAABFd1o4AAABF","wgIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"preview":false,"publish":false},"wgBetaFeaturesFeatures":[],"wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":true,"wgVisualEditor":{"pageLanguageCode":"fr","pageLanguageDir":"ltr","usePageImages":true,"usePageDescriptions":true},"wgPreferredVariant":"fr","wgMFDisplayWikibaseDescriptions":{"search":true,"nearby":true,"watchlist":true,"tagline":true},"wgRelatedArticles":null,"wgRelatedArticlesUseCirrusSearch":true,"wgRelatedArticlesOnlyUseCirrusSearch":false,"wgULSCurrentAutonym":"français","wgNoticeProject":"wikipedia","wgCentralNoticeCookiesToDelete":[],"wgCentralNoticeCategoriesUsingLegacy":["Fundraising","fundraising"],"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}","wgWikibaseItemId":"Q327008","wgCentralAuthMobileDomain":false,"wgVisualEditorToolbarScrollOffset":0,"wgEditSubmitButtonLabelPublish":false});mw.loader.state({"ext.globalCssJs.user.styles":"ready","ext.globalCssJs.site.styles":"ready","site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.cite.styles":"ready","wikibase.client.init":"ready","ext.visualEditor.desktopArticleTarget.noscript":"ready","ext.uls.interlanguage":"ready","ext.wikimediaBadges":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","mediawiki.skinning.interface":"ready","skins.vector.styles":"ready","ext.globalCssJs.user":"ready","ext.globalCssJs.site":"ready"});mw.loader.implement("user.options@1x2qlv5",function($,jQuery,require,module){mw.user.options.set({"variant":"fr"});});mw.loader.implement("user.tokens@1dqfd7l",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["ext.cite.a11y","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.page.startup","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.legacy.wikibits","mediawiki.searchSuggest","ext.gadget.ArchiveLinks","ext.gadget.newCollapsible","ext.gadget.WikiOpenStreetMap","ext.gadget.WikiMiniAtlas","ext.gadget.MonobookToolbarStandard","ext.gadget.ExternalSearch","ext.gadget.Wdsearch","ext.centralauth.centralautologin","mmv.head","mmv.bootstrap.autostart","ext.visualEditor.desktopArticleTarget.init","ext.visualEditor.targetLoader","ext.eventLogging.subscriber","ext.wikimediaEvents","ext.navigationTiming","ext.uls.eventlogger","ext.uls.init","ext.uls.compactlinks","ext.uls.interface","ext.centralNotice.geoIP","ext.centralNotice.startUp","skins.vector.js"]);});</script>
+<link rel="stylesheet" href="/w/load.php?debug=false&amp;lang=fr&amp;modules=ext.cite.styles%7Cext.gadget.newCollapsible%7Cext.uls.interlanguage%7Cext.visualEditor.desktopArticleTarget.noscript%7Cext.wikimediaBadges%7Cmediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.sectionAnchor%7Cmediawiki.skinning.interface%7Cskins.vector.styles%7Cwikibase.client.init&amp;only=styles&amp;skin=vector"/>
+<script async="" src="/w/load.php?debug=false&amp;lang=fr&amp;modules=startup&amp;only=scripts&amp;skin=vector"></script>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/w/load.php?debug=false&amp;lang=fr&amp;modules=site.styles&amp;only=styles&amp;skin=vector"/>
+<meta name="generator" content="MediaWiki 1.29.0-wmf.10"/>
+<meta name="referrer" content="origin-when-cross-origin"/>
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/9/93/SakuraHealed.png"/>
+<link rel="alternate" href="android-app://org.wikipedia/http/fr.m.wikipedia.org/wiki/Traitement_d%27images"/>
+<link rel="alternate" type="application/x-wiki" title="Modifier" href="/w/index.php?title=Traitement_d%27images&amp;action=edit"/>
+<link rel="edit" title="Modifier" href="/w/index.php?title=Traitement_d%27images&amp;action=edit"/>
+<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png"/>
+<link rel="shortcut icon" href="/static/favicon/wikipedia.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipédia (fr)"/>
+<link rel="EditURI" type="application/rsd+xml" href="//fr.wikipedia.org/w/api.php?action=rsd"/>
+<link rel="copyright" href="//creativecommons.org/licenses/by-sa/3.0/"/>
+<link rel="canonical" href="https://fr.wikipedia.org/wiki/Traitement_d%27images"/>
+<link rel="dns-prefetch" href="//login.wikimedia.org"/>
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Traitement_d_images rootpage-Traitement_d_images skin-vector action-view">		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+							<div id="siteNotice"><!-- CentralNotice --></div>
+						<div class="mw-indicators">
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="fr">Traitement d'images</h1>
+									<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">Un article de Wikipédia, l&#039;encyclopédie libre.</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Aller à :					<a href="#mw-head">navigation</a>, 					<a href="#p-search">rechercher</a>
+				</div>
+				<div id="mw-content-text" lang="fr" dir="ltr" class="mw-content-ltr"><p>Le <b>traitement d'images</b> est une discipline de l'<a href="/wiki/Informatique" title="Informatique">informatique</a> et des <a href="/wiki/Math%C3%A9matiques_appliqu%C3%A9es" title="Mathématiques appliquées">mathématiques appliquées</a> qui étudie les <a href="/wiki/Image_num%C3%A9rique" title="Image numérique">images numériques</a> et leurs transformations, dans le but d'améliorer leur qualité ou d'en extraire de l'information.</p>
+<p>Il s'agit d'un sous-ensemble du <a href="/wiki/Traitement_du_signal" title="Traitement du signal">traitement du signal</a> dédié aux images et aux données dérivées comme la <a href="/wiki/Vid%C3%A9o" title="Vidéo">vidéo</a> (par opposition aux parties du traitement du signal consacrées à d'autres types de données&#160;: <a href="/wiki/Son_(physique)" title="Son (physique)">son</a> et autres signaux monodimensionnels notamment), tout en opérant dans le domaine numérique (par opposition aux techniques <a href="/wiki/Analogique" title="Analogique">analogiques</a> de traitement du signal, comme la <a href="/wiki/Photographie" title="Photographie">photographie</a> ou la <a href="/wiki/T%C3%A9l%C3%A9vision" title="Télévision">télévision</a> traditionnelles).</p>
+<p>Dans le contexte de la <a href="/wiki/Vision_artificielle" class="mw-redirect" title="Vision artificielle">vision artificielle</a>, le traitement d'images se place après les étapes d'<a href="/wiki/Acquisition" class="mw-disambig" title="Acquisition">acquisition</a> et de <a href="/wiki/Num%C3%A9risation" title="Numérisation">numérisation</a>, assurant les transformations d'images et la partie de calcul permettant d'aller vers une <a href="/wiki/Interpr%C3%A9tation" class="mw-disambig" title="Interprétation">interprétation</a> des images traitées. Cette phase d'interprétation est d'ailleurs de plus en plus intégrée dans le traitement d'images, en faisant appel notamment à l'<a href="/wiki/Intelligence_artificielle" title="Intelligence artificielle">intelligence artificielle</a> pour manipuler des connaissances, principalement sur les informations dont on dispose à propos de ce que représentent les images traitées (connaissance du «&#160;domaine&#160;»).</p>
+<p>La compréhension du traitement d'images commence par la compréhension de ce qu'est une image. Le mode et les conditions d'acquisition et de numérisation des images traitées conditionnent largement les opérations qu'il faudra réaliser pour extraire de l'information. En effet, de nombreux paramètres entrent en compte, les principaux étant&#160;:</p>
+<ul>
+<li>la <a href="/wiki/R%C3%A9solution" class="mw-disambig" title="Résolution">résolution</a> d'acquisition et le mode de codage utilisé lors de la numérisation, qui déterminent le degré de précision des éventuelles mesures de dimensions,</li>
+<li>les réglages optiques utilisés, (dont la mise au point) qui déterminent par exemple la netteté de l'image,</li>
+<li>les conditions d'<a href="/wiki/%C3%89clairage" title="Éclairage">éclairage</a>, qui déterminent une partie de la variabilité des images traitées,</li>
+<li>le <a href="/wiki/Bruit_de_mesure" title="Bruit de mesure">bruit</a> de la chaîne de transmission d'image.</li>
+</ul>
+<p>Quelques exemples types d'informations qu'il est possible d'obtenir d'une image numérique&#160;:</p>
+<ul>
+<li>La <a href="/wiki/Luminance" title="Luminance">luminance</a> moyenne</li>
+<li>Le <a href="/wiki/Contraste" title="Contraste">contraste</a> moyen</li>
+<li>La <a href="/wiki/Couleur" title="Couleur">couleur</a> prédominante</li>
+<li>Le taux d'acuité moyen (précis ou flou)</li>
+<li>Le taux d'uniformité des couleurs</li>
+<li>La présence ou l'absence de certains objets</li>
+</ul>
+<div class="thumb tright">
+<div class="thumbinner" style="width:312px;"><a href="/wiki/Fichier:SakuraHealed.png" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/9/93/SakuraHealed.png/310px-SakuraHealed.png" width="310" height="233" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/9/93/SakuraHealed.png/465px-SakuraHealed.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/9/93/SakuraHealed.png/620px-SakuraHealed.png 2x" data-file-width="1024" data-file-height="768" /></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="/wiki/Fichier:SakuraHealed.png" class="internal" title="Agrandir"></a></div>
+Une photographie modifiée et traitée par ordinateur</div>
+</div>
+</div>
+<p></p>
+<div id="toc" class="toc">
+<div id="toctitle">
+<h2>Sommaire</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Historique"><span class="tocnumber">1</span> <span class="toctext">Historique</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Types_de_donn.C3.A9es_manipul.C3.A9es"><span class="tocnumber">2</span> <span class="toctext">Types de données manipulées</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Acquisition_d.27une_image"><span class="tocnumber">3</span> <span class="toctext">Acquisition d'une image</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Op.C3.A9rateurs_de_traitement_d.27images"><span class="tocnumber">4</span> <span class="toctext">Opérateurs de traitement d'images</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="#Op.C3.A9rateurs_locaux"><span class="tocnumber">4.1</span> <span class="toctext">Opérateurs locaux</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Filtres_lin.C3.A9aires"><span class="tocnumber">4.2</span> <span class="toctext">Filtres linéaires</span></a>
+<ul>
+<li class="toclevel-3 tocsection-7"><a href="#G.C3.A9n.C3.A9ralit.C3.A9s"><span class="tocnumber">4.2.1</span> <span class="toctext">Généralités</span></a></li>
+<li class="toclevel-3 tocsection-8"><a href="#Lissage"><span class="tocnumber">4.2.2</span> <span class="toctext">Lissage</span></a></li>
+<li class="toclevel-3 tocsection-9"><a href="#D.C3.A9tection_de_contours"><span class="tocnumber">4.2.3</span> <span class="toctext">Détection de contours</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-10"><a href="#Op.C3.A9rateurs_morphologiques"><span class="tocnumber">4.3</span> <span class="toctext">Opérateurs morphologiques</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#Construction_d.27une_application_de_traitement_d.27images"><span class="tocnumber">4.4</span> <span class="toctext">Construction d'une application de traitement d'images</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="#Reconnaissance_d.27objets"><span class="tocnumber">5</span> <span class="toctext">Reconnaissance d'objets</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="#Quelques_exemples_concrets_de_traitement_d.27images"><span class="tocnumber">6</span> <span class="toctext">Quelques exemples concrets de traitement d'images</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="#Glossaire_en_vrac"><span class="tocnumber">7</span> <span class="toctext">Glossaire en vrac</span></a></li>
+<li class="toclevel-1 tocsection-15"><a href="#Domaines_d.27application"><span class="tocnumber">8</span> <span class="toctext">Domaines d'application</span></a></li>
+<li class="toclevel-1 tocsection-16"><a href="#Notes_et_r.C3.A9f.C3.A9rences"><span class="tocnumber">9</span> <span class="toctext">Notes et références</span></a></li>
+<li class="toclevel-1 tocsection-17"><a href="#Bibliographie"><span class="tocnumber">10</span> <span class="toctext">Bibliographie</span></a></li>
+<li class="toclevel-1 tocsection-18"><a href="#Biblioth.C3.A8ques_logicielles"><span class="tocnumber">11</span> <span class="toctext">Bibliothèques logicielles</span></a></li>
+<li class="toclevel-1 tocsection-19"><a href="#Annexes"><span class="tocnumber">12</span> <span class="toctext">Annexes</span></a>
+<ul>
+<li class="toclevel-2 tocsection-20"><a href="#Articles_connexes"><span class="tocnumber">12.1</span> <span class="toctext">Articles connexes</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p></p>
+<h2><span class="mw-headline" id="Historique">Historique</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=1" class="mw-editsection-visualeditor" title="Modifier la section : Historique">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=1" title="Modifier la section : Historique">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Le traitement d'images commence à être étudié dans les <a href="/wiki/Ann%C3%A9es_1920" title="Années 1920">années 1920</a> pour la transmission d'images par le <a href="/wiki/C%C3%A2ble_sous-marin" title="Câble sous-marin">câble sous-marin</a> allant de <a href="/wiki/New_York" title="New York">New York</a> à <a href="/wiki/Londres" title="Londres">Londres</a>. Harry G. Bartholomew et Maynard D. McFarlane effectuent la première numérisation d'image avec <a href="/wiki/Compression_de_donn%C3%A9es" title="Compression de données">compression de données</a> pour envoyer des <a href="/wiki/Fax" class="mw-redirect" title="Fax">fax</a> de Londres à New York. Le temps de transfert passe ainsi de plus d'une semaine à moins de trois heures. Il n'y a pas vraiment d'évolution par la suite jusqu'à la période d'après-guerre<sup id="cite_ref-introGOW_1-0" class="reference"><a href="#cite_note-introGOW-1"><span class="cite_crochet">[</span>1<span class="cite_crochet">]</span></a></sup>.</p>
+<p>Le traitement du signal prend de l'importance vers la fin de la <a href="/wiki/Seconde_Guerre_mondiale" title="Seconde Guerre mondiale">Seconde Guerre mondiale</a> avec l'arrivée du <a href="/wiki/Radar" title="Radar">radar</a>. La prospection <a href="/wiki/P%C3%A9trole" title="Pétrole">pétrolière</a> participe aussi beaucoup au développement des techniques de traitement du signal.</p>
+<p>Le véritable essor du traitement d'images n'a lieu que dans les <a href="/wiki/Ann%C3%A9es_1960" title="Années 1960">années 1960</a> quand les <a href="/wiki/Ordinateur" title="Ordinateur">ordinateurs</a> commencent à être suffisamment puissants pour travailler sur des images. Peu après, la redécouverte de la <a href="/wiki/Transform%C3%A9e_de_Fourier_rapide" class="mw-redirect" title="Transformée de Fourier rapide">transformée de Fourier rapide</a> (FFT) révolutionne le domaine, en rendant possible les manipulations du contenu fréquentiel des signaux sur ordinateur. Cependant, l'essentiel des recherches porte encore, à cette époque, sur l'amélioration des images et leur compression.</p>
+<p>En <a href="/wiki/1980" title="1980">1980</a>, <a href="/wiki/David_Marr" title="David Marr">David Marr</a> formalise le premier la <a href="/wiki/D%C3%A9tection_de_contour" class="mw-redirect" title="Détection de contour">détection de contours</a> de manière précise (D. Marr et E. Hildreth&#160;: <i>Theory of Edge Detection</i>, Proc. R. Soc. London, B 207, 187-217, 1980). Au cours des <a href="/wiki/Ann%C3%A9es_1980" title="Années 1980">années 1980</a>, un véritable engouement se fait jour pour le traitement de l'image et surtout pour la compréhension de l'image par des <a href="/wiki/Syst%C3%A8me_expert" title="Système expert">systèmes experts</a>. Les ambitions étaient beaucoup trop grandes, l'échec fut d'autant plus cuisant.</p>
+<p>Les <a href="/wiki/Ann%C3%A9es_1990" title="Années 1990">années 1990</a> sont témoin de l'amélioration constante des opérateurs. La recherche médicale devient un très gros demandeur en traitement d'images pour améliorer les diagnostics faits à partir des nombreuses techniques d'<a href="/wiki/Imagerie_m%C3%A9dicale" title="Imagerie médicale">imagerie médicale</a>, la technique reine étant l'<a href="/wiki/Imagerie_par_r%C3%A9sonance_magn%C3%A9tique" title="Imagerie par résonance magnétique">IRM</a>. Les publicitaires, puis le grand public se familiarisent avec la retouche d'image grâce au logiciel <a href="/wiki/Adobe_Photoshop" title="Adobe Photoshop">Photoshop</a>, et le traitement d'images dans un objectif esthétique se répand avec l'apparition d'autres logiciels dédiés (<a href="/wiki/The_Gimp" class="mw-redirect" title="The Gimp">The Gimp</a>, <a href="/wiki/Paint_Shop_Pro" class="mw-redirect" title="Paint Shop Pro">Paint Shop Pro</a>). Enfin, la décennie s'achève sur l'engouement pour les <a href="/wiki/Compression_par_ondelettes" title="Compression par ondelettes">ondelettes</a> et les <a href="/w/index.php?title=Image_multimodale&amp;action=edit&amp;redlink=1" class="new" title="Image multimodale (page inexistante)">images multimodales</a>.</p>
+<h2><span class="mw-headline" id="Types_de_donn.C3.A9es_manipul.C3.A9es">Types de données manipulées</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=2" class="mw-editsection-visualeditor" title="Modifier la section : Types de données manipulées">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=2" title="Modifier la section : Types de données manipulées">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Le traiteur d'image dispose principalement d'<a href="/wiki/Image_num%C3%A9rique" title="Image numérique">images numériques</a>, donc <a href="/wiki/%C3%89chantillonnage" class="mw-disambig" title="Échantillonnage">échantillonnées</a>. Il dispose également de données intermédiaires de diverses natures&#160;: cartes de régions, listes de points connexes, tableaux de valeurs mesurées, etc.</p>
+<p>En ce qui concerne les images proprement dites, la représentation la plus utilisée est celle d'un tableau à 2 dimensions composé d'un ensemble de lignes et de colonnes. Chaque cellule du tableau, appelée pixel, contient une valeur quantifiée. Cette valeur est une sémantique dépendant du type de signal qu'elle code (intensité lumineuse du point, distance à un point de référence, ou numéro de la région d'appartenance par exemple). Dans le cas des images 3D d'<a href="/wiki/Imagerie_par_r%C3%A9sonance_magn%C3%A9tique" title="Imagerie par résonance magnétique">IRM</a>, la représentation n'est plus un tableau à 2 dimensions mais un tableau à 3 dimensions.</p>
+<h2><span class="mw-headline" id="Acquisition_d.27une_image">Acquisition d'une image</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=3" class="mw-editsection-visualeditor" title="Modifier la section : Acquisition d'une image">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=3" title="Modifier la section : Acquisition d'une image">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>L'acquisition d'images est une mesure spatiale d'une <a href="/wiki/Interaction" class="mw-disambig" title="Interaction">interaction</a> entre une <a href="/wiki/Onde" title="Onde">onde</a> et de la <a href="/wiki/Mati%C3%A8re" title="Matière">matière</a>. L'onde est émise par une <a href="/wiki/Source" class="mw-disambig" title="Source">source</a> et reçue par un <a href="/wiki/Capteur" title="Capteur">capteur</a>. Par exemple dans le cas de l'<a href="/wiki/%C3%89chographie" title="Échographie">échographie</a>, l'<a href="/wiki/Ultrason" title="Ultrason">ultrason</a>, une onde acoustique, est émise et reçue par la sonde. L'interaction est la réflexion de l'ultrason sur la structure du corps.</p>
+<p>Dans le cas d'<a href="/wiki/Onde_%C3%A9lectromagn%C3%A9tique" title="Onde électromagnétique">onde électromagnétique</a>, la <a href="/wiki/Photographie" title="Photographie">photographie</a> utilise le <a href="/wiki/Spectre_visible" title="Spectre visible">spectre visible</a> c'est-à-dire qui est visible pour l'œil humain. Il y a des applications sur l'ensemble du <a href="/wiki/Spectre_%C3%A9lectromagn%C3%A9tique" title="Spectre électromagnétique">spectre électromagnétique</a>, des <a href="/wiki/Rayon_gamma" title="Rayon gamma">rayons gamma</a> jusqu'aux <a href="/wiki/Onde_radio" title="Onde radio">ondes radio</a>. Ainsi, les images acquises par <a href="/wiki/Rayons_X" class="mw-redirect" title="Rayons X">rayons X</a> ou par rayons gamma sont surtout utilisées en <a href="/wiki/Imagerie_m%C3%A9dicale" title="Imagerie médicale">imagerie médicale</a> et en <a href="/wiki/Astronomie" title="Astronomie">astronomie</a><sup id="cite_ref-introExamplesGOW_2-0" class="reference"><a href="#cite_note-introExamplesGOW-2"><span class="cite_crochet">[</span>2<span class="cite_crochet">]</span></a></sup>. En médecine, on utilise des imageurs <a href="/wiki/Imagerie_par_r%C3%A9sonance_magn%C3%A9tique" title="Imagerie par résonance magnétique">IRM</a>, <a href="/wiki/Tomographie_%C3%A0_%C3%A9mission_de_positon" class="mw-redirect" title="Tomographie à émission de positon">TEP</a>, <a href="/wiki/Tomodensitom%C3%A9trie" title="Tomodensitométrie">scanner X</a>, <a href="/wiki/%C3%89chographie_Doppler" title="Échographie Doppler">échographie Doppler</a>, <a href="/wiki/%C3%89chographie" title="Échographie">échographie</a>, <a href="/wiki/Scintigraphie" title="Scintigraphie">scintigraphie</a>, <a href="/wiki/Tomographie" title="Tomographie">Tomographie</a> <sup id="cite_ref-introExamplesGOW_2-1" class="reference"><a href="#cite_note-introExamplesGOW-2"><span class="cite_crochet">[</span>2<span class="cite_crochet">]</span></a></sup>.</p>
+<p>Les deux caractéristiques importantes de la mesure spatiale est la taille du plus petit élément (<a href="/wiki/Pixel" title="Pixel">pixel</a>), mais aussi l'intercorrélation de deux éléments voisins&#160;: plus cette intercorrélation est faible, meilleure est l'image.</p>
+<h2><span class="mw-headline" id="Op.C3.A9rateurs_de_traitement_d.27images">Opérateurs de traitement d'images</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=4" class="mw-editsection-visualeditor" title="Modifier la section : Opérateurs de traitement d'images">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=4" title="Modifier la section : Opérateurs de traitement d'images">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="bandeau-section bandeau-niveau-detail incomplet plainlinks">Cette section est vide, insuffisamment détaillée ou incomplète. <a class="external text" href="//fr.wikipedia.org/w/index.php?title=Traitement_d%27images&amp;action=edit">Votre aide</a> est la bienvenue&#160;!</div>
+<p>Par analogie avec les opérateurs mathématiques, on appelle opérateurs de traitement d'images des traitements plus ou moins complexes prenant en entrée une image ou un ensemble d'informations relatif à une image, et produisant une image ou un ensemble d'informations relatif aux données initiales.</p>
+<p>On classe généralement les opérateurs en différentes familles, en fonction des informations qu'ils acceptent en entrée et qu'ils fournissent en sortie, et en fonction des transformations qu'ils font subir aux données. Ainsi, par exemple, on distingue (cette liste est loin d'être exhaustive)&#160;:</p>
+<p>Opérateurs image→image&#160;:</p>
+<ul>
+<li>opérateurs de modifications pixel à pixel (aussi appelés <a href="/wiki/Op%C3%A9ration_point_%C3%A0_point" title="Opération point à point">opérateurs point à point</a>)&#160;: changement de la dynamique de l'image, opérateurs binaires pixel à pixel (et, ou, xor, etc.)&#160;;</li>
+<li>opérateurs locaux (traitent les pixels en fonction de leur voisinage)&#160;: opérateurs de flou, opérateurs morphologiques (érosion, dilatation, squelette), opérateurs de détection de contours&#160;;</li>
+<li>opérateurs dans l'espace fréquentiel&#160;: opérateurs de réduction du bruit, filtres passe-bande (souvent utilisés en première approche pour améliorer l'image, on les appelle alors des opérateurs de pré-traitement)&#160;;</li>
+<li>opérateurs globaux&#160;: calcul des distances.</li>
+<li>opérateurs de croissance de régions&#160;: <a href="/wiki/Ligne_de_partage_des_eaux_(segmentation)" title="Ligne de partage des eaux (segmentation)">Ligne de partage des eaux</a></li>
+</ul>
+<p>Opérateurs image→ensemble d'informations&#160;:</p>
+<ul>
+<li>opérateurs de segmentation en frontières, en régions&#160;;</li>
+<li>opérateurs de classification de pixels&#160;;</li>
+<li>opérateurs de calcul de paramètres.</li>
+</ul>
+<p>Opérateurs ensemble d'informations→image</p>
+<ul>
+<li>constructeurs d'image à partir d'une carte de régions ou d'une liste de frontières.</li>
+</ul>
+<p>Les parties suivantes s'attachent à détailler les différents opérateurs et leurs applications habituelles, puis à présenter la manière dont ils sont combinés pour construire une application de traitement d'images.</p>
+<h3><span class="mw-headline" id="Op.C3.A9rateurs_locaux">Opérateurs locaux</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=5" class="mw-editsection-visualeditor" title="Modifier la section : Opérateurs locaux">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=5" title="Modifier la section : Opérateurs locaux">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Il faut alors utiliser des opérateurs de traitement plus complexes scindés bien souvent en deux sous-catégories&#160;:</p>
+<ul>
+<li>les opérateurs linéaires&#160;;</li>
+<li>les filtres non linéaires.</li>
+</ul>
+<p>La première sous-catégorie comprend tous les opérateurs pouvant exprimer leur résultat comme une combinaison linéaire des niveaux de gris d'un voisinage de l'image. Ces filtres possèdent des caractéristiques spectrales, on parle ainsi de filtre passe-bas (l'image devient floue) ou de filtre passe-haut (les contours ressortent).</p>
+<p>La deuxième sous-catégorie comprend le domaine de la morphologie mathématique, ainsi que d'autres traitements comme les détecteurs de points caractéristiques, l'<a href="/w/index.php?title=Op%C3%A9rateur_de_Di-Zenzo&amp;action=edit&amp;redlink=1" class="new" title="Opérateur de Di-Zenzo (page inexistante)">opérateur de Di-Zenzo</a> (détecteur de contour généralisé au cas couleur), le <a href="/w/index.php?title=Filtre_Retinex&amp;action=edit&amp;redlink=1" class="new" title="Filtre Retinex (page inexistante)">filtre Retinex</a>, ainsi que les <a href="/w/index.php?title=Op%C3%A9rateur_homomorphique&amp;action=edit&amp;redlink=1" class="new" title="Opérateur homomorphique (page inexistante)">opérateurs homomorphiques</a> (ceux qui travaillent sur le <a href="/wiki/Logarithme" title="Logarithme">logarithme</a> de l'image), mais aussi tous les opérateurs permettant d'extraire par exemple des informations sur la texture de l'image (<a href="/w/index.php?title=Matrice_de_cooccurrence&amp;action=edit&amp;redlink=1" class="new" title="Matrice de cooccurrence (page inexistante)">matrice de cooccurrence</a>, <a href="/w/index.php?title=Indice_fractal&amp;action=edit&amp;redlink=1" class="new" title="Indice fractal (page inexistante)">indice fractal</a>, longueur de plage...).</p>
+<p>On a souvent l'habitude de voir un détecteur de contours s'appliquer après un filtre linéaire passe-bas... qui rend l'image floue&#160;! La plupart du temps il faut combiner astucieusement filtre non linéaire et filtre linéaire afin de détecter ce que l'on souhaite tout en faisant abstraction du bruit.</p>
+<p>Une fois le bruit éliminé et l'image restaurée afin de compenser les déformations introduites par le milieu de transmission et l'optique d'acquisition, on peut passer à l'étape de <a href="/wiki/Segmentation_d%27image" title="Segmentation d'image">segmentation</a> qui doit permettre de réaliser une partition de l'image en ensembles connexes homogènes.</p>
+<p>Il existe deux grandes catégories de segmentations&#160;:</p>
+<ul>
+<li>la segmentation de région&#160;;</li>
+<li>la segmentation de contour&#160;; on se trouve alors confronté à un problème de représentation du résultat par des primitives simples.</li>
+</ul>
+<p>La segmentation orientée contour connaît de nombreux progrès autour de l'utilisation de <a href="/w/index.php?title=Contours_actifs&amp;action=edit&amp;redlink=1" class="new" title="Contours actifs (page inexistante)">contours actifs</a> ou des ensembles de niveaux. L'introduction d'aspects probabilistes (chaîne de Markov et champs de Markov) a permis de travailler en réduisant la connaissance <i>a priori</i> nécessaire pour obtenir un traitement satisfaisant.</p>
+<p>Dans cette étape on retrouve souvent une partie de classification des pixels en classes. On essaye de regrouper au sein d'un même ensemble, aussi appelé classe, les pixels présentant une même caractéristique&#160;: niveau de gris compris dans un certain intervalle ou dérivée seconde supérieure à un certain seuil.</p>
+<h3><span class="mw-headline" id="Filtres_lin.C3.A9aires">Filtres linéaires</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=6" class="mw-editsection-visualeditor" title="Modifier la section : Filtres linéaires">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=6" title="Modifier la section : Filtres linéaires">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h3>
+<h4><span class="mw-headline" id="G.C3.A9n.C3.A9ralit.C3.A9s">Généralités</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=7" class="mw-editsection-visualeditor" title="Modifier la section : Généralités">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=7" title="Modifier la section : Généralités">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>Un filtre linéaire transforme un ensemble de données d'entrée en un ensemble de données de sortie selon une opération mathématique appelée <a href="/wiki/Produit_de_convolution" title="Produit de convolution">convolution</a>. Lorsqu'il s'agit de données numérisées comme dans le cas du traitement d'image, la relation entre les valeurs des pixels de sortie et celle des pixels d'entrée est décrite par un tableau de nombres, généralement carré, appelé matrice de convolution. Le temps de calcul est souvent réduit lorsqu'on veut séparer un filtre en deux filtres dont la convolution mutuelle permet de le reconstituer. Cette remarque est utilisée en particulier pour créer un filtre à deux dimensions à partir de deux filtres à une seule dimension (vecteurs) dans le sens horizontal et le sens vertical.</p>
+<h4><span class="mw-headline" id="Lissage">Lissage</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=8" class="mw-editsection-visualeditor" title="Modifier la section : Lissage">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=8" title="Modifier la section : Lissage">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h4>
+<div class="bandeau-section bandeau-niveau-detail loupe">Article détaillé&#160;: <a href="/wiki/Lissage_d%27images" title="Lissage d'images">Lissage d'images</a>.</div>
+<p>Ceux-ci sont des filtres passe-bas qui coupent plus ou moins les plus hautes fréquences. Ils sont utilisés pour atténuer les bruits d'origines les plus diverses qui polluent l'information, en particulier dans la détection de contours considérée ci-après.</p>
+<p>Techniquement, il s'agit de traductions discrètes de filtres continus qui, comme ceux-ci, ne modifient pas le niveau global du signal. Les termes de la matrice de convolution sont donc généralement des entiers à diviser par leur somme.</p>
+<ul>
+<li>Filtre uniforme&#160;: il est obtenu par convolution de deux filtres unidimensionnels rectangulaires. Toutes les composantes de la matrice ont la même valeur. L'imperfection de ce filtre réside dans le fait qu'il introduit des déphasages.</li>
+<li>Filtre pyramidal&#160;: la convolution d'un filtre rectangulaire avec lui-même conduit à un filtre triangulaire grâce auquel les phases ne sont plus modifiées. Le filtre pyramidal est obtenu à partir de filtres triangulaires dans les deux directions.</li>
+<li>Filtre gaussien: ce filtre très populaire utilise la loi de probabilité de Gauss (voir <a href="/wiki/Loi_normale_multidimensionnelle" title="Loi normale multidimensionnelle">Loi normale multidimensionnelle</a>). Des approximations de plus en plus précises peuvent être obtenues, selon le <a href="/wiki/Th%C3%A9or%C3%A8me_central_limite" title="Théorème central limite">théorème central limite</a> par itération de l'un des filtres précédents.</li>
+</ul>
+<p>Le filtre gaussien est utilisé comme constituant du <a href="/wiki/Masque_flou" title="Masque flou">masque flou</a> qui améliore la netteté apparente des photographies numériques. Bien qu'il soit popularisé par la photographie plus ou moins artistique, il est également utilisé dans certaines techniques, comme l'<a href="/wiki/Astronomie" title="Astronomie">astronomie</a><sup id="cite_ref-3" class="reference"><a href="#cite_note-3"><span class="cite_crochet">[</span>3<span class="cite_crochet">]</span></a></sup>.</p>
+<h4><span class="mw-headline" id="D.C3.A9tection_de_contours">Détection de contours</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=9" class="mw-editsection-visualeditor" title="Modifier la section : Détection de contours">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=9" title="Modifier la section : Détection de contours">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h4>
+<div class="bandeau-section bandeau-niveau-detail loupe">Article détaillé&#160;: <a href="/wiki/D%C3%A9tection_de_contours" title="Détection de contours">Détection de contours</a>.</div>
+<p>Ces filtres transforment l'image d'entrée en une image noire sauf aux points où un contour est détecté qui est marqué en blanc. Les valeurs absolues importent peu, il est sans intérêt de changer d'échelle comme pour un lissage.</p>
+<p>La détection est basée sur la dérivation selon les deux coordonnées. Si on considère classiquement les signaux comme des sommes de sinusoïdes, la dérivation apparaît comme un filtre passe-haut qui introduit donc du bruit à l'origine de faux contours. Pour l'amateur il est recommandé, avant d'utiliser un filtre simple, d'atténuer ce bruit par passage dans un filtre flou. Des méthodes plus élaborées ont été systématisées pour les professionnels.</p>
+<ul>
+<li>Filtre dérivées premières. Le filtre le plus simple consiste à calculer les différences entre pixels voisins sur les horizontales puis sur les verticales. Chaque extremum correspond à un point d'un contour.</li>
+<li><a href="/wiki/Filtre_de_Prewitt" title="Filtre de Prewitt">Filtre de Prewitt</a>&#160;: le filtre de Prewitt introduit un flou, chacune des deux matrices étant le produit du filtre dérivation dans la direction considérée par un filtre de flou rectangulaire selon l'autre direction.</li>
+<li><a href="/wiki/Algorithme_de_Sobel" class="mw-redirect" title="Algorithme de Sobel">Filtre de Sobel</a>&#160;: la technique précédente est améliorée en remplaçant le filtre rectangulaire par un filtre triangulaire.</li>
+<li><a href="/wiki/Algorithme_de_Canny" class="mw-redirect" title="Algorithme de Canny">Filtre de Canny</a>&#160;: c'est un filtre de Sobel précédé par un lissage gaussien et suivi par un seuillage. Ce filtre est conçu pour être optimal, au sens de trois critères.</li>
+<li><a href="/w/index.php?title=Filtre_de_Deriche&amp;action=edit&amp;redlink=1" class="new" title="Filtre de Deriche (page inexistante)">Filtre de Deriche</a>&#160;: variante du filtre de Canny tout aussi efficace.</li>
+<li>Filtre dérivées secondes&#160;: celles-ci se calculent simplement en différences finies et c'est maintenant un changement de signe qui correspond à un point d'un contour. On les utilise généralement à travers leur somme qui est le <a href="/wiki/Laplacien" class="mw-redirect" title="Laplacien">laplacien</a>.</li>
+<li>Filtre de Marr-Hildreth&#160;: le calcul du laplacien est précédé par un lissage gaussien avec deux variances ajustables pour filtrer les hautes fréquences.</li>
+</ul>
+<h3><span class="mw-headline" id="Op.C3.A9rateurs_morphologiques">Opérateurs morphologiques</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=10" class="mw-editsection-visualeditor" title="Modifier la section : Opérateurs morphologiques">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=10" title="Modifier la section : Opérateurs morphologiques">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h3>
+<div class="bandeau-section bandeau-niveau-detail loupe">Article détaillé&#160;: <a href="/wiki/Morphologie_math%C3%A9matique" title="Morphologie mathématique">Morphologie mathématique</a>.</div>
+<p>La morphologie mathématique offre des opérateurs non linéaires particulièrement utiles pour filtrer, segmenter et quantifier des images. Initialement destinée au traitement des images binaires, elle a très vite été généralisée aux images à niveaux de gris, puis aux images en couleurs et multi-spectrales.</p>
+<p>La nature des opérateurs morphologiques fait qu'ils se prêtent bien au développement de circuits électroniques spécialisés (ou bien à l'utilisation de <a href="/wiki/FPGA" class="mw-redirect" title="FPGA">FPGA</a>) dans les opérateurs morphologiques.</p>
+<h3><span class="mw-headline" id="Construction_d.27une_application_de_traitement_d.27images">Construction d'une application de traitement d'images</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=11" class="mw-editsection-visualeditor" title="Modifier la section : Construction d'une application de traitement d'images">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=11" title="Modifier la section : Construction d'une application de traitement d'images">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Les objectifs des applications peuvent être de différentes natures&#160;:</p>
+<ul>
+<li>détecter la présence d'un objet ou son absence&#160;;</li>
+<li>calculer les caractéristiques d'un ou de plusieurs éléments de l'image.</li>
+</ul>
+<p>Dans tous les cas, l'idée est, en partant d'une image initiale, d'en extraire des informations. Pour cela, on va utiliser les opérateurs à la manière de «&#160;briques logicielles&#160;», en les combinant et en les enchaînant. Ces techniques sont la base des systèmes de <a href="/wiki/Vision_industrielle" title="Vision industrielle">vision industrielle</a>.</p>
+<p>De nombreuses briques sont disponibles permettant de créer des applications complexes et évoluées.</p>
+<h2><span class="mw-headline" id="Reconnaissance_d.27objets">Reconnaissance d'objets</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=12" class="mw-editsection-visualeditor" title="Modifier la section : Reconnaissance d'objets">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=12" title="Modifier la section : Reconnaissance d'objets">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>La reconnaissance d'objets est une branche de la <a href="/wiki/Vision_par_ordinateur" title="Vision par ordinateur">vision artificielle</a> et un des piliers de la <a href="/wiki/Vision_industrielle" title="Vision industrielle">vision industrielle</a>. Elle consiste à identifier des formes pré-décrites dans une <a href="/wiki/Image_num%C3%A9rique" title="Image numérique">image numérique</a>, et par extension dans un flux <a href="/w/index.php?title=Vid%C3%A9o_num%C3%A9rique&amp;action=edit&amp;redlink=1" class="new" title="Vidéo numérique (page inexistante)">vidéo numérique</a>.</p>
+<p>Il ne faut pas confondre reconnaissance d'objets (en anglais&#160;: «&#160;<i>object recognition</i>&#160;» ou «&#160;<i>shape recognition</i>&#160;») et <a href="/wiki/Reconnaissance_de_formes" title="Reconnaissance de formes">reconnaissance de formes</a> («&#160;<i>pattern recognition</i>&#160;» en anglais). La première s'attache à reconnaître des formes géométriques dans une image, alors que la seconde cherche à identifier des motifs dans des données statistiques. La confusion vient du fait qu'on utilise souvent la reconnaissance de formes comme technique appliquée à la reconnaissance d'objets.</p>
+<p>Tout d'abord objet d'algorithmes dirigés par l'homme, jusqu'en 1995 (tentatives de reproduire par un algorithme un raisonnement humain d'identification, comme dans «&#160;un vélo possède deux roues, un cadre...&#160;»), la reconnaissance d'objets a fait l'objet de progrès importants par la suite au travers de la mise en œuvre de techniques d'apprentissage, comme les <a href="/wiki/Machine_%C3%A0_vecteurs_de_support" title="Machine à vecteurs de support">séparateurs à vaste marge</a>. Ces techniques visent à faire exploiter des bases d'exemples positifs et négatifs (contre-exemples) par un algorithme de recherche de critères discriminants, c'est-à-dire de critères permettant de séparer au mieux les exemples des contre-exemples.</p>
+<h2><span class="mw-headline" id="Quelques_exemples_concrets_de_traitement_d.27images">Quelques exemples concrets de traitement d'images</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=13" class="mw-editsection-visualeditor" title="Modifier la section : Quelques exemples concrets de traitement d'images">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=13" title="Modifier la section : Quelques exemples concrets de traitement d'images">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li>Contrôle de présence/absence. Sur des chaînes de production, on vérifie en bout de chaîne avec une caméra vidéo la présence d'une pièce dans un ensemble plus complexe. Pour cela bien souvent il suffit de faire un simple seuillage dans une région spécifique.</li>
+</ul>
+<ul>
+<li>Contrôle du niveau de maturation des fruits sur une chaîne de conditionnement. Il s'agit de reconnaître à la couleur et à la texture du fruit son degré de maturité et donc la catégorie sous laquelle il sera emballé puis vendu.</li>
+</ul>
+<ul>
+<li>Construction et correction de cartes géographiques d'après des images satellites ou des images aériennes. On recale d'après des informations topographiques les images reçues, puis on les met sur la carte en correspondance avec les informations trouvées dans l'image&#160;: voies de communication, voies et plans d'eau, parcelles agricoles...</li>
+</ul>
+<ul>
+<li>Surveillance et évaluation de la production agricole. Il est possible de déterminer le degré de maturation des cultures, la quantité d'eau nécessaire pour l'irrigation, le rendement moyen... On peut ainsi établir des prévisions à large échelle de la récolte à venir.</li>
+</ul>
+<ul>
+<li><a href="/wiki/Reconnaissance_de_l%27%C3%A9criture_manuscrite" title="Reconnaissance de l'écriture manuscrite">Reconnaissance de l'écriture</a>. La reconnaissance de l'écriture manuscrite progresse de jour en jour. Elle est suffisamment opérationnelle pour que la majorité des adresses, même manuscrites, soient reconnues automatiquement sur le courrier postal.</li>
+</ul>
+<ul>
+<li><a href="/wiki/Recherche_d%27image_par_le_contenu" title="Recherche d'image par le contenu">Recherche d'image par le contenu</a>. L'objectif de cette technique est de rechercher, parmi une base de données d'images, les images similaires à une image exemple, ou ayant certaines caractéristiques, par exemple rechercher toutes les images comportant un vélo.</li>
+</ul>
+<ul>
+<li><a href="/w/index.php?title=Analyse_de_la_vid%C3%A9o&amp;action=edit&amp;redlink=1" class="new" title="Analyse de la vidéo (page inexistante)">Analyse de la vidéo</a>. L'objectif de cette technique devenue une discipline depuis les <a href="/wiki/Ann%C3%A9es_2000" title="Années 2000">années 2000</a> (lorsque la puissance des processeurs peu onéreux et en particulier des PC a permis des traitements puissants en temps réel) est d'interpréter les faits observés à l'image afin de signaler ou d'enregistrer des faits marquants. Le plus souvent, la caméra est fixe et observe les mouvements d'une scène. Les applications sont nombreuses&#160;: protection des biens (détection d'intrusion, détection d'objet abandonné ou déposé...), identification (biométrie faciale), Sécurité des personnes (détection de chutes de personnes, franchissement de rambardes...), animations (planchers animés selon les mouvements des danseurs en boîte de nuit), détection de feux (industriel, forêts, tunnels...), surveillance de tunnels (comptage, mesure de vitesse, détection de fuites/anomalies dans les plafonds), surveillance de tuyaux et autres process industriels...</li>
+</ul>
+<ul>
+<li>Segmentation et suivi de cellules vivantes en microscopie. Cela permet d'analyser le comportement d'une population de cellules et ainsi de détecter certaines anomalies.</li>
+</ul>
+<ul>
+<li>Analyse et authentification de tableaux. L'étude des niveaux des couleurs des pigments et des vernis permet une analyse approfondie des œuvres. Il est ainsi possible de voir les restaurations successives et d'identifier les faux.</li>
+</ul>
+<h2><span class="mw-headline" id="Glossaire_en_vrac">Glossaire en vrac</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=14" class="mw-editsection-visualeditor" title="Modifier la section : Glossaire en vrac">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=14" title="Modifier la section : Glossaire en vrac">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><a href="/wiki/Calibration_de_cam%C3%A9ra" title="Calibration de caméra">Calibration</a>&#160;: opération consistant à trouver la relation entre les coordonnées dans l'image et les coordonnées dans l'espace de la scène.</li>
+<li>Filtre&#160;: autre nom d'un opérateur prenant une image en entrée et produisant une image.</li>
+<li><a href="/wiki/Pixel" title="Pixel">Pixel</a>&#160;: contraction de «&#160;<i><b>pic</b>ture <b>el</b>ement</i>&#160;», plus petit élément d'une image numérique 2D.</li>
+<li><a href="/wiki/Recalage_d%27images" title="Recalage d'images">Recalage</a>&#160;: technique consistant à trouver une transformation géométrique permettant de passer d'une image (dite source) à une autre image (dite cible).</li>
+<li><a href="/wiki/Segmentation_d%27image" title="Segmentation d'image">Segmentation</a>&#160;: opération qui consiste à extraire d'une image des primitives géométriques. Les primitives les plus employées sont les segments (contours) ou les surfaces (régions).</li>
+<li><a href="/wiki/Squelettisation_(informatique)" title="Squelettisation (informatique)">Squelettisation</a>&#160;: permet d'obtenir le squelette d'une forme (objet de dimension inférieure que l'objet initial et qui préserve des informations <a href="/wiki/Topologie" title="Topologie">topologiques</a> ou <a href="/wiki/G%C3%A9om%C3%A9trie" title="Géométrie">géométriques</a> par rapport à l'objet).</li>
+<li><a href="/wiki/Voxel" title="Voxel">Voxel</a>&#160;: déformation de pixel («&#160;<i><b>vo</b>lumic pi<b>xel</b></i>&#160;») pour les images 3D.</li>
+<li>Zone d'intérêt&#160;: dans la mise au point d'un système de traitement d'images, il n'est que rarement intéressant d'appliquer un opérateur de traitement d'images à la totalité de l'image. Le plus souvent seule une partie de l'image doit être traitée. Cette zone est nommée «&#160;zone d'intérêt&#160;».</li>
+<li><a href="/wiki/D%C3%A9tection_de_zones_d%27int%C3%A9r%C3%AAt" title="Détection de zones d'intérêt">Détection de zones d'intérêt</a></li>
+</ul>
+<h2><span class="mw-headline" id="Domaines_d.27application">Domaines d'application</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=15" class="mw-editsection-visualeditor" title="Modifier la section : Domaines d'application">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=15" title="Modifier la section : Domaines d'application">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="bandeau-section bandeau-niveau-detail incomplet plainlinks">Cette section est vide, insuffisamment détaillée ou incomplète. <a class="external text" href="//fr.wikipedia.org/w/index.php?title=Traitement_d%27images&amp;action=edit">Votre aide</a> est la bienvenue&#160;!</div>
+<ul>
+<li><a href="/wiki/Photographie" title="Photographie">photographie</a></li>
+<li><a href="/wiki/Cin%C3%A9ma_num%C3%A9rique" title="Cinéma numérique">cinéma numérique</a></li>
+<li><a href="/wiki/Astronomie" title="Astronomie">astronomie</a></li>
+<li>contrôle qualité et contrôle non destructif</li>
+<li>médecine</li>
+<li>sécurité</li>
+<li>microscopie</li>
+<li>micro-tomographie</li>
+<li>contrôle non destructif</li>
+</ul>
+<h2><span class="mw-headline" id="Notes_et_r.C3.A9f.C3.A9rences">Notes et références</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=16" class="mw-editsection-visualeditor" title="Modifier la section : Notes et références">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=16" title="Modifier la section : Notes et références">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ol class="references">
+<li id="cite_note-introGOW-1"><span class="noprint renvois_vers_le_texte"><a href="#cite_ref-introGOW_1-0">↑</a></span> <span class="reference-text"><a href="#GOW08">Gonzalez, Woods (2008)</a>, Introduction <abbr class="abbr" title="page(s)">p.</abbr>&#160;3-4</span></li>
+<li id="cite_note-introExamplesGOW-2"><span class="noprint renvois_vers_le_texte">↑ <sup><a href="#cite_ref-introExamplesGOW_2-0">a</a> et <a href="#cite_ref-introExamplesGOW_2-1">b</a></sup></span> <span class="reference-text"><a href="#GOW08">Gonzalez, Woods (2008)</a>, Introduction <abbr class="abbr" title="page(s)">p.</abbr>&#160;7-24</span></li>
+<li id="cite_note-3"><span class="noprint renvois_vers_le_texte"><a href="#cite_ref-3">↑</a></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://www.david-romeuf.fr/Publications/Amateur/MasqueFlou/mfII.html">Le masque flou en imagerie numérique</a> - <i>Pulsar - SAP</i>, <abbr class="abbr" title="numéro">n<sup>o</sup></abbr>&#160;711 et 712, 1995/1996</span></li>
+</ol>
+<h2><span class="mw-headline" id="Bibliographie">Bibliographie</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=17" class="mw-editsection-visualeditor" title="Modifier la section : Bibliographie">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=17" title="Modifier la section : Bibliographie">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><span class="ouvrage" id="GOW08"><span class="indicateur-langue">(<abbr class="abbr" title="Langue&#160;: anglais">en</abbr>)</span> Rafael C. Gonzalez, Richard E. Woods, <cite class="italique" lang="en">Digital Image Processing</cite>, Pearson Prentice Hall, <time>2008</time><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Digital+Image+Processing&amp;rft.pub=Pearson+Prentice+Hall&amp;rft.au=Rafael+C.+Gonzalez%2C+Richard+E.+Woods&amp;rft.date=2008&amp;rfr_id=info%3Asid%2Ffr.wikipedia.org%3ATraitement+d%27images" id="COinS_23871"></span></span></li>
+<li><span class="indicateur-langue">(<abbr class="abbr" title="Langue&#160;: anglais">en</abbr>)</span> Anil K. Jain, <i>Fundamentals of Digital Image Processing</i>, 1989</li>
+</ul>
+<h2><span class="mw-headline" id="Biblioth.C3.A8ques_logicielles">Bibliothèques logicielles</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=18" class="mw-editsection-visualeditor" title="Modifier la section : Bibliothèques logicielles">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=18" title="Modifier la section : Bibliothèques logicielles">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><a href="/wiki/Aphelion_(logiciel)" title="Aphelion (logiciel)">Aphelion</a> interface et bibliothèque en C++ et C#</li>
+<li><a href="/wiki/ImageJ" title="ImageJ">ImageJ</a> interface et bibliothèque en Java</li>
+<li><a href="/wiki/OpenCV" title="OpenCV">OpenCV</a> bibliothèque en C++</li>
+<li><a href="/wiki/Insight_ToolKit" title="Insight ToolKit">ITK</a> bibliothèque en C++</li>
+<li><a href="/wiki/MATLAB" title="MATLAB">MATLAB</a> avec Image Processing Toolbox en MATLAB</li>
+<li><a href="/wiki/Python_Imaging_Library" title="Python Imaging Library">PIL</a> bibliothèque en python</li>
+<li><a href="/w/index.php?title=CImg&amp;action=edit&amp;redlink=1" class="new" title="CImg (page inexistante)">CImg</a> bibliothèque en C++</li>
+<li><a href="/w/index.php?title=Population_Library&amp;action=edit&amp;redlink=1" class="new" title="Population Library (page inexistante)">Population</a> bibliothèque en C++</li>
+<li><a href="/wiki/Adobe_Photoshop" title="Adobe Photoshop">Adobe Photoshop</a></li>
+</ul>
+<h2><span class="mw-headline" id="Annexes">Annexes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=19" class="mw-editsection-visualeditor" title="Modifier la section : Annexes">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=19" title="Modifier la section : Annexes">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h2>
+<h3><span class="mw-headline" id="Articles_connexes">Articles connexes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit&amp;section=20" class="mw-editsection-visualeditor" title="Modifier la section : Articles connexes">modifier</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit&amp;section=20" title="Modifier la section : Articles connexes">modifier le code</a><span class="mw-editsection-bracket">]</span></span></h3>
+<ul>
+<li><a href="/wiki/Retouche_d%27image" title="Retouche d'image">Retouche d'image</a></li>
+<li><a href="/wiki/Trucage_photographique" title="Trucage photographique">Trucage photographique</a></li>
+<li><a href="/wiki/Photomontage" title="Photomontage">Photomontage</a></li>
+<li><a href="/wiki/Imagerie_m%C3%A9dicale" title="Imagerie médicale">Imagerie médicale</a></li>
+</ul>
+<div class="navbox-container" style="clear:both;">
+<table class="navbox collapsible noprint autocollapse" data-autocollapse-group="palette" style="">
+<tr>
+<th class="navbox-title" colspan="2" style="">
+<div style="float:left; width:6em; text-align:left">
+<div class="noprint plainlinksneverexpand nowrap tnavbar" style="background-color:transparent; padding:0; font-size:xx-small; color:#000000;"><a href="/wiki/Mod%C3%A8le:Palette_Traitement_du_signal" title="Modèle:Palette Traitement du signal"><abbr class="abbr" title="Voir ce modèle.">v</abbr></a>&#160;· <a class="external text" href="//fr.wikipedia.org/w/index.php?title=Mod%C3%A8le:Palette_Traitement_du_signal&amp;action=edit"><abbr class="abbr" title="Modifier ce modèle. Merci de prévisualiser avant de sauvegarder.">m</abbr></a></div>
+</div>
+<span style="font-size:110%"><a href="/wiki/Traitement_du_signal" title="Traitement du signal">Traitement du signal</a></span></th>
+</tr>
+<tr>
+<th class="navbox-group" style="">Théorie</th>
+<td class="navbox-list" style="">
+<div class="liste-horizontale">
+<ul>
+<li><a href="/wiki/Analyse_harmonique_(math%C3%A9matiques)" title="Analyse harmonique (mathématiques)">Analyse harmonique</a></li>
+<li><a href="/wiki/Bruit_de_fond" title="Bruit de fond">Bruit de fond</a></li>
+<li><a href="/wiki/%C3%89chantillonnage_(signal)" title="Échantillonnage (signal)">Échantillonnage</a></li>
+<li><a href="/wiki/Quantification_(signal)" title="Quantification (signal)">Quantification</a></li>
+<li><a href="/wiki/Ligne_de_transmission" title="Ligne de transmission">Ligne de transmission</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr>
+<th class="navbox-group" style="">Techniques</th>
+<td class="navbox-list navbox-even" style="">
+<div class="liste-horizontale">
+<ul>
+<li><a href="/wiki/Amplificateur_%C3%A9lectronique" title="Amplificateur électronique">Amplificateur</a></li>
+<li><a href="/wiki/Filtre_(%C3%A9lectronique)" title="Filtre (électronique)">Filtre</a></li>
+<li><a href="/wiki/Num%C3%A9risation" title="Numérisation">Numérisation</a></li>
+<li><a href="/wiki/D%C3%A9tection_synchrone" title="Détection synchrone">Détection synchrone</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr>
+<th class="navbox-group" style="">Domaines d'applications</th>
+<td class="navbox-list" style="">
+<div class="liste-horizontale">
+<ul>
+<li><a href="/wiki/Radar" title="Radar">Radar</a></li>
+<li><a href="/wiki/T%C3%A9l%C3%A9communications" title="Télécommunications">Télécommunications</a></li>
+<li>Traitement
+<ul>
+<li><strong class="selflink">Images</strong></li>
+<li><a href="/wiki/Traitement_de_la_parole" title="Traitement de la parole">Parole</a></li>
+<li><a href="/wiki/Traitement_du_son" title="Traitement du son">Son</a></li>
+<li><a href="/wiki/Traitement_de_la_vid%C3%A9o" title="Traitement de la vidéo">Vidéo</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr>
+<th class="navbox-group" style="">Signaux</th>
+<td class="navbox-list navbox-even" style="">
+<div class="liste-horizontale">
+<ul>
+<li><a href="/wiki/Signal_carr%C3%A9" title="Signal carré">Carré</a></li>
+<li><a href="/wiki/Signal_en_dents_de_scie" title="Signal en dents de scie">Dents de scie</a></li>
+<li><a href="/wiki/Signal_sinuso%C3%AFdal" title="Signal sinusoïdal">Sinusoïdal</a></li>
+<li><a href="/wiki/Signal_triangulaire" title="Signal triangulaire">Triangulaire</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr>
+<td class="navbox-banner" style="" colspan="2">
+<div class="liste-horizontale">
+<ul>
+<li><a href="/wiki/Automatique" title="Automatique">Automatique</a></li>
+<li><a href="/wiki/%C3%89lectricit%C3%A9" title="Électricité">Électricité</a></li>
+<li><a href="/wiki/%C3%89lectrochimie" title="Électrochimie">Électrochimie</a></li>
+<li><a href="/wiki/%C3%89lectromagn%C3%A9tisme" title="Électromagnétisme">Électromagnétisme</a></li>
+<li><a href="/wiki/%C3%89lectronique" title="Électronique">Électronique</a></li>
+<li><a href="/wiki/%C3%89lectrotechnique" title="Électrotechnique">Électrotechnique</a></li>
+<li><a href="/wiki/Robotique" title="Robotique">Robotique</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<ul id="bandeau-portail" class="bandeau-portail">
+<li><span class="bandeau-portail-element"><span class="bandeau-portail-icone"><a href="/wiki/Portail:Imagerie_num%C3%A9rique" title="Portail de l’imagerie numérique"><img alt="Portail de l’imagerie numérique" src="//upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Utah_teapot_simple_2.png/37px-Utah_teapot_simple_2.png" width="37" height="24" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Utah_teapot_simple_2.png/55px-Utah_teapot_simple_2.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Utah_teapot_simple_2.png/73px-Utah_teapot_simple_2.png 2x" data-file-width="2733" data-file-height="1809" /></a></span> <span class="bandeau-portail-texte"><a href="/wiki/Portail:Imagerie_num%C3%A9rique" title="Portail:Imagerie numérique">Portail de l’imagerie numérique</a></span></span></li>
+</ul>
+
+
+<!-- 
+NewPP limit report
+Parsed by mw1219
+Cached time: 20170206165511
+Cache expiry: 2592000
+Dynamic content: false
+CPU time usage: 0.136 seconds
+Real time usage: 0.190 seconds
+Preprocessor visited node count: 1009/1000000
+Preprocessor generated node count: 0/1500000
+Post‐expand include size: 23224/2097152 bytes
+Template argument size: 4394/2097152 bytes
+Highest expansion depth: 12/40
+Expensive parser function count: 0/500
+Lua time usage: 0.050/10.000 seconds
+Lua memory usage: 2.42 MB/50 MB
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  140.828      1 -total
+ 30.28%   42.649      1 Modèle:Portail
+ 27.59%   38.852      1 Modèle:Ouvrage
+ 16.91%   23.807      1 Modèle:Palette
+ 13.47%   18.975      1 Modèle:Catégorisation_badges
+ 12.81%   18.040      1 Modèle:Palette_Traitement_du_signal
+ 11.71%   16.485      1 Modèle:Méta_palette_de_navigation
+ 10.37%   14.606      2 Modèle:...
+  9.58%   13.489      1 Modèle:Suivi_des_biographies
+  6.89%    9.702      3 Modèle:Article_détaillé
+-->
+
+<!-- Saved in parser cache with key frwiki:pcache:idhash:1187584-0!*!0!!fr!4!* and timestamp 20170206165511 and revision id 131924190
+ -->
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.log.warn("Gadget \"newCollapsible\" styles loaded twice. Migrate to type=general. See \u003Chttps://phabricator.wikimedia.org/T42284\u003E.");});</script><noscript><img src="//fr.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript></div>					<div class="printfooter">
+						Ce document provient de «&#160;<a dir="ltr" href="https://fr.wikipedia.org/w/index.php?title=Traitement_d%27images&amp;oldid=131924190">https://fr.wikipedia.org/w/index.php?title=Traitement_d%27images&amp;oldid=131924190</a>&#160;».					</div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Cat%C3%A9gorie:Accueil" title="Catégorie:Accueil">Catégorie</a> : <ul><li><a href="/wiki/Cat%C3%A9gorie:Traitement_d%27image" title="Catégorie:Traitement d'image">Traitement d'image</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Catégories cachées : <ul><li><a href="/wiki/Cat%C3%A9gorie:Article_avec_une_section_vide_ou_incompl%C3%A8te" title="Catégorie:Article avec une section vide ou incomplète">Article avec une section vide ou incomplète</a></li><li><a href="/wiki/Cat%C3%A9gorie:Portail:Imagerie_num%C3%A9rique/Articles_li%C3%A9s" title="Catégorie:Portail:Imagerie numérique/Articles liés">Portail:Imagerie numérique/Articles liés</a></li><li><a href="/wiki/Cat%C3%A9gorie:Portail:Informatique/Articles_li%C3%A9s" title="Catégorie:Portail:Informatique/Articles liés">Portail:Informatique/Articles liés</a></li></ul></div></div>				<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Menu de navigation</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Outils personnels</h3>
+						<ul>
+							<li id="pt-anonuserpage">Non connecté</li><li id="pt-anontalk"><a href="/wiki/Sp%C3%A9cial:Mes_discussions" title="La page de discussion pour les contributions depuis cette adresse IP [n]" accesskey="n">Discussion</a></li><li id="pt-anoncontribs"><a href="/wiki/Sp%C3%A9cial:Mes_contributions" title="Une liste des modifications effectuées depuis cette adresse IP [y]" accesskey="y">Contributions</a></li><li id="pt-createaccount"><a href="/w/index.php?title=Sp%C3%A9cial:Cr%C3%A9er_un_compte&amp;returnto=Traitement+d%27images" title="Il vous est conseillé de créer un compte et de vous connecter ; cependant, ce n’est pas obligatoire">Créer un compte</a></li><li id="pt-login"><a href="/w/index.php?title=Sp%C3%A9cial:Connexion&amp;returnto=Traitement+d%27images" title="Il est recommandé de vous identifier ; ce n'est cependant pas obligatoire. [o]" accesskey="o">Se connecter</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Espaces de noms</h3>
+						<ul>
+															<li  id="ca-nstab-main" class="selected"><span><a href="/wiki/Traitement_d%27images"  title="Voir la page de contenu [c]" accesskey="c">Article</a></span></li>
+															<li  id="ca-talk"><span><a href="/wiki/Discussion:Traitement_d%27images"  title="Discussion au sujet de cette page de contenu [t]" accesskey="t" rel="discussion">Discussion</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<h3 id="p-variants-label">
+							<span>Variantes</span><a href="#"></a>
+						</h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Affichages</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="/wiki/Traitement_d%27images" >Lire</a></span></li>
+															<li id="ca-ve-edit"><span><a href="/w/index.php?title=Traitement_d%27images&amp;veaction=edit"  title="Modifier cette page [v]" accesskey="v">Modifier</a></span></li>
+															<li id="ca-edit" class=" collapsible"><span><a href="/w/index.php?title=Traitement_d%27images&amp;action=edit"  title="Vous pouvez modifier cette page ! [e]" accesskey="e">Modifier le code</a></span></li>
+															<li id="ca-history" class="collapsible"><span><a href="/w/index.php?title=Traitement_d%27images&amp;action=history"  title="Les versions passées de cette page (avec leurs contributeurs) [h]" accesskey="h">Historique</a></span></li>
+													</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+						<h3 id="p-cactions-label"><span>Plus</span><a href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Rechercher</label>
+						</h3>
+
+						<form action="/w/index.php" id="searchform">
+							<div id="simpleSearch">
+							<input type="search" name="search" placeholder="Rechercher sur Wikipédia" title="Rechercher dans Wikipédia [f]" accesskey="f" id="searchInput"/><input type="hidden" value="Spécial:Recherche" name="title"/><input type="submit" name="fulltext" value="Rechercher" title="Rechercher les pages comportant ce texte." id="mw-searchButton" class="searchButton mw-fallbackSearchButton"/><input type="submit" name="go" value="Lire" title="Aller vers une page portant exactement ce nom si elle existe." id="searchButton" class="searchButton"/>							</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="/wiki/Wikip%C3%A9dia:Accueil_principal"  title="Page principale"></a></div>
+						<div class="portal" role="navigation" id='p-navigation' aria-labelledby='p-navigation-label'>
+			<h3 id='p-navigation-label'>Navigation</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-mainpage-description"><a href="/wiki/Wikip%C3%A9dia:Accueil_principal" title="Aller à l'accueil [z]" accesskey="z">Accueil</a></li><li id="n-thema"><a href="/wiki/Portail:Accueil">Portails thématiques</a></li><li id="n-randompage"><a href="/wiki/Sp%C3%A9cial:Page_au_hasard" title="Affiche un article au hasard [x]" accesskey="x">Article au hasard</a></li><li id="n-contact"><a href="/wiki/Wikip%C3%A9dia:Contact">Contact</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-Contribuer' aria-labelledby='p-Contribuer-label'>
+			<h3 id='p-Contribuer-label'>Contribuer</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-aboutwp"><a href="/wiki/Aide:D%C3%A9buter">Débuter sur Wikipédia</a></li><li id="n-help"><a href="/wiki/Aide:Sommaire" title="Aide">Aide</a></li><li id="n-portal"><a href="/wiki/Wikip%C3%A9dia:Accueil_de_la_communaut%C3%A9" title="À propos du projet, ce que vous pouvez faire, où trouver des informations">Communauté</a></li><li id="n-recentchanges"><a href="/wiki/Sp%C3%A9cial:Modifications_r%C3%A9centes" title="Liste des modifications récentes sur le wiki [r]" accesskey="r">Modifications récentes</a></li><li id="n-sitesupport"><a href="//donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_fr.wikipedia.org&amp;uselang=fr" title="Aidez-nous">Faire un don</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-tb' aria-labelledby='p-tb-label'>
+			<h3 id='p-tb-label'>Outils</h3>
+
+			<div class="body">
+									<ul>
+						<li id="t-whatlinkshere"><a href="/wiki/Sp%C3%A9cial:Pages_li%C3%A9es/Traitement_d%27images" title="Liste des pages liées qui pointent sur celle-ci [j]" accesskey="j">Pages liées</a></li><li id="t-recentchangeslinked"><a href="/wiki/Sp%C3%A9cial:Suivi_des_liens/Traitement_d%27images" rel="nofollow" title="Liste des modifications récentes des pages appelées par celle-ci [k]" accesskey="k">Suivi des pages liées</a></li><li id="t-upload"><a href="/wiki/Aide:Importer_un_fichier" title="Téléverser des fichiers [u]" accesskey="u">Importer un fichier</a></li><li id="t-specialpages"><a href="/wiki/Sp%C3%A9cial:Pages_sp%C3%A9ciales" title="Liste de toutes les pages spéciales [q]" accesskey="q">Pages spéciales</a></li><li id="t-permalink"><a href="/w/index.php?title=Traitement_d%27images&amp;oldid=131924190" title="Adresse permanente de cette version de la page">Adresse permanente</a></li><li id="t-info"><a href="/w/index.php?title=Traitement_d%27images&amp;action=info" title="Plus d’information sur cette page">Information sur la page</a></li><li id="t-wikibase"><a href="https://www.wikidata.org/wiki/Q327008" title="Lien vers l’élément de référentiel des données connectées [g]" accesskey="g">Élément Wikidata</a></li><li id="t-cite"><a href="/w/index.php?title=Sp%C3%A9cial:Citer&amp;page=Traitement_d%27images&amp;id=131924190" title="Informations sur la manière de citer cette page">Citer cette page</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-coll-print_export' aria-labelledby='p-coll-print_export-label'>
+			<h3 id='p-coll-print_export-label'>Imprimer / exporter</h3>
+
+			<div class="body">
+									<ul>
+						<li id="coll-create_a_book"><a href="/w/index.php?title=Sp%C3%A9cial:Livre&amp;bookcmd=book_creator&amp;referer=Traitement+d%27images">Créer un livre</a></li><li id="coll-download-as-rdf2latex"><a href="/w/index.php?title=Sp%C3%A9cial:Livre&amp;bookcmd=render_article&amp;arttitle=Traitement+d%27images&amp;returnto=Traitement+d%27images&amp;oldid=131924190&amp;writer=rdf2latex">Télécharger comme PDF</a></li><li id="t-print"><a href="/w/index.php?title=Traitement_d%27images&amp;printable=yes" title="Version imprimable de cette page [p]" accesskey="p">Version imprimable</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-wikibase-otherprojects' aria-labelledby='p-wikibase-otherprojects-label'>
+			<h3 id='p-wikibase-otherprojects-label'>Dans d’autres projets</h3>
+
+			<div class="body">
+									<ul>
+						<li class="wb-otherproject-link wb-otherproject-commons"><a href="https://commons.wikimedia.org/wiki/Category:Image_processing" hreflang="en">Wikimédia Commons</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-lang' aria-labelledby='p-lang-label'>
+			<h3 id='p-lang-label'>Dans d’autres langues</h3>
+
+			<div class="body">
+									<ul>
+						<li class="interlanguage-link interwiki-ar"><a href="https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%A7%D9%84%D8%AC%D8%A9_%D8%A7%D9%84%D8%B5%D9%88%D8%B1_%D8%A7%D9%84%D8%B1%D9%82%D9%85%D9%8A%D8%A9" title="معالجة الصور الرقمية — arabe" lang="ar" hreflang="ar" class="interlanguage-link-target">العربية</a></li><li class="interlanguage-link interwiki-bs"><a href="https://bs.wikipedia.org/wiki/Obrada_slike" title="Obrada slike — bosniaque" lang="bs" hreflang="bs" class="interlanguage-link-target">Bosanski</a></li><li class="interlanguage-link interwiki-ca"><a href="https://ca.wikipedia.org/wiki/Retoc_fotogr%C3%A0fic_digital" title="Retoc fotogràfic digital — catalan" lang="ca" hreflang="ca" class="interlanguage-link-target">Català</a></li><li class="interlanguage-link interwiki-cs"><a href="https://cs.wikipedia.org/wiki/Zpracov%C3%A1n%C3%AD_obrazu" title="Zpracování obrazu — tchèque" lang="cs" hreflang="cs" class="interlanguage-link-target">Čeština</a></li><li class="interlanguage-link interwiki-de"><a href="https://de.wikipedia.org/wiki/Bildverarbeitung" title="Bildverarbeitung — allemand" lang="de" hreflang="de" class="interlanguage-link-target">Deutsch</a></li><li class="interlanguage-link interwiki-el"><a href="https://el.wikipedia.org/wiki/%CE%95%CF%80%CE%B5%CE%BE%CE%B5%CF%81%CE%B3%CE%B1%CF%83%CE%AF%CE%B1_%CE%B5%CE%B9%CE%BA%CF%8C%CE%BD%CE%B1%CF%82" title="Επεξεργασία εικόνας — grec" lang="el" hreflang="el" class="interlanguage-link-target">Ελληνικά</a></li><li class="interlanguage-link interwiki-en"><a href="https://en.wikipedia.org/wiki/Image_processing" title="Image processing — anglais" lang="en" hreflang="en" class="interlanguage-link-target">English</a></li><li class="interlanguage-link interwiki-es"><a href="https://es.wikipedia.org/wiki/Retoque_fotogr%C3%A1fico" title="Retoque fotográfico — espagnol" lang="es" hreflang="es" class="interlanguage-link-target">Español</a></li><li class="interlanguage-link interwiki-fa"><a href="https://fa.wikipedia.org/wiki/%D9%BE%D8%B1%D8%AF%D8%A7%D8%B2%D8%B4_%D8%AA%D8%B5%D9%88%DB%8C%D8%B1" title="پردازش تصویر — persan" lang="fa" hreflang="fa" class="interlanguage-link-target">فارسی</a></li><li class="interlanguage-link interwiki-fy"><a href="https://fy.wikipedia.org/wiki/Byldbewurking" title="Byldbewurking — frison occidental" lang="fy" hreflang="fy" class="interlanguage-link-target">Frysk</a></li><li class="interlanguage-link interwiki-he"><a href="https://he.wikipedia.org/wiki/%D7%A2%D7%99%D7%91%D7%95%D7%93_%D7%AA%D7%9E%D7%95%D7%A0%D7%94" title="עיבוד תמונה — hébreu" lang="he" hreflang="he" class="interlanguage-link-target">עברית</a></li><li class="interlanguage-link interwiki-hi"><a href="https://hi.wikipedia.org/wiki/%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%A4%E0%A4%BF%E0%A4%AC%E0%A4%BF%E0%A4%AE%E0%A5%8D%E0%A4%AC_%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A4%A3" title="प्रतिबिम्ब प्रक्रमण — hindi" lang="hi" hreflang="hi" class="interlanguage-link-target">हिन्दी</a></li><li class="interlanguage-link interwiki-id"><a href="https://id.wikipedia.org/wiki/Pengolahan_citra" title="Pengolahan citra — indonésien" lang="id" hreflang="id" class="interlanguage-link-target">Bahasa Indonesia</a></li><li class="interlanguage-link interwiki-it"><a href="https://it.wikipedia.org/wiki/Ritocco_fotografico" title="Ritocco fotografico — italien" lang="it" hreflang="it" class="interlanguage-link-target">Italiano</a></li><li class="interlanguage-link interwiki-ja"><a href="https://ja.wikipedia.org/wiki/%E7%94%BB%E5%83%8F%E5%87%A6%E7%90%86" title="画像処理 — japonais" lang="ja" hreflang="ja" class="interlanguage-link-target">日本語</a></li><li class="interlanguage-link interwiki-ko"><a href="https://ko.wikipedia.org/wiki/%EC%98%81%EC%83%81_%EC%B2%98%EB%A6%AC" title="영상 처리 — coréen" lang="ko" hreflang="ko" class="interlanguage-link-target">한국어</a></li><li class="interlanguage-link interwiki-ml"><a href="https://ml.wikipedia.org/wiki/%E0%B4%87%E0%B4%AE%E0%B5%87%E0%B4%9C%E0%B5%8D_%E0%B4%AA%E0%B5%8D%E0%B4%B0%E0%B5%8A%E0%B4%B8%E0%B4%B8%E0%B5%8D%E0%B4%B8%E0%B4%BF%E0%B4%99%E0%B5%8D%E0%B4%99%E0%B5%8D" title="ഇമേജ് പ്രൊസസ്സിങ്ങ് — malayalam" lang="ml" hreflang="ml" class="interlanguage-link-target">മലയാളം</a></li><li class="interlanguage-link interwiki-mn"><a href="https://mn.wikipedia.org/wiki/%D0%97%D1%83%D1%80%D0%B3%D0%B8%D0%B9%D0%BD_%D0%B1%D0%BE%D0%BB%D0%BE%D0%B2%D1%81%D1%80%D1%83%D1%83%D0%BB%D0%B0%D0%BB%D1%82" title="Зургийн боловсруулалт — mongol" lang="mn" hreflang="mn" class="interlanguage-link-target">Монгол</a></li><li class="interlanguage-link interwiki-ms"><a href="https://ms.wikipedia.org/wiki/Pemprosesan_imej" title="Pemprosesan imej — malais" lang="ms" hreflang="ms" class="interlanguage-link-target">Bahasa Melayu</a></li><li class="interlanguage-link interwiki-my"><a href="https://my.wikipedia.org/wiki/%E1%80%95%E1%80%AF%E1%80%B6%E1%80%9B%E1%80%AD%E1%80%95%E1%80%BA%E1%80%9E%E1%80%81%E1%80%BC%E1%80%84%E1%80%BA%E1%80%B8" title="ပုံရိပ်သခြင်း — birman" lang="my" hreflang="my" class="interlanguage-link-target">မြန်မာဘာသာ</a></li><li class="interlanguage-link interwiki-nl"><a href="https://nl.wikipedia.org/wiki/Beeldverwerking" title="Beeldverwerking — néerlandais" lang="nl" hreflang="nl" class="interlanguage-link-target">Nederlands</a></li><li class="interlanguage-link interwiki-pt"><a href="https://pt.wikipedia.org/wiki/Processamento_de_imagem" title="Processamento de imagem — portugais" lang="pt" hreflang="pt" class="interlanguage-link-target">Português</a></li><li class="interlanguage-link interwiki-ru"><a href="https://ru.wikipedia.org/wiki/%D0%9E%D0%B1%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0_%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B9" title="Обработка изображений — russe" lang="ru" hreflang="ru" class="interlanguage-link-target">Русский</a></li><li class="interlanguage-link interwiki-si"><a href="https://si.wikipedia.org/wiki/%E0%B6%BB%E0%B7%96%E0%B6%B4%E2%80%8D_%E0%B7%83%E0%B7%90%E0%B6%9A%E0%B7%83%E0%B7%94%E0%B6%B8" title="රූප‍ සැකසුම — cinghalais" lang="si" hreflang="si" class="interlanguage-link-target">සිංහල</a></li><li class="interlanguage-link interwiki-simple"><a href="https://simple.wikipedia.org/wiki/Image_processing" title="Image processing — Simple English" lang="simple" hreflang="simple" class="interlanguage-link-target">Simple English</a></li><li class="interlanguage-link interwiki-sr"><a href="https://sr.wikipedia.org/wiki/%D0%9E%D0%B1%D1%80%D0%B0%D0%B4%D0%B0_%D1%81%D0%BD%D0%B8%D0%BC%D0%B0%D0%BA%D0%B0" title="Обрада снимака — serbe" lang="sr" hreflang="sr" class="interlanguage-link-target">Српски / srpski</a></li><li class="interlanguage-link interwiki-su"><a href="https://su.wikipedia.org/wiki/Pengolahan_citra" title="Pengolahan citra — soundanais" lang="su" hreflang="su" class="interlanguage-link-target">Basa Sunda</a></li><li class="interlanguage-link interwiki-sv"><a href="https://sv.wikipedia.org/wiki/Bildbehandling" title="Bildbehandling — suédois" lang="sv" hreflang="sv" class="interlanguage-link-target">Svenska</a></li><li class="interlanguage-link interwiki-th"><a href="https://th.wikipedia.org/wiki/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%A1%E0%B8%A7%E0%B8%A5%E0%B8%9C%E0%B8%A5%E0%B8%A0%E0%B8%B2%E0%B8%9E" title="การประมวลผลภาพ — thaï" lang="th" hreflang="th" class="interlanguage-link-target">ไทย</a></li><li class="interlanguage-link interwiki-tr"><a href="https://tr.wikipedia.org/wiki/G%C3%B6r%C3%BCnt%C3%BC_i%C5%9Fleme" title="Görüntü işleme — turc" lang="tr" hreflang="tr" class="interlanguage-link-target">Türkçe</a></li><li class="interlanguage-link interwiki-uk"><a href="https://uk.wikipedia.org/wiki/%D0%9E%D0%B1%D1%80%D0%BE%D0%B1%D0%BA%D0%B0_%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D1%8C" title="Обробка зображень — ukrainien" lang="uk" hreflang="uk" class="interlanguage-link-target">Українська</a></li><li class="interlanguage-link interwiki-vi"><a href="https://vi.wikipedia.org/wiki/X%E1%BB%AD_l%C3%BD_%E1%BA%A3nh" title="Xử lý ảnh — vietnamien" lang="vi" hreflang="vi" class="interlanguage-link-target">Tiếng Việt</a></li><li class="interlanguage-link interwiki-zh"><a href="https://zh.wikipedia.org/wiki/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86" title="图像处理 — chinois" lang="zh" hreflang="zh" class="interlanguage-link-target">中文</a></li>					</ul>
+				<div class='after-portlet after-portlet-lang'><span class="wb-langlinks-edit wb-langlinks-link"><a href="https://www.wikidata.org/wiki/Q327008#sitelinks-wikipedia" title="Modifier les liens interlangue" class="wbc-editpage">Modifier les liens</a></span></div>			</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> Dernière modification de cette page le 18 novembre 2016, à 13:57.</li>
+											<li id="footer-info-copyright"><span style="white-space: normal"><a class="internal" href="/wiki/Wikip%C3%A9dia:Citation_et_r%C3%A9utilisation_du_contenu_de_Wikip%C3%A9dia" title="Droit d'auteur">Droit d'auteur</a> : les textes sont disponibles sous <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.fr" title="Licence Creative Commons Attribution - partage dans les mêmes conditions 3.0 non transposé">licence Creative Commons attribution, partage dans les mêmes conditions</a> ; d’autres conditions peuvent s’appliquer. Voyez les <a href="//wikimediafoundation.org/wiki/Conditions_d%27utilisation" title="Conditions d’utilisation de la Wikimedia Foundation">conditions d’utilisation</a> pour plus de détails, ainsi que les <a class="internal" href="/wiki/Wikip%C3%A9dia:Cr%C3%A9dits_graphiques" title="Droit d'auteur de certaines icônes">crédits graphiques</a>. En cas de réutilisation des textes de cette page, voyez <a class="internal" href="/wiki/Sp%C3%A9cial:Citer/Traitement_d%27images" title="Citer ou réutiliser cette page">comment citer les auteurs et mentionner la licence</a>.<br />
+Wikipedia® est une marque déposée de la <a href="//wikimediafoundation.org/wiki/Accueil" title="Wikimedia Foundation">Wikimedia Foundation, Inc.</a>, organisation de bienfaisance régie par le paragraphe <a class="internal" href="/wiki/501c" title="501c">501(c)(3)</a> du code fiscal des États-Unis.</span><br /></li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="https://meta.wikimedia.org/wiki/Privacy_policy/fr" class="extiw" title="m:Privacy policy/fr">Politique de confidentialité</a></li>
+											<li id="footer-places-about"><a href="/wiki/Wikip%C3%A9dia:%C3%80_propos" title="Wikipédia:À propos">À propos de Wikipédia</a></li>
+											<li id="footer-places-disclaimer"><a href="/wiki/Wikip%C3%A9dia:Avertissements_g%C3%A9n%C3%A9raux" title="Wikipédia:Avertissements généraux">Avertissements</a></li>
+											<li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Développeurs</a></li>
+											<li id="footer-places-cookiestatement"><a href="https://wikimediafoundation.org/wiki/Cookie_statement">Déclaration sur les témoins (cookies)</a></li>
+											<li id="footer-places-mobileview"><a href="//fr.m.wikipedia.org/w/index.php?title=Traitement_d%27images&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Version mobile</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-copyrightico">
+							<a href="https://wikimediafoundation.org/"><img src="/static/images/wikimedia-button.png" srcset="/static/images/wikimedia-button-1.5x.png 1.5x, /static/images/wikimedia-button-2x.png 2x" width="88" height="31" alt="Wikimedia Foundation"/></a>						</li>
+											<li id="footer-poweredbyico">
+							<a href="//www.mediawiki.org/"><img src="/static/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/static/images/poweredby_mediawiki_132x47.png 1.5x, /static/images/poweredby_mediawiki_176x62.png 2x" width="88" height="31"/></a>						</li>
+									</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.136","walltime":"0.190","ppvisitednodes":{"value":1009,"limit":1000000},"ppgeneratednodes":{"value":0,"limit":1500000},"postexpandincludesize":{"value":23224,"limit":2097152},"templateargumentsize":{"value":4394,"limit":2097152},"expansiondepth":{"value":12,"limit":40},"expensivefunctioncount":{"value":0,"limit":500},"entityaccesscount":{"value":1,"limit":400},"timingprofile":["100.00%  140.828      1 -total"," 30.28%   42.649      1 Modèle:Portail"," 27.59%   38.852      1 Modèle:Ouvrage"," 16.91%   23.807      1 Modèle:Palette"," 13.47%   18.975      1 Modèle:Catégorisation_badges"," 12.81%   18.040      1 Modèle:Palette_Traitement_du_signal"," 11.71%   16.485      1 Modèle:Méta_palette_de_navigation"," 10.37%   14.606      2 Modèle:...","  9.58%   13.489      1 Modèle:Suivi_des_biographies","  6.89%    9.702      3 Modèle:Article_détaillé"]},"scribunto":{"limitreport-timeusage":{"value":"0.050","limit":"10.000"},"limitreport-memusage":{"value":2537623,"limit":52428800}},"cachereport":{"origin":"mw1219","timestamp":"20170206165511","ttl":2592000,"transientcontent":false}}});});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":61,"wgHostname":"mw1251"});});</script>
+	</body>
+</html>
