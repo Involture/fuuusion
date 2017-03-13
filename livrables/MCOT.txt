@@ -33,6 +33,10 @@ Objectifs du travail :
 Je me propose d'écrire un code en python qui permettent d'extraire d'une image la silhouette d'une objet et éventuellement des détails intérieurs à l'objet.
 L'étude et la conception du code seront guidés par deux principes :  - la progression dans la relaxation des contraintes, d'une photographie sur fond blanc à une photographie sur fond quelconque, un éclairage de moins en moins bon, diminution de la qualité de la photo (définition, bruit). Cette progression dans le contraintes s'accompagnera d'une progression dans la complexité des méthodes employées - une étude de la complexité temporelle des méthodes utilisées, une réflexion sur la représentation en machine des données afin de garantir la rapidité des calculs, la recherche d'un compromis entre la précision du résultat et le temps nécessaire.
 
+Je me propose ici de construire un système de représentation d'objets en 3 dimensions et un algorithme de reconstitution d'un modèle 3D à partir de silhouettes bien délimitées. En combinant cet algorithme à l'algorithme de détection silhouette de mon binome, nous obtiendrons alors un algorithme complet permettant de modéliser un objet à partir de photographies.
+Je pourrai alors faire varier les paramètres de mon programme pour étudier leur effet sur l'efficacité de la modélisation. Je pourrai aussi m'intéresser aussi à l'impact d'éventuels post-traitements sur le modèle obtenu.
+
+
 
 liste des références :
 [4] J. Canny, A Computational Approach to Edge Detection
