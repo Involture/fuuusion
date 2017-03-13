@@ -1,33 +1,48 @@
-Postitionnement thématique
+Postitionnement thématique :
+Informatique (Informatique pratique), Sciences industrielles (Traitement du signal), Mathématiques (géométrie) 
 
-Informatique (Informatique pratique), Sciences industrielles (Traitement du signal), Mathématiques (géométrie)
 
-Mots clés
-
+Mots clés :
 Modélisation 3D, Enveloppe visuelle, vision artificielle, detection de contour, segmentation d'image.
-
 3D Modeling, Visual hull, computer vision, boundaries detection, image segmentation.
 
-La détection de contour est basée sur le filtrage linéaire, c'est-à-dire le fait de substituer à un pixel une combinaison linéaire des autres. Tout l'enjeu de l'étude est de déterminer les filtres les plus efficaces pour isoler les contours. Une modélisation mathématique de ce qu'est un contour et du bruit que peu contenir une image permet d'optimiser le choix des filtres. C'est l'objet du travail de John Canny[1]. L'étude d'une image et de filtres se fait souvent dans le domaine fréquentielle et utilise les notions liées de convolution et de transformée de fourier. Des méthodes ont été développées pour optimiser la conversion du domaine fréquentiel au domaine spatial[2]. Les techniques de filtrages introduites par J. Canny ont plus tard été appliquées à des images couleurs. La méthode introduite par John Canny est appliquée à plusieurs composantes extraite de l'image telles que l'intensité lumineuse, la couleur ou la texture[3][6]. Le probleme est alors de savoir quels coefficients affecter aux réponses de ces composantes au filtrage afin d'obtenir les meilleurs contour possible. Les méthodes émergentes de machine learning sont appliqués pour déterminer ces nombreux paramètres[6].  
 
-La segmentation d'image consiste quand à elle à séparer une image en plusieurs régions de manière à ce que tous les pixels d'une région soit le plus similaires possibles entre eux et le plus différents possible de ceux des autres régions. On espère ainsi séparer les différents éléments d'une image. Par l'étude de la séparation optimal de graphes d'affinités en sous-graphes grâce à l'algèbre linéaire[4], la segmentation d'image obtient des résultats intéressants par des méthodes de plus en plus abouties[5]. Cependant, c'est  combinée à la détection de contours[6] et au machine learning que la segmentation est la meilleure.
+Bibliographie commentée :
 
-Problématique :
+La démocratisation de l'imprimerie 3D offre de nouvelles possibilités quant à la création d'objet. Mais avant de pouvoir imprimer un objet en 3D, il est nécéssaire de pouvoir le scanner, et de pouvoir le représenter en mémoire. Les différentes représentation en mémoire d'objets 3D comprennent principalement les représentation par voxels, et les représentations par polyhèdres[1’]. Quant au scan, beaucoup de méthodes existent pour scanner un objet en 3D, mais seule la modélisation à partir de photographies est un moyen accessible à tous sans matériel particulier.
+Cette méthode de modélisation se décline sous différentes formes, avec des performances variées. La première approche consiste à délimiter la silhouette de l'objet à scanner dans les photographies, puis à n'exploiter que ces silhouettes pour créer un modèle leur correspondant[1’]. D’autres méthodes utilisent aussi la texture et les motifs dans l’image[2’, 3’], et obtiennent des résultats excellents, mais sont plus complexes et nécessitent souvent des calculs plus longs, moins faciles à exécuter sur un smartphone que la méthode des silhouettes.
+Cette méthode se divise principalement en trois parties : 
+la détection de contour, qui s'attache à traiter une image afin de faire ressortir les contours des objets,
+la segmentation de ces contours, qui transforme cette image de contours en un ensemble de segments devant délimiter la silhouette de l’objet sur la photographie,
+et la reconstitution proprement dite, qui utilise les silhouettes pour créer le modèle 3D.
+————
+La détection de contour est basé sur le filtrage linéaire, c'est-à-dire le fait de substituer à un pixel une combinaison linéaire des pixels autour.
+L'enjeu est de déterminer les filtres les plus efficaces pour isoler les contours. Une modélisation mathématique de ce qu'est un contour et du bruit que peut contenir une image s'impose alors afin de pouvoir optimiser les paramètres des filtres. C'est l'objet du travail de John Canny[1]. L'étude d'une image et de filtres se fait souvent dans le domaine fréquentielle et utilise les notions de convolution et de transformée de Fourier. Des méthodes ont été développées pour optimiser la conversion du domaine fréquentiel au domaine spatial[2]. Les techniques de filtrages introduites par J. Canny ont plus tard été appliquées à des images couleurs. l'idée principales est de dissocier la composante d'intensité lumineuse qui reste la meilleure indication des contour d'une image, de la composante chromatique, tout en faisant en sorte que celle-ci se rapproche le plus possible de la perception humaine des couleurs. Ainsi les méthode de filtrages sont appliquées séparéments au trois canaux de l'espace colorimétrique LAB[3,6]. A travers l'analyse fréquentielle, une composante de texture est également introduite[3,6]. Le problème est alors de savoir quels coefficients affecter aux réponses de ces composantes au filtrage afin d'obtenir les meilleurs contour possible. Les méthodes emergentes de machine learning peuvent être appliquées pour déterminer ces nombreux paramètres[6].
 
-Les méthodes utilisable pour modéliser un objet à partir de photographies sont nombreuses et ont des résultats variés. En étudiant la complexité des algorithmes utilisés et en comparant les résultats pratiques obtenus, on peut obtenir des informations sur les choix à effectuer pour une bonne modélisation.
+La segmentation d'image consiste séparer une image en plusieurs régions de manière à ce que tous les pixels d'une région soit le plus similaires possibles et le plus différents possible de ceux des autres régions. On espère ainsi séparer les différents éléments d'une image. Cependant, c'est  combinée à la détection de contour[6] et au machine learning que la segmentation est la meilleure.
 
-Objectifs du travail
+La reconstitution à partir de silhouettes utilise un concept simple : si on connait la silhouette d’un objet vue depuis un certain point de vue, alors l’objet en question est inclus dans un cône ayant pour sommet le point focal du point de vue, et ayant pour forme la silhouette trouvée. En multipliant les photographies, on peut ainsi obtenir plusieurs silhouettes et donc plusieurs cône, et il suffit alors d’en faire une intersection pour obtenir un modèle 3D convenable[1’]. On peut ensuite effectuer des traitements sur le modèle trouvé pour le rendre plus léger, ou plus précis[4’, 5’].
 
-Je me propose d'écrire un code en python qui permette d'extraire d'une image la silouhette d'un objet et éventuellement des détails intérieurs à l'objet. La conception du code sera guidé par deux principes : 
 
-- la progression dans la relaxation des contraintes, d'une photographie sur   fond blanc à une phtographie sur fond quelconque, un éclairage de moins en moins bon ... et ton donc une progression dans la complexité des méthodes employées.
+Problématique : 
 
-- une étude de la complexité temporelle des méthodes utilisées, une réflexion   sur la représentation en machine des données afin de garantir la rapidité des calculs.
+La modélisation par utilisation de silhouette est légère et efficace, mais de nombreux paramètres et choix de méthodes peuvent affecter ses résultat. Il faut donc étudier leur influence sur le modèle obtenu.
 
-liste des références
+
+Objectifs du travail :
+Je me propose d'écrire un code en python qui permettent d'extraire d'une image la silhouette d'une objet et éventuellement des détails intérieurs à l'objet.
+L'étude et la conception du code seront guidés par deux principes :  - la progression dans la relaxation des contraintes, d'une photographie sur fond blanc à une photographie sur fond quelconque, un éclairage de moins en moins bon, diminution de la qualité de la photo (définition, bruit). Cette progression dans le contraintes s'accompagnera d'une progression dans la complexité des méthodes employées - une étude de la complexité temporelle des méthodes utilisées, une réflexion sur la représentation en machine des données afin de garantir la rapidité des calculs, la recherche d'un compromis entre la précision du résultat et le temps nécessaire.
+
+
+liste des références :
 [1] J. Canny, A Computational Approach to Edge Detection
-[2] J.W. Cooley and J.W. Tukey, An Algorythm for the Machine Calculation of Complex Fourier Series
+[2] J.W. Cooley and J.W. Tukey, An Algorithm for the Machine Calculation of Complex Fourier Series
 [3] D.R. Martin, C.C. Fowlkes and J. Malik, Learning to Detect Natural Image Boundaries Using Local Brightness, Color, and Texture Cues
 [4] J. Shi and J. Malik Normalized Cuts and Image Segmentation
-[5] D.A. Tolliver and G.L. Miller, Graph Partitioning by Spectral Rounding : Application in Image Segmentation and Clustering
-[6] M.R. Maire, Contour Detection and Image Segmentation
+[5] M.R. Maire, Contour Detection and Image Segmentation 
+
+[1’]BAUMGART, B. 1974. Geometric modeling for computer vision. PhD thesis, Stanford University
+[2’]DEPTH FROM EDGE AND INTENSITY BASED STEREO, H. Harlyn Baker and Thomas 0. Binford
+[3’]Silhouette and Stereo Fusion for 3D Object Modeling, Carlos Hernandez Esteban and Francis Schmitt
+[4’]Decimation of Triangle Meshes, William J. Schroeder Jonathan A. Zarge William E. Lorensen
+[5’]
