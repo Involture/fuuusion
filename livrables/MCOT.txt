@@ -35,25 +35,13 @@ L'étude et la conception du code seront guidés par deux principes :  - la prog
 
 
 liste des références :
-[4] J. Canny, A Computational Approach to Edge Detection
-[5] J.W. Cooley and J.W. Tukey, An Algorithm for the Machine Calculation of Complex Fourier Series
-[6] D.R. Martin, C.C. Fowlkes and J. Malik, Learning to Detect Natural Image Boundaries Using Local Brightness, Color, and Texture Cues
-[7] M.R. Maire, Contour Detection and Image Segmentation
-[8] J. Shi and J. Malik Normalized Cuts and Image Segmentation
+[4] J. Canny, A Computational Approach to Edge Detection http://cmp.felk.cvut.cz/~cernyad2/TextCaptchaPdf/A%20Computational%20Approach%20to%20Edge%20Detection.pdf
+[5] J.W. Cooley and J.W. Tukey, An Algorithm for the Machine Calculation of Complex Fourier Series http://www.ams.org/journals/mcom/1965-19-090/S0025-5718-1965-0178586-1/S0025-5718-1965-0178586-1.pdf
+[6] D.R. Martin, C.C. Fowlkes and J. Malik, Learning to Detect Natural Image Boundaries Using Local Brightness, Color, and Texture Cues https://people.eecs.berkeley.edu/~malik/papers/MFM-boundaries.pdf
+[7] M.R. Maire, Contour Detection and Image Segmentation https://people.eecs.berkeley.edu/~malik/papers/arbelaezMFM-pami2010.pdf
+[8] J. Shi and J. Malik Normalized Cuts and Image Segmentation https://people.eecs.berkeley.edu/~malik/papers/SM-ncut.pdf
 
 [1]BAUMGART, B. 1974. Geometric modeling for computer vision. PhD thesis, Stanford University  http://www.dtic.mil/cgi-bin/GetTRDoc?AD=ADA002261
 [2]Depth From Edge And Intensity Based Stereo, H. Harlyn Baker and Thomas O. Binford https://pdfs.semanticscholar.org/2786/18251450aaeb334227ec82bacabfc1c266de.pdf
 [3]Silhouette and Stereo Fusion for 3D Object Modeling, Carlos Hernandez Esteban and Francis Schmitt http://carlos-hernandez.org/papers/hernandez_cviu04.pdf
 [9]Decimation of Triangle Meshes, William J. Schroeder Jonathan A. Zarge William E. Lorensen https://webdocs.cs.ualberta.ca/~lin/ABProject/papers/4.pdf
-
-
-1'
-2
-3'
-1
-2
-3
-4
-5
-4'
-5'
