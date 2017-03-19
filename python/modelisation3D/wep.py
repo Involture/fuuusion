@@ -164,6 +164,20 @@ class face :
 		Returns a deep copy of <self>."""
 		newVertices = [v.copy() for v in self.vertices]
 
+	def addVertexBetween(self, v1, nV, v2) :
+		""" face * vertex * vertex * vertex -> ()
+		Adds a new vertex in <self>.vertices between the two vertices given. """
+		n = len(self.vertices)
+		for i in range(n) :
+			if self.vertices[i] == v1 :
+				if self.vertices[(i+1)%n] == v2 :
+					self.vertices.insert((i+1)%n, nV)
+				elif self.vertices[(i-1)%n] == v2 :
+					self.vertices.insert(i, nV)
+				else :
+					raise ValueError('Vertices given are not adjacent in the face')
+
+
 	#def planeEquation(self, c, n = 2) :
 	#	""" (float * float * float) * int -> float
 	#	The equation function of the plane of the face (something like a*x + b*y + c*z + d).
@@ -450,6 +464,8 @@ class polyhedron :
 		e.pvt = newVertex
 		newEdge.pFace = e.pFace
 		newEdge.nFace = e.nFace
+		e.pFace.addVertexBetween(e.nvt, newVertex, newEdge.pvt)
+		e.nFace.addVertexBetween(e.nvt, newVertex, newEdge.pvt)
 		return (newVertex, newEdge)
 		
 	def faceSplit(self, f, v1, v2) :
@@ -725,6 +741,7 @@ class polyIntersection :
 		otherI1 = next(filter(lambda x : x.f == inter.f, pInters), False)
 		if otherI1 == False :
 			#The pFace does not intersect inter.f a second time, looking for a place where inter.f intersects the pFace
+			print(otherFInters)
 			otherI1 = next(filter(lambda x : x.f == inter.pe.pFace, otherFInters), False)
 			if otherI1 == False :
 				raise ValueError('No intersector found')
