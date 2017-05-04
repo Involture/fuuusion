@@ -1,36 +1,7 @@
 from glob import *
 from reader import read
-from fourier import fft, ifft, sf
+from fourier import fft, ifft, sf, mfft
 from scipy import misc
-
-#array conversion and type checking functions
-
-def isul(array):
-    return array.dtype == ulint
-def isub(array):
-    return array.dtype == ubint
-def issl(array):
-    return array.dtype == lint
-def issb(array):
-    return array.dtype == bint
-def isbin(array):
-    return array.dtype == np.bool
-
-def cisul(array):
-    if not isul(array):
-        raise TypeError("not an unsigned little integer array")
-def cisub(array):
-    if not isub(array):
-        raise TypeError("not an unsigned big integer array")
-def cissl(array):
-    if not issl(array):
-        raise TypeError("not a signed little integer array")
-def cissb(array):
-    if not issb(array):
-        raise TypeError("not a signed big integer array")
-def cisbin(array):
-    if not isbin(array):
-        raise TypeError("not a boolean array")
 
 #type converters
 
@@ -49,7 +20,7 @@ def _isp(arr):
         size = shape
         return _2Disp(arr, size)
 
-def bToL(arr):
+def bToL(arr, loss):
     shape = np.shape(arr)
     nbpix = 1
     for size in shape:
@@ -57,10 +28,10 @@ def bToL(arr):
     perpix = 100
     uplim = R
     downlim = 0
-    while perpix != 98:
+    while perpix != loss:
         lim = (uplim + downlim) // 2
         perpix = (np.sum(arr <= lim) * 100) // nbpix
-        if perpix > 98:
+        if perpix > loss:
             uplim = lim
         else:
             downlim = lim
@@ -72,6 +43,8 @@ def bToL(arr):
     else:
         res = (res // lim) * 255
     return ulint(res)
+
+red = lambda x : bToL(x, 98)
 
 #ploting functions
 
@@ -129,7 +102,8 @@ def binary(arr, cutIntensity):
 
 #algebra operations
 
-def binNot(bin):
+def binNot(arr):
+    cisul(arr)
     return ulint(bin + 1 == 1)
 
 def expend(bin, filter):
@@ -140,7 +114,6 @@ def erode(bin, filter):
     return ulint(filterArr(bin, filter) == s)
 
 def match(bin, filter):
-    notFilter = binNot(filter)
     return ulint((erode(bin, filter) + erode(binNot(bin), binNot(filter))) == 2)
 
 def open(bin, filter):
@@ -174,13 +147,8 @@ def squeletize(bin):
 
 #filtering functions
 
-def isFilter(filterArr):
-    filterSize = np.shape(filterArr)
-    if (filterSize[0] % 2 != 1) or (filterSize[1] % 2 != 1):
-        raise ValueError("can't filter with an even sized filter array")
-
-def filterArr(arr, filter):
-    isFilter(filter)
+def filter(arr, filter):
+    cisfilt(filter)
     shape = arr.shape
     filterShape = filter.shape
 
@@ -194,67 +162,15 @@ def filterArr(arr, filter):
     for i in range(-dx, dx + 1):
         for j in range(-dy, dy + 1):
             if filter[dx - i, dy - j] != 0:
-                ind = [slice(dx + i, dx + i + shape[0]), slice(dy + j, dy + j + shape[1])] + [slice(None)] * (arr.ndim - 2)
+                #ind = [slice(dx + i, dx + i + shape[0]), slice(dy + j, dy + j + shape[1])] + [slice(None)] * (arr.ndim - 2)
                 shiftedArr = np.zeros(bigShape, dtype = bint)
-                shiftedArr[ind] = filter[dx - i, dy - j] * bint(arr)
+                shiftedArr[dx + i : dx + i + shape[0], dy + j : dy + j + shape[1]] = filter[dx - i, dy - j] * bint(arr)
                 res += shiftedArr
-    ind = [slice(dx, shape[0] + dx), slice(dy, shape[1] + dy)] + [slice(None)] * (arr.ndim - 2)
-    res = res[ind]
+    #ind = [slice(dx, shape[0] + dx), slice(dy, shape[1] + dy)] + [slice(None)] * (arr.ndim - 2)
+    res = res[dx : shape[0] + dx, dy : shape[1] + dy]
     return np.abs(res)
 
-def filterSum(arr, filterList):
-    res = np.zeros(arr.shape, dtype = ubint)
-    for filter in filterList:
-        cissl(filter)
-        res += filterArr(arr, filter)
-    return res
-
-def filter(arr, filterList):
-    cisul(arr)
-    res = bint(arr.copy)
-    for filter in filterList:
-        if type(filter) == list:
-            filterSum(res, filter)
-        else:
-            res = filterArr(res, filter)
-    return BtoL(res)
-
-#fourier transform filters
-
-def squareCut(shape, percentage):
-    ilim = shape[0] * percentage // 100
-    jlim = shape[1] * percentage // 100
-    littleShape = list(shape)
-    littleShape[0] -= 2 * ilim
-    littleShape[1] -= 2 * jlim
-    littleShape = tuple(littleShape)
-    ia1 = np.array(range(ilim, shape[0] - ilim))
-    ia1 = np.array(range(jlim, shape[1] - jlim))
-    ind = [slice(ilim, shape[0] - ilim), slice(jlim, shape[1] - jlim)] + [slice(None)] * (shape.ndim - 2)
-    arr = np.zeros(shape, dtype = ulint)
-    arr[ind] = np.ones(littleShape, dtype = ulint)
-    return arr
-
-def ellipse(shape):
-    p, q = shape[:2]
-    colorized = len(shape) == 3
-    arr1 = np.stack([np.arange(p//2) for i in range(q)], axis = 1)
-    arr1 = np.concatenate((arr1, np.flipud(arr1)), axis = 0)
-    arr2 = np.stack([np.arange(q//2) for i in range(p)], axis = 0)
-    arr2 = np.concatenate((arr2, np.fliplr(arr2)), axis = 1)
-    arr = (arr1 * q) ** 2 + (arr2 * p) ** 2
-    if colorized:
-        arr = np.stack([arr for i in range(3)], axis = 2)
-    return arr
-
-def circleCut(shape, percentage):
-    return 20000 * ellipse(shape) <= (shape[0] * shape[1] * percentage) ** 2
-
-def BW(shape, n, p0):
-    return (1 / (1 + (ellipse(shape) * 100 ** 2 / (shape[0] * shape[1] * p0) ** 2)))
-
-def gauss(shape, p0):
-    return np.exp(-ellipse(shape) * 100 ** 2 / (shape[0] * shape[1] * p0) ** 2)
+f = lambda x, y : red(filter(x, y))
 
 #color space conversion
 

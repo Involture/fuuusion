@@ -44,31 +44,32 @@ def fastFourier2D(arr2D, inverse = False):
 #efficient fourier transform
 
 def hVectFastFourier2D(arr2D, inverse = False):
+    cispow(arr2D)
     shape = np.shape(arr2D)
-    colorized = (len(shape) == 3)
+#    colorized = (len(shape) == 3)
     n = shape[1]
     m = n // 2
     e1D = exp(n, inverse)
     e = np.row_stack([e1D for i in range(shape[0])])
-    if colorized:
-        e = np.stack([e for i in range(3)], axis=2)
+    for dim in range(2, len(shape)):
+        e = np.stack([e for i in range(shape[dim])], axis=-1)
     res = np.copy(arr2D)
     temp = np.zeros((shape), dtype = np.complex)
     j = n // 2
-    if colorized:
-        while j >= 1:
-            for k in range(j):
-                temp[:, k : k + m : j,:] = res[:, k : k + n : 2 * j,:] + res[:, k + j : k + j + n : 2 * j,:] * e[:, 0 : n // 2 : j,:]
-                temp[:, k + m : k + n : j,:] = res[:, k : k + n : 2 * j,:] + res[:, k + j : k + j + n : 2 * j,:] * e[:, (n // 2) : n : j,:]
-            j = j // 2
-            res = np.copy(temp)
-    else:
-        while j >= 1:
-            for k in range(j):
-                temp[:, k : k + m : j] = res[:, k : k + n : 2 * j] + res[:, k + j : k + j + n : 2 * j] * e[:, 0 : n // 2 : j]
-                temp[:, k + m : k + n : j] = res[:, k : k + n : 2 * j] + res[:, k + j : k + j + n : 2 * j] * e[:, (n // 2) : n : j]
-            j = j // 2
-            res = np.copy(temp)
+#    if colorized:
+#        while j >= 1:
+#            for k in range(j):
+#                temp[:, k : k + m : j,:] = res[:, k : k + n : 2 * j,:] + res[:, k + j : k + j + n : 2 * j,:] * e[:, 0 : n // 2 : j,:]
+#                temp[:, k + m : k + n : j,:] = res[:, k : k + n : 2 * j,:] + res[:, k + j : k + j + n : 2 * j,:] * e[:, (n // 2) : n : j,:]
+#            j = j // 2
+#            res = np.copy(temp)
+#    else:
+    while j >= 1:
+        for k in range(j):
+            temp[:, k : k + m : j] = res[:, k : k + n : 2 * j] + res[:, k + j : k + j + n : 2 * j] * e[:, 0 : n // 2 : j]
+            temp[:, k + m : k + n : j] = res[:, k : k + n : 2 * j] + res[:, k + j : k + j + n : 2 * j] * e[:, (n // 2) : n : j]
+        j = j // 2
+        res = np.copy(temp)
     return res / np.sqrt(n)
 
 def fastFastFourier2D(arr2D, inverse = False):
@@ -78,6 +79,22 @@ def fastFastFourier2D(arr2D, inverse = False):
 
 fft = fastFastFourier2D
 ifft = lambda x : fastFastFourier2D(x, True)
+
+#multiple ponctual fourier transform
+
+def winVect(arr2D, filt):
+    cisul(arr2D)
+    cispow(filt)
+    shape = np.shape(arr2D)
+    filtShape = filt.shape
+    littleShape = list(shape)
+    littleShape[0] -= filtShape[0]
+    littleShape[1] -= filtShape[1]
+    return np.stack([np.stack([arr2D[i : i + filtShape[0], j : j + filtShape[1]] for i in range(littleShape[0])], axis = -1) for j in range(littleShape[1])], axis = -1)
+
+def mfft(arr2D, filt):
+    transTuple = (-2, -1, 0, 1) + (2,) * (len(arr2D.shape) - 2)
+    return np.transpose(fft(winVect(arr2D, filt)), transTuple)
 
 #function to render fourier transform
 
