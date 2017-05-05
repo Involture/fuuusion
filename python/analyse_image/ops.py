@@ -1,24 +1,8 @@
 from glob import *
-from reader import read
-from fourier import fft, ifft, sf, mfft
+from fourier import fft, ifft, sf
 from scipy import misc
 
 #type converters
-
-def _2Disp(arr, size):
-    isp = np.zeros(N, dtype = ubint)
-    for i in range(N):
-        isp[i] = np.sum(arr == i)
-    return isp
-
-def _isp(arr):
-    shape = np.shape(arr)
-    if len(shape) >= 3:
-        size = shape[:2]
-        return (_2Disp(arr[:,:,0], size), _2Disp(arr[:,:,1], size), _2Disp(arr[:,:,0], size))
-    else:
-        size = shape
-        return _2Disp(arr, size)
 
 def bToL(arr, loss):
     shape = np.shape(arr)
@@ -41,10 +25,16 @@ def bToL(arr, loss):
     if np.max(arr) * 255 < R:
         res = (res * 255) // lim
     else:
-        res = (res // lim) * 255
+        res = (res / lim) * 255
     return ulint(res)
 
-red = lambda x : bToL(x, 98)
+#isp computing
+
+def ispVect(arr):
+    return ulint(np.stack([arr == i for i in range(256)], axis = -1))
+
+def _isp(arr):
+    return np.sum(ispVect(arr), axis = (0,1), dtype = ubint)
 
 #ploting functions
 
@@ -92,7 +82,7 @@ def show(arr):
 #grey level and binary
 
 def greyAv(arr):
-    return ulint(np.sum(ubint(arr), dtype = ubint, axis = 2) // 3)
+    return ulint(np.sum(arr, dtype = ubint, axis = 2) // 3)
 
 def greyMax(arr):
     return  np.max(arr, axis = 2)
@@ -104,56 +94,79 @@ def binary(arr, cutIntensity):
 
 def binNot(arr):
     cisul(arr)
-    return ulint(bin + 1 == 1)
+    return ulint(arr + 1 == 1)
 
-def expend(bin, filter):
-    return ulint(filterArr(bin, filter) > 0)
+def expend(arr, f):
+    return ulint(_filt(arr, f) > 0)
 
-def erode(bin, filter):
-    s = np.sum(filter)
-    return ulint(filterArr(bin, filter) == s)
+def erode(arr, f):
+    s = np.sum(f)
+    return ulint(_filt(arr, f) == s)
 
-def match(bin, filter):
-    return ulint((erode(bin, filter) + erode(binNot(bin), binNot(filter))) == 2)
+def match(arr, f):
+    return ulint((erode(arr, f) + erode(binNot(arr), binNot(f))) == 2)
 
-def open(bin, filter):
-    return expend(erode(bin, filter), filter.T)
+def open(arr, f):
+    return expend(erode(arr, f), f.T)
 
-def close(bin,filter):
-    return erode(expend(bin, filter), filter.T)
+def close(arr,f):
+    return erode(expend(arr, f), f.T)
 
-def diminish(bin, filter):
-    return bin - match(bin, filter)
+def diminish(arr, f):
+    return arr - match(arr, f)
 
-def seqDiminish(bin, filter):
-    filterList = [np.rot90(filter, i) for i in range(4)]
-    for f in filterList:
-        bin = diminish(bin, f).copy()
-    return bin
+def seqDiminish(arr, f):
+    flist = [np.rot90(f, i) for i in range(4)]
+    for rf in flist:
+        arr = diminish(arr, rf)
+    return arr
 
-def fullDiminish(bin, filter):
-    nextbin = seqDiminish(bin, filter)
-    while (nextbin != bin).any():
-        bin = nextbin
-        nextbin = seqDiminish(bin,filter)
-    return bin
+def fullDiminish(arr, f):
+    nextbin = seqDiminish(arr, f)
+    while (nextbin != arr).any():
+        arr = nextbin
+        nextbin = seqDiminish(arr,f)
+    return arr
 
-def squeletize(bin):
-    nextbin = seqDiminish(seqDiminish(bin, filters["flat"][0]), filters["lcorner"][0])
-    while nextbin != bin:
-        bin = nextbin
-        nextbin = seqDiminish(seqDiminish(nextbin, filters["flat"][0]), filters["lcorner"][0])
-    return bin 
+def squeletize(arr):
+    nextarr = seqDiminish(seqDiminish(arr, filters["flat"]), filters["lcorner"])
+    while nextarr != arr:
+        arr = nextarr
+        nextarr = seqDiminish(seqDiminish(nextbin, filters["flat"]), filters["lcorner"])
+    return arr
+
+#window vectorization
+
+def winVect(arr, p, q):
+    powCheck(p)
+    powCheck(q)
+    cisul(arr)
+    a, b = np.shape(arr)[:2]
+    la = a - p
+    lb = a - q
+    return np.stack([np.stack([arr[i : i + p, j : j + q] for i in range(la)], axis = 2) for j in range(lb)], axis = 3)
 
 #filtering functions
 
-def filter(arr, filter):
-    cisfilt(filter)
-    shape = arr.shape
-    filterShape = filter.shape
+def ispFilt(arr, f):
+    fpos = np.maximum(f, 0)
+    fneg = np.minimum(f, 0)
+    return ubint(np.sqrt(np.sum((_filt(arr, fpos)  +  _filt(arr, fneg)) ** 2, axis = -1, dtype = ubint)))
 
-    dx = (filterShape[0] - 1) // 2
-    dy = (filterShape[1] - 1) // 2
+def filt(arr, fs):
+    if type(fs) == list:
+        for f in fs:
+            arr = _filt(arr, f)
+    else:
+        arr = _filt(arr, fs)
+
+def _filt(arr, f):
+    cisfilt(f)
+    shape = arr.shape
+    filtShape = f.shape
+
+    dx = (filtShape[0] - 1) // 2
+    dy = (filtShape[1] - 1) // 2
     bigShape = list(shape)
     bigShape[0] += 2 * dx
     bigShape[1] += 2 * dy
@@ -161,27 +174,19 @@ def filter(arr, filter):
     res = np.full(bigShape, 0, dtype = bint)
     for i in range(-dx, dx + 1):
         for j in range(-dy, dy + 1):
-            if filter[dx - i, dy - j] != 0:
-                #ind = [slice(dx + i, dx + i + shape[0]), slice(dy + j, dy + j + shape[1])] + [slice(None)] * (arr.ndim - 2)
+            print(str(i) + str(j))
+            if f[dx - i, dy - j] != 0:
                 shiftedArr = np.zeros(bigShape, dtype = bint)
-                shiftedArr[dx + i : dx + i + shape[0], dy + j : dy + j + shape[1]] = filter[dx - i, dy - j] * bint(arr)
+                shiftedArr[dx + i : dx + i + shape[0], dy + j : dy + j + shape[1]] = f[dx - i, dy - j] * bint(arr)
                 res += shiftedArr
-    #ind = [slice(dx, shape[0] + dx), slice(dy, shape[1] + dy)] + [slice(None)] * (arr.ndim - 2)
     res = res[dx : shape[0] + dx, dy : shape[1] + dy]
-    return np.abs(res)
-
-f = lambda x, y : red(filter(x, y))
+    return res
 
 #color space conversion
 
 def RGBtoLAB(arr):
-    return np.stack([ulint(np.sum(ubint(arr), axis = 2) // 3), arr[:,:,1] - arr[:,:,0], arr[:,:,1] - arr[:,:,2]], axis = 2)
+    arr =  np.stack([ulint(np.sum(ubint(arr), axis = 2) // 3), arr[:,:,1] - arr[:,:,0], arr[:,:,1] - arr[:,:,2]], axis = 2)
 
 def LABtoRGB(arr):
     G = np.sum(arr, axis = 2)
-    return ulint(np.stack([G - arr[:,:,1], G, G - arr[:,:,2]], axis = 2))
-
-camille = misc.imread("camille.png")[:1024, :1024,:]
-im1 = misc.imread("image1.png")[:512, :1024,:]
-bin = binary(greyAv(im1),100)
-filters = read("filter")
+    arr =  ulint(np.stack([G - arr[:,:,1], G, G - arr[:,:,2]], axis = 2))
