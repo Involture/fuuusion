@@ -1,6 +1,8 @@
 #!/usr/bin/env 
 #Winged edge polyhedron model
 
+COMPARISON_EPSILON = 0.001
+
 
 import math
 import numpy as np
@@ -96,14 +98,16 @@ class edge :
 			return False
 		else :
 			interVect = vn + (normal.dotProduct(v0 - vn)/normal.dotProduct(vp - vn)) * (vp - vn)
-			lastXCross = (vector(face.vertices[-1]) - interVect).xCrossProd(vector(face.vertices[0]) - interVect)
+			lastCross = (vector(face.vertices[-1]) - interVect) * (vector(face.vertices[0]) - interVect)
 			for i in range(len(face.vertices)) :
-				xCross = (vector(face.vertices[i]) - interVect).xCrossProd(vector(face.vertices[(i+1)%len(face.vertices)]) - interVect)
-				p = xCross * lastXCross
+				cross = (vector(face.vertices[i]) - interVect) * (vector(face.vertices[(i+1)%len(face.vertices)]) - interVect)
+				p = cross.dotProduct(lastCross)
 				if p < 0 :
 					return False
-				elif p == 0 and xCross != 0 :
-						lastXCross = xCross
+				elif p == 0 and cross.norm != 0 :
+					if cross.norm > COMPARISON_EPSILON :
+						print("Cross product's norm is very low")
+					lastCross = cross
 			return vertex(interVect)
 	### TODO : Use the complete cross product to handle pathological cases
 
@@ -123,6 +127,7 @@ class edge :
 			return self.nFace
 		elif self.nFace == fv :
 			return self.pFace
+
 
 class face :
 	"""Class representing an oriented face in a three-dimensional space"""
@@ -172,9 +177,13 @@ class face :
 			if self.vertices[i] == v1 :
 				if self.vertices[(i+1)%n] == v2 :
 					self.vertices.insert((i+1)%n, nV)
+					break
 				elif self.vertices[(i-1)%n] == v2 :
 					self.vertices.insert(i, nV)
+					break
 				else :
+					#polyhedron(self.vertices, [], [self]).plot()
+					#print(v1, v2, self)
 					raise ValueError('Vertices given are not adjacent in the face')
 
 
@@ -593,8 +602,8 @@ class polyhedron :
 				newVertices.append(newVertex) #newVertices[i] now corresponds to self.vertices[i] sweeped 
 			self.addEdge(v, newVertices[i])
 		for e in oldEdges :
-			v1 = self.nvt
-			v2 = self.pvt
+			v1 = e.nvt
+			v2 = e.pvt
 			tv1 = newVertices[self.vertices.index(v1)]
 			tv2 = newVertices[self.vertices.index(v2)]
 			self.addEdge(tv1, tv2)
@@ -656,6 +665,8 @@ class polyhedron :
 		print('intersectorVertices created')
 		polyInter.buildEdges()
 		print('edges built')
+		polyInter.buildFaces()
+		print('faces built')
 		return polyInter.result 
 
 
@@ -664,8 +675,8 @@ class polyhedron :
 
 class intersector :
 	"""class representing an intersection between an edge and a face"""
-	def __init__(self, v, ne, pe, f, sTraced = False, iTraced = False, nV = None) :
-		""" vertex * edge * edge * face * bool * vertex -> intersector
+	def __init__(self, v, ne, pe, f, faces =[], sTraced = False, iTraced = False, nV = None, nF = None) :
+		""" vertex * edge * edge * face * face list * bool * bool * vertex * face -> intersector
 		<pe> and <nf> are the two halves of the edge intersecting with the face <f>, <v> is the vertex at the point of intersection"""
 		self.v = v
 		self.pe = pe
@@ -674,6 +685,12 @@ class intersector :
 		self.sTraced = sTraced
 		self.iTraced = iTraced
 		self.nV = nV
+		self.nF = nF
+		self.faces = faces
+		self.adjacents = (None, None)
+
+	def __str__(self) :
+		return "Intersection between edges {} and {} and face {}. \n This intersection is {}sTraced and is {}iTraced".format(self.pe, self.ne, self.f, "" if self.sTraced else "not ", "" if self.iTraced else "not ")
 
 
 class polyIntersection :
@@ -689,7 +706,14 @@ class polyIntersection :
 		if result != None :
 			self.result = result
 		else :
-			self.result = polyhedron([], [], [])
+			#self.result = polyhedron([], [], [face([]) for i in range((len(poly1.faces) + len(poly2.faces)))]) ##TODO : enlever les faces vides apres avoir construit result
+			self.result = polyhedron([], [], []) 
+
+	#def getNewFace(self, i, f) :
+	#	""" polyction * int * face -> face
+	#	Returns the face corredsponding to <f> in the result polyhedron.
+	#	i must be the id of the polyhedron that <f> belongs to (1 or 2)."""
+	#	return self.result.faces[(poly1 if i == 1 else poly2).faces.index(f) + (i-1) * len(poly1.faces)]
 
 	def getIntersector(self, v) :
 		""" polyIntersection * vertex -> intersector/bool
@@ -717,7 +741,9 @@ class polyIntersection :
 				v = el1.faceIntersection(el2)
 				if v != False :
 					newEdge = (self.poly1.edgeSplit(el1, v))[1]
-					self.inter1.append(intersector(v, el1, newEdge, el2))
+					self.poly1.edges.append(newEdge)
+					self.poly1.vertices.append(v)
+					self.inter1.append(intersector(v, el1, newEdge, el2, [el1.nFace, el1.pFace, el2]))
 			else :
 				raise TypeError('The arguments given must be an edge and a face')
 		elif type(el1) == face :
@@ -725,6 +751,8 @@ class polyIntersection :
 				v = el2.faceIntersection(el1)
 				if v != False :
 					newEdge = (self.poly2.edgeSplit(el2, v))[1]
+					self.poly2.edges.append(newEdge)
+					self.poly2.vertices.append(v)
 					self.inter2.append(intersector(v, el2, newEdge, el1))
 			else :
 				raise TypeError('The arguments given must be an edge and a face')
@@ -734,7 +762,7 @@ class polyIntersection :
 	def nextIntersectors(self, inter) :
 		""" polyIntersection * intersector -> intersector * intersector
 		Returns the next intersectors in a surface intersection loop.
-		Corresponds approximately to Baumgart's NEXTPV routinself."""
+		Corresponds approximately to Baumgart's NEXTPV routine."""
 		otherFInters = self.getIntersectorList(inter.f.vertices)
 		#First intersector
 		pInters = self.getIntersectorList(inter.pe.pFace.vertices)
@@ -753,6 +781,7 @@ class polyIntersection :
 			otherI2 = next(filter(lambda x : x.f == inter.pe.nFace, otherFInters), False)
 			if otherI2 == False :
 				raise ValueError('No intersector found')
+		inter.adjacents = (otherI1, otherI2)
 		return (otherI1, otherI2)
 
 	def fromPolyhedron(poly1, poly2) :
@@ -772,20 +801,36 @@ class polyIntersection :
 	def buildEdges(self) :
 		""" polyIntersection -> ()
 		Builds the edges of the result."""
+		print(len(self.inter1))
+		print([str(x.v) for x in self.inter1])
 		for i in self.inter1 :
 			if not i.sTraced :
 				self.traceSurface(i)
+				print("sTraced an intersector")
+			else :
+				print("Did not sTrace this intersector")
+		print("sTraced for poly1")
 		for i in self.inter2 :
 			if not i.sTraced :
 				self.traceSurface(i)
-		for i in self.inter1 :
-			if not i.iTraced :
-				self.traceInterior(i)
-		for i in self.inter2 :
-			if not i.iTraced :
-				self.traceInterior(i)
-		
+				print("sTraced an intersector")
+			else :
+				print("Did not sTrace this intersector")
+		print("sTraced for poly2")
 
+		for i in self.inter1 :
+			if not i.iTraced :
+				self.traceInterior(i)
+				print("iTraced an intersector")
+			else :
+				print("Did not iTrace this intersector")
+		for i in self.inter2 :
+			if not i.iTraced :
+				self.traceInterior(i)
+				print("iTraced an intersector")
+			else :
+				print("Did not iTrace this intersector")
+	
 	def traceSurface(self, inter) :
 		""" polyIntersection * intersector -> ()
 		Traces the surface loop that <inter> belongs to, and adds it to <self>.result.
@@ -795,7 +840,7 @@ class polyIntersection :
 		self.result.vertices.append(self.newVertex(i))
 		while nextI != inter :
 			nextInts = self.nextIntersectors(i)
-			if nextInts[0] != lastI :
+			if nextInts[0] != i :
 				nextI = nextInts[0]
 			else :
 				nextI = nextInts[1]
@@ -806,10 +851,11 @@ class polyIntersection :
 			i = nextI
 
 	def newVertex(self, inter) :
-		""" polyIntersection * intersector -> vertex
+		""" polyIntersection * intersector/vertex -> vertex
 		Returns the new vertex for <inter> (and creates it if needed)."""
+		vert = inter.v if type(inter) is intersector else inter  
 		if inter.nV == None :
-			inter.nV = inter.v.copy()
+			inter.nV = vert.copy()
 		return inter.nV
 
 	def createIntersectorVertices(self) :
@@ -840,11 +886,11 @@ class polyIntersection :
 			while len(queue) > 0 :
 				vert, newVert = queue.pop()
 				self.result.vertices.append(newVert)
-				if inter.v in poly1.vertices :
-					poly = poly1
+				if inter.v in self.poly1.vertices :
+					poly = self.poly1
 				else :
-					poly = poly2
-				for e in poly :
+					poly = self.poly2
+				for e in poly.edges :
 					if vert in [e.pvt, e.nvt] :
 						otherV = e.other(vert)
 						otherI = self.getIntersector(otherV)
@@ -853,21 +899,51 @@ class polyIntersection :
 							self.result.edges.append(edge(newVert, otherNV))
 							otherI.iTraced = True
 						elif otherV not in done :
-							otherNV = otherV.copy()
+							otherNV = self.newVertex(otherV)
+							otherV.interior = True
 							self.result.edges.append(edge(newVert, otherNV))
 							queue.append((otherV, otherNV))
 				done.append(vert)
-		inter.iTraced = True
+		inter.iTraced = True	
+
+	###TODO : Build face if there is no interior vertex (only intersectors)###
+	def buildFaces(self) :
+		""" polyIntersection -> None
+		Builds the faces of the result of the intersection."""
+		toDel = dict()
+		for j in range(len(self.poly1.faces)) :
+			f = self.poly1.faces[j]
+			i = 0
+			found = False
+			while i < len(f.vertices) :
+				if (not f.vertices[i-1].interior) and f.vertices[i].interior :
+					found = True
+					newFace = face([])
+					n = len(f.vertices)
+					i0 = i
+					while f.vertices[i%n].interior :
+						newFace.vertices.append(self.newVertex(f.vertices[i%n]))
+						i = i+1
+					#lastVertex = 
+					lastInter = self.getIntersector(f.vertices[i%n])
+					normal = f.normalVect()
+					vect = vector(f.vertices[i%n]) - vector(f.vertices[(i-1)%n])
+					inter = next(filter(lambda x : normal.dotProduct(vect * ((vector(x.v)-vector(lastInter.v)))) > 0, lastInter.adjacents))
+					while not f.vertices[i0] in inter.adjacents :
+						newFace.append(lastInter.v)
+						if inter.adjacents[0] == lastInter :
+							lastInter, inter = inter, inter.adjacent[1]
+						else :
+							lastInter, inter = inter, inter.adjacent[0]
+					newFace.append(inter.v)
+					self.result.faces.append(newFace)
+				i += 1
+			if not found :			
+				if f.vertices[0].interior :
+					self.result.faces.append(face([self.newVertex(v) for v in f.vertices]))
 
 
 
-
-			
-
-
-
-		
-				
 
 
 
@@ -935,6 +1011,7 @@ class vector :
 		""" vector * vector -> float
 		Returns the x component of the cross product of self and other."""
 		return other.y * self.z - other.z * self.y
+
 
 
 def splitList(l, i1, i2) :
@@ -1034,7 +1111,7 @@ def simpleCube ():
 	return cube
 
 c1 = simpleCube()
-c2 = simpleCube()
+c2 = simpleSphere(10)
 c2.translate(vector(1/2, 1/2, 1/2))
 print('beginning intersection')
 c3 = c1.intersection(c2)
@@ -1046,3 +1123,4 @@ c3 = c1.intersection(c2)
 #c1.union(c3)
 #c1.union(polyhedron([], [e], []))	
 c3.plot()
+#print(c3)
