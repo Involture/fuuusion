@@ -674,7 +674,8 @@ class polyhedron:
             face.set_edgecolor('k')
         if plotEdges:
             for e in self.edges:
-                edge = a3.art3d.Poly3DCollection([[e.nvt.coords, e.pvt.coords]])
+                edge = a3.art3d.Poly3DCollection([[e.nvt.coords,
+                                                   e.pvt.coords]])
                 ax.add_collection3d(edge)
                 edge.set_edgecolor('k')
         plt.show()
