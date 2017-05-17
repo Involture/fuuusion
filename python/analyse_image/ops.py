@@ -1,6 +1,25 @@
 from glob import *
 from fourier import fft, ifft, sf
-from scipy import misc
+from scipy.misc import imread
+import matplotlib.pyplot as plt
+
+#image size processing
+
+def log2(n):
+    if n == 1:
+        return 0
+    else:
+        return log2(n // 2) + 1
+
+def openIm(imName):
+    im = imread(imName)
+    p, q = im.shape[:2]
+    r, s = log2(p), log2(q)
+    pp, qq = 2 ** r, 2 ** s
+    im = im[:pp, :qq]
+    reduceFactor = log2(r + s // 20) // 2
+    im = im[::4 ** reduceFactor, ::4 ** reduceFactor]
+    return im
 
 #type converters
 
@@ -143,7 +162,7 @@ def winVect(arr, p, q):
     cisul(arr)
     a, b = np.shape(arr)[:2]
     la = a - p
-    lb = a - q
+    lb = b - q
     return np.stack([np.stack([arr[i : i + p, j : j + q] for i in range(la)], axis = 2) for j in range(lb)], axis = 3)
 
 #filtering functions

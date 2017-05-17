@@ -17,6 +17,8 @@ bint = np.int32 #numpy signed integer type corresponding
 
 start = t.time()
 
+VERBOSE = True
+
 def p(s):
     if VERBOSE:
         print(s)
@@ -76,3 +78,17 @@ def cispow(arr):
     powCheck(p)
     powCheck(q)
 
+#just a fonction needed both in filts and in fourier
+
+def flip(arr2D):
+    return arr2D[::-1, ::-1]
+
+def switchQuad(arr2D):
+    m1 = np.shape(arr2D)[0] // 2
+    m2 = np.shape(arr2D)[1] // 2
+    res = np.copy(arr2D)
+    res[:m1, :m2] = flip(res[:m1, :m2])
+    res[:m1, m2:] = flip(res[:m1, m2:])
+    res[m1:, :m2] = flip(res[m1:, :m2])
+    res[m1:, m2:] = flip(res[m1:, m2:])
+    return res

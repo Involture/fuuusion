@@ -63,19 +63,6 @@ ifft = lambda x : fastFastFourier2D(x, True)
 
 #function to render fourier transform
 
-def flip(arr2D):
-    return arr2D[::-1, ::-1]
-
-def switchQuad(arr2D):
-    m1 = np.shape(arr2D)[0] // 2
-    m2 = np.shape(arr2D)[1] // 2
-    res = np.copy(arr2D)
-    res[:m1, :m2] = flip(res[:m1, :m2])
-    res[:m1, m2:] = flip(res[:m1, m2:])
-    res[m1:, :m2] = flip(res[m1:, :m2])
-    res[m1:, m2:] = flip(res[m1:, m2:])
-    return res
-
 def ubintFromComplex(complexArr):
     return ubint(np.abs(complexArr))
 
