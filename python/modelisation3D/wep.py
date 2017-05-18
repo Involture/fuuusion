@@ -217,6 +217,12 @@ class face:
                     raise ValueError('Vertices given are not \
                                       adjacent in the face')
 
+    def isOnInteriorSide(self, v):
+        """ face * vertex -> bool
+        Returns wether <v> is on the interior side of <self>."""
+        n = self.normalVect()
+        return n.dotProduct(vector(self.vertices[0]) - vector(v)) > 0
+
 
 class polyhedron:
     """Class representing a polyhedron in a three-dimensional space"""
@@ -723,10 +729,21 @@ class polyhedron:
         Computes and returns the polyhedron of the
             intersection of <self> and <other>."""
         polyInter = polyIntersection.fromPolyhedron(self, other)
+        # This handles the case of one polyhedron inside the other
+        if len(polyInter.inter1) + len(polyInter.inter2) == 0:
+            if all(f.isOnInteriorSide(self.vertices[0]) for f in other.faces):
+                return self
+            elif all(f.isOnInteriorSide(other.vertices[0]) for f in self.faces):
+                return other
+            else:
+                return polyhedron([], [], [])
         polyInter.createIntersectorVertices()
         polyInter.buildEdges()
         polyInter.buildFaces()
         return polyInter.result
+
+    def photo(self, pov, focalDist):
+        pass
 
 
 class intersector:
@@ -1047,12 +1064,25 @@ class polyIntersection:
                 v = f.vertices[vi]
                 if v.intersector is not None and not v.isMarkedFor(f) :
                     self.faceTrace(1, fi, vi)
+            v = f.vertices[0]
+            if v.interior and not v.isMarkedFor(f):
+                interiorFaceTrace(f)
         for fi in range(len(self.poly2.faces)):
             f = self.poly2.faces[fi]
             for vi in range(len(f.vertices)):
                 v = f.vertices[vi]
                 if v.intersector is not None and not v.isMarkedFor(f) :
                     self.faceTrace(2, fi, vi)
+            v = f.vertices[0]
+            if v.interior and not v.isMarkedFor(f):
+                interiorFaceTrace(f)
+
+    def interiorFaceTrace(self, f):
+        """ polyIntersection * face -> None
+        Adds the new face corresponding to <f> in the result.
+        <f> must be completely interior."""
+        assert all(v.interior for v in f.vertices)
+        self.result.addFace([self.newVertex(v) for v in f.vertices])
 
 
 class vector:
