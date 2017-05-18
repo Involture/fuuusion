@@ -725,8 +725,6 @@ class polyhedron:
         polyInter = polyIntersection.fromPolyhedron(self, other)
         polyInter.createIntersectorVertices()
         polyInter.buildEdges()
-        # print('Edges built. Polyhedron is :', polyInter.result)
-        print([v.interior for v in polyInter.result.vertices])
         polyInter.buildFaces()
         return polyInter.result
 
@@ -1000,8 +998,6 @@ class polyIntersection:
         elif face.vertices[(vi - 1) % n].interior is True or face.vertices[(vi - 1) % n].intersector is not None:
             step = -1
         else:
-            print(face.vertices[(vi - 1) % n].interior, initialV.interior, face.vertices[(vi + 1) % n].interior)
-            print(face.vertices[(vi - 1) % n], initialV, face.vertices[(vi + 1) % n])
             raise ValueError('The vertex given has no adjacent interior or intersector vertex')
         i = (vi + step) % n
         force = True
@@ -1050,16 +1046,12 @@ class polyIntersection:
             for vi in range(len(f.vertices)):
                 v = f.vertices[vi]
                 if v.intersector is not None and not v.isMarkedFor(f) :
-                    print('tracing ', v, 'for ', f, 'in poly1')
                     self.faceTrace(1, fi, vi)
         for fi in range(len(self.poly2.faces)):
-            f = self.poly1.faces[fi]
+            f = self.poly2.faces[fi]
             for vi in range(len(f.vertices)):
                 v = f.vertices[vi]
-                if v.intersector is not None:
-                    print([f], v.fTraced)
                 if v.intersector is not None and not v.isMarkedFor(f) :
-                    print('tracing ', v, 'for ', f, 'in poly2')
                     self.faceTrace(2, fi, vi)
 
 
