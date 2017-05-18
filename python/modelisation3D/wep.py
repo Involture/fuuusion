@@ -743,7 +743,7 @@ class polyhedron:
         return polyInter.result
 
     def photo(self, pov, focalDist):
-        pass
+        """ """
 
 
 class intersector:
@@ -1245,3 +1245,21 @@ def simpleCube():
     cube.addFace([v3, v7, v8, v5])
     cube.addFace([v4, v6, v8, v7])
     return cube
+
+
+
+def rotateFunction(rotCenter, rotVect):
+    """ (float * float * float) * vector 
+        -> ((float * float * float) -> (float * float * float))
+        Returns the function for rotating a set of coordinates."""
+    rotn = (1 / rotVect.norm) * rotVect
+    def rot(coords):
+        oldVect = vector(coords) - vector(rotCenter)
+        newVect = (math.cos(rotVect.norm) * oldVect +
+                   math.sin(rotVect.norm) * rotn * oldVect +
+                   ((1 - math.cos(rotVect.norm)) *
+                    (rotn.dotProduct(oldVect)) * rotn))
+        return (rotCenter[0] + newVect.x,
+                rotCenter[1] + newVect.y,
+                rotCenter[2] + newVect.z)
+    return rot
