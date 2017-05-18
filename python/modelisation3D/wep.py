@@ -1000,7 +1000,6 @@ class polyIntersection:
         elif face.vertices[(vi - 1) % n].interior is True or face.vertices[(vi - 1) % n].intersector is not None:
             step = -1
         else:
-            print('bi')
             print(face.vertices[(vi - 1) % n].interior, initialV.interior, face.vertices[(vi + 1) % n].interior)
             print(face.vertices[(vi - 1) % n], initialV, face.vertices[(vi + 1) % n])
             raise ValueError('The vertex given has no adjacent interior or intersector vertex')
@@ -1008,21 +1007,21 @@ class polyIntersection:
         force = True
         while force or i != (vi + step) % n:
             force = False
+            # Tracing the interior
             while face.vertices[i].interior:
                 newFace.append(self.newVertex(face.vertices[i]))
                 face.vertices[i].markFTraced(face)
                 i += step
+            # Tracing the surface
             newFace.append(self.newVertex(face.vertices[i]))
             face.vertices[i].markFTraced(face)
             lastI = self.getIntersector(face.vertices[i])
             potentialInters = self.nextIntersectors(lastI)
-            if ((vector(lastI.v) - vector(face.vertices[(i - step) % n])) *
-                (vector(potentialInters[0].v) - vector(lastI.v)))\
-               .dotProduct(face.normalVect()) * step > 0:
+            if abs((vector(potentialInters[0].v) - vector(lastI.v))\
+               .dotProduct(face.normalVect())) < COMPARISON_EPSILON:
                inter = potentialInters[0]
-            elif ((vector(lastI.v) - vector(face.vertices[(i - step) % n])) *
-                (vector(potentialInters[1].v) - vector(lastI.v)))\
-               .dotProduct(face.normalVect()) * step > 0:
+            elif abs((vector(potentialInters[1].v) - vector(lastI.v))\
+               .dotProduct(face.normalVect())) < COMPARISON_EPSILON:
                inter = potentialInters[1]
             else:
                 raise Exception('The nextIntersectors are weird (1)')
@@ -1042,7 +1041,6 @@ class polyIntersection:
         if step == -1:
             newFace.reverse()
         self.result.addFace(newFace, True)
-
 
     def buildFaces(self):
         """ polyIntersection -> None
