@@ -284,6 +284,7 @@ class polyhedron:
                 return True
         return False
 
+
     def addFace(self, vertices, bypassCheck=False):
         """ polyhedron * vertex list -> face
         Creates a face and adds it to the polyhedron while
@@ -1041,6 +1042,7 @@ class polyIntersection:
         if step == -1:
             newFace.reverse()
         self.result.addFace(newFace, True)
+
 
     def buildFaces(self):
         """ polyIntersection -> None
