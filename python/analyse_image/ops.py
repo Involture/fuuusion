@@ -6,12 +6,15 @@ import matplotlib.pyplot as plt
 #image size processing
 
 def log2(n):
+    """Return the floor value of log2(n)."""
     if n == 1:
         return 0
     else:
         return log2(n // 2) + 1
 
 def openIm(imName):
+    """Open the file named imName as a nparray and cut it so its \ 
+    dimensions are powers of two."""
     im = imread(imName)
     p, q = im.shape[:2]
     r, s = log2(p), log2(q)
@@ -21,35 +24,11 @@ def openIm(imName):
     im = im[::4 ** reduceFactor, ::4 ** reduceFactor]
     return im
 
-#type converters
-
-def bToL(arr, loss):
-    shape = np.shape(arr)
-    nbpix = 1
-    for size in shape:
-        nbpix *= size
-    perpix = 100
-    uplim = R
-    downlim = 0
-    while perpix != loss:
-        lim = (uplim + downlim) // 2
-        perpix = (np.sum(arr <= lim) * 100) // nbpix
-        if perpix > loss:
-            uplim = lim
-        else:
-            downlim = lim
-    lim = (uplim + downlim) // 2
-    res = arr.copy()
-    res = np.minimum(res, lim)
-    if np.max(arr) * 255 < R:
-        res = (res * 255) // lim
-    else:
-        res = (res / lim) * 255
-    return ulint(res)
-
 #isp computing
 
 def ispVect(arr):
+    """Replace each pixel by an array of length 256 full of zero excepted a \
+    one at the index corresponding to the value of the pixel."""
     return ulint(np.stack([arr == i for i in range(256)], axis = -1))
 
 def _isp(arr):
@@ -59,8 +38,7 @@ def _isp(arr):
 
 def _plotSpec(subp, spectrum, c):
     """Plot the intensity spectrum to the specified subplot
-    c is the color of the plot
-    """
+    c is the color of the plot."""
     ind = np.arange(N)
     width = 1
 
@@ -101,35 +79,41 @@ def show(arr):
 #grey level and binary
 
 def greyAv(arr):
-    return ulint(np.sum(arr, dtype = ubint, axis = 2) // 3)
+    """Return a grey level image from a coloured image taking the average \
+    of the three color channel."""
+    return cint(np.sum(arr, dtype = cflt, axis = 2) // 3)
 
 def greyMax(arr):
+    """Return a grey level image from a coloured image taking the maximum \
+    of the three color channel."""
     return  np.max(arr, axis = 2)
 
 def binary(arr, cutIntensity):
-    return ulint(arr > cutIntensity)
+    """Return a binary image from a grey level image where only pixels with \
+    an intensity superior to cutIntensity are set to 1."""
+    return cint(arr > cutIntensity)
 
 #algebra operations
 
 def binNot(arr):
-    cisul(arr)
-    return ulint(arr + 1 == 1)
+    """The not operator on a binary image."""
+    return cint(arr + 1 == 1)
 
-def expend(arr, f):
-    return ulint(_filt(arr, f) > 0)
+def expand(arr, f):
+    return cint(_filt(arr, f) > 0)
 
 def erode(arr, f):
     s = np.sum(f)
-    return ulint(_filt(arr, f) == s)
+    return cint(_filt(arr, f) == s)
 
 def match(arr, f):
-    return ulint((erode(arr, f) + erode(binNot(arr), binNot(f))) == 2)
+    return cint((erode(arr, f) + erode(binNot(arr), binNot(f))) == 2)
 
 def open(arr, f):
-    return expend(erode(arr, f), f.T)
+    return expand(erode(arr, f), f.T)
 
 def close(arr,f):
-    return erode(expend(arr, f), f.T)
+    return erode(expand(arr, f), f.T)
 
 def diminish(arr, f):
     return arr - match(arr, f)
@@ -147,41 +131,34 @@ def fullDiminish(arr, f):
         nextbin = seqDiminish(arr,f)
     return arr
 
-def squeletize(arr):
-    nextarr = seqDiminish(seqDiminish(arr, filters["flat"]), filters["lcorner"])
-    while nextarr != arr:
-        arr = nextarr
-        nextarr = seqDiminish(seqDiminish(nextbin, filters["flat"]), filters["lcorner"])
-    return arr
-
 #window vectorization
 
 def winVect(arr, p, q):
     powCheck(p)
     powCheck(q)
-    cisul(arr)
     a, b = np.shape(arr)[:2]
     la = a - p
     lb = b - q
-    return np.stack([np.stack([arr[i : i + p, j : j + q] for i in range(la)], axis = 2) for j in range(lb)], axis = 3)
+    makeWin = lambda i, j : arr[i: i + p, j: j + q]
+    makeWinGene = lambda l, j : (makeWin(i, j) for i in range(l))
+    makeWinColumn = lambda j : np.stack(makeWinGene(la, j), axis = -1)
+    winColumnGene = (makeWinColumn for j in range(lb))
+    return np.stack(winColumnGene, axis = -1)
 
 #filtering functions
-
-def ispFilt(arr, f):
-    fpos = np.maximum(f, 0)
-    fneg = np.minimum(f, 0)
-    return ubint(np.sqrt(np.sum((_filt(arr, fpos)  +  _filt(arr, fneg)) ** 2, axis = -1, dtype = ubint)))
 
 def filt(arr, fs):
     if type(fs) == list:
         for f in fs:
-            arr = _filt(arr, f)
+            arr[...] = _filt(arr, f)
     else:
-        arr = _filt(arr, fs)
+        arr[...] = _filt(arr, fs)
 
 def _filt(arr, f):
+    """Filter arr with f on his first two dimensions."""
     cisfilt(f)
     shape = arr.shape
+    a, b = shape[: 2]
     filtShape = f.shape
 
     dx = (filtShape[0] - 1) // 2
@@ -190,22 +167,31 @@ def _filt(arr, f):
     bigShape[0] += 2 * dx
     bigShape[1] += 2 * dy
     bigShape = tuple(bigShape)
-    res = np.full(bigShape, 0, dtype = bint)
+
+    res = np.zeros(bigShape, dtype = cflt)
     for i in range(-dx, dx + 1):
         for j in range(-dy, dy + 1):
-            print(str(i) + str(j))
+            pp(str(i) + str(j))
             if f[dx - i, dy - j] != 0:
-                shiftedArr = np.zeros(bigShape, dtype = bint)
-                shiftedArr[dx + i : dx + i + shape[0], dy + j : dy + j + shape[1]] = f[dx - i, dy - j] * bint(arr)
+                shiftedArr = np.zeros(bigShape, dtype = cflt)
+                shiftedArr[dx + i: dx + i + a, dy + j: dy + j + b] = f[dx - i, dy - j] * cflt(arr)
                 res += shiftedArr
-    res = res[dx : shape[0] + dx, dy : shape[1] + dy]
-    return res
+    return res[dx : a + dx, dy : b + dy]
+    
 
 #color space conversion
 
 def RGBtoLAB(arr):
-    arr =  np.stack([ulint(np.sum(ubint(arr), axis = 2) // 3), arr[:,:,1] - arr[:,:,0], arr[:,:,1] - arr[:,:,2]], axis = 2)
+    assert(arr.dtype == cint)
+    lchanFloat = np.sum(arr, axis = 2, dtype = cflt) // 3
+    lchan = cint(lchanFloat)
+    achan = arr[: , : , 1] - arr[: , : , 0]
+    bchan = arr[: , : , 1] - arr[: , : , 2]
+    arr =  np.stack(lchan, achan, bchan, axis = 2)
 
 def LABtoRGB(arr):
-    G = np.sum(arr, axis = 2)
-    arr =  ulint(np.stack([G - arr[:,:,1], G, G - arr[:,:,2]], axis = 2))
+    assert(arr.dtype == cint)
+    g = np.sum(arr, axis = 2)
+    r = g - arr[: , : , 1]
+    b = g - arr[: , : , 2]
+    arr =  ulint(np.stack(r, g, b, axis = 2))
