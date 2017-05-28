@@ -7,11 +7,14 @@ from random import randrange
 import copy
 import warnings
 
-# import numpy as np
+import matplotlib
+import numpy as np
 import matplotlib.pyplot as plt
 # import matplotlib.colors as colors
 # import scipy as sc
 import mpl_toolkits.mplot3d as a3
+from matplotlib.patches import Polygon as mplPoly
+from matplotlib.collections import PatchCollection
 
 
 COMPARISON_EPSILON = 0.001
@@ -235,7 +238,7 @@ class polyhedron:
         v = vertex(0, 0, 0)
         return polyhedron([v], [], [face([v])])
 
-    def getVertex(self, x, y, z, epsilon):
+    def getVertex(self, x, y, z, epsilon=0):
         """ polyhedron * float * float * float * float
         Returns (if  it exists) the vertex at <x>, <y> and <z>
             coordinates, give or take epsilon."""
@@ -311,12 +314,22 @@ class polyhedron:
         else:
             return self.getEdge(nVertex, pVertex)
 
-    def addVertex(self, x, y, z):
-        """ polyhedron * float * float * float -> vertex
+    def addVertex(self, arg1, arg2=0, arg3=0):
+        """ polyhedron * (float/vector/(float * float * float)) *
+            float * float -> vertex
         Creates a vertex at given coordinates, adds it to <self>,
             and returns it."""
-        newV = vertex(x, y, z)
-        self.vertices.append(newV)
+        if type(arg1) is tuple:
+            x, y, z = arg1
+        elif type(arg1) is vector:
+            x, y, z = arg1.coords
+        elif type(arg1) is float:
+            x, y, z = arg1, arg2, arg3
+        try:
+            newV = self.getVertex(x, y, z, COMPARISON_EPSILON)
+        except ValueError:
+            newV = vertex(x, y, z)
+            self.vertices.append(newV)
         return newV
 
     def nnw(self, e):
@@ -712,6 +725,54 @@ class polyhedron:
         polyInter.buildEdges()
         return polyInter.result
 
+    def silhouettePhoto(self, focalPoint, focalDist, angles):
+        """ polyhedron * float**3 * float * float**3 -> silhouette
+        Returns the silhouette of <self>, seen from <focalPoint> with a
+            focal of <focalDist>, and angles of shot specified by <angle>"""
+        sil = silhouette(focalPoint, focalDist, angles, [])
+        yaw, roll, pitch = angles
+        x = vector(1, 0, 0)
+        y = vector(0, 1, 0)
+        z = vector(0, 0, 1)
+        N = math.cos(yaw) * x + math.sin(yaw) * y
+        A = (N * z).normalize()
+        Z = math.cos(roll) * z + math.sin(roll) * A
+        B = (Z * N).normalize()
+        X = math.cos(pitch) * N + math.sin(pitch) * B
+        Y = Z * X
+        fVect = vector(focalPoint)
+        for e in self.edges:
+            vertOfP = next(filter(lambda x: x not in [e.pvt, e.nvt],
+                                  e.pFace.vertices))
+            vertOfN = next(filter(lambda x: x not in [e.pvt, e.nvt],
+                                  e.nFace.vertices))
+            equ = (X.x, X.y, X.z, focalDist)
+            projOfP = vector(planeLineIntersect(focalPoint, vertOfP, equ))
+            projOfN = vector(planeLineIntersect(focalPoint, vertOfN, equ))
+            pvtProj = vector(planeLineIntersect(focalPoint, e.pvt, equ))
+            nvtProj = vector(planeLineIntersect(focalPoint, e.nvt, equ))
+            nvtReduced = vector((nvtProj - fVect).dotProduct(Z),
+                                (nvtProj - fVect).dotProduct(Y), 0)
+            pvtReduced = vector((pvtProj - fVect).dotProduct(Z),
+                                (pvtProj - fVect).dotProduct(Y), 0)
+            nfvReduced = vector((projOfN - fVect).dotProduct(Z),
+                                (projOfN - fVect).dotProduct(Y), 0)
+            pfvReduced = vector((projOfP - fVect).dotProduct(Z),
+                                (projOfP - fVect).dotProduct(Y), 0)
+            normal = (pvtReduced - nvtReduced).twoDNormal()
+            s1 = normal.dotProduct(pfvReduced - pvtReduced)
+            if s1 * normal.dotProduct(nfvReduced - pvtReduced) >= 0:
+                if s1 > 0:
+                    sil.segments.append((pvtReduced.coords2D, nvtReduced.coords2D))
+                else:
+                    sil.segments.append((nvtReduced.coords2D, pvtReduced.coords2D))
+        return sil
+
+    def visualHull(sils):
+        """ silhouette list -> polyhedron
+        Returns the visual hull corresponding to the visual hull
+            calculated with the silhouettes <sils>."""
+
 
 class intersector:
     """class representing an intersection between an edge and a face"""
@@ -1062,7 +1123,9 @@ class vector:
         if attr == 'norm':
             return math.sqrt(self.dotProduct(self))
         elif attr == 'coords':
-            return(self.x, self.y, self.z)
+            return (self.x, self.y, self.z)
+        elif attr == 'coords2D':
+            return (self.x, self.y)
 
     def dotProduct(self, v):
         """ vector * vector -> float
@@ -1080,6 +1143,116 @@ class vector:
         """ vector * vector -> float
         Returns the x component of the cross product of self and other."""
         return other.y * self.z - other.z * self.y
+
+    def twoDNormal(self):
+        """ vector -> vector
+        Returns a vector normal to <self>."""
+        return vector((-1) * self.y, self.x, 0)
+
+
+class silhouette:
+    """Class representing the silhouette obtained from a photography."""
+
+    def __init__(self, focalPoint, focalDist, angles, segments):
+        """ (float * float * float) * float * (float  * float * float) *
+            (float * float) list -> silhouette"""
+        self.focalPoint = focalPoint
+        self.focalDist = focalDist
+        self.angles = angles
+        self.segments = segments
+
+    def cone(self, length):
+        """ silhouette * float -> polyhedron
+        Returns the cone polyhedron corresponding to the silhouette."""
+        yaw, roll, pitch = self.angles
+        x = vector(1, 0, 0)
+        y = vector(0, 1, 0)
+        z = vector(0, 0, 1)
+        N = math.cos(yaw) * x + math.sin(yaw) * y
+        A = (N * z).normalize()
+        Z = math.cos(roll) * z + math.sin(roll) * A
+        B = (Z * N).normalize()
+        X = math.cos(pitch) * N + math.sin(pitch) * B
+        Y = Z * X
+        # The segments are defined in the coordinates system that has :
+        #    self.focalPoint + focalDist * X as origin
+        #    Z and Y as basis
+        result = polyhedron([], [], [])
+        f = result.addVertex(self.focalPoint)
+        for s in self.segments:
+            vect0 = (self.focalDist * X +
+                     s[0][0] * Z +
+                     s[0][1] * Y).normalize()
+            vect1 = (self.focalDist * X +
+                     s[1][0] * Z +
+                     s[1][1] * Y).normalize()
+            vert0 = result.addVertex(vector(self.focalPoint) +
+                                     length * vect0)
+            vert1 = result.addVertex(vector(self.focalPoint) +
+                                     length * vect1)
+            result.addEdge(f, vert1)
+            result.addEdge(vert1, vert0)
+            result.addEdge(vert0, f)
+            result.addFace([f, vert1, vert0])
+        # WARNING : the cone is not closed at its top.
+        # I'm not sure if this can cause issues.
+        return result
+
+    def plot(self):
+        """ silhouette -> None
+        Plots the silhouette using matplotlib"""
+        done = []
+        patches = []
+
+        def chain(p):
+            done.append(p)
+            yield p
+            last = p
+            finished = False
+            while not finished:
+                seg0 = next(filter(lambda x: (x[0] not in done and
+                                              x[1] == last),
+                                   self.segments),
+                            None)
+                seg1 = next(filter(lambda x: (x[1] not in done and
+                                              x[0] == last),
+                                   self.segments),
+                            None)
+                if seg0 is not None:
+                    done.append(seg0[0])
+                    yield seg0[0]
+                    last = seg0[0]
+                elif seg1 is not None:
+                    done.append(seg1[1])
+                    yield seg1[1]
+                    last = seg1[1]
+                else:
+                    finished = True
+        p0 = next(filter(lambda x: x not in done,
+                         (s[0] for s in self.segments)),
+                  next(filter(lambda x: x not in done,
+                              (s[1] for s in self.segments)),
+                       None))
+        assert type(p0) is tuple
+        while p0 is not None:
+            gen = chain(p0)
+            a = np.array([[p[0], p[1]] for p in gen])
+            patches.append(mplPoly(a, closed=True))
+            p0 = next(filter(lambda x: x not in done,
+                             (s[0] for s in self.segments)),
+                      next(filter(lambda x: x not in done,
+                                  (s[1] for s in self.segments)),
+                           None))
+        fig, ax = plt.subplots()
+        ax.set_xlim([min(min(p.get_xy()[:,0]) for p in patches),
+                     max(max(p.get_xy()[:,0]) for p in patches)])
+        ax.set_ylim([min(min(p.get_xy()[:,1]) for p in patches),
+                     max(max(p.get_xy()[:,1]) for p in patches)])
+        pCol = PatchCollection(patches, cmap=matplotlib.cm.jet, alpha=0.4)
+        colors = 100 * np.random.rand(len(patches))
+        pCol.set_array(np.array(colors))
+        ax.add_collection(pCol)
+        plt.show()
 
 
 def splitList(l, i1, i2):
@@ -1103,6 +1276,17 @@ def splitList(l, i1, i2):
         j += 1
     L2.append(l[i1])
     return (L1, L2)
+
+
+def planeLineIntersect(p1, p2, equ):
+    """ float**3 * float**3 * float**4 -> float**3
+    Returns the intersection of the line that passes through the points
+        of coordinates p1 and p2 and the plane of equation
+        <equ>[0]*x + <equ>[1]*y + <equ>[2]*z = <equ>[3]"""
+    n = vector(equ[0], equ[1], equ[2])
+    v1, v2 = vector(p1), vector(p2)
+    t = (equ[3] - n.dotProduct(v2)) / (n.dotProduct(v1 - v2))
+    return (t * v1 + (1 - t) * v2).coords
 
 
 def simpleSphere(precision):
