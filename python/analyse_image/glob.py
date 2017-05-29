@@ -14,7 +14,7 @@ ccpl = np.complex64
 start = t.time()
 
 V = True
-VV = False
+VV = True
 
 def p(s):
     """Print only if V (standing for a verbose parametre) is True."""

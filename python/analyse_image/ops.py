@@ -1,8 +1,10 @@
-from glob import *
-from fourier import fft, ifft, sf
 from scipy.misc import imread
 import matplotlib.pyplot as plt
 import itertools
+
+from glob import *
+from fourier import fft, ifft, sf
+from filts import *
 
 #image size processing
 
@@ -196,62 +198,72 @@ def filt(arr, f):
     
 #parabolic approximation
 
+def det(arr):
+    """Compute det of arr on first two dimensions."""
+    transTuple = tuple(range(2, arr.ndim)) + (0, 1)
+    tarr = np.transpose(arr, transTuple)
+    return np.linalg.det(tarr)
+
 def cramer(mat, vect):
     mat1 = np.stack((vect, mat[:,1], mat[:,2]), axis = 1)
     mat2 = np.stack((mat[:,0], vect, mat[:,2]), axis = 1)
     mat3 = np.stack((mat[:,0], mat[:,1], vect), axis = 1)
-    det = np.linalg.det
     d = det(mat)
     d1 = det(mat1)
     d2 = det(mat2)
     d3 = det(mat3)
-    return np.array((d1 / d, d2 / d, d3 / d))
+    return (d1 / d, d2 / d, d3 / d)
 
 def parabolicApprox(pointArr):
     xArr = pointArr[:,0]
     yArr = pointArr[:,1]
-    x4sum = np.sum(xArr ** 4)
-    x3sum = np.sum(xArr ** 3)
-    x2sum = np.sum(xArr ** 2)
-    x1sum = np.sum(xArr)
-    x0sum = xArr.shape[0]
-    yx2sum = np.sum(yArr * xArr ** 2)
-    yx1sum = np.sum(yArr * xArr)
-    yx0sum = np.sum(yArr)
-    mat = np.array([[x4sum, x3sum, x2sum],
-                    [x3sum, x2sum, x1sum],
-                    [x2sum, x1sum, x0sum]])
-    vect = np.array([yx2sum, yx1sum, yx0sum])
+    x4sum = np.sum(xArr ** 4, axis = 0)
+    x3sum = np.sum(xArr ** 3, axis = 0)
+    x2sum = np.sum(xArr ** 2, axis = 0)
+    x1sum = np.sum(xArr, axis = 0)
+    x0sum = np.resize(xArr.shape[0], xArr.shape[1:])
+    yx2sum = np.sum(yArr * xArr ** 2, axis = 0)
+    yx1sum = np.sum(yArr * xArr, axis = 0)
+    yx0sum = np.sum(yArr, axis = 0)
+    mat = np.stack([np.stack([x4sum, x3sum, x2sum], axis = 0),
+                    np.stack([x3sum, x2sum, x1sum], axis = 0),
+                    np.stack([x2sum, x1sum, x0sum], axis = 0)], axis = 0)
+    vect = np.stack([yx2sum, yx1sum, yx0sum], axis = 0)
     return cramer(mat, vect)
 
 #loacalisator
 
-def stackPoints(win, u):
-    t = win.shape[0]
+def coord(winArr, u, i, j):
+    xArr = np.resize(scal((i,j), u), winArr.shape[2:])
+    return np.stack((xArr, winArr[i, j]), axis = 0)
+
+def stackPoints(winArr, u):
+    t = winArr.shape[0]
     c = t / 2
-    inCircle = lambda i, j: norm((i - c, j - c)) <= c
-    scalu = lambda i, j: scal((i - c, j - c), u)
-    coord = lambda i, j: np.array((scalu(i, j), win[i, j]))
-    ind = intertools.product(range(t), repeat = 2)
-    PointList = np.array([coord for i, j in ind if inCircle(i, j)])
+    circle = circleCut(t, t / 2).astype(np.bool)
+    ind = itertools.product(range(t), repeat = 2)
+    pointGene = (coord(winArr, u, i, j) for i, j in ind if circle[i, j])
+    return np.stack(pointGene)
 
 def smooth(a, b, c, eps):
-    aplus = max(a, 0)
-    cplus = max(c, 0)
+    aplus = np.maximum(a, 0)
+    cplus = np.maximum(c, 0)
     return -(2 * aplus * cplus) / (abs(b) + eps)
 
-vstackPoints = np.vectorize(stackPoints)
-vparabolicApprox = np.vectorize(parabolicApprox)
-vsmooth = np.vectorize(smooth)
-
 def localise(arr, t, u, eps):
-    wArr = winVect(arr2D, t, t)
-    transTuple = range(2, arr.ndims) + (0, 1)
-    wArr = np.transpose(wArr, transTuple)
-    wArr = vstackPoints(wArr)
-    derivArr = vparabolicApprox(wArr)
-    derivArr = vsmooth(derivArr)
-    return derivArr
+    pp("    window vectorizing")
+    pptime()
+    wArr = winVect(arr, t, t)
+    pp("    projecting")
+    pptime()
+    wArr = stackPoints(wArr, u)
+    pp("    parabol approximating")
+    pptime()
+    parabTuple = parabolicApprox(wArr)
+    pp("    smoothing")
+    pptime()
+    smoothArr = smooth(*parabTuple, eps)
+    return smoothArr
 
 vlocalise = np.vectorize(localise)
 

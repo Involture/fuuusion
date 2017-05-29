@@ -54,8 +54,3 @@ def fGaussGene(winSize, ndir, sigma):
     g = lambda u: gauss(winSize, u, sigma)
     cg = lambda u: g(u) * circleCut(winSize, winSize / 2)
     return (switchQuad(cg(u)) for u in dirGene(ndir))
-
-def gaussdGene(winSize, ndir, sigma):
-    g = lambda u: gaussd(winSize, u, sigma)
-    cg = lambda u: g(u) * circleCut(winSize, winSize / 2)
-    return (cg(u) for u in dirGene(ndir))
