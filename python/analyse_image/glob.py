@@ -6,7 +6,7 @@ from subprocess import check_output
 #custom types
 
 cint = np.uint8
-cflt = np.float16
+cflt = np.float32
 ccpl = np.complex64
 
 #Prints and verbose
@@ -14,7 +14,7 @@ ccpl = np.complex64
 start = t.time()
 
 V = True
-VV = True
+VV = False
 
 def p(s):
     """Print only if V (standing for a verbose parametre) is True."""
@@ -67,15 +67,36 @@ def powCheck2(n):
         if n % 2 == 1:
             raise ValueError("array dimensions are not powers of two")
         else:
-            powCheck(n // 2)
+            powCheck2(n // 2)
 
 def cispow(arr):
     """raise an error if one of the first dimension of arr is not a power of two"""
     p, q = np.shape(arr)[:2]
-    powCheck(p)
-    powCheck(q)
+    powCheck2(p)
+    powCheck2(q)
 
 #???
+def permute(l, i, j):
+    if i != j:
+        l[i], l[j] = l[j], l[i]
+
+def transposeEnd(ndim, dims):
+    dimList = list(range(ndim))
+    dims.sort(reverse = True)
+    l = len(dims)
+    for i in range(l):
+        ind = dims[i]
+        lastInd = ndim - i - 1
+        permute(dimList, ind, lastInd)
+    return tuple(dimList)
+
+def multDim(arr, multArr, dims):
+    """Multiply arr by multArr on its dimension dims, element-wise,\
+    IN PLACE."""
+    transTuple = transposeEnd(arr.ndim, dims)
+    transArr = np.transpose(arr, transTuple)
+    multArr = transArr * multArr
+    return np.transpose(multArr, transTuple)
 
 def flip(arr2D):
     return arr2D[::-1, ::-1]

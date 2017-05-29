@@ -10,19 +10,9 @@ def exp(n, inverse = False):
     else:
         eps = -1
     expRow = np.exp((eps * 2 * 1j * np.pi / n) * np.arange(n, dtype = ccpl))
-    return exp
+    return expRow
 
 #efficient fourier transform
-
-def multDim(arr, multVect, dim):
-    """Multiply arr by multVect on its dimension dim, element-wise,\
-    IN PLACE."""
-    dimList = list(range(arr.ndim)) 
-    dimList[-1], dimList[dim] = dimList[dim], dimList[-1]
-    transTuple = tuple(dimList)
-    transArr = np.transpose(arr, transTuple)
-    multArr = transArr * multVect
-    return np.transpose(multArr, transTuple)
 
 def hVectFastFourier2D(arr, inverse = False):
     """Compute the fourier transform of arr on the second dimension \
@@ -32,16 +22,16 @@ def hVectFastFourier2D(arr, inverse = False):
     el = len(shape) - 2
     n = shape[1]
     m = n // 2
-    e = exp(n, el, 0, inverse)
+    e = exp(n, inverse)
     j = n // 2
     while j >= 1:
         for k in range(j):
-            pp(str(j) + " " + str(k))
+            p(str(j) + " " + str(k))
             temp = arr[:, k: k + j + n: j].copy()
             a = temp[:, : -1: 2]
             b = temp[:, 1:: 2]
-            b1 = multDim(b, e[0: n // 2: j], 1)
-            b2 = multDim(b, e[n // 2: n: j], 1)
+            b1 = multDim(b, e[0: n // 2: j], [1])
+            b2 = multDim(b, e[n // 2: n: j], [1])
             arr[:, k: k + m: j] = a + b1
             arr[:, k + m: k + n: j] = a + b2
             pptime()
@@ -56,16 +46,16 @@ def vVectFastFourier2D(arr, inverse = False):
     el = len(shape) - 2
     n = shape[0]
     m = n // 2
-    e = exp(n, el, 1, inverse)
+    e = exp(n, inverse)
     j = n // 2
     while j >= 1:
         for k in range(j):
-            pp(str(j) + " " + str(k))
+            p(str(j) + " " + str(k))
             temp = arr[k: k + j + n: j,:].copy()
             a = temp[: -1: 2, :]
             b = temp[1:: 2, : ]
-            b1 = multDim(b, e[0: n // 2: j], 0)
-            b2 = multDim(b, e[n // 2: n: j], 0)
+            b1 = multDim(b, e[0: n // 2: j], [0])
+            b2 = multDim(b, e[n // 2: n: j], [0])
             arr[k: k + m: j,:] = a + b1
             arr[k + m: k + n: j,:] = a + b2
             pptime()
@@ -86,10 +76,11 @@ ifft = lambda x: fastFastFourier2D(x, True)
 
 #function to render fourier transform
 
-def showFourier(arr2D):
+def showFourier(arr2D, amp = 1):
     """Switch quadrant and convert arr2D in integer.\
     Makes a fourier transform result displayable."""
-    return cint(switchQuad(np.abs(arr2D) * 255 / arr2D.max))
+    amplified = np.minimum(arr2D * 255 * amp / np.max(arr2D), 255.)
+    return switchQuad(cint(amplified))
 
 sf = showFourier
 

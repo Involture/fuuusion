@@ -2,26 +2,27 @@ from glob import *
 from fourier import fft, ifft, sf
 from scipy.misc import imread
 import matplotlib.pyplot as plt
+import itertools
 
 #image size processing
 
 def log2(n):
     """Return the floor value of log2(n)."""
-    if n == 1:
+    if n <= 1:
         return 0
     else:
         return log2(n // 2) + 1
 
-def openIm(imName):
+def openIm(imName, maxPow):
     """Open the file named imName as a nparray and cut it so its \ 
     dimensions are powers of two."""
     im = imread(imName)
     p, q = im.shape[:2]
     r, s = log2(p), log2(q)
     pp, qq = 2 ** r, 2 ** s
-    im = im[:pp, :qq]
-    reduceFactor = log2(r + s // 20) // 2
-    im = im[::4 ** reduceFactor, ::4 ** reduceFactor]
+    im = im[: pp, : qq]
+    reduceFactor = (r + s) // 2 + (r + s) % 2 - maxPow
+    im = im[::2 ** reduceFactor, ::2 ** reduceFactor]
     return im
 
 #isp computing
@@ -29,10 +30,10 @@ def openIm(imName):
 def ispVect(arr):
     """Replace each pixel by an array of length 256 full of zero excepted a \
     one at the index corresponding to the value of the pixel."""
-    return ulint(np.stack([arr == i for i in range(256)], axis = -1))
+    return cint(np.stack([arr == i for i in range(256)], axis = -1))
 
 def _isp(arr):
-    return np.sum(ispVect(arr), axis = (0,1), dtype = ubint)
+    return np.sum(ispVect(arr), axis = (0,1), dtype = cint)
 
 #ploting functions
 
@@ -100,11 +101,11 @@ def binNot(arr):
     return cint(arr + 1 == 1)
 
 def expand(arr, f):
-    return cint(_filt(arr, f) > 0)
+    return cint(filt(arr, f) > 0)
 
 def erode(arr, f):
     s = np.sum(f)
-    return cint(_filt(arr, f) == s)
+    return cint(filt(arr, f) == s)
 
 def match(arr, f):
     return cint((erode(arr, f) + erode(binNot(arr), binNot(f))) == 2)
@@ -134,27 +135,42 @@ def fullDiminish(arr, f):
 #window vectorization
 
 def winVect(arr, p, q):
-    powCheck(p)
-    powCheck(q)
+    powCheck2(p)
+    powCheck2(q)
     a, b = np.shape(arr)[:2]
     la = a - p
     lb = b - q
     makeWin = lambda i, j : arr[i: i + p, j: j + q]
     makeWinGene = lambda l, j : (makeWin(i, j) for i in range(l))
-    makeWinColumn = lambda j : np.stack(makeWinGene(la, j), axis = -1)
-    winColumnGene = (makeWinColumn for j in range(lb))
-    return np.stack(winColumnGene, axis = -1)
+    makeWinColumn = lambda j : np.stack(makeWinGene(la, j), axis = 2)
+    winColumnGene = (makeWinColumn(j) for j in range(lb))
+    return np.stack(winColumnGene, axis = 3)
+
+def restoreShape(arr, dp, dq):
+    a, b = arr.shape[:2]
+    bigShape = (a + 2 * dp, b + 2 * dq) + arr.shape[2:]
+    res = np.zeros(bigShape, dtype = cflt)
+    res[dp: -dp, dq: -dq] = arr
+    res[dp: -dp, : dq] = np.expand_dims(arr[:, 0], 1)
+    res[dp: -dp, -dp:] = np.expand_dims(arr[:, -1], 1)
+    res[: dp, dq: -dq] = np.expand_dims(arr[0, :], 0)
+    res[-dp:, dq: -dq] = np.expand_dims(arr[-1, :], 0)
+    res[: dp, : dq] = arr[0, 0]
+    res[: dp, -dq:] = arr[0, -1]
+    res[-dp: , : dq] = arr[-1, 0]
+    res[-dp: , dq:] = arr[-1, -1]
+    return res
 
 #filtering functions
 
-def filt(arr, fs):
-    if type(fs) == list:
+def filtl(arr, fs):
+    if type(fs) != np.ndarray:
         for f in fs:
             arr[...] = _filt(arr, f)
     else:
         arr[...] = _filt(arr, fs)
 
-def _filt(arr, f):
+def filt(arr, f):
     """Filter arr with f on his first two dimensions."""
     cisfilt(f)
     shape = arr.shape
@@ -178,20 +194,75 @@ def _filt(arr, f):
                 res += shiftedArr
     return res[dx : a + dx, dy : b + dy]
     
+#parabolic approximation
+
+def cramer(mat, vect):
+    mat1 = np.stack((vect, mat[:,1], mat[:,2]), axis = 1)
+    mat2 = np.stack((mat[:,0], vect, mat[:,2]), axis = 1)
+    mat3 = np.stack((mat[:,0], mat[:,1], vect), axis = 1)
+    det = np.linalg.det
+    d = det(mat)
+    d1 = det(mat1)
+    d2 = det(mat2)
+    d3 = det(mat3)
+    return np.array((d1 / d, d2 / d, d3 / d))
+
+def parabolicApprox(pointArr):
+    xArr = pointArr[:,0]
+    yArr = pointArr[:,1]
+    x4sum = np.sum(xArr ** 4)
+    x3sum = np.sum(xArr ** 3)
+    x2sum = np.sum(xArr ** 2)
+    x1sum = np.sum(xArr)
+    x0sum = xArr.shape[0]
+    yx2sum = np.sum(yArr * xArr ** 2)
+    yx1sum = np.sum(yArr * xArr)
+    yx0sum = np.sum(yArr)
+    mat = np.array([[x4sum, x3sum, x2sum],
+                    [x3sum, x2sum, x1sum],
+                    [x2sum, x1sum, x0sum]])
+    vect = np.array([yx2sum, yx1sum, yx0sum])
+    return cramer(mat, vect)
+
+#loacalisator
+
+def stackPoints(win, u):
+    t = win.shape[0]
+    c = t / 2
+    inCircle = lambda i, j: norm((i - c, j - c)) <= c
+    scalu = lambda i, j: scal((i - c, j - c), u)
+    coord = lambda i, j: np.array((scalu(i, j), win[i, j]))
+    ind = intertools.product(range(t), repeat = 2)
+    PointList = np.array([coord for i, j in ind if inCircle(i, j)])
+
+def smooth(a, b, c, eps):
+    aplus = max(a, 0)
+    cplus = max(c, 0)
+    return -(2 * aplus * cplus) / (abs(b) + eps)
+
+vstackPoints = np.vectorize(stackPoints)
+vparabolicApprox = np.vectorize(parabolicApprox)
+vsmooth = np.vectorize(smooth)
+
+def localise(arr, t, u, eps):
+    wArr = winVect(arr2D, t, t)
+    transTuple = range(2, arr.ndims) + (0, 1)
+    wArr = np.transpose(wArr, transTuple)
+    wArr = vstackPoints(wArr)
+    derivArr = vparabolicApprox(wArr)
+    derivArr = vsmooth(derivArr)
+    return derivArr
+
+vlocalise = np.vectorize(localise)
 
 #color space conversion
 
 def RGBtoLAB(arr):
     assert(arr.dtype == cint)
-    lchanFloat = np.sum(arr, axis = 2, dtype = cflt) // 3
-    lchan = cint(lchanFloat)
-    achan = arr[: , : , 1] - arr[: , : , 0]
-    bchan = arr[: , : , 1] - arr[: , : , 2]
-    arr =  np.stack(lchan, achan, bchan, axis = 2)
-
-def LABtoRGB(arr):
-    assert(arr.dtype == cint)
-    g = np.sum(arr, axis = 2)
-    r = g - arr[: , : , 1]
-    b = g - arr[: , : , 2]
-    arr =  ulint(np.stack(r, g, b, axis = 2))
+    r = arr[: , : , 0].astype(cflt)
+    g = arr[: , : , 1].astype(cflt)
+    b = arr[: , : , 2].astype(cflt)
+    lchan = (r + g + b) / 3
+    achan = (g - r + 255) / 2
+    bchan = (g - b + 255) / 2
+    return np.stack((lchan, achan, bchan), axis = 2)
