@@ -290,7 +290,6 @@ class polyhedron:
                 return True
         return False
 
-
     def addFace(self, vertices, bypassCheck=False):
         """ polyhedron * vertex list -> face
         Creates a face and adds it to the polyhedron while
@@ -723,6 +722,7 @@ class polyhedron:
         self.vertices.extend(other.vertices)
         self.edges.extend(other.edges)
         self.faces.extend(other.faces)
+        return self
 
     def intersection(self, other):
         """polyhedron * polyhedron -> polyhedron
@@ -736,13 +736,14 @@ class polyhedron:
             elif all(f.isOnInteriorSide(other.vertices[0]) for f in self.faces):
                 return other
             else:
+                print("Tout pourri")
                 return polyhedron([], [], [])
         polyInter.createIntersectorVertices()
         polyInter.buildEdges()
         polyInter.buildFaces()
         return polyInter.result
 
-    def photo(self, pov, focalDist):
+    def photo(self, pov, focalPoint):
         """ """
 
 
@@ -1245,7 +1246,6 @@ def simpleCube():
     cube.addFace([v3, v7, v8, v5])
     cube.addFace([v4, v6, v8, v7])
     return cube
-
 
 
 def rotateFunction(rotCenter, rotVect):
