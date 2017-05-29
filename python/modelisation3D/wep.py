@@ -96,7 +96,10 @@ class edge:
         elif self.nFace is None:
             self.nFace = f
         else:
-            raise ValueError('Edge is already linked to two faces')
+            print(self)
+            print(self.pFace)
+            print(self.nFace)
+            # raise ValueError('Edge is already linked to two faces')
 
     def __str__(self):
         return "{} -> {}".format(str(self.nvt), str(self.pvt))
@@ -345,6 +348,16 @@ class polyhedron:
             x, y, z = arg1.coords
         elif type(arg1) is float:
             x, y, z = arg1, arg2, arg3
+        elif type(arg1) is vertex:
+            try:
+                newV = self.getVertex(arg1.x, arg1.y, arg1.z, COMPARISON_EPSILON)
+            except ValueError:
+                newV = arg1
+                self.vertices.append(arg1)
+            return newV
+        else:
+            print(type(arg1))
+            raise ValueError('bad argument type')
         try:
             newV = self.getVertex(x, y, z, COMPARISON_EPSILON)
         except ValueError:
@@ -799,11 +812,14 @@ class polyhedron:
                     sil.segments.append((nvtReduced.coords2D, pvtReduced.coords2D))
         return sil
 
-    def visualHull(sils):
-        """ silhouette list -> polyhedron
+    def visualHull(sils, length):
+        """ silhouette list * float -> polyhedron
         Returns the visual hull corresponding to the visual hull
             calculated with the silhouettes <sils>."""
-
+        result = sils.pop(0).cone(length)
+        for s in sils:
+            result = result.intersection(s.cone(length))
+        return result
 
 class intersector:
     """class representing an intersection between an edge and a face"""
@@ -1250,6 +1266,7 @@ class silhouette:
         B = (Z * N).normalize()
         X = math.cos(pitch) * N + math.sin(pitch) * B
         Y = Z * X
+        # simplex(X, Y, Z).plot()
         # The segments are defined in the coordinates system that has :
         #    self.focalPoint + focalDist * X as origin
         #    Z and Y as basis
@@ -1320,15 +1337,18 @@ class silhouette:
                                   (s[1] for s in self.segments)),
                            None))
         fig, ax = plt.subplots()
-        ax.set_xlim([min(min(p.get_xy()[:,0]) for p in patches),
-                     max(max(p.get_xy()[:,0]) for p in patches)])
-        ax.set_ylim([min(min(p.get_xy()[:,1]) for p in patches),
-                     max(max(p.get_xy()[:,1]) for p in patches)])
+        ax.set_xlim([min(min(p.get_xy()[:, 0]) for p in patches),
+                     max(max(p.get_xy()[:, 0]) for p in patches)])
+        ax.set_ylim([min(min(p.get_xy()[:, 1]) for p in patches),
+                     max(max(p.get_xy()[:, 1]) for p in patches)])
         pCol = PatchCollection(patches, cmap=matplotlib.cm.jet, alpha=0.4)
         colors = 100 * np.random.rand(len(patches))
         pCol.set_array(np.array(colors))
         ax.add_collection(pCol)
         plt.show()
+
+    def __str__(self):
+        return str(self.segments)
 
 
 def splitList(l, i1, i2):
@@ -1361,6 +1381,8 @@ def planeLineIntersect(p1, p2, equ):
         <equ>[0]*x + <equ>[1]*y + <equ>[2]*z = <equ>[3]"""
     n = vector(equ[0], equ[1], equ[2])
     v1, v2 = vector(p1), vector(p2)
+    print('\nequ:', equ, '\nn:', n, '\nv1:', v1, '\nv2:', v2)
+    print(n.dotProduct(v1 - v2))
     t = (equ[3] - n.dotProduct(v2)) / (n.dotProduct(v1 - v2))
     return (t * v1 + (1 - t) * v2).coords
 
@@ -1444,3 +1466,37 @@ def rotateFunction(rotCenter, rotVect):
                 rotCenter[1] + newVect.y,
                 rotCenter[2] + newVect.z)
     return rot
+
+def simplex(v1, v2, v3):
+    """ vector * vector * vector -> polyhedron
+    Returns a simplex made with the three vector."""
+    res = polyhedron([], [], [])
+    p0 = res.addVertex(vertex(0, 0, 0))
+    p1 = res.addVertex(vertex(v1))
+    p2 = res.addVertex(vertex(v2))
+    p3 = res.addVertex(vertex(v3))
+    p12 = res.addVertex(vertex(v1 + v2))
+    p13 = res.addVertex(vertex(v1 + v3))
+    p23 = res.addVertex(vertex(v2 + v3))
+    p123 = res.addVertex(vertex(v1 + v2 + v3))
+    res.addEdge(p0, p1)
+    res.addEdge(p0, p2)
+    res.addEdge(p0, p3)
+    res.addEdge(p1, p12)
+    res.addEdge(p1, p13)
+    res.addEdge(p2, p12)
+    res.addEdge(p2, p23)
+    res.addEdge(p3, p13)
+    res.addEdge(p3, p23)
+    res.addEdge(p1, p123)
+    res.addEdge(p2, p123)
+    res.addEdge(p3, p123)
+    res.addFace([p0, p2, p12, p1])
+    res.addFace([p0, p1, p13, p3])
+    res.addFace([p0, p3, p23, p2])
+    res.addFace([p1, p12, p123, p13])
+    res.addFace([p2, p23, p123, p12])
+    res.addFace([p3, p13, p123, p23])
+    return res
+    
+    
