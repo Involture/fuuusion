@@ -45,11 +45,19 @@ class vertex:
 
     def __str__(self):
         return ("({}, {}, {})".format(self.x, self.y, self.z) +
-                (" interior" if self.interior is not None else ""))
+                ("" if self.isInterior() is not None else " interior"))
 
-    def __getattr__(self, attr):
-        if attr == 'coords':
-            return (self.x, self.y, self.z)
+    def coords(self):
+        """ vertex -> float**3
+        Returns the tuple of coordinates of <self>."""
+        return (self.x, self.y, self.z)
+
+    def isInterior(self):
+        """ vertex -> bool"""
+        try:
+            return self.interior
+        except AttributeError:
+            return False
 
     def dist(self, other):
         """ vertex * vertex -> float
@@ -66,13 +74,13 @@ class vertex:
     def markFTraced(self, f):
         """ vertex * face -> None
         Marks <self> as having been traced for the face <f>."""
-        if self.fTraced == None :
+        if self.fTraced is None:
             self.fTraced = [f]
         else:
             self.fTraced.append(f)
 
     def isMarkedFor(self, f):
-        return self.fTraced != None and f in self.fTraced
+        return self.fTraced is not None and f in self.fTraced
 
 
 class edge:
@@ -140,8 +148,8 @@ class edge:
                 p = cross.dotProduct(lastCross)
                 if p < 0:
                     return False
-                elif p == 0 and cross.norm != 0:
-                    if cross.norm > COMPARISON_EPSILON:
+                elif p == 0 and cross.norm() != 0:
+                    if cross.norm() > COMPARISON_EPSILON:
                         warnings.warn("Cross product's norm is very low")
                     lastCross = cross
             return vertex(interVect)
@@ -191,9 +199,9 @@ class face:
         normals = []
         while len(normals) < n:
             j = randrange(L)
-            v0 = vector(self.vertices[j].coords)
-            v1 = vector(self.vertices[int(j + L / 3) % L].coords)
-            v2 = vector(self.vertices[int(j + 2 * L / 3) % L].coords)
+            v0 = vector(self.vertices[j].coords())
+            v1 = vector(self.vertices[int(j + L / 3) % L].coords())
+            v2 = vector(self.vertices[int(j + 2 * L / 3) % L].coords())
             try:
                 normals.append(((v1 - v0) * (v2 - v0)).normalize())
             except ValueError:
@@ -345,7 +353,7 @@ class polyhedron:
         if type(arg1) is tuple:
             x, y, z = arg1
         elif type(arg1) is vector:
-            x, y, z = arg1.coords
+            x, y, z = arg1.coords()
         elif type(arg1) is float:
             x, y, z = arg1, arg2, arg3
         elif type(arg1) is vertex:
@@ -574,7 +582,11 @@ class polyhedron:
         newEdge.pFace = e.pFace
         newEdge.nFace = e.nFace
         e.pFace.addVertexBetween(e.nvt, newVertex, newEdge.pvt)
-        e.nFace.addVertexBetween(e.nvt, newVertex, newEdge.pvt)
+        try:
+            e.nFace.addVertexBetween(e.nvt, newVertex, newEdge.pvt)
+        except AttributeError:
+            print(e)
+            raise AttributeError
         return (newVertex, newEdge)
 
     def faceSplit(self, f, v1, v2):
@@ -639,13 +651,13 @@ class polyhedron:
         Sweeping a multi-faced polyhedron is not advised.
         Corresponds to one case of Baumgart's routine SWEEP,
             the other case being covered by the translateSweep method."""
-        rotn = (1 / rotVect.norm) * rotVect
+        rotn = (1 / rotVect.norm()) * rotVect
 
         def rot(coords):
             oldVect = vector(coords) - vector(rotCenter)
-            newVect = (math.cos(rotVect.norm) * oldVect +
-                       math.sin(rotVect.norm) * rotn * oldVect +
-                       ((1 - math.cos(rotVect.norm)) *
+            newVect = (math.cos(rotVect.norm()) * oldVect +
+                       math.sin(rotVect.norm()) * rotn * oldVect +
+                       ((1 - math.cos(rotVect.norm())) *
                         (rotn.dotProduct(oldVect)) * rotn))
             return (rotCenter[0] + newVect.x,
                     rotCenter[1] + newVect.y,
@@ -672,7 +684,7 @@ class polyhedron:
         excludeV = []
         for i in range(nv):
             v = self.vertices[i]
-            newVertex = vertex(f(v.coords))
+            newVertex = vertex(f(v.coords()))
             try:
                 collidingV = self.getVertex(newVertex.x,
                                             newVertex.y,
@@ -715,13 +727,14 @@ class polyhedron:
         ax.set_zlim([min(v.z for v in self.vertices),
                      max(v.z for v in self.vertices)])
         for f in self.faces:
-            face = a3.art3d.Poly3DCollection([[v.coords for v in f.vertices]])
+            face = a3.art3d.Poly3DCollection([[v.coords()
+                                               for v in f.vertices]])
             ax.add_collection3d(face)
             face.set_edgecolor('k')
         if plotEdges:
             for e in self.edges:
-                edge = a3.art3d.Poly3DCollection([[e.nvt.coords,
-                                                   e.pvt.coords]])
+                edge = a3.art3d.Poly3DCollection([[e.nvt.coords(),
+                                                   e.pvt.coords()]])
                 ax.add_collection3d(edge)
                 edge.set_edgecolor('k')
         plt.show()
@@ -730,17 +743,17 @@ class polyhedron:
         """ polyhedron * ((float * float * float) -> (float * float * float)) -> ()
         Applies <f> to all of <self>'s vertices."""
         for v in self.vertices:
-            v.x, v.y, v.z = f(v.coords)
+            v.x, v.y, v.z = f(v.coords())
 
     def dilate(self, coef):
         """ polyhedron * float -> polyhedron
         Multiplies the coordinates of the vertices by coef."""
-        self.apply(lambda c: (coef * vector(c)).coords)
+        self.apply(lambda c: (coef * vector(c)).coords())
 
     def translate(self, vect):
         """ polyhedron * vector -> ()
         Translates the <self> following <vect>."""
-        self.apply(lambda c: (vector(c) + vect).coords)
+        self.apply(lambda c: (vector(c) + vect).coords())
 
     def union(self, other):
         """ polyhedron * polyhedron -> ()
@@ -754,15 +767,16 @@ class polyhedron:
         """polyhedron * polyhedron -> polyhedron
         Computes and returns the polyhedron of the
             intersection of <self> and <other>."""
-        polyInter = polyIntersection.fromPolyhedron(self, other)
-        # This handles the case of one polyhedron inside the other
+        poly1 = copy.deepcopy(self)
+        poly2 = copy.deepcopy(other)
+        polyInter = polyIntersection.fromPolyhedron(poly1, poly2)
+        # This handles the case of one polyhedron inside the poly2
         if len(polyInter.inter1) + len(polyInter.inter2) == 0:
-            if all(f.isOnInteriorSide(self.vertices[0]) for f in other.faces):
-                return self
-            elif all(f.isOnInteriorSide(other.vertices[0]) for f in self.faces):
-                return other
+            if all(f.isOnInteriorSide(poly1.vertices[0]) for f in poly2.faces):
+                return poly1
+            elif all(f.isOnInteriorSide(poly2.vertices[0]) for f in poly1.faces):
+                return poly2
             else:
-                print("Tout pourri")
                 return polyhedron([], [], [])
         polyInter.createIntersectorVertices()
         polyInter.buildEdges()
@@ -795,6 +809,7 @@ class polyhedron:
             projOfN = vector(planeLineIntersect(focalPoint, vertOfN, equ))
             pvtProj = vector(planeLineIntersect(focalPoint, e.pvt, equ))
             nvtProj = vector(planeLineIntersect(focalPoint, e.nvt, equ))
+            print(e.pvt, pvtProj, fVect)
             nvtReduced = vector((nvtProj - fVect).dotProduct(Z),
                                 (nvtProj - fVect).dotProduct(Y), 0)
             pvtReduced = vector((pvtProj - fVect).dotProduct(Z),
@@ -807,9 +822,11 @@ class polyhedron:
             s1 = normal.dotProduct(pfvReduced - pvtReduced)
             if s1 * normal.dotProduct(nfvReduced - pvtReduced) >= 0:
                 if s1 > 0:
-                    sil.segments.append((pvtReduced.coords2D, nvtReduced.coords2D))
+                    sil.segments.append((pvtReduced.coords2D(),
+                                         nvtReduced.coords2D()))
                 else:
-                    sil.segments.append((nvtReduced.coords2D, pvtReduced.coords2D))
+                    sil.segments.append((nvtReduced.coords2D(),
+                                         pvtReduced.coords2D()))
         return sil
 
     def visualHull(sils, length):
@@ -818,8 +835,11 @@ class polyhedron:
             calculated with the silhouettes <sils>."""
         result = sils.pop(0).cone(length)
         for s in sils:
+            print(s.focalPoint)
+            s.cone(length).plot()
             result = result.intersection(s.cone(length))
         return result
+
 
 class intersector:
     """class representing an intersection between an edge and a face"""
@@ -1211,13 +1231,20 @@ class vector:
         Returns the difference of the two vectors"""
         return self + (-1) * v
 
-    def __getattr__(self, attr):
-        if attr == 'norm':
-            return math.sqrt(self.dotProduct(self))
-        elif attr == 'coords':
-            return (self.x, self.y, self.z)
-        elif attr == 'coords2D':
-            return (self.x, self.y)
+    def norm(self):
+        """ vector -> float
+        Returns the norm of <self>."""
+        return math.sqrt(self.dotProduct(self))
+
+    def coords(self):
+        """ vector -> float**3
+        Returns the tuple of coordinates of <self>."""
+        return (self.x, self.y, self.z)
+
+    def coords2D(self):
+        """ vector -> float**2
+        Returns the tuple of the first two coordinates of <self>."""
+        return (self.x, self.y)
 
     def dotProduct(self, v):
         """ vector * vector -> float
@@ -1227,7 +1254,7 @@ class vector:
     def normalize(self):
         """ vector -> vector"""
         try:
-            return (1 / self.norm) * self
+            return (1 / self.norm()) * self
         except ZeroDivisionError:
             raise ValueError('Cannot normalize a null vector')
 
@@ -1256,16 +1283,7 @@ class silhouette:
     def cone(self, length):
         """ silhouette * float -> polyhedron
         Returns the cone polyhedron corresponding to the silhouette."""
-        yaw, roll, pitch = self.angles
-        x = vector(1, 0, 0)
-        y = vector(0, 1, 0)
-        z = vector(0, 0, 1)
-        N = math.cos(yaw) * x + math.sin(yaw) * y
-        A = (N * z).normalize()
-        Z = math.cos(roll) * z + math.sin(roll) * A
-        B = (Z * N).normalize()
-        X = math.cos(pitch) * N + math.sin(pitch) * B
-        Y = Z * X
+        X, Y, Z = baseFromAngles(self.angles)
         # simplex(X, Y, Z).plot()
         # The segments are defined in the coordinates system that has :
         #    self.focalPoint + focalDist * X as origin
@@ -1381,10 +1399,27 @@ def planeLineIntersect(p1, p2, equ):
         <equ>[0]*x + <equ>[1]*y + <equ>[2]*z = <equ>[3]"""
     n = vector(equ[0], equ[1], equ[2])
     v1, v2 = vector(p1), vector(p2)
-    print('\nequ:', equ, '\nn:', n, '\nv1:', v1, '\nv2:', v2)
-    print(n.dotProduct(v1 - v2))
+    # print('\nequ:', equ, '\nn:', n, '\nv1:', v1, '\nv2:', v2)
+    # print(n.dotProduct(v1 - v2))
     t = (equ[3] - n.dotProduct(v2)) / (n.dotProduct(v1 - v2))
-    return (t * v1 + (1 - t) * v2).coords
+    return (t * v1 + (1 - t) * v2).coords()
+
+
+def baseFromAngles(angles, originalBase=(vector(1, 0, 0),
+                                         vector(0, 1, 0),
+                                         vector(0, 0, 1))):
+    """ float**3 -> vector**3
+    Returns the base that has the angles of rotation angles
+        relative to originalBase."""
+    x, y, z = originalBase
+    yaw, roll, pitch = angles
+    N = math.cos(yaw) * x + math.sin(yaw) * y
+    A = (N * z).normalize()
+    Z = math.cos(roll) * z + math.sin(roll) * A
+    B = (Z * N).normalize()
+    X = math.cos(pitch) * N + math.sin(pitch) * B
+    Y = Z * X
+    return (X, Y, Z)
 
 
 def simpleSphere(precision):
@@ -1452,20 +1487,22 @@ def simpleCube():
 
 
 def rotateFunction(rotCenter, rotVect):
-    """ (float * float * float) * vector 
+    """ (float * float * float) * vector
         -> ((float * float * float) -> (float * float * float))
         Returns the function for rotating a set of coordinates."""
-    rotn = (1 / rotVect.norm) * rotVect
+    rotn = (1 / rotVect.norm()) * rotVect
+
     def rot(coords):
         oldVect = vector(coords) - vector(rotCenter)
-        newVect = (math.cos(rotVect.norm) * oldVect +
-                   math.sin(rotVect.norm) * rotn * oldVect +
-                   ((1 - math.cos(rotVect.norm)) *
+        newVect = (math.cos(rotVect.norm()) * oldVect +
+                   math.sin(rotVect.norm()) * rotn * oldVect +
+                   ((1 - math.cos(rotVect.norm())) *
                     (rotn.dotProduct(oldVect)) * rotn))
         return (rotCenter[0] + newVect.x,
                 rotCenter[1] + newVect.y,
                 rotCenter[2] + newVect.z)
     return rot
+
 
 def simplex(v1, v2, v3):
     """ vector * vector * vector -> polyhedron
@@ -1498,5 +1535,3 @@ def simplex(v1, v2, v3):
     res.addFace([p2, p23, p123, p12])
     res.addFace([p3, p13, p123, p23])
     return res
-    
-    
