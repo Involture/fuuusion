@@ -198,52 +198,40 @@ def filt(arr, f):
     
 #parabolic approximation
 
-def det(arr):
-    """Compute det of arr on first two dimensions."""
-    transTuple = tuple(range(2, arr.ndim)) + (0, 1)
-    tarr = np.transpose(arr, transTuple)
-    return np.linalg.det(tarr)
+def parabolicApprox(xArr, yArr):
+    x4sum = np.sum(xArr ** 4)
+    x3sum = np.sum(xArr ** 3)
+    x2sum = np.sum(xArr ** 2)
+    x1sum = np.sum(xArr)
+    x0sum = xArr.shape[0]
+    yx2sum = np.sum(yArr * xArr ** 2, axis = -1)
+    yx1sum = np.sum(yArr * xArr, axis = -1)
+    yx0sum = np.sum(yArr, axis = -1)
+    mat = np.array([[x4sum, x3sum, x2sum],
+                    [x3sum, x2sum, x1sum],
+                    [x2sum, x1sum, x0sum]])
+    vect = np.stack([yx2sum, yx1sum, yx0sum], axis = -2)
+    return np.linalg.solve(mat, vect)
 
-def cramer(mat, vect):
-    mat1 = np.stack((vect, mat[:,1], mat[:,2]), axis = 1)
-    mat2 = np.stack((mat[:,0], vect, mat[:,2]), axis = 1)
-    mat3 = np.stack((mat[:,0], mat[:,1], vect), axis = 1)
-    d = det(mat)
-    d1 = det(mat1)
-    d2 = det(mat2)
-    d3 = det(mat3)
-    return (d1 / d, d2 / d, d3 / d)
-
-def parabolicApprox(pointArr):
-    xArr = pointArr[:,0]
-    yArr = pointArr[:,1]
-    x4sum = np.sum(xArr ** 4, axis = 0)
-    x3sum = np.sum(xArr ** 3, axis = 0)
-    x2sum = np.sum(xArr ** 2, axis = 0)
-    x1sum = np.sum(xArr, axis = 0)
-    x0sum = np.resize(xArr.shape[0], xArr.shape[1:])
-    yx2sum = np.sum(yArr * xArr ** 2, axis = 0)
-    yx1sum = np.sum(yArr * xArr, axis = 0)
-    yx0sum = np.sum(yArr, axis = 0)
-    mat = np.stack([np.stack([x4sum, x3sum, x2sum], axis = 0),
-                    np.stack([x3sum, x2sum, x1sum], axis = 0),
-                    np.stack([x2sum, x1sum, x0sum], axis = 0)], axis = 0)
-    vect = np.stack([yx2sum, yx1sum, yx0sum], axis = 0)
-    return cramer(mat, vect)
-
-#loacalisator
-
-def coord(winArr, u, i, j):
-    xArr = np.resize(scal((i,j), u), winArr.shape[2:])
-    return np.stack((xArr, winArr[i, j]), axis = 0)
+#localisator
 
 def stackPoints(winArr, u):
     t = winArr.shape[0]
     c = t / 2
     circle = circleCut(t, t / 2).astype(np.bool)
+    count = np.sum(circle)
     ind = itertools.product(range(t), repeat = 2)
-    pointGene = (coord(winArr, u, i, j) for i, j in ind if circle[i, j])
-    return np.stack(pointGene)
+    coord = lambda i, j: (scal((i, j), u), winArr[i,j])
+    xGene = (scal((i, j), u) for i, j in ind if circle[i, j])
+    yGene = (winArr[i, j] for i, j in ind if circle[i, j])
+    xArr = np.empty((count,))
+    yArr = np.empty(winArr.shape[2:] + (count,))
+    for i, el in enumerate(xGene):
+        xArr[i] = el
+    for i, el in enumerate(yGene):
+        yArr[...,i] = el
+    print(xArr.shape, yArr.shape)
+    return (xArr, yArr)
 
 def smooth(a, b, c, eps):
     aplus = np.maximum(a, 0)
@@ -252,20 +240,24 @@ def smooth(a, b, c, eps):
 
 def localise(arr, t, u, eps):
     pp("    window vectorizing")
-    pptime()
     wArr = winVect(arr, t, t)
+    pptime()
     pp("    projecting")
+    pointsCouple = stackPoints(wArr, u)
     pptime()
-    wArr = stackPoints(wArr, u)
     pp("    parabol approximating")
+    parabArr = parabolicApprox(*pointsCouple)
     pptime()
-    parabTuple = parabolicApprox(wArr)
     pp("    smoothing")
+    a = parabArr[..., 0]
+    b = parabArr[..., 1]
+    c = parabArr[..., 2]
+    smoothArr = smooth(a, b, c, eps)
     pptime()
-    smoothArr = smooth(*parabTuple, eps)
     return smoothArr
 
-vlocalise = np.vectorize(localise)
+def localiseAndRestore(arr, t, u, eps):
+    return restoreShape(localise(arr, t, u, eps), t / 2, t / 2)
 
 #color space conversion
 

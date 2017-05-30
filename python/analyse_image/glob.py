@@ -32,7 +32,7 @@ def ptime():
 
 def pptime():
     """Print the total time since the beginning of the program if VV is True."""
-    pp("time" + str(t.time() - start))
+    pp("time " + str(t.time() - start))
 
 def pmem():
     """Print the total amount of memory used by python processes in MB \

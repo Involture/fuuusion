@@ -87,7 +87,7 @@ pmem()
 
 p("\nfiltering")
 c = circleCut(FILTSIZE, FILTSIZE / 2)
-loc = lambda arr, u: localise(arr, WINSIZE, u, EPS)
+loc = lambda arr, u: localiseAndRestore(arr, WINSIZE, u, EPS)
 gaussFilt = lambda u, sigma: filt(combinedImage, gaussd(FILTSIZE, u, sigma))
 detectEdge = lambda u, sigma: loc(gaussFilt(u, sigma), u)
 it = itertools.product(dirGene(NDIR), SIGMAS)
