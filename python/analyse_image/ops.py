@@ -1,6 +1,5 @@
 from scipy.misc import imread
 import matplotlib.pyplot as plt
-import itertools
 
 from glob import *
 from fourier import fft, ifft, sf
@@ -18,6 +17,7 @@ def log2(n):
 def openIm(imName, maxPow):
     """Open the file named imName as a nparray and cut it so its \ 
     dimensions are powers of two."""
+    pr("opening", 1)
     im = imread(imName)
     p, q = im.shape[:2]
     r, s = log2(p), log2(q)
@@ -32,39 +32,10 @@ def openIm(imName, maxPow):
 def ispVect(arr):
     """Replace each pixel by an array of length 256 full of zero excepted a \
     one at the index corresponding to the value of the pixel."""
+    pr("isp vectorizing", 1)
     return cint(np.stack([arr == i for i in range(256)], axis = -1))
 
-def _isp(arr):
-    return np.sum(ispVect(arr), axis = (0,1), dtype = cint)
-
 #ploting functions
-
-def _plotSpec(subp, spectrum, c):
-    """Plot the intensity spectrum to the specified subplot
-    c is the color of the plot."""
-    ind = np.arange(N)
-    width = 1
-
-    subp.bar(ind, spectrum, width, color = c, edgecolor = c)
-
-    subp.set_xlabel("pixel value")
-    subp.set_ylabel("nb of pixels")
-
-def plotIsp(arr):
-    isp = _isp(arr)
-    n = len(isp)
-    fig = plt.figure()
-    if n != 3:
-        sub = fig.add_subplot(111)
-        _plotSpec(sub, isp, "black")
-    else:
-        sub1 = fig.add_subplot(131)
-        sub2 = fig.add_subplot(132)
-        sub3 = fig.add_subplot(133)
-        _plotSpec(sub1, isp[0], "red")
-        _plotSpec(sub2, isp[1], "green")
-        _plotSpec(sub3, isp[2], "blue")
-    fig.show()
 
 def show(arr):
     """Display the image."""
@@ -137,6 +108,7 @@ def fullDiminish(arr, f):
 #window vectorization
 
 def winVect(arr, p, q):
+    pr("windows vectorizing", 2)
     powCheck2(p)
     powCheck2(q)
     a, b = np.shape(arr)[:2]
@@ -154,13 +126,13 @@ def restoreShape(arr, dp, dq):
     res = np.zeros(bigShape, dtype = cflt)
     res[dp: -dp, dq: -dq] = arr
     res[dp: -dp, : dq] = np.expand_dims(arr[:, 0], 1)
-    res[dp: -dp, -dp:] = np.expand_dims(arr[:, -1], 1)
+    res[dp: -dp, -dq:] = np.expand_dims(arr[:, -1], 1)
     res[: dp, dq: -dq] = np.expand_dims(arr[0, :], 0)
     res[-dp:, dq: -dq] = np.expand_dims(arr[-1, :], 0)
     res[: dp, : dq] = arr[0, 0]
     res[: dp, -dq:] = arr[0, -1]
     res[-dp: , : dq] = arr[-1, 0]
-    res[-dp: , dq:] = arr[-1, -1]
+    res[-dp: , -dq:] = arr[-1, -1]
     return res
 
 #filtering functions
@@ -173,6 +145,7 @@ def filtl(arr, fs):
         arr[...] = _filt(arr, fs)
 
 def filt(arr, f):
+    pr("filtering", 2)
     """Filter arr with f on his first two dimensions."""
     cisfilt(f)
     shape = arr.shape
@@ -189,7 +162,7 @@ def filt(arr, f):
     res = np.zeros(bigShape, dtype = cflt)
     for i in range(-dx, dx + 1):
         for j in range(-dy, dy + 1):
-            pp(str(i) + str(j))
+            pr(str(i) + str(j), 4)
             if f[dx - i, dy - j] != 0:
                 shiftedArr = np.zeros(bigShape, dtype = cflt)
                 shiftedArr[dx + i: dx + i + a, dy + j: dy + j + b] = f[dx - i, dy - j] * cflt(arr)
@@ -199,6 +172,7 @@ def filt(arr, f):
 #parabolic approximation
 
 def parabolicApprox(xArr, yArr):
+    pr("parabolic approximating", 2)
     x4sum = np.sum(xArr ** 4)
     x3sum = np.sum(xArr ** 3)
     x2sum = np.sum(xArr ** 2)
@@ -216,48 +190,39 @@ def parabolicApprox(xArr, yArr):
 #localisator
 
 def stackPoints(winArr, u):
+    pr("projecting points", 2)
     t = winArr.shape[0]
     c = t / 2
     circle = circleCut(t, t / 2).astype(np.bool)
     count = np.sum(circle)
-    ind = itertools.product(range(t), repeat = 2)
+    ind1 = itertools.product(range(t), repeat = 2)
+    ind2 = itertools.product(range(t), repeat = 2)
     coord = lambda i, j: (scal((i, j), u), winArr[i,j])
-    xGene = (scal((i, j), u) for i, j in ind if circle[i, j])
-    yGene = (winArr[i, j] for i, j in ind if circle[i, j])
-    xArr = np.empty((count,))
-    yArr = np.empty(winArr.shape[2:] + (count,))
-    for i, el in enumerate(xGene):
-        xArr[i] = el
-    for i, el in enumerate(yGene):
-        yArr[...,i] = el
-    print(xArr.shape, yArr.shape)
+    xGene = (scal((i, j), u) for i, j in ind1 if circle[i, j])
+    yGene = (winArr[i, j] for i, j in ind2 if circle[i, j])
+    xArr = np.fromiter(xGene, dtype = cflt)
+    yArr = stackGene(yGene, count, winArr.ndim - 2)
     return (xArr, yArr)
 
 def smooth(a, b, c, eps):
+    pr("smoothing", 2)
     aplus = np.maximum(a, 0)
     cplus = np.maximum(c, 0)
     return -(2 * aplus * cplus) / (abs(b) + eps)
 
 def localise(arr, t, u, eps):
-    pp("    window vectorizing")
+    pr("localising", 2)
     wArr = winVect(arr, t, t)
-    pptime()
-    pp("    projecting")
     pointsCouple = stackPoints(wArr, u)
-    pptime()
-    pp("    parabol approximating")
     parabArr = parabolicApprox(*pointsCouple)
-    pptime()
-    pp("    smoothing")
     a = parabArr[..., 0]
     b = parabArr[..., 1]
     c = parabArr[..., 2]
     smoothArr = smooth(a, b, c, eps)
-    pptime()
     return smoothArr
 
 def localiseAndRestore(arr, t, u, eps):
-    return restoreShape(localise(arr, t, u, eps), t / 2, t / 2)
+    return restoreShape(localise(arr, t, u, eps), t // 2, t // 2)
 
 #color space conversion
 

@@ -46,11 +46,9 @@ def gauss(t, u, sigma):
     d = distFilt(t, u)
     return np.exp(- (d / sigma) ** 2) / np.sqrt(sigma)
 
+def fgauss(t, u, sigma):
+    return switchQuad(gauss(t, u, sigma))
+
 def gaussd(t, u, sigma) :
     d = distFilt(t, u)
     return (-2 * d / sigma ** 2) * np.exp(- (d / sigma) ** 2)
-
-def fGaussGene(winSize, ndir, sigma):
-    g = lambda u: gauss(winSize, u, sigma)
-    cg = lambda u: g(u) * circleCut(winSize, winSize / 2)
-    return (switchQuad(cg(u)) for u in dirGene(ndir))
