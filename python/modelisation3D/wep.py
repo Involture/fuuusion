@@ -92,7 +92,7 @@ class edge:
         It is okay for the faces to be None, if the edge is not linked.
         However None vertices are not justifiable and shall not be used."""
         if type(nVertex) is vector:
-            self.pvt = vertex(nVertex)
+            self.pvt =  vertex(nVertex)
             self.nvt = vertex(0, 0, 0)
         else:
             self.pvt = pVertex  # positive vertex
@@ -229,10 +229,10 @@ class face:
                     self.vertices.insert(i, nV)
                     return nV
                 else:
-                    print(v1, v2, self)
+                    # print(v1, v2, self)
                     raise ValueError('Vertices given are not '
                                      'adjacent in the face')
-        print(v1, self)
+        # print(v1, self)
         raise ValueError('<v1> is not even in the face')
 
     def isOnInteriorSide(self, v):
@@ -851,16 +851,11 @@ class polyhedron:
             projOfN = vector(planeLineIntersect(focalPoint, vertOfN, equ))
             pvtProj = vector(planeLineIntersect(focalPoint, e.pvt, equ))
             nvtProj = vector(planeLineIntersect(focalPoint, e.nvt, equ))
-            print((projOfP - fVect), vector(vertOfP) - fVect)
-            try:
-                assert ((projOfP - fVect) * vector(vertOfP) - fVect).norm() < COMPARISON_EPSILON
-            except:
-                print(fVect, projOfP, vertOfP)
-                simplex((projOfP - fVect), vector(vertOfP) - fVect, onBase()[0]).plot()
-                print((projOfP - fVect) * vector(vertOfP) - fVect)
-                raise Exception
+            # print((projOfP - fVect), vector(vertOfP) - fVect)
+            # assert ((projOfP - fVect) * vector(vertOfP) - fVect).norm() < COMPARISON_EPSILON
             nvtReduced = vector((nvtProj - fVect).dotProduct(Z),
                                 (nvtProj - fVect).dotProduct(Y), 0)
+
             pvtReduced = vector((pvtProj - fVect).dotProduct(Z),
                                 (pvtProj - fVect).dotProduct(Y), 0)
             nfvReduced = vector((projOfN - fVect).dotProduct(Z),
@@ -887,7 +882,7 @@ class polyhedron:
         assert result.pnFacesInPoly()
         i = 0
         for s in sils:
-            print(i)
+            # print(i)
             assert result.pnFacesInPoly()
             result = result.intersection(s.cone(length), True)
             result.plot()
@@ -994,7 +989,7 @@ class polyIntersection:
                                                    [el1.nFace,
                                                     el1.pFace,
                                                     el2]))
-                    print('intersected')
+                    # print('intersected')
             else:
                 raise TypeError('The arguments given must '
                                 'be an edge and a face')
@@ -1007,7 +1002,7 @@ class polyIntersection:
                                                    [el2.nFace,
                                                     el2.pFace,
                                                     el1]))
-                    print('intersected')
+                    # print('intersected')
             else:
                 raise TypeError('The arguments given must '
                                 'be an edge and a face')
@@ -1022,9 +1017,7 @@ class polyIntersection:
         otherFInters = self.getIntersectorList(inter.f.vertices)
         # First intersector
         pInters = self.getIntersectorList(inter.pe.pFace.vertices)
-        otherI1 = next(filter(lambda x: x is not None and
-                              x.f == inter.f and
-                              x != inter,
+        otherI1 = next(filter(lambda x: x is not None and x.f == inter.f and x != inter,
                               pInters),
                        False)
         if otherI1 is False:
@@ -1037,7 +1030,7 @@ class polyIntersection:
                 # polyhedron(inter.f.vertices + inter.pe.pFace.vertices,
                 #            inter.pe.pFace.edges() + inter.f.edges(),
                 #            [inter.f, inter.pe.pFace]).plot(True, col=('none', 'k', 'r'))
-                print(inter.f, '\n\n', inter.pe.pFace)
+                # print(inter.f, '\n\n', inter.pe.pFace)
                 assert all(v in self.poly1.vertices for v in inter.f.vertices) or all(v in self.poly2.vertices for v in inter.f.vertices)
                 assert self.poly1.facesInVertices() and self.poly2.facesInVertices()
                 assert self.poly1.pnFacesInPoly() and self.poly2.pnFacesInPoly()
@@ -1062,7 +1055,7 @@ class polyIntersection:
                 polyhedron(inter.f.vertices + inter.pe.nFace.vertices,
                            inter.pe.nFace.edges() + inter.f.edges(),
                            [inter.f, inter.pe.nFace]).plot(True, col=('none', 'k', 'r'))
-                print(inter.f, inter.pe.pFace)
+                # print(inter.f, inter.pe.pFace)
                 raise ValueError('No intersector found')
         inter.adjacents = (otherI1, otherI2)
         return (otherI1, otherI2)
