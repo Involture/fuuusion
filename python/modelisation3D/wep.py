@@ -92,7 +92,7 @@ class edge:
         It is okay for the faces to be None, if the edge is not linked.
         However None vertices are not justifiable and shall not be used."""
         if type(nVertex) is vector:
-            self.pvt =  vertex(nVertex)
+            self.pvt = vertex(nVertex)
             self.nvt = vertex(0, 0, 0)
         else:
             self.pvt = pVertex  # positive vertex
@@ -852,10 +852,15 @@ class polyhedron:
             pvtProj = vector(planeLineIntersect(focalPoint, e.pvt, equ))
             nvtProj = vector(planeLineIntersect(focalPoint, e.nvt, equ))
             print((projOfP - fVect), vector(vertOfP) - fVect)
-            assert ((projOfP - fVect) * vector(vertOfP) - fVect).norm() < COMPARISON_EPSILON
+            try:
+                assert ((projOfP - fVect) * vector(vertOfP) - fVect).norm() < COMPARISON_EPSILON
+            except:
+                print(fVect, projOfP, vertOfP)
+                simplex((projOfP - fVect), vector(vertOfP) - fVect, onBase()[0]).plot()
+                print((projOfP - fVect) * vector(vertOfP) - fVect)
+                raise Exception
             nvtReduced = vector((nvtProj - fVect).dotProduct(Z),
                                 (nvtProj - fVect).dotProduct(Y), 0)
-            
             pvtReduced = vector((pvtProj - fVect).dotProduct(Z),
                                 (pvtProj - fVect).dotProduct(Y), 0)
             nfvReduced = vector((projOfN - fVect).dotProduct(Z),
@@ -1017,13 +1022,15 @@ class polyIntersection:
         otherFInters = self.getIntersectorList(inter.f.vertices)
         # First intersector
         pInters = self.getIntersectorList(inter.pe.pFace.vertices)
-        otherI1 = next(filter(lambda x: x is not False and x.f == inter.f and x != inter,
+        otherI1 = next(filter(lambda x: x is not None and
+                              x.f == inter.f and
+                              x != inter,
                               pInters),
                        False)
         if otherI1 is False:
             # The pFace does not intersect inter.f a second time,
             # looking for a place where inter.f intersects the pFace
-            otherI1 = next(filter(lambda x: x is not False and x.f == inter.pe.pFace,
+            otherI1 = next(filter(lambda x: x is not None and x.f == inter.pe.pFace,
                                   otherFInters),
                            False)
             if otherI1 is False:
@@ -1042,13 +1049,13 @@ class polyIntersection:
                 raise ValueError('No intersector found')
         # Second intersector
         nInters = self.getIntersectorList(inter.pe.nFace.vertices)
-        otherI2 = next(filter(lambda x: x is not False and x.f == inter.f and x != inter,
+        otherI2 = next(filter(lambda x: x is not None and x.f == inter.f and x != inter,
                               nInters),
                        False)
         if otherI2 is False:
             # The nFace does not intersect inter.f a second time,
             # looking for a place where inter.f intersects the nFace
-            otherI2 = next(filter(lambda x: x is not False and x.f == inter.pe.nFace,
+            otherI2 = next(filter(lambda x: x is not None and x.f == inter.pe.nFace,
                                   otherFInters),
                            False)
             if otherI2 is False:
