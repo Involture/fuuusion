@@ -66,13 +66,12 @@ class vertex:
     def markFTraced(self, f):
         """ vertex * face -> None
         Marks <self> as having been traced for the face <f>."""
-        if self.fTraced == None :
-            self.fTraced = [f]
-        else:
-            self.fTraced.append(f)
+        if self.fTraced is None:
+            self.fTraced = set()
+        self.fTraced.append(f)
 
     def isMarkedFor(self, f):
-        return self.fTraced != None and f in self.fTraced
+        return self.fTraced is not None and f in self.fTraced
 
 
 class edge:
@@ -215,7 +214,7 @@ class face:
                 if self.vertices[(i + 1) % n] == v2:
                     self.vertices.insert((i + 1) % n, nV)
                     break
-                elif self.vertices[(i - 1) % n] == v2:
+                elif self.vertices[i - 1] == v2:
                     self.vertices.insert(i, nV)
                     break
                 else:
@@ -350,7 +349,10 @@ class polyhedron:
             x, y, z = arg1, arg2, arg3
         elif type(arg1) is vertex:
             try:
-                newV = self.getVertex(arg1.x, arg1.y, arg1.z, COMPARISON_EPSILON)
+                newV = self.getVertex(arg1.x,
+                                      arg1.y,
+                                      arg1.z,
+                                      COMPARISON_EPSILON)
             except ValueError:
                 newV = arg1
                 self.vertices.append(arg1)
@@ -374,10 +376,10 @@ class polyhedron:
         vList = self.nFace.vertices
         n = len(vList)
         i = vList.index(self.nvt)
-        if vList[(i - 1) % n] == self.pvt:
+        if vList[i - 1] == self.pvt:
             return self.getEdge(self.nvt, vList[(i + 1) % n])
         else:
-            return self.getEdge(self.nvt, vList[(i - 1) % n])
+            return self.getEdge(self.nvt, vList[i - 1])
 
     def pnw(self, e):
         """ polyhedron * edge -> edge
@@ -388,10 +390,10 @@ class polyhedron:
         vList = self.pFace.vertices
         n = len(vList)
         i = vList.index(self.nvt)
-        if vList[(i - 1) % n] == self.pvt:
+        if vList[i - 1] == self.pvt:
             return self.getEdge(self.nvt, vList[(i + 1) % n])
         else:
-            return self.getEdge(self.nvt, vList[(i - 1) % n])
+            return self.getEdge(self.nvt, vList[i - 1])
 
     def npw(self, e):
         """ polyhedron * edge -> edge
@@ -402,10 +404,10 @@ class polyhedron:
         vList = self.nFace.vertices
         n = len(vList)
         i = vList.index(self.pvt)
-        if vList[(i - 1) % n] == self.nvt:
+        if vList[i - 1] == self.nvt:
             return self.getEdge(self.pvt, vList[(i + 1) % n])
         else:
-            return self.getEdge(self.pvt, vList[(i - 1) % n])
+            return self.getEdge(self.pvt, vList[i - 1])
 
     def ppw(self, e):
         """ polyhedron * edge -> edge
@@ -416,10 +418,10 @@ class polyhedron:
         vList = self.pFace.vertices
         n = len(vList)
         i = vList.index(self.pvt)
-        if vList[(i - 1) % n] == self.nvt:
+        if vList[i - 1] == self.nvt:
             return self.getEdge(self.pvt, vList[(i + 1) % n])
         else:
-            return self.getEdge(self.pvt, vList[(i - 1) % n])
+            return self.getEdge(self.pvt, vList[i - 1])
 
     def nextEdgeCW(self, e, fv):
         """ polyhedron * edge * face/vertex -> edge
@@ -759,7 +761,8 @@ class polyhedron:
         if len(polyInter.inter1) + len(polyInter.inter2) == 0:
             if all(f.isOnInteriorSide(self.vertices[0]) for f in other.faces):
                 return self
-            elif all(f.isOnInteriorSide(other.vertices[0]) for f in self.faces):
+            elif all(f.isOnInteriorSide(other.vertices[0])
+                     for f in self.faces):
                 return other
             else:
                 print("Tout pourri")
@@ -807,9 +810,11 @@ class polyhedron:
             s1 = normal.dotProduct(pfvReduced - pvtReduced)
             if s1 * normal.dotProduct(nfvReduced - pvtReduced) >= 0:
                 if s1 > 0:
-                    sil.segments.append((pvtReduced.coords2D, nvtReduced.coords2D))
+                    sil.segments.append((pvtReduced.coords2D,
+                                         nvtReduced.coords2D))
                 else:
-                    sil.segments.append((nvtReduced.coords2D, pvtReduced.coords2D))
+                    sil.segments.append((nvtReduced.coords2D,
+                                         pvtReduced.coords2D))
         return sil
 
     def visualHull(sils, length):
@@ -820,6 +825,7 @@ class polyhedron:
         for s in sils:
             result = result.intersection(s.cone(length))
         return result
+
 
 class intersector:
     """class representing an intersection between an edge and a face"""
@@ -932,26 +938,32 @@ class polyIntersection:
         otherFInters = self.getIntersectorList(inter.f.vertices)
         # First intersector
         pInters = self.getIntersectorList(inter.pe.pFace.vertices)
-        otherI1 = next(filter(lambda x: x is not False and x.f == inter.f and x != inter,
+        otherI1 = next(filter(lambda x: x is not False and
+                              x.f == inter.f and
+                              x != inter,
                               pInters),
                        False)
         if otherI1 is False:
             # The pFace does not intersect inter.f a second time,
             # looking for a place where inter.f intersects the pFace
-            otherI1 = next(filter(lambda x: x is not False and x.f == inter.pe.pFace,
+            otherI1 = next(filter(lambda x: x is not False and
+                                  x.f == inter.pe.pFace,
                                   otherFInters),
                            False)
             if otherI1 is False:
                 raise ValueError('No intersector found')
         # Second intersector
         nInters = self.getIntersectorList(inter.pe.nFace.vertices)
-        otherI2 = next(filter(lambda x: x is not False and x.f == inter.f and x != inter,
+        otherI2 = next(filter(lambda x: x is not False and
+                              x.f == inter.f and
+                              x != inter,
                               nInters),
                        False)
         if otherI2 is False:
             # The nFace does not intersect inter.f a second time,
             # looking for a place where inter.f intersects the nFace
-            otherI2 = next(filter(lambda x: x is not False and x.f == inter.pe.nFace,
+            otherI2 = next(filter(lambda x: x is not False and
+                                  x.f == inter.pe.nFace,
                                   otherFInters),
                            False)
             if otherI2 is False:
@@ -1083,14 +1095,18 @@ class polyIntersection:
         initialV = face.vertices[vi]
         newFace = [initialV]
         initialI = initialV.intersector
-        assert initialI is not None  # This checks that the vertex was actually an intersection
+        # This checks that the vertex was actually an intersection
+        assert initialI is not None
         # This part determines which side of the face is the way to go
-        if face.vertices[(vi + 1) % n].interior is True or face.vertices[(vi + 1) % n].intersector is not None:
+        if (face.vertices[(vi + 1) % n].interior is True or
+                face.vertices[(vi + 1) % n].intersector is not None):
             step = 1
-        elif face.vertices[(vi - 1) % n].interior is True or face.vertices[(vi - 1) % n].intersector is not None:
+        elif (face.vertices[vi - 1].interior is True or
+              face.vertices[vi - 1].intersector is not None):
             step = -1
         else:
-            raise ValueError('The vertex given has no adjacent interior or intersector vertex')
+            raise ValueError('The vertex given has no adjacent interior'
+                             'or intersector vertex')
         i = (vi + step) % n
         force = True
         while force or i != (vi + step) % n:
@@ -1105,12 +1121,12 @@ class polyIntersection:
             face.vertices[i].markFTraced(face)
             lastI = self.getIntersector(face.vertices[i])
             potentialInters = self.nextIntersectors(lastI)
-            if abs((vector(potentialInters[0].v) - vector(lastI.v))\
-               .dotProduct(face.normalVect())) < COMPARISON_EPSILON:
-               inter = potentialInters[0]
-            elif abs((vector(potentialInters[1].v) - vector(lastI.v))\
-               .dotProduct(face.normalVect())) < COMPARISON_EPSILON:
-               inter = potentialInters[1]
+            if abs((vector(potentialInters[0].v) - vector(lastI.v))
+                   .dotProduct(face.normalVect())) < COMPARISON_EPSILON:
+                inter = potentialInters[0]
+            elif abs((vector(potentialInters[1].v) - vector(lastI.v))
+                     .dotProduct(face.normalVect())) < COMPARISON_EPSILON:
+                inter = potentialInters[1]
             else:
                 raise Exception('The nextIntersectors are weird (1)')
             while inter.v not in face.vertices:
@@ -1137,20 +1153,20 @@ class polyIntersection:
             f = self.poly1.faces[fi]
             for vi in range(len(f.vertices)):
                 v = f.vertices[vi]
-                if v.intersector is not None and not v.isMarkedFor(f) :
+                if v.intersector is not None and not v.isMarkedFor(f):
                     self.faceTrace(1, fi, vi)
             v = f.vertices[0]
             if v.interior and not v.isMarkedFor(f):
-                interiorFaceTrace(f)
+                self.interiorFaceTrace(f)
         for fi in range(len(self.poly2.faces)):
             f = self.poly2.faces[fi]
             for vi in range(len(f.vertices)):
                 v = f.vertices[vi]
-                if v.intersector is not None and not v.isMarkedFor(f) :
+                if v.intersector is not None and not v.isMarkedFor(f):
                     self.faceTrace(2, fi, vi)
             v = f.vertices[0]
             if v.interior and not v.isMarkedFor(f):
-                interiorFaceTrace(f)
+                self.interiorFaceTrace(f)
 
     def interiorFaceTrace(self, f):
         """ polyIntersection * face -> None
@@ -1452,10 +1468,11 @@ def simpleCube():
 
 
 def rotateFunction(rotCenter, rotVect):
-    """ (float * float * float) * vector 
+    """ (float * float * float) * vector
         -> ((float * float * float) -> (float * float * float))
         Returns the function for rotating a set of coordinates."""
     rotn = (1 / rotVect.norm) * rotVect
+
     def rot(coords):
         oldVect = vector(coords) - vector(rotCenter)
         newVect = (math.cos(rotVect.norm) * oldVect +
@@ -1466,6 +1483,7 @@ def rotateFunction(rotCenter, rotVect):
                 rotCenter[1] + newVect.y,
                 rotCenter[2] + newVect.z)
     return rot
+
 
 def simplex(v1, v2, v3):
     """ vector * vector * vector -> polyhedron
@@ -1498,5 +1516,3 @@ def simplex(v1, v2, v3):
     res.addFace([p2, p23, p123, p12])
     res.addFace([p3, p13, p123, p23])
     return res
-    
-    
