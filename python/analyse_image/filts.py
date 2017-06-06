@@ -1,94 +1,56 @@
 from glob import *
 
-#standard filters
+#geometric tools
 
-def blur(d):
-    t = 2 * d + 1
-    return np.ones((t,t), dtype = lint)
+def scal(u, v):
+    x1, y1 = u
+    x2, y2 = v
+    return x1 * x2 + y1 * y2
 
-def dgrad(d):
-    t = 2 * d + 1
-    onesArr = np.ones((1,t), dtype = lint)
-    row = np.array(np.concatenate((onesArr, -onesArr), axis = 1))
-    row[0][0] = 0
-    res = np.array(row)
-    for j in range (t - 1):
-        permute(row)
-        res = np.concatenate((res,row), axis = 0)
-    return res[:, :7]
+def norm(u):
+    x, y = u
+    return np.sqrt(x ** 2 + y ** 2)
 
-def vgrad(d):
-    t = 2 * d + 1
-    return np.concatenate((-np.ones((t, d), dtype = lint), np.zeros((t, 1), dtype = lint), np.ones((t,d), dtype = lint)), axis = 1)
+def normScal(u, v):
+    x, y = v
+    x2, y2 = x / norm(v), y / norm(v)
+    w = (x2, y2)
+    a, b = u
+    return scal(u, w)
 
-def pdgrad(d):
-    t = 2 * d + 1
-    row = np.array(np.concatenate((np.arange(t), -np.arange(t - 1, 0, -1)), axis = 0), ndmin = 2)
-    res = np.array(row)
-    for j in range(t - 1):
-        permute(row)
-        res = np.concatenate((res, row), axis = 0)
-    return res[:,:t]
+def distFilt(t, v):
+    center = (t - 1) / 2
+    def vect(i, j):
+        x, y = i - center, j - center
+        return(x, y)
+    return np.fromfunction(lambda i, j : normScal(vect(i, j), v), (t,t))
 
-def pvgrad(d):
-    t = 2 * d + 1
-    arr1 = np.stack([np.arange(1, d + 1) for i in range(t)], axis = 1)
-    arr2 = np.stack([-np.arange(d + 1) for i in range(t)], axis = 1)
-    return np.concatenate((np.flipud(arr1), arr2), axis = 0)
+def circleDist(t):
+    hdist = distFilt(t, (1,0))
+    vdist = distFilt(t, (0,1))
+    return norm((hdist, vdist))
 
-#topological elements
+def utheta(theta):
+    return (np.cos(theta), np.sin(theta))
 
-lcorner = np.array([[0,0,0],[1,1,0],[1,1,0]], dtype = ulint)
-bcorner = np.array([[1,0,0],[1,1,0],[1,1,1]], dtype = ulint)
+def dirGene(ndir):
+    return (utheta(k * np.pi / ndir) for k in range(ndir))
 
-#fourier transform filters functions
+#filters and filter generators
 
-def vdist(p, q):
-    arr1 = np.stack([np.arange(p // 2) for i in range(q)], axis = 1)
-    arr2 = np.stack([np.arange(p // 2 + (p % 2)) for i in range(q)], axis = 1)
-    return np.concatenate((arr1, np.flipud(arr2)), axis = 0)
+def circleCut(t, cut):
+    cDist = circleDist(t)
+    return cflt(cDist <= cut)
 
-def permute(arr):
-    row = arr[0]
-    temp = row[-1]
-    arr[0][1:] = row[:-1]
-    arr[0][0] = temp
+def gauss(t, u, sigma):
+    d = distFilt(t, u)
+    return np.exp(- (d / sigma) ** 2) / np.sqrt(sigma)
 
-def ddist(t):
-    row = np.array(np.concatenate((np.arange(t), np.arange(t - 1, 0, -1)), axis = 0), ndmin = 2)
-    res = np.array(row)
-    for j in range(t - 1):
-        permute(row)
-        res = np.concatenate((res, row), axis = 0)
-    return res[:,:t]
+def gaussd(t, u, sigma) :
+    d = distFilt(t, u)
+    return (-2 * d / sigma ** 2) * np.exp(- (d / sigma) ** 2)
 
-def ellipse(p, q):
-    return (vdist((p, q)) * q) ** 2 + (vdist((q, p)).T * p) ** 2
-
-def squareCut(p, q, p0):
-    ilim = p * p0 // 200
-    jlim = p * p0 // 200
-    arr = np.zeros((p, q), dtype = ulint)
-    arr[ilim : -ilim, jlim : -jlim] = np.ones((p - 2 * ilim, q - 2 * jlim), dtype = ulint)
-    return arr
-
-def circleCut(p, q, p0):
-    return 20000 * ellipse(p, q) <= (p * q * p0) ** 2
-
-def BW(p, q, p0):
-    return (1 / (1 + (ellipse(p, q) * 160000 / (p * q * p0) ** 2)))
-
-def cgauss(p, q, p0):
-    return np.exp(-ellipse(p, q) * 160000 / (p * q * p0) ** 2)
-
-def vgauss(t, p0):
-    return np.exp(-vdist(t, t) ** 2 * 40000 / (t * p0)  ** 2)
-
-def hgauss(t, p0):
-    return vgauss(t, p0).T
-
-def d1gauss(t, p0):
-    return np.exp(-ddist(t) ** 2 * 40000 / (t * p0) ** 2)
-
-def d2gauss(t, p0):
-    return np.flipud(d1gauss(t, p0))
+def fGaussGene(winSize, ndir, sigma):
+    g = lambda u: gauss(winSize, u, sigma)
+    cg = lambda u: g(u) * circleCut(winSize, winSize / 2)
+    return (switchQuad(cg(u)) for u in dirGene(ndir))

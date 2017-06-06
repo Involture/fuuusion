@@ -1,7 +1,7 @@
-import mpl_toolkits.mplot3d as a3
 from wep import *
-import math
-import matplotlib.pyplot as plt
+# import mpl_toolkits.mplot3d as a3
+# import math
+# import matplotlib.pyplot as plt
 
 v1 = vertex(0.5, 0.5, 0.5)
 v2 = vertex(0.5, 0.5, 0.5)
@@ -18,7 +18,3 @@ v10 = vertex(-0.21428571428571308, -0.09945034610094483, -0.6428571428571433)
 v11 = vertex(2.7063155683708526, -6.227094420090658, -2.1031577841854263)
 v12 = vertex(1.5361528821833799, -6.8081568069708585, -1.5180764410917051)
 f2 = face([v7, v8, v9, v10, v11, v12])
-
-
-
-
