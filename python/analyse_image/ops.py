@@ -19,12 +19,6 @@ def openIm(imName, maxPow):
     dimensions are powers of two."""
     pr("opening", 1)
     im = imread(imName)
-    p, q = im.shape[:2]
-    r, s = log2(p), log2(q)
-    pp, qq = 2 ** r, 2 ** s
-    im = im[: pp, : qq]
-    reduceFactor = (r + s) // 2 + (r + s) % 2 - maxPow
-    im = im[::2 ** reduceFactor, ::2 ** reduceFactor]
     r, g, b = im[:,:,0], im[:,:,1], im[:,:,2]
     mr, mg, mb = r.max(), g.max(), b.max()
     nr, ng, nb = r / mr, g / mg, b / mb
@@ -291,11 +285,11 @@ def updateList(shape, contour, indList, threshold):
     it = zip(indList[:-1], indList[1:])
     changed = False
     for i1, i2 in it:
+        res.append(i1)
         i = further(shape, contour, i1, i2, threshold)
         if i != -1:
-            res.append(i1)
+            res.append(i)
             changed = True
-        res.append(i)
     res.append(len(contour) - 1)
     return res, changed
 
@@ -316,10 +310,3 @@ def showList(shape, contour, l):
         point = contour[i]
         arr[point[0]: point[0] + 10, point[1]: point[1] + 10] = 1.
     return arr
-
-res = np.load("roller2/roller2.pngres.npy")
-bim = binary(res, .3)[5:-5, 5:-5]
-bim = erode(bim, np.ones((3,3)))
-bim = seqClose(bim, 15, 8)
-contour = run(bim)
-s = bim.shape

@@ -1,6 +1,6 @@
 from ops import *
 
-fileList = []
+fileList = ["roller"]
 
 MAXPOW = 10
    
@@ -36,10 +36,11 @@ COMBINE = np.array([[[.1, .3, .3],
    
 fourIt = itertools.product(dirGene(FOURNDIR), FOURSIGMAS)
 
+TRESHOLD = 10
 
 def __main__(IMAGENAME):
     
-    image = openIm("test_images/" + IMAGENAME, MAXPOW)
+    image = openIm("test_images/" + IMAGENAME + ".png", MAXPOW)
     labImage = RGBtoLAB(image)
     np.save(IMAGENAME + "_lab", labImage)
 
@@ -98,7 +99,23 @@ def __main__(IMAGENAME):
     summed = np.sum(weightedImage, axis = (-3, -2, -1))
     res = red(summed)
     np.save(IMAGENAME + "res", res)
+
+    pr("\nPolygonize", 2)
+    t = FOURWINSIZE
+    bim = binary(res, .3)[t:-t,t:-t]
+    np.save(IMAGENAME + "_bin", bim)
+    bim = erode(bim, np.ones((3,3)))
+    np.save(IMAGENAME + "_bin-", bim)
+    bim = seqClose(bim, 15, 8)
+    np.save(IMAGENAME + "_closedbin", bim)
+    contour = run(bim)
+    s = bim.shape
+    contourIm = np.zeros(s)
+    contourIm[contour[:,0], contour[:,1]] = 1
+    np.save(IMAGENAME + "_contour", contourIm)
+    poly = polygonize(s, contour, TRESHOLD)
+    np.save(IMAGENAME + "_poly", poly)
     
 for IMAGENAME in fileList:
-    __main__(IMAGENAME + ".png")
+    __main__(IMAGENAME)
 
