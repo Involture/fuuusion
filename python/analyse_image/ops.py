@@ -66,39 +66,6 @@ def binary(arr, cutIntensity):
     an intensity superior to cutIntensity are set to 1."""
     return cflt(arr > cutIntensity)
 
-#algebra operations
-
-def binNot(arr):
-    """The not operator on a binary image."""
-    return cflt(arr + 1. == 1.)
-
-def expand(arr, f):
-    return cflt(filt(arr, f) > 0)
-
-def erode(arr, f):
-    s = np.sum(f)
-    return cflt(filt(arr, f) == s)
-
-def match(arr, f):
-    fpos = np.maximum(f, 0.)
-    fneg = np.minimum(f, 0.)
-    fneg = np.abs(fneg)
-    ps = np.sum(fpos)
-    present = cflt(filt(arr, fpos) == ps)
-    absent = cflt(filt(arr, fneg) == 0.)
-    return cflt(present + absent == 2)
-
-def open(arr, f):
-    return expand(erode(arr, f), f)
-
-def close(arr,f):
-    return erode(expand(arr, f), f)
-
-def linexpend(arr, t, ndir):
-    for u in doubleDirGene(ndir):
-        arr += match(arr, line(t, u))
-    return arr
-
 #window vectorization
 
 def winVect(arr, p, q):
@@ -226,3 +193,133 @@ def RGBtoLAB(arr):
     b = (g - b + 1.) / 2
     return np.stack((l, a, b), axis = 2)
 
+#algebra operations
+
+def binNot(arr):
+    """The not operator on a binary image."""
+    return cflt(arr + 1. == 1.)
+
+def expand(arr, f):
+    return cflt(filt(arr, f) > 0)
+
+def erode(arr, f):
+    s = np.sum(f)
+    return cflt(filt(arr, f) == s)
+
+def match(arr, f):
+    fpos = np.maximum(f, 0.)
+    fneg = np.minimum(f, 0.)
+    fneg = np.abs(fneg)
+    ps = np.sum(fpos)
+    present = cflt(filt(arr, fpos) == ps)
+    absent = cflt(filt(arr, fneg) == 0.)
+    return cflt(present + absent == 2)
+
+def open(arr, f):
+    return expand(erode(arr, f), f)
+
+def close(arr,f):
+    return erode(expand(arr, f), f)
+
+def seqClose(arr, t, ndims):
+    for theta in np.linspace(0., np.pi * 2, ndims, endpoint = False):
+        arr = close(arr, line(t, theta))
+    return arr
+
+#polygone creation
+
+south = [1, 0]
+north = [-1, 0]
+east = [0, 1]
+west = [0, -1]
+convert = [south, east, north, west]
+
+def safe(bim, cell):
+    x, y = cell
+    p, q = bim.shape
+    return (x < p and y < q and bim[x, y])
+
+def next(bim, pos, head):
+    indTryOrder = [(i - 1) % 4 for i in range(head, head + 4)]
+    tryOrder = [(i, pos + convert[i]) for i in indTryOrder]
+    for i, cell in tryOrder:
+        if safe(bim, cell):
+            return i, cell
+    raise Exception
+
+def run(bim):
+    xs, ys = np.nonzero(bim)
+    x = np.min(xs)
+    i = np.nonzero(xs == x)[0][0]
+    y = ys[i]
+    p0 = np.array([x, y])
+    head = 0
+    head, p = next(bim, p0, head)
+    res = np.stack((p0, p))
+    while (p != p0).any():
+        head, p = next(bim, p, head)
+        res = np.append(res, np.expand_dims(p, axis = 0), axis = 0)
+    return res
+
+def segdist(shape, point, u):
+    x, y = point
+    a, b = u / norm(u)
+    p, q = shape
+    ind = np.mgrid[:p, :q]
+    ind = np.transpose(ind, (1,2,0))
+    ind = ind - [x, y]
+    scal = ind[:,:,0] * b - ind[:,:,1] * a
+    return scal
+
+def further(shape, contour, start, stop, threshold):
+    p1 = contour[start]
+    p2 = contour[stop]
+    u = p2 - p1
+    d = segdist(shape, p1, u)
+    d = np.abs(d)
+    contourSlice = contour[start + 1:stop]
+    dist = d[contourSlice[:,0], contourSlice[:,1]]
+    m = dist.max()
+    if m > threshold:
+        ind = np.nonzero(dist == m)
+        return ind[0][0] + start + 1
+    else:
+        return -1
+
+def updateList(shape, contour, indList, threshold):
+    res = []
+    it = zip(indList[:-1], indList[1:])
+    changed = False
+    for i1, i2 in it:
+        i = further(shape, contour, i1, i2, threshold)
+        if i != -1:
+            res.append(i1)
+            changed = True
+        res.append(i)
+    res.append(len(contour) - 1)
+    return res, changed
+
+def initSeg(contour):
+    return [0, len(contour) // 2, len(contour) - 1]
+
+def polygonize(shape, contour, threshold):
+    l = initSeg(contour)
+    notFinished = True
+    while notFinished:
+        l, notFinished = updateList(shape, contour, l, threshold)
+    return contour[l[:-1]]
+
+def showList(shape, contour, l):
+    p, q = shape
+    arr = np.zeros((p + 10, q + 10))
+    for i in l:
+        point = contour[i]
+        arr[point[0]: point[0] + 10, point[1]: point[1] + 10] = 1.
+    return arr
+
+res = np.load("roller2/roller2.pngres.npy")
+bim = binary(res, .3)[5:-5, 5:-5]
+bim = erode(bim, np.ones((3,3)))
+bim = seqClose(bim, 15, 8)
+contour = run(bim)
+s = bim.shape

@@ -73,16 +73,6 @@ bcorner = np.array([[0.,0.,1.],
                     [0.,1.,1.],
                     [1.,1.,1.]])
 
-def line(t, uprev, u, unext):
-    fprev = - cflt(np.abs(distFilt(t, uprev)) < .5)
-    fmid = cflt(np.abs(distFilt(t, u)) < .5)
-    fnext = - cflt(np.abs(distFilt(t, unext)) < .5)
-    f = fprev + fmid + fnext
-
-    return f
-
-def doubleDirGene(ndir):
-    return ((utheta(np.pi * (theta / ndir - 1 / 4)), 
-             utheta(np.pi * theta / ndir), 
-             utheta(np.pi * (theta / ndir + 1 / 4))) for theta in range(2 * ndir))
-
+def line(t, theta):
+    u = utheta(theta)
+    return cflt(np.abs(distFilt(t, u)) < .1)
