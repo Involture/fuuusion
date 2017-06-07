@@ -42,6 +42,10 @@ def circleCut(t, cut):
     cDist = circleDist(t)
     return cflt(cDist <= cut)
 
+def squareCut(t, cut):
+    sDist = np.maximum(np.abs(distFilt(t, (1,0))), np.abs(distFilt(t, (0,1))))
+    return cflt(sDist <= cut)
+
 def gauss(t, u, sigma):
     d = distFilt(t, u)
     return np.exp(- (d / sigma) ** 2) / np.sqrt(sigma)
@@ -52,3 +56,33 @@ def fgauss(t, u, sigma):
 def gaussd(t, u, sigma) :
     d = distFilt(t, u)
     return (-2 * d / sigma ** 2) * np.exp(- (d / sigma) ** 2)
+
+#algebra operations filters
+
+spike = np.array([[1.,1.,1.],
+                  [1.,0.,1.],
+                  [0.,0.,0.]])
+
+lcorner = np.array([[0.,0.,0.],
+                    [0.,1.,1.],
+                    [0.,1.,1.]])
+mcorner = np.array([[0.,0.,0.],
+                    [0.,1.,1.],
+                    [1.,1.,1.]])
+bcorner = np.array([[0.,0.,1.],
+                    [0.,1.,1.],
+                    [1.,1.,1.]])
+
+def line(t, uprev, u, unext):
+    fprev = - cflt(np.abs(distFilt(t, uprev)) < .5)
+    fmid = cflt(np.abs(distFilt(t, u)) < .5)
+    fnext = - cflt(np.abs(distFilt(t, unext)) < .5)
+    f = fprev + fmid + fnext
+
+    return f
+
+def doubleDirGene(ndir):
+    return ((utheta(np.pi * (theta / ndir - 1 / 4)), 
+             utheta(np.pi * theta / ndir), 
+             utheta(np.pi * (theta / ndir + 1 / 4))) for theta in range(2 * ndir))
+

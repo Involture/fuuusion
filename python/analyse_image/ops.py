@@ -25,7 +25,10 @@ def openIm(imName, maxPow):
     im = im[: pp, : qq]
     reduceFactor = (r + s) // 2 + (r + s) % 2 - maxPow
     im = im[::2 ** reduceFactor, ::2 ** reduceFactor]
-    return im
+    r, g, b = im[:,:,0], im[:,:,1], im[:,:,2]
+    mr, mg, mb = r.max(), g.max(), b.max()
+    nr, ng, nb = r / mr, g / mg, b / mb
+    return np.stack((nr, ng, nb), axis = 2)
 
 #isp computing
 
@@ -33,19 +36,15 @@ def ispVect(arr):
     """Replace each pixel by an array of length 256 full of zero excepted a \
     one at the index corresponding to the value of the pixel."""
     pr("isp vectorizing", 1)
-    return cint(np.stack([arr == i for i in range(256)], axis = -1))
+    return cflt(np.stack([arr == i for i in range(256)], axis = -1))
 
 #ploting functions
 
 def show(arr):
     """Display the image."""
-    size = arr.shape
-    array = arr.copy()
-    if np.max(arr) == 1:
-        array = array * 255
     fig = plt.figure()
     subp = fig.add_subplot(111)
-    subp.imshow(array)
+    subp.imshow(arr)
     subp.axis('off')
     fig.subplots_adjust(left = 0, bottom = 0, right = 1, top = 1)
     fig.show()
@@ -55,7 +54,7 @@ def show(arr):
 def greyAv(arr):
     """Return a grey level image from a coloured image taking the average \
     of the three color channel."""
-    return cint(np.sum(arr, dtype = cflt, axis = 2) // 3)
+    return cflt(np.sum(arr, dtype = cflt, axis = 2) // 3)
 
 def greyMax(arr):
     """Return a grey level image from a coloured image taking the maximum \
@@ -65,52 +64,45 @@ def greyMax(arr):
 def binary(arr, cutIntensity):
     """Return a binary image from a grey level image where only pixels with \
     an intensity superior to cutIntensity are set to 1."""
-    return cint(arr > cutIntensity)
+    return cflt(arr > cutIntensity)
 
 #algebra operations
 
 def binNot(arr):
     """The not operator on a binary image."""
-    return cint(arr + 1 == 1)
+    return cflt(arr + 1. == 1.)
 
 def expand(arr, f):
-    return cint(filt(arr, f) > 0)
+    return cflt(filt(arr, f) > 0)
 
 def erode(arr, f):
     s = np.sum(f)
-    return cint(filt(arr, f) == s)
+    return cflt(filt(arr, f) == s)
 
 def match(arr, f):
-    return cint((erode(arr, f) + erode(binNot(arr), binNot(f))) == 2)
+    fpos = np.maximum(f, 0.)
+    fneg = np.minimum(f, 0.)
+    fneg = np.abs(fneg)
+    ps = np.sum(fpos)
+    present = cflt(filt(arr, fpos) == ps)
+    absent = cflt(filt(arr, fneg) == 0.)
+    return cflt(present + absent == 2)
 
 def open(arr, f):
-    return expand(erode(arr, f), f.T)
+    return expand(erode(arr, f), f)
 
 def close(arr,f):
-    return erode(expand(arr, f), f.T)
+    return erode(expand(arr, f), f)
 
-def diminish(arr, f):
-    return arr - match(arr, f)
-
-def seqDiminish(arr, f):
-    flist = [np.rot90(f, i) for i in range(4)]
-    for rf in flist:
-        arr = diminish(arr, rf)
-    return arr
-
-def fullDiminish(arr, f):
-    nextbin = seqDiminish(arr, f)
-    while (nextbin != arr).any():
-        arr = nextbin
-        nextbin = seqDiminish(arr,f)
+def linexpend(arr, t, ndir):
+    for u in doubleDirGene(ndir):
+        arr += match(arr, line(t, u))
     return arr
 
 #window vectorization
 
 def winVect(arr, p, q):
     pr("windows vectorizing", 2)
-    powCheck2(p)
-    powCheck2(q)
     a, b = np.shape(arr)[:2]
     la = a - p
     lb = b - q
@@ -192,13 +184,12 @@ def parabolicApprox(xArr, yArr):
 def stackPoints(winArr, u):
     pr("projecting points", 2)
     t = winArr.shape[0]
-    c = t / 2
+    c = t / 2 - 0.5
     circle = circleCut(t, t / 2).astype(np.bool)
     count = np.sum(circle)
     ind1 = itertools.product(range(t), repeat = 2)
     ind2 = itertools.product(range(t), repeat = 2)
-    coord = lambda i, j: (scal((i, j), u), winArr[i,j])
-    xGene = (scal((i, j), u) for i, j in ind1 if circle[i, j])
+    xGene = (scal((i - c, j - c), u) for i, j in ind1 if circle[i, j])
     yGene = (winArr[i, j] for i, j in ind2 if circle[i, j])
     xArr = np.fromiter(xGene, dtype = cflt)
     yArr = stackGene(yGene, count, winArr.ndim - 2)
@@ -206,18 +197,18 @@ def stackPoints(winArr, u):
 
 def smooth(a, b, c, eps):
     pr("smoothing", 2)
-    aplus = np.maximum(a, 0)
+    aminus = np.maximum(-a, 0)
     cplus = np.maximum(c, 0)
-    return -(2 * aplus * cplus) / (abs(b) + eps)
+    return (2 * aminus * cplus) / (np.abs(b) + eps)
 
 def localise(arr, t, u, eps):
     pr("localising", 2)
     wArr = winVect(arr, t, t)
     pointsCouple = stackPoints(wArr, u)
     parabArr = parabolicApprox(*pointsCouple)
-    a = parabArr[..., 0]
-    b = parabArr[..., 1]
-    c = parabArr[..., 2]
+    a = parabArr[..., 0, :]
+    b = parabArr[..., 1, :]
+    c = parabArr[..., 2, :]
     smoothArr = smooth(a, b, c, eps)
     return smoothArr
 
@@ -227,11 +218,11 @@ def localiseAndRestore(arr, t, u, eps):
 #color space conversion
 
 def RGBtoLAB(arr):
-    assert(arr.dtype == cint)
-    r = arr[: , : , 0].astype(cflt)
-    g = arr[: , : , 1].astype(cflt)
-    b = arr[: , : , 2].astype(cflt)
-    lchan = (r + g + b) / 3
-    achan = (g - r + 255) / 2
-    bchan = (g - b + 255) / 2
-    return np.stack((lchan, achan, bchan), axis = 2)
+    r = arr[: , : , 0]
+    g = arr[: , : , 1]
+    b = arr[: , : , 2]
+    l = (r + g + b) / 3
+    a = (g - r + 1.) / 2
+    b = (g - b + 1.) / 2
+    return np.stack((l, a, b), axis = 2)
+

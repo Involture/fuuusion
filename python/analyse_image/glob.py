@@ -97,8 +97,8 @@ def switchQuad(arr2D):
 #basic data transformation on array
 
 def red(arr, amp = 1.):
-    amplified = arr * 255. * amp / arr.max()
-    cut = np.minimum(arr, 255.)
+    amplified = (arr - arr.min()) * amp / arr.max()
+    cut = np.minimum(arr, 1.)
     return cut
 
 #concate or stack on generator
