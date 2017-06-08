@@ -26,7 +26,7 @@ def hVectFastFourier2D(arr, inverse = False):
     j = n // 2
     while j >= 1:
         for k in range(j):
-            p(str(j) + " " + str(k))
+            pr(str(j) + " " + str(k), 4)
             temp = arr[:, k: k + j + n: j].copy()
             a = temp[:, : -1: 2]
             b = temp[:, 1:: 2]
@@ -34,8 +34,6 @@ def hVectFastFourier2D(arr, inverse = False):
             b2 = multDim(b, e[n // 2: n: j], [1])
             arr[:, k: k + m: j] = a + b1
             arr[:, k + m: k + n: j] = a + b2
-            pptime()
-            ppmem()
         j = j // 2
     arr[...] =  arr / np.sqrt(n)
 
@@ -50,7 +48,7 @@ def vVectFastFourier2D(arr, inverse = False):
     j = n // 2
     while j >= 1:
         for k in range(j):
-            p(str(j) + " " + str(k))
+            pr(str(j) + " " + str(k), 4)
             temp = arr[k: k + j + n: j,:].copy()
             a = temp[: -1: 2, :]
             b = temp[1:: 2, : ]
@@ -58,15 +56,16 @@ def vVectFastFourier2D(arr, inverse = False):
             b2 = multDim(b, e[n // 2: n: j], [0])
             arr[k: k + m: j,:] = a + b1
             arr[k + m: k + n: j,:] = a + b2
-            pptime()
-            ppmem()
         j = j // 2
     arr[...] =  arr / np.sqrt(n)
 
 def fastFastFourier2D(arr, inverse = False):
     """Compute the fourier transform of arr on the first \
     two dimensions IN PLACE."""
+    pr("fourier transforming", 2)
     res = arr.astype(np.complex64)
+    pr("vertical fourier transform", 3)
+    pr("horizontal fourier transform", 3)
     hVectFastFourier2D(res, inverse)
     vVectFastFourier2D(res, inverse)
     return res
@@ -76,11 +75,10 @@ ifft = lambda x: fastFastFourier2D(x, True)
 
 #function to render fourier transform
 
-def showFourier(arr2D, amp = 1):
+def showFourier(arr, amp = 1):
     """Switch quadrant and convert arr2D in integer.\
     Makes a fourier transform result displayable."""
-    amplified = np.minimum(arr2D * 255 * amp / np.max(arr2D), 255.)
-    return switchQuad(cint(amplified))
+    return switchQuad(cint(red(arr, amp)))
 
 sf = showFourier
 

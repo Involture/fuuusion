@@ -1,6 +1,5 @@
 from scipy.misc import imread
 import matplotlib.pyplot as plt
-import itertools
 
 from glob import *
 from fourier import fft, ifft, sf
@@ -18,63 +17,28 @@ def log2(n):
 def openIm(imName, maxPow):
     """Open the file named imName as a nparray and cut it so its \ 
     dimensions are powers of two."""
+    pr("opening", 1)
     im = imread(imName)
-    p, q = im.shape[:2]
-    r, s = log2(p), log2(q)
-    pp, qq = 2 ** r, 2 ** s
-    im = im[: pp, : qq]
-    reduceFactor = (r + s) // 2 + (r + s) % 2 - maxPow
-    im = im[::2 ** reduceFactor, ::2 ** reduceFactor]
-    return im
+    r, g, b = im[:,:,0], im[:,:,1], im[:,:,2]
+    mr, mg, mb = r.max(), g.max(), b.max()
+    nr, ng, nb = r / mr, g / mg, b / mb
+    return np.stack((nr, ng, nb), axis = 2)
 
 #isp computing
 
 def ispVect(arr):
     """Replace each pixel by an array of length 256 full of zero excepted a \
     one at the index corresponding to the value of the pixel."""
-    return cint(np.stack([arr == i for i in range(256)], axis = -1))
-
-def _isp(arr):
-    return np.sum(ispVect(arr), axis = (0,1), dtype = cint)
+    pr("isp vectorizing", 1)
+    return cflt(np.stack([arr == i for i in range(256)], axis = -1))
 
 #ploting functions
 
-def _plotSpec(subp, spectrum, c):
-    """Plot the intensity spectrum to the specified subplot
-    c is the color of the plot."""
-    ind = np.arange(N)
-    width = 1
-
-    subp.bar(ind, spectrum, width, color = c, edgecolor = c)
-
-    subp.set_xlabel("pixel value")
-    subp.set_ylabel("nb of pixels")
-
-def plotIsp(arr):
-    isp = _isp(arr)
-    n = len(isp)
-    fig = plt.figure()
-    if n != 3:
-        sub = fig.add_subplot(111)
-        _plotSpec(sub, isp, "black")
-    else:
-        sub1 = fig.add_subplot(131)
-        sub2 = fig.add_subplot(132)
-        sub3 = fig.add_subplot(133)
-        _plotSpec(sub1, isp[0], "red")
-        _plotSpec(sub2, isp[1], "green")
-        _plotSpec(sub3, isp[2], "blue")
-    fig.show()
-
 def show(arr):
     """Display the image."""
-    size = arr.shape
-    array = arr.copy()
-    if np.max(arr) == 1:
-        array = array * 255
     fig = plt.figure()
     subp = fig.add_subplot(111)
-    subp.imshow(array)
+    subp.imshow(arr)
     subp.axis('off')
     fig.subplots_adjust(left = 0, bottom = 0, right = 1, top = 1)
     fig.show()
@@ -84,7 +48,7 @@ def show(arr):
 def greyAv(arr):
     """Return a grey level image from a coloured image taking the average \
     of the three color channel."""
-    return cint(np.sum(arr, dtype = cflt, axis = 2) // 3)
+    return cflt(np.sum(arr, dtype = cflt, axis = 2) // 3)
 
 def greyMax(arr):
     """Return a grey level image from a coloured image taking the maximum \
@@ -94,51 +58,12 @@ def greyMax(arr):
 def binary(arr, cutIntensity):
     """Return a binary image from a grey level image where only pixels with \
     an intensity superior to cutIntensity are set to 1."""
-    return cint(arr > cutIntensity)
-
-#algebra operations
-
-def binNot(arr):
-    """The not operator on a binary image."""
-    return cint(arr + 1 == 1)
-
-def expand(arr, f):
-    return cint(filt(arr, f) > 0)
-
-def erode(arr, f):
-    s = np.sum(f)
-    return cint(filt(arr, f) == s)
-
-def match(arr, f):
-    return cint((erode(arr, f) + erode(binNot(arr), binNot(f))) == 2)
-
-def open(arr, f):
-    return expand(erode(arr, f), f.T)
-
-def close(arr,f):
-    return erode(expand(arr, f), f.T)
-
-def diminish(arr, f):
-    return arr - match(arr, f)
-
-def seqDiminish(arr, f):
-    flist = [np.rot90(f, i) for i in range(4)]
-    for rf in flist:
-        arr = diminish(arr, rf)
-    return arr
-
-def fullDiminish(arr, f):
-    nextbin = seqDiminish(arr, f)
-    while (nextbin != arr).any():
-        arr = nextbin
-        nextbin = seqDiminish(arr,f)
-    return arr
+    return cflt(arr > cutIntensity)
 
 #window vectorization
 
 def winVect(arr, p, q):
-    powCheck2(p)
-    powCheck2(q)
+    pr("windows vectorizing", 2)
     a, b = np.shape(arr)[:2]
     la = a - p
     lb = b - q
@@ -154,13 +79,13 @@ def restoreShape(arr, dp, dq):
     res = np.zeros(bigShape, dtype = cflt)
     res[dp: -dp, dq: -dq] = arr
     res[dp: -dp, : dq] = np.expand_dims(arr[:, 0], 1)
-    res[dp: -dp, -dp:] = np.expand_dims(arr[:, -1], 1)
+    res[dp: -dp, -dq:] = np.expand_dims(arr[:, -1], 1)
     res[: dp, dq: -dq] = np.expand_dims(arr[0, :], 0)
     res[-dp:, dq: -dq] = np.expand_dims(arr[-1, :], 0)
     res[: dp, : dq] = arr[0, 0]
     res[: dp, -dq:] = arr[0, -1]
     res[-dp: , : dq] = arr[-1, 0]
-    res[-dp: , dq:] = arr[-1, -1]
+    res[-dp: , -dq:] = arr[-1, -1]
     return res
 
 #filtering functions
@@ -173,6 +98,7 @@ def filtl(arr, fs):
         arr[...] = _filt(arr, fs)
 
 def filt(arr, f):
+    pr("filtering", 2)
     """Filter arr with f on his first two dimensions."""
     cisfilt(f)
     shape = arr.shape
@@ -189,7 +115,7 @@ def filt(arr, f):
     res = np.zeros(bigShape, dtype = cflt)
     for i in range(-dx, dx + 1):
         for j in range(-dy, dy + 1):
-            pp(str(i) + str(j))
+            pr(str(i) + str(j), 4)
             if f[dx - i, dy - j] != 0:
                 shiftedArr = np.zeros(bigShape, dtype = cflt)
                 shiftedArr[dx + i: dx + i + a, dy + j: dy + j + b] = f[dx - i, dy - j] * cflt(arr)
@@ -199,6 +125,7 @@ def filt(arr, f):
 #parabolic approximation
 
 def parabolicApprox(xArr, yArr):
+    pr("parabolic approximating", 2)
     x4sum = np.sum(xArr ** 4)
     x3sum = np.sum(xArr ** 3)
     x2sum = np.sum(xArr ** 2)
@@ -216,57 +143,170 @@ def parabolicApprox(xArr, yArr):
 #localisator
 
 def stackPoints(winArr, u):
+    pr("projecting points", 2)
     t = winArr.shape[0]
-    c = t / 2
+    c = t / 2 - 0.5
     circle = circleCut(t, t / 2).astype(np.bool)
     count = np.sum(circle)
-    ind = itertools.product(range(t), repeat = 2)
-    coord = lambda i, j: (scal((i, j), u), winArr[i,j])
-    xGene = (scal((i, j), u) for i, j in ind if circle[i, j])
-    yGene = (winArr[i, j] for i, j in ind if circle[i, j])
-    xArr = np.empty((count,))
-    yArr = np.empty(winArr.shape[2:] + (count,))
-    for i, el in enumerate(xGene):
-        xArr[i] = el
-    for i, el in enumerate(yGene):
-        yArr[...,i] = el
-    print(xArr.shape, yArr.shape)
+    ind1 = itertools.product(range(t), repeat = 2)
+    ind2 = itertools.product(range(t), repeat = 2)
+    xGene = (scal((i - c, j - c), u) for i, j in ind1 if circle[i, j])
+    yGene = (winArr[i, j] for i, j in ind2 if circle[i, j])
+    xArr = np.fromiter(xGene, dtype = cflt)
+    yArr = stackGene(yGene, count, winArr.ndim - 2)
     return (xArr, yArr)
 
 def smooth(a, b, c, eps):
-    aplus = np.maximum(a, 0)
+    pr("smoothing", 2)
+    aminus = np.maximum(-a, 0)
     cplus = np.maximum(c, 0)
-    return -(2 * aplus * cplus) / (abs(b) + eps)
+    return (2 * aminus * cplus) / (np.abs(b) + eps)
 
 def localise(arr, t, u, eps):
-    pp("    window vectorizing")
+    pr("localising", 2)
     wArr = winVect(arr, t, t)
-    pptime()
-    pp("    projecting")
     pointsCouple = stackPoints(wArr, u)
-    pptime()
-    pp("    parabol approximating")
     parabArr = parabolicApprox(*pointsCouple)
-    pptime()
-    pp("    smoothing")
-    a = parabArr[..., 0]
-    b = parabArr[..., 1]
-    c = parabArr[..., 2]
+    a = parabArr[..., 0, :]
+    b = parabArr[..., 1, :]
+    c = parabArr[..., 2, :]
     smoothArr = smooth(a, b, c, eps)
-    pptime()
     return smoothArr
 
 def localiseAndRestore(arr, t, u, eps):
-    return restoreShape(localise(arr, t, u, eps), t / 2, t / 2)
+    return restoreShape(localise(arr, t, u, eps), t // 2, t // 2)
 
 #color space conversion
 
 def RGBtoLAB(arr):
-    assert(arr.dtype == cint)
-    r = arr[: , : , 0].astype(cflt)
-    g = arr[: , : , 1].astype(cflt)
-    b = arr[: , : , 2].astype(cflt)
-    lchan = (r + g + b) / 3
-    achan = (g - r + 255) / 2
-    bchan = (g - b + 255) / 2
-    return np.stack((lchan, achan, bchan), axis = 2)
+    r = arr[: , : , 0]
+    g = arr[: , : , 1]
+    b = arr[: , : , 2]
+    l = (r + g + b) / 3
+    a = (g - r + 1.) / 2
+    b = (g - b + 1.) / 2
+    return np.stack((l, a, b), axis = 2)
+
+#algebra operations
+
+def binNot(arr):
+    """The not operator on a binary image."""
+    return cflt(arr + 1. == 1.)
+
+def expand(arr, f):
+    return cflt(filt(arr, f) > 0)
+
+def erode(arr, f):
+    s = np.sum(f)
+    return cflt(filt(arr, f) == s)
+
+def match(arr, f):
+    fpos = np.maximum(f, 0.)
+    fneg = np.minimum(f, 0.)
+    fneg = np.abs(fneg)
+    ps = np.sum(fpos)
+    present = cflt(filt(arr, fpos) == ps)
+    absent = cflt(filt(arr, fneg) == 0.)
+    return cflt(present + absent == 2)
+
+def open(arr, f):
+    return expand(erode(arr, f), f)
+
+def close(arr,f):
+    return erode(expand(arr, f), f)
+
+def seqClose(arr, t, ndims):
+    for theta in np.linspace(0., np.pi * 2, ndims, endpoint = False):
+        arr = close(arr, line(t, theta))
+    return arr
+
+#polygone creation
+
+south = [1, 0]
+north = [-1, 0]
+east = [0, 1]
+west = [0, -1]
+convert = [south, east, north, west]
+
+def safe(bim, cell):
+    x, y = cell
+    p, q = bim.shape
+    return (x < p and y < q and bim[x, y])
+
+def next(bim, pos, head):
+    indTryOrder = [(i - 1) % 4 for i in range(head, head + 4)]
+    tryOrder = [(i, pos + convert[i]) for i in indTryOrder]
+    for i, cell in tryOrder:
+        if safe(bim, cell):
+            return i, cell
+    raise Exception
+
+def run(bim):
+    xs, ys = np.nonzero(bim)
+    x = np.min(xs)
+    i = np.nonzero(xs == x)[0][0]
+    y = ys[i]
+    p0 = np.array([x, y])
+    head = 0
+    head, p = next(bim, p0, head)
+    res = np.stack((p0, p))
+    while (p != p0).any():
+        head, p = next(bim, p, head)
+        res = np.append(res, np.expand_dims(p, axis = 0), axis = 0)
+    return res
+
+def segdist(shape, point, u):
+    x, y = point
+    a, b = u / norm(u)
+    p, q = shape
+    ind = np.mgrid[:p, :q]
+    ind = np.transpose(ind, (1,2,0))
+    ind = ind - [x, y]
+    scal = ind[:,:,0] * b - ind[:,:,1] * a
+    return scal
+
+def further(shape, contour, start, stop, threshold):
+    p1 = contour[start]
+    p2 = contour[stop]
+    u = p2 - p1
+    d = segdist(shape, p1, u)
+    d = np.abs(d)
+    contourSlice = contour[start + 1:stop]
+    dist = d[contourSlice[:,0], contourSlice[:,1]]
+    m = dist.max()
+    if m > threshold:
+        ind = np.nonzero(dist == m)
+        return ind[0][0] + start + 1
+    else:
+        return -1
+
+def updateList(shape, contour, indList, threshold):
+    res = []
+    it = zip(indList[:-1], indList[1:])
+    changed = False
+    for i1, i2 in it:
+        res.append(i1)
+        i = further(shape, contour, i1, i2, threshold)
+        if i != -1:
+            res.append(i)
+            changed = True
+    res.append(len(contour) - 1)
+    return res, changed
+
+def initSeg(contour):
+    return [0, len(contour) // 2, len(contour) - 1]
+
+def polygonize(shape, contour, threshold):
+    l = initSeg(contour)
+    notFinished = True
+    while notFinished:
+        l, notFinished = updateList(shape, contour, l, threshold)
+    return contour[l[:-1]]
+
+def showList(shape, contour, l):
+    p, q = shape
+    arr = np.zeros((p + 10, q + 10))
+    for i in l:
+        point = contour[i]
+        arr[point[0]: point[0] + 10, point[1]: point[1] + 10] = 1.
+    return arr

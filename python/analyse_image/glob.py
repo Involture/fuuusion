@@ -1,5 +1,6 @@
 import numpy as np
 import time as t
+import itertools
 from sys import getsizeof
 from subprocess import check_output
 
@@ -13,47 +14,29 @@ ccpl = np.complex64
 
 start = t.time()
 
-V = True
-VV = True
+V = 3
 
-def p(s):
-    """Print only if V (standing for a verbose parametre) is True."""
-    if V:
+def pr(s, depth):
+    if V >= depth:
         print(s)
 
-def pp(s):
-    """Print only if VV (standing for a very verbose parameter) is True."""
-    if VV:
-        print(s)
+def ptime(depth):
+    pr("time " + str(t.time() - start), depth)
 
-def ptime():
-    """Print the total time since the beginning of the program if V is True."""
-    p("time " + str(t.time() - start))
+def pmem(depth):
+    pr("mem " + str(
+        check_output(
+            "ps aux|grep python|awk '{sum=sum+$6}; \
+            END {print sum/1024}'",
+            shell = True
+            )
+        )[2:-3],
+        depth)
 
-def pptime():
-    """Print the total time since the beginning of the program if VV is True."""
-    pp("time " + str(t.time() - start))
+def psize(arr, depth):
+    pr(arr.nbytes / 1024, depth)
 
-def pmem():
-    """Print the total amount of memory used by python processes in MB \
-    if V is True."""
-    p("mem " + str(check_output("ps aux|grep python|awk '{sum=sum+$6}; END {print sum/1024}'", shell = True))[2:-3])
-
-def ppmem():
-    """Print the total amount of memory used by python processes in MB \
-    if VV is True."""
-    pp("mem " + str(check_output("ps aux|grep python|awk '{sum=sum+$6}; END {print sum/1024}'", shell = True))[2:-3])
-
-
-def psize(a):
-    """Print the size of and obect in MB if V is True."""
-    p("size " + str(getsizeof(a)/1024**2))
-
-def ppsize(a):
-    """Print the size of and obect in MB if VV is True"""
-    pp("size " + str(getsizeof(a)/1024**2))
-
-#type checkers
+#ype checkers
 
 def cisfilt(filterArr):
     """raise an error if one of the first two dimension of filterArr is even"""
@@ -75,7 +58,7 @@ def cispow(arr):
     powCheck2(p)
     powCheck2(q)
 
-#???
+#basic geometric transformation on arrays
 def permute(l, i, j):
     if i != j:
         l[i], l[j] = l[j], l[i]
@@ -110,3 +93,122 @@ def switchQuad(arr2D):
     res[m1:, :m2] = flip(res[m1:, :m2])
     res[m1:, m2:] = flip(res[m1:, m2:])
     return res
+
+#basic data transformation on array
+
+def red(arr, amp = 1.):
+    amplified = (arr - arr.min()) * amp / arr.max()
+    cut = np.minimum(arr, 1.)
+    return cut
+
+#concate or stack on generator
+
+def stackInd(axis, naxis, i):
+    if axis >= 0:
+        if axis < naxis - 1:
+            return (slice(None),) * axis + (i,) + (Ellipsis,)
+        else:
+            return (slice(None),) * axis + (i,)
+    else:
+        if -axis < naxis:
+            return (Ellipsis,) + (i,) + (slice(None),) * (- axis - 1)
+        else:
+            return (i,) + (slice(None),) * (- axis - 1)
+
+def stackBigShape(shape, geneLen, axis):
+    if axis >= 0:
+        return shape[:axis] + (geneLen,) + shape[axis:]
+    else:
+        if axis < -1:
+            return shape[:axis + 1] + (geneLen,) + shape[axis + 1:]
+        else:
+            return shape + (geneLen,)
+
+def concatInd(concatDimLen, axis, naxis,  i):
+    if axis >= 0:
+        if axis < naxis - 1:
+            return (
+                    (slice(None),) * axis + 
+                    (slice(i * concatDimLen, (i + 1) * concatDimLen),) + 
+                    (Ellipsis,)
+                    )
+        else:
+            return (
+                    (slice(None),) * axis + 
+                    (slice(i * concatDimLen, (i + 1) * concatDimLen),) 
+                    )
+    else:
+        if -axis < naxis:
+            return (
+                    (Ellipsis,) + 
+                    (slice(i * concatDimLen, (i + 1) * concatDimLen),) + 
+                    (slice(None),) * (- axis - 1)
+                    )
+        else:
+            return (
+                    (slice(i * concatDimLen, (i + 1) * concatDimLen),) + 
+                    (slice(None),) * (- axis - 1)
+                    )
+
+def concatBigShape(shape, geneLen, axis):
+    concatDimLen = shape[axis]
+    if axis >= 0:
+        if axis < len(shape) - 1:
+            return (
+                    shape[:axis] + 
+                    (concatDimLen * geneLen,) + 
+                    shape[axis + 1:]
+                    )
+        else:
+            return (
+                    shape[:axis] + 
+                    (concatDimLen * geneLen,) 
+                    )
+    else:
+        if axis < -1:
+            return (
+                    shape[:axis] + 
+                    (concatDimLen * geneLen,) + 
+                    shape[axis + 1:]
+                    )
+        else:
+            return (
+                    shape[:axis] + 
+                    (concatDimLen * geneLen,)
+                    )
+
+def stackGene(gene0, geneLen, axis):
+
+    first = next(gene0)
+    shape = first.shape
+    gene = itertools.chain((first,), gene0)
+
+    naxis = len(shape) + 1
+    assert((axis < naxis and axis >= 0) 
+            or 
+            (-axis <= naxis)
+            )
+
+    bigShape = stackBigShape(shape, geneLen, axis)
+    bigArr = np.empty(bigShape)
+
+    for i, arr in enumerate(gene):
+        bigArr[stackInd(axis, naxis, i)] = arr
+    return bigArr
+
+def concatGene(gene0, geneLen, axis):
+
+    first = next(gene0)
+    shape = first.shape
+    gene = itertools.chain((first,), gene0)
+
+    naxis = len(shape)
+    assert((axis < naxis and axis >= 0) or (-axis <= naxis))
+
+    concatDimLen = shape[axis]
+    bigShape = concatBigShape(shape, geneLen, axis)
+    bigArr = np.empty(bigShape)
+
+    for i, arr in enumerate(gene):
+        bigArr[concatInd(concatDimLen, axis, naxis, i)] = arr
+    return bigArr
