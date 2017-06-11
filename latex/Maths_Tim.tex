@@ -21,35 +21,35 @@
 	
 
 \newtheorem{lem}{Lemme}
-\newtheorem{theo}{Théorème}
-\labelformat{theo}{le théorème~#1}
+\newtheorem{theo}{ThÃ©orÃ¨me}
+\labelformat{theo}{le thÃ©orÃ¨me~#1}
 \labelformat{lem}{le lemme~#1}
 
-\title{Démonstration}
+\title{DÃ©monstration}
 
 \begin{document}
-Nous nous plaçons dans le $\mathbb{R}$-espace vectoriel $E = \mathbb{R}^{3}$, muni de sa structure d'espace euclidien canonique, pour laquelle le produit scalaire sera noté $(\cdot|\cdot)$
+Nous nous plaÃ§ons dans le $\mathbb{R}$-espace vectoriel $E = \mathbb{R}^{3}$, muni de sa structure d'espace euclidien canonique, pour laquelle le produit scalaire sera notÃ© $(\cdot|\cdot)$
 
 
-Pour tout $x\in E$, on définit le projecteur de foyer $x$ comme :
+Pour tout $x\in E$, on dÃ©finit le projecteur de foyer $x$ comme :
 
 $\begin{array}{ccccc}
 p_{x} & : & E\setminus\{x\} & \to & S(x, 1) \\
  & & y & \mapsto & x  + \frac{1}{\norm{y - x}} \cdot (y - x) \\
 \end{array}$
 
-où $S(x, 1)$ est  la sphère de centre $x$ et de rayon $1$.
+oÃ¹ $S(x, 1)$ est  la sphÃ¨re de centre $x$ et de rayon $1$.
 
 
-On définira la silhouette d'une  partie $A$ de $E$ vue depuis un point $x$ comme son image directe par $p_{x}$.
+On dÃ©finira la silhouette d'une  partie $A$ de $E$ vue depuis un point $x$ comme son image directe par $p_{x}$.
 
-\textit{Note : Cela ne correspond pas exactement à une photographie, qui elle est une projection sur un plan. Toutefois, on admettra que si un objet est entièrement du coté du plan focal opposé au foyer (ce qui est toujours vérifié pour une photographie), le "cône" reconstruit à partir de sa photographie est le même que celui reconstruit à partir de la projection sphérique, et que donc la définition de l'enveloppe visuelle que l'on va donner ici correspond donc bien à la définition "naturelle".}
+\textit{Note : Cela ne correspond pas exactement Ã  une photographie, qui elle est une projection sur un plan. Toutefois, on admettra que si un objet est entiÃ¨rement du cotÃ© du plan focal opposÃ© au foyer (ce qui est toujours vÃ©rifiÃ© pour une photographie), le "cÃ´ne" reconstruit Ã  partir de sa photographie est le mÃªme que celui reconstruit Ã  partir de la projection sphÃ©rique, et que donc la dÃ©finition de l'enveloppe visuelle que l'on va donner ici correspond donc bien Ã  la dÃ©finition "naturelle".}
 
-On définit ensuite le cône de sommet $x$ et de silhouette $A \subset S(x, 1)$ comme suit:
+On dÃ©finit ensuite le cÃ´ne de sommet $x$ et de silhouette $A \subset S(x, 1)$ comme suit:
 
 $C(x,A) = \{\,x + t\cdot{}(y - x), y\in{}A, t\in\mathbb{R}+\,\}$
 
-On peut alors définir l'enveloppe visuelle d'une partie $A$ de $E$ selon un ensemble de points de vues $V$ :
+On peut alors dÃ©finir l'enveloppe visuelle d'une partie $A$ de $E$ selon un ensemble de points de vues $V$ :
 
 $ev(V, A) = \bigcap_{x\in{}V}C(x,p_{x}(A))$
 
@@ -61,7 +61,7 @@ On montre dans un premier temps \ref{lem1}:
 
 \begin{lem}\label{lem1}
 
-\textbf{Si} $A$ est un fermé de $E$, et il existe $b \in E$ et $M \in \mathbb{R}$ tels que $A \subset B_{o}(b, M)$,
+\textbf{Si} $A$ est un fermÃ© de $E$, et il existe $b \in E$ et $M \in \mathbb{R}$ tels que $A \subset B_{o}(b, M)$,
 
 \textbf{Alors} $ev(S(b,M), A) \subset B_{o}(b, M)$
 
@@ -69,14 +69,14 @@ On montre dans un premier temps \ref{lem1}:
 
 \begin{proof}
 
-On supposera, quitte à faire effectuer une translation à $A$, que $b = 0$
+On supposera, quitte Ã  faire effectuer une translation Ã  $A$, que $b = 0$
 
 Supposons qu'il existe $x \in ev(S(0,M), A)$ tel que $\norm{x} \geqslant M$
 
 \begin{itemize}
 \item Si $\norm{x} > M$ 
 
-On considère $\beta$ un vecteur orthogonal à $x$ de norme $1$ ($\beta$ existe car $E$ est un espace euclidien de dimension $3$)
+On considÃ¨re $\beta$ un vecteur orthogonal Ã  $x$ de norme $1$ ($\beta$ existe car $E$ est un espace euclidien de dimension $3$)
 
 On pose $y = \frac{M^{2}}{\norm{x}^{2}} \cdot x + M \sqrt{1 - \frac{M^{2}}{\norm{x}^{2}}} \cdot \beta$
 
@@ -115,13 +115,13 @@ $\begin{array}{ccl}
 \end{array}$
 
 
-Or, par hypothèse, $v \in A$ implique $\norm{v} < M$
+Or, par hypothÃ¨se, $v \in A$ implique $\norm{v} < M$
 
 On a une contradiction.
 
 \item Si  $\norm{x} = M$
 
-$A$ est fermé et borné car inclus dans $B_{o}(0, M)$, donc $A$ est compact (On a $dim(E) = 3$).
+$A$ est fermÃ© et bornÃ© car inclus dans $B_{o}(0, M)$, donc $A$ est compact (On a $dim(E) = 3$).
 
 Et comme $u \mapsto \norm{u}$ est continue, elle admet un maximum $n_{m}$ sur $A$. Il existe donc $x_{0} \in A$ tel que $\norm{x_{0}} = n_{m}$
 
@@ -157,11 +157,11 @@ On montre alors \ref{th1} :
 
 \begin{theo}\label{th1}
 
-L'enveloppe visuelle d'un fermé $A$ de $E$ vu depuis une sphère englobant A est incluse dans l'enveloppe convexe de $A$.
+L'enveloppe visuelle d'un fermÃ© $A$ de $E$ vu depuis une sphÃ¨re englobant A est incluse dans l'enveloppe convexe de $A$.
 
 En d'autres termes, 
 
-$\forall A \subset E \text{t.q. $A$ fermé et borné}, \forall (b, M) \in E \times \mathbb{R} \text{t.q.} (\forall x \in A, |x| \leqslant M)$,
+$\forall A \subset E \text{t.q. $A$ fermÃ© et bornÃ©}, \forall (b, M) \in E \times \mathbb{R} \text{t.q.} (\forall x \in A, |x| \leqslant M)$,
 
 $ev(S(b, M), A) \subset conv(A)$
 
@@ -169,16 +169,16 @@ $ev(S(b, M), A) \subset conv(A)$
 
 
 \begin{proof}
-Soit $A$ un fermé de $E$
+Soit $A$ un fermÃ© de $E$
 
-On considérera $A$ non vide (Si $A$ est vide, $ev(S(b, M), A) = conv(A) = A = \varnothing$)
+On considÃ©rera $A$ non vide (Si $A$ est vide, $ev(S(b, M), A) = conv(A) = A = \varnothing$)
 
 Soit $a \in ev(S(b, M), A)$
 
-Quitte à effectuer une translation sur $A$ et $b$, on va considérer que $a = 0_{E}$.
+Quitte Ã  effectuer une translation sur $A$ et $b$, on va considÃ©rer que $a = 0_{E}$.
 
 \begin{itemize}
-\item Si $0 \in A$, immédiatement $0 \in conv(A)$
+\item Si $0 \in A$, immÃ©diatement $0 \in conv(A)$
 \item Si $0 \notin A$, on a que $\forall x \in S(b, M), 0 \in C(x, p_{x}(A))$
 
 Donc $\exists t \in \mathbb{R}+, \exists y\in p_{x}(A) \text{t.q.} 0 = x + t \cdot (y - x)$
@@ -201,7 +201,7 @@ De plus $A \subset B_{o}(b, M)$ et $0 \in ev(S(b, M), A)$ donc $\norm{0 - b} < M
 
 Ainsi $\norm{d(0) - b} < M$, et comme $\lim_{t \to +\infty}\norm{d(t)} = +\infty$ et $t \mapsto \norm{d(t) - b}$ est une application continue,
 
-selon le théorème des valeurs intermédiaires, $\exists t_{1} \in \mathbb{R}\setminus\{0\} \text{ tel que } \norm{d(t_{1})} = M$
+selon le thÃ©orÃ¨me des valeurs intermÃ©diaires, $\exists t_{1} \in \mathbb{R}\setminus\{0\} \text{ tel que } \norm{d(t_{1})} = M$
 
 On note $x_{1} = d(t_{1})$
 
@@ -213,41 +213,41 @@ Ainsi, selon le signe de $t_{1} \cdot (1 - \frac{1}{\lambda})$, on aura $p_{0}(v
 
 Cela est vrai pour tout $x_{0}$ dans $S(0, 1)$ donc, en notant $P = p_{0}(A)$ et $P' = \{-a, a \in P \}$, $P \cup P' = S(0, 1)$
 
-On cherche alors à montrer que $ P \cap P' \neq \varnothing$
+On cherche alors Ã  montrer que $ P \cap P' \neq \varnothing$
 
-Comme $A$ est fermé et borné en dimension finie, $A$ est compact, et comme $p_{0}$ est continue, $P = p_{0}(A)$ est compact aussi.
+Comme $A$ est fermÃ© et bornÃ© en dimension finie, $A$ est compact, et comme $p_{0}$ est continue, $P = p_{0}(A)$ est compact aussi.
 
 Et comme $a \mapsto -a$ est continue, $P'$ est compact aussi.
 
-Soit alors $u \in P$ et $v$ un vecteur orthogonal à u de norme $1$
+Soit alors $u \in P$ et $v$ un vecteur orthogonal Ã  u de norme $1$
 
 On note $\begin{array}{ccccc}
 \gamma & : & [0, 1] & \to & S(0, 1) \\
  & & t & cos(t\pi) \cdot u + sin(t\pi) \cdot v \\
 \end{array}$
 
-$\gamma$ est continue, donc $\gamma^{-1}(P)$ et $\gamma^{-1}(P')$ sont fermés.
+$\gamma$ est continue, donc $\gamma^{-1}(P)$ et $\gamma^{-1}(P')$ sont fermÃ©s.
 
-$\gamma(0) = u \in P$ donc $\gamma^{-1}(P) \neq \varnothing$ et on peut donc considérer $t = \sup \gamma^{-1}(P) = \max \gamma^{-1}(P)$ (Car $\gamma^{-1}(P)$ est fermé)
+$\gamma(0) = u \in P$ donc $\gamma^{-1}(P) \neq \varnothing$ et on peut donc considÃ©rer $t = \sup \gamma^{-1}(P) = \max \gamma^{-1}(P)$ (Car $\gamma^{-1}(P)$ est fermÃ©)
 
 \begin{itemize}
 \item Si $t = 1$, $-u \in P$, et comme on a aussi $u \in P$, $u \in P \cap P'$
 \item Si $t < 1$, il existe $n_{0} \in \mathbb{N}$ tel que $\forall n \geqslant n_{0}, t + \frac{1}{n} \leqslant 1$
-Alors $(\gamma(t + \frac{1}{n}))_{n \geqslant n_{0}}$ est une suite d'éléments qui ne sont pas dans $P$, et donc qui sont dans $P'$ (car ils sont dans $S(0, 1)$)
+Alors $(\gamma(t + \frac{1}{n}))_{n \geqslant n_{0}}$ est une suite d'Ã©lÃ©ments qui ne sont pas dans $P$, et donc qui sont dans $P'$ (car ils sont dans $S(0, 1)$)
 
 
-Comme $\gamma$ est continue, elle converge vers $\gamma(t)$, et comme $P'$ est fermé, on a donc $\gamma(t) \in P'$
+Comme $\gamma$ est continue, elle converge vers $\gamma(t)$, et comme $P'$ est fermÃ©, on a donc $\gamma(t) \in P'$
 
 Donc $\gamma(t) \in P \cap P'$
 \end{itemize}
 
 On a donc que $P \cap P'$ est non vide
 
-Soit $q$ un élément de $P \cap P'$
+Soit $q$ un Ã©lÃ©ment de $P \cap P'$
 
 On a $q \in p_{0}(A)$ donc il existe $\mu \in \mathbb{R}+$ tel que $\mu q \in A$
 
-De même $-q \in p_{0}(A)$ donc il existe $\nu \in \mathbb{R}+$ tel que - $\nu q \in A$
+De mÃªme $-q \in p_{0}(A)$ donc il existe $\nu \in \mathbb{R}+$ tel que - $\nu q \in A$
 
 $0_{E} \notin A$ donc $\mu \neq 0$ et $\nu \neq 0$
 
