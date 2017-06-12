@@ -135,11 +135,13 @@ Donc il existe $v \in A$ et $t \in \mathbb{R}+$ tel que $x = y + \frac{t}{\norm{
 
 $x \neq y$ donc $t \neq 0$ et $v = y + \frac{\norm{v - y}}{t} \cdot (x - y)$
 
-Notons $\lambda = \frac{\norm{v - y}}{t}$
+On note 
+\[\begin{array}{ccccc}
+f & : & \mathbb{R} & \to & \mathbb{R} \\
+ & & \lambda & \mapsto & \norm{y}^{2} + \lambda^{2} \cdot \norm{x - y}^{2} + 2 \lambda (y|x - y)\\
+\end{array}\]
 
-On note $f(x) = \norm{y}^{2} + x^{2} \cdot \norm{x - y}^{2} + 2 x (y|x - y)$
-
-(On a alors $\norm{v}^{2} = f(\lambda)$)
+(On a alors $\norm{v}^{2} = f(\frac{\norm{v - y}}{t})$)
 
 Or $f'(x) = 2 x \norm{x - y}^{2} + 2(y|x - y)$
 Donc $f(x)$ atteint un minimum en $x = \frac{(y|y - x)}{\norm{x - y}^2} = \frac{\norm{y}^{2} - (y|x)}{\norm{x}^{2} + \norm{y}^{2} - 2 (x|y)} = \frac{1}{2}$ (Car $\norm{x} = \norm{y}$)
