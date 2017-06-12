@@ -98,7 +98,7 @@ def switchQuad(arr2D):
 
 def red(arr, amp = 1.):
     amplified = (arr - arr.min()) * amp / arr.max()
-    cut = np.minimum(arr, 1.)
+    cut = np.minimum(amplified, 1.)
     return cut
 
 #concate or stack on generator

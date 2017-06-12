@@ -1,0 +1,64 @@
+\documentclass[twocolumn]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[frenchb]{babel}
+\usepackage[T1]{fontenc}
+
+\author{Martin Janin}
+\title{Modèle 3D d'un objet à partir de photographies: Détection de contour}
+
+\begin{document}
+
+\onecolumn
+
+\maketitle
+
+Le travail effectué est celui prévu. La majorité de l'étude à été concentrée sur la détection de contour. La segmentation de l'image obtenue étant effectuée par le procédé simple présenté par Baumgart.
+
+\tableofcontents
+
+\twocolumn
+
+\section{Introduction}
+
+On peut distinguer axes de travail principaux : 
+\begin{itemize}
+	\item La compréhension des méthodes utiliser pour détecter les contours d'une image, à partir des thèses citées en source et leur adaptation à l'objectif spécifique poursuivit dans ce TIPE.
+	\item Et l'implémentation de ces méthode et tous les choix que cela implique.
+\end{itemize}
+L'étude théorique comporte deux aspects principaux:
+\begin{itemize}
+	\item Le calcul des composante de texture, par transformée de Fourier
+	\item Le filtrage dans le domaine spatial
+\end{itemize}
+Les choix principaux d'implémentation sont les suivants:
+\begin{itemize}
+	\item Le choix des flottant sur 32 bits et d'une normalisation à chaque étape.
+	\item L'utilisation poussée de numpy.
+\end{itemize}
+
+\section{Corps}
+
+L'image de départ est une image RGB sur 8-bits dont on veut extraire le contour de l'objet situé en son centre.
+
+\subsection{Choix pratiques}
+
+\subsection{Passage dans l'espace colorimétrique LAB.}
+L'espace colorimetrique LAB possède trois composantes:
+\begin{itemize}
+	\item $L = \frac{R + G + B}{3}$ \;\;\;\;\; qui est une mesure de l'intensité lumineuse.
+	\item $A = \frac{G - R + 255}{2}$ et $B = \frac{G - B + 255}{2}$ qui sont des mesures de la couleur.
+\end{itemize}
+L'espace LAB à été défini afin de se rapprocher de la vision humaine. En effet, l'intensité et la couleur sont de bien meilleurs indicateurs de la frontière d'un objet que les composantes RGB. Ici, bien que le but ne soit pas d'approcher la vision humaine, l'image convertie dans l'espace LAB donnent de bien meilleures résultats que l'image en RGB.
+
+\subsection{Calcul des composantes de texture.}
+\subsubsection{Transformée de fourier}
+Une autre caractéristique discriminante des objets est leur texture. On entend par la la présence de motif présentant une périodicité spatiale à leurs surface. Une mesure de la présence ou non d'un certain motif est donné par la corrélation du voisinage d'un pixel avec le motif. La corrélation correspondant à une multipliacation dans le domaine fréquentielle, il s'agit de calculer la transformée de Fourier de signaux à deux dimensions. Pour cela à été utilisé l'algorythme de la transformée de Fourier rapide.
+
+\subsection{Filtrage dans le domaine spatial par des filtres de Canny.}
+\subsection{Localisation des contours.}
+\subsection{Opérations topologiques : Epuration et fermeture du contour.}
+\subsection{Parcours de la silhouette.}
+\subsection{Approximation de la silhouette par un polygone.}
+
+\end{document}
