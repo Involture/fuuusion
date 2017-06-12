@@ -78,7 +78,7 @@ ifft = lambda x: fastFastFourier2D(x, True)
 def showFourier(arr, amp = 1):
     """Switch quadrant and convert arr2D in integer.\
     Makes a fourier transform result displayable."""
-    return switchQuad(cint(red(arr, amp)))
+    return switchQuad(cflt(red(np.abs(arr), amp)))
 
 sf = showFourier
 

@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.6.6)  6 JUN 2017 10:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.6.8)  12 JUN 2017 16:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **slide_martin.tex
 (./slide_martin.tex
 LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 3 language(s) loaded.
+Babel <3.9q> and hyphenation patterns for 5 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasercs.sty
 Package: beamerbasercs 2015/03/08 (rcs-revision 368aa9ba9d38)
@@ -707,16 +707,6 @@ File: babel.def 2016/02/24 3.9q Babel common definitions
 \U@D=\dimen188
 LaTeX Info: Redefining \textlatin on input line 1448.
 )
-\l@french = a dialect from \language\l@nohyphenation 
-
-
-Package babel Warning: No hyphenation patterns were preloaded for
-(babel)                the language `French' into the format.
-(babel)                Please, configure your TeX system to add them and
-(babel)                rebuild the format. Now I will use the patterns
-(babel)                preloaded for \language=nohyphenation instead on input l
-ine 75.
-
 \l@acadian = a dialect from \language\l@french 
 \l@canadien = a dialect from \language\l@french 
 \FB@nonchar=\count154
@@ -741,7 +731,11 @@ Package babel Info: Making ? an active character on input line 368.
 \leftmarginFB=\skip63
 \parindentFFN=\dimen190
 \FBfnindent=\skip64
-)) (/usr/share/texlive/texmf-dist/tex/latex/carlisle/scalefnt.sty)
+)
+(/usr/local/share/texmf/tex/latex/generic/babel-french/frenchb.ldf
+Language: frenchb 2017/01/15 v3.2f French support from the babel system
+))
+(/usr/share/texlive/texmf-dist/tex/latex/carlisle/scalefnt.sty)
 Package frenchb.ldf Info: No list customisation for the beamer class,
 (frenchb.ldf)             reported on input line 4.
 
@@ -757,49 +751,372 @@ Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks44
 \inpenc@posthook=\toks45
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2015/03/17 v1.2c Input encoding file
-))
-(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/theme/beamerthemeWarsaw.
-sty
-Package: beamerthemeWarsaw 2010/06/17  (rcs-revision d02a7cf4d8ae)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2015/12/03 v1.1r UTF-8 support for inputenc
+Now handling font encoding OML ...
+... no UTF-8 mapping file for font encoding OML
+Now handling font encoding T1 ...
+... processing UTF-8 mapping file for font encoding T1
 
-(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/inner/beamerinnerthemero
-unded.sty
-Package: beamerinnerthemerounded 2010/06/17  (rcs-revision d02a7cf4d8ae)
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
+File: t1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
+   defining Unicode char U+00A0 (decimal 160)
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00AB (decimal 171)
+   defining Unicode char U+00AD (decimal 173)
+   defining Unicode char U+00BB (decimal 187)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C0 (decimal 192)
+   defining Unicode char U+00C1 (decimal 193)
+   defining Unicode char U+00C2 (decimal 194)
+   defining Unicode char U+00C3 (decimal 195)
+   defining Unicode char U+00C4 (decimal 196)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00C7 (decimal 199)
+   defining Unicode char U+00C8 (decimal 200)
+   defining Unicode char U+00C9 (decimal 201)
+   defining Unicode char U+00CA (decimal 202)
+   defining Unicode char U+00CB (decimal 203)
+   defining Unicode char U+00CC (decimal 204)
+   defining Unicode char U+00CD (decimal 205)
+   defining Unicode char U+00CE (decimal 206)
+   defining Unicode char U+00CF (decimal 207)
+   defining Unicode char U+00D0 (decimal 208)
+   defining Unicode char U+00D1 (decimal 209)
+   defining Unicode char U+00D2 (decimal 210)
+   defining Unicode char U+00D3 (decimal 211)
+   defining Unicode char U+00D4 (decimal 212)
+   defining Unicode char U+00D5 (decimal 213)
+   defining Unicode char U+00D6 (decimal 214)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00D9 (decimal 217)
+   defining Unicode char U+00DA (decimal 218)
+   defining Unicode char U+00DB (decimal 219)
+   defining Unicode char U+00DC (decimal 220)
+   defining Unicode char U+00DD (decimal 221)
+   defining Unicode char U+00DE (decimal 222)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E0 (decimal 224)
+   defining Unicode char U+00E1 (decimal 225)
+   defining Unicode char U+00E2 (decimal 226)
+   defining Unicode char U+00E3 (decimal 227)
+   defining Unicode char U+00E4 (decimal 228)
+   defining Unicode char U+00E5 (decimal 229)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00E7 (decimal 231)
+   defining Unicode char U+00E8 (decimal 232)
+   defining Unicode char U+00E9 (decimal 233)
+   defining Unicode char U+00EA (decimal 234)
+   defining Unicode char U+00EB (decimal 235)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F0 (decimal 240)
+   defining Unicode char U+00F1 (decimal 241)
+   defining Unicode char U+00F2 (decimal 242)
+   defining Unicode char U+00F3 (decimal 243)
+   defining Unicode char U+00F4 (decimal 244)
+   defining Unicode char U+00F5 (decimal 245)
+   defining Unicode char U+00F6 (decimal 246)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+00F9 (decimal 249)
+   defining Unicode char U+00FA (decimal 250)
+   defining Unicode char U+00FB (decimal 251)
+   defining Unicode char U+00FC (decimal 252)
+   defining Unicode char U+00FD (decimal 253)
+   defining Unicode char U+00FE (decimal 254)
+   defining Unicode char U+00FF (decimal 255)
+   defining Unicode char U+0100 (decimal 256)
+   defining Unicode char U+0101 (decimal 257)
+   defining Unicode char U+0102 (decimal 258)
+   defining Unicode char U+0103 (decimal 259)
+   defining Unicode char U+0104 (decimal 260)
+   defining Unicode char U+0105 (decimal 261)
+   defining Unicode char U+0106 (decimal 262)
+   defining Unicode char U+0107 (decimal 263)
+   defining Unicode char U+0108 (decimal 264)
+   defining Unicode char U+0109 (decimal 265)
+   defining Unicode char U+010A (decimal 266)
+   defining Unicode char U+010B (decimal 267)
+   defining Unicode char U+010C (decimal 268)
+   defining Unicode char U+010D (decimal 269)
+   defining Unicode char U+010E (decimal 270)
+   defining Unicode char U+010F (decimal 271)
+   defining Unicode char U+0110 (decimal 272)
+   defining Unicode char U+0111 (decimal 273)
+   defining Unicode char U+0112 (decimal 274)
+   defining Unicode char U+0113 (decimal 275)
+   defining Unicode char U+0114 (decimal 276)
+   defining Unicode char U+0115 (decimal 277)
+   defining Unicode char U+0116 (decimal 278)
+   defining Unicode char U+0117 (decimal 279)
+   defining Unicode char U+0118 (decimal 280)
+   defining Unicode char U+0119 (decimal 281)
+   defining Unicode char U+011A (decimal 282)
+   defining Unicode char U+011B (decimal 283)
+   defining Unicode char U+011C (decimal 284)
+   defining Unicode char U+011D (decimal 285)
+   defining Unicode char U+011E (decimal 286)
+   defining Unicode char U+011F (decimal 287)
+   defining Unicode char U+0120 (decimal 288)
+   defining Unicode char U+0121 (decimal 289)
+   defining Unicode char U+0122 (decimal 290)
+   defining Unicode char U+0123 (decimal 291)
+   defining Unicode char U+0124 (decimal 292)
+   defining Unicode char U+0125 (decimal 293)
+   defining Unicode char U+0128 (decimal 296)
+   defining Unicode char U+0129 (decimal 297)
+   defining Unicode char U+012A (decimal 298)
+   defining Unicode char U+012B (decimal 299)
+   defining Unicode char U+012C (decimal 300)
+   defining Unicode char U+012D (decimal 301)
+   defining Unicode char U+012E (decimal 302)
+   defining Unicode char U+012F (decimal 303)
+   defining Unicode char U+0130 (decimal 304)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0132 (decimal 306)
+   defining Unicode char U+0133 (decimal 307)
+   defining Unicode char U+0134 (decimal 308)
+   defining Unicode char U+0135 (decimal 309)
+   defining Unicode char U+0136 (decimal 310)
+   defining Unicode char U+0137 (decimal 311)
+   defining Unicode char U+0139 (decimal 313)
+   defining Unicode char U+013A (decimal 314)
+   defining Unicode char U+013B (decimal 315)
+   defining Unicode char U+013C (decimal 316)
+   defining Unicode char U+013D (decimal 317)
+   defining Unicode char U+013E (decimal 318)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0143 (decimal 323)
+   defining Unicode char U+0144 (decimal 324)
+   defining Unicode char U+0145 (decimal 325)
+   defining Unicode char U+0146 (decimal 326)
+   defining Unicode char U+0147 (decimal 327)
+   defining Unicode char U+0148 (decimal 328)
+   defining Unicode char U+014A (decimal 330)
+   defining Unicode char U+014B (decimal 331)
+   defining Unicode char U+014C (decimal 332)
+   defining Unicode char U+014D (decimal 333)
+   defining Unicode char U+014E (decimal 334)
+   defining Unicode char U+014F (decimal 335)
+   defining Unicode char U+0150 (decimal 336)
+   defining Unicode char U+0151 (decimal 337)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+0154 (decimal 340)
+   defining Unicode char U+0155 (decimal 341)
+   defining Unicode char U+0156 (decimal 342)
+   defining Unicode char U+0157 (decimal 343)
+   defining Unicode char U+0158 (decimal 344)
+   defining Unicode char U+0159 (decimal 345)
+   defining Unicode char U+015A (decimal 346)
+   defining Unicode char U+015B (decimal 347)
+   defining Unicode char U+015C (decimal 348)
+   defining Unicode char U+015D (decimal 349)
+   defining Unicode char U+015E (decimal 350)
+   defining Unicode char U+015F (decimal 351)
+   defining Unicode char U+0160 (decimal 352)
+   defining Unicode char U+0161 (decimal 353)
+   defining Unicode char U+0162 (decimal 354)
+   defining Unicode char U+0163 (decimal 355)
+   defining Unicode char U+0164 (decimal 356)
+   defining Unicode char U+0165 (decimal 357)
+   defining Unicode char U+0168 (decimal 360)
+   defining Unicode char U+0169 (decimal 361)
+   defining Unicode char U+016A (decimal 362)
+   defining Unicode char U+016B (decimal 363)
+   defining Unicode char U+016C (decimal 364)
+   defining Unicode char U+016D (decimal 365)
+   defining Unicode char U+016E (decimal 366)
+   defining Unicode char U+016F (decimal 367)
+   defining Unicode char U+0170 (decimal 368)
+   defining Unicode char U+0171 (decimal 369)
+   defining Unicode char U+0172 (decimal 370)
+   defining Unicode char U+0173 (decimal 371)
+   defining Unicode char U+0174 (decimal 372)
+   defining Unicode char U+0175 (decimal 373)
+   defining Unicode char U+0176 (decimal 374)
+   defining Unicode char U+0177 (decimal 375)
+   defining Unicode char U+0178 (decimal 376)
+   defining Unicode char U+0179 (decimal 377)
+   defining Unicode char U+017A (decimal 378)
+   defining Unicode char U+017B (decimal 379)
+   defining Unicode char U+017C (decimal 380)
+   defining Unicode char U+017D (decimal 381)
+   defining Unicode char U+017E (decimal 382)
+   defining Unicode char U+01CD (decimal 461)
+   defining Unicode char U+01CE (decimal 462)
+   defining Unicode char U+01CF (decimal 463)
+   defining Unicode char U+01D0 (decimal 464)
+   defining Unicode char U+01D1 (decimal 465)
+   defining Unicode char U+01D2 (decimal 466)
+   defining Unicode char U+01D3 (decimal 467)
+   defining Unicode char U+01D4 (decimal 468)
+   defining Unicode char U+01E2 (decimal 482)
+   defining Unicode char U+01E3 (decimal 483)
+   defining Unicode char U+01E6 (decimal 486)
+   defining Unicode char U+01E7 (decimal 487)
+   defining Unicode char U+01E8 (decimal 488)
+   defining Unicode char U+01E9 (decimal 489)
+   defining Unicode char U+01EA (decimal 490)
+   defining Unicode char U+01EB (decimal 491)
+   defining Unicode char U+01F0 (decimal 496)
+   defining Unicode char U+01F4 (decimal 500)
+   defining Unicode char U+01F5 (decimal 501)
+   defining Unicode char U+0218 (decimal 536)
+   defining Unicode char U+0219 (decimal 537)
+   defining Unicode char U+021A (decimal 538)
+   defining Unicode char U+021B (decimal 539)
+   defining Unicode char U+01E02 (decimal 7682)
+   defining Unicode char U+01E03 (decimal 7683)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201A (decimal 8218)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+   defining Unicode char U+201E (decimal 8222)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+2039 (decimal 8249)
+   defining Unicode char U+203A (decimal 8250)
+   defining Unicode char U+2423 (decimal 9251)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/outer/beamerouterthemesh
-adow.sty
-Package: beamerouterthemeshadow 2010/06/17  (rcs-revision d02a7cf4d8ae)
+Now handling font encoding OT1 ...
+... processing UTF-8 mapping file for font encoding OT1
 
-(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/outer/beamerouterthemesp
-lit.sty
-Package: beamerouterthemesplit 2012/10/16  (rcs-revision 51a8c72084af)
-))
-(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/color/beamercolorthemeor
-chid.sty
-Package: beamercolorthemeorchid 2010/06/17  (rcs-revision d02a7cf4d8ae)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
+File: ot1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
+   defining Unicode char U+00A0 (decimal 160)
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00AD (decimal 173)
+   defining Unicode char U+00B8 (decimal 184)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+0174 (decimal 372)
+   defining Unicode char U+0175 (decimal 373)
+   defining Unicode char U+0176 (decimal 374)
+   defining Unicode char U+0177 (decimal 375)
+   defining Unicode char U+0218 (decimal 536)
+   defining Unicode char U+0219 (decimal 537)
+   defining Unicode char U+021A (decimal 538)
+   defining Unicode char U+021B (decimal 539)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/color/beamercolorthemewh
-ale.sty
-Package: beamercolorthemewhale 2010/06/17  (rcs-revision d02a7cf4d8ae)
+Now handling font encoding OMS ...
+... processing UTF-8 mapping file for font encoding OMS
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
+File: omsenc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+)
+Now handling font encoding OMX ...
+... no UTF-8 mapping file for font encoding OMX
+Now handling font encoding U ...
+... no UTF-8 mapping file for font encoding U
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+02C6 (decimal 710)
+   defining Unicode char U+02DC (decimal 732)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2026 (decimal 8230)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2423 (decimal 9251)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count161
+\lst@gtempboxa=\box53
+\lst@token=\toks46
+\lst@length=\count162
+\lst@currlwidth=\dimen191
+\lst@column=\count163
+\lst@pos=\count164
+\lst@lostspace=\dimen192
+\lst@width=\dimen193
+\lst@newlines=\count165
+\lst@lineno=\count166
+\lst@maxwidth=\dimen194
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count167
+\lst@skipnumbers=\count168
+\lst@framebox=\box54
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/theme/beamerthemeHannove
+r.sty
+Package: beamerthemeHannover 2010/06/17  (rcs-revision d02a7cf4d8ae)
+
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/outer/beamerouterthemesi
+debar.sty
+Package: beamerouterthemesidebar 2010/06/17  (rcs-revision d02a7cf4d8ae)
+\beamer@sidebarwidth=\dimen195
+\beamer@headheight=\dimen196
+)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/color/beamercolorthemese
+ahorse.sty
+Package: beamercolorthemeseahorse 2010/06/17  (rcs-revision d02a7cf4d8ae)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/inner/beamerinnerthemeci
+rcles.sty
+Package: beamerinnerthemecircles 2010/06/17  (rcs-revision d02a7cf4d8ae)
 )) (./slide_martin.aux)
 \openout1 = `slide_martin.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -809,14 +1126,14 @@ LaTeX Font Info:    ... okay on input line 10.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: includehead includefoot 
-* h-part:(L,W,R)=(28.45274pt, 307.28987pt, 28.45274pt)
+* h-part:(L,W,R)=(59.22636pt, 290.74263pt, 14.22636pt)
 * v-part:(T,H,B)=(0.0pt, 273.14662pt, 0.0pt)
 * \paperwidth=364.19536pt
 * \paperheight=273.14662pt
-* \textwidth=307.28987pt
+* \textwidth=290.74263pt
 * \textheight=244.6939pt
-* \oddsidemargin=-43.81725pt
-* \evensidemargin=-43.81725pt
+* \oddsidemargin=-13.04362pt
+* \evensidemargin=-13.04362pt
 * \topmargin=-72.26999pt
 * \headheight=14.22636pt
 * \headsep=0.0pt
@@ -837,17 +1154,17 @@ LaTeX Font Info:    ... okay on input line 10.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count161
-\scratchdimen=\dimen191
-\scratchbox=\box53
-\nofMPsegments=\count162
-\nofMParguments=\count163
-\everyMPshowfont=\toks46
-\MPscratchCnt=\count164
-\MPscratchDim=\dimen192
-\MPnumerator=\count165
-\makeMPintoPDFobject=\count166
-\everyMPtoPDFconversion=\toks47
+\scratchcounter=\count169
+\scratchdimen=\dimen197
+\scratchbox=\box55
+\nofMPsegments=\count170
+\nofMParguments=\count171
+\everyMPshowfont=\toks47
+\MPscratchCnt=\count172
+\MPscratchDim=\dimen198
+\MPnumerator=\count173
+\makeMPintoPDFobject=\count174
+\everyMPtoPDFconversion=\toks48
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -864,8 +1181,8 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box54
-Package hyperref Info: Link coloring OFF on input line 10.
+\AtBeginShipoutBox=\box56
+Package hyperref Info: Link coloring OFF on input line 11.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -873,120 +1190,372 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count167
+\c@section@level=\count175
 )
-LaTeX Info: Redefining \ref on input line 10.
-LaTeX Info: Redefining \pageref on input line 10.
-LaTeX Info: Redefining \nameref on input line 10.
+LaTeX Info: Redefining \ref on input line 11.
+LaTeX Info: Redefining \pageref on input line 11.
+LaTeX Info: Redefining \nameref on input line 11.
 
 (./slide_martin.out) (./slide_martin.out)
 \@outlinefile=\write5
 \openout5 = `slide_martin.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 10.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 11.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 10.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 11.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/cmr/m/n on input line 10.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 10.
+(Font)                  OT1/cmss/m/n --> T1/cmr/m/n on input line 11.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> T1/cmss/bx/n on input line 10.
+(Font)                  OT1/cmr/bx/n --> T1/cmss/bx/n on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> T1/cmss/bx/n on input line 10.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 10.
+(Font)                  OT1/cmr/bx/n --> T1/cmss/bx/n on input line 11.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/cmss/m/n on input line 10.
+(Font)                  OT1/cmss/m/n --> T1/cmss/m/n on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/cmss/m/n on input line 10.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 10.
+(Font)                  OT1/cmss/bx/n --> T1/cmss/m/n on input line 11.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> T1/cmss/m/it on input line 10.
+(Font)                  OT1/cmr/m/it --> T1/cmss/m/it on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> T1/cmss/m/it on input line 10.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 10.
+(Font)                  OT1/cmr/bx/it --> T1/cmss/m/it on input line 11.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 10.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 10.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 11.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/cmss/m/n --> T1/cmss/bx/n on input line 10.
+(Font)                  T1/cmss/m/n --> T1/cmss/bx/n on input line 11.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/cmss/m/it --> T1/cmss/bx/it on input line 10.
+(Font)                  T1/cmss/m/it --> T1/cmss/bx/it on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/cmr/bx/n on input line 10.
+(Font)                  OT1/cmss/bx/n --> T1/cmr/bx/n on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/cmss/bx/n --> T1/cmss/bx/n on input line 10.
+(Font)                  T1/cmss/bx/n --> T1/cmss/bx/n on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/cmss/m/n --> T1/cmss/bx/n on input line 10.
+(Font)                  T1/cmss/m/n --> T1/cmss/bx/n on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/cmss/m/it --> T1/cmss/bx/it on input line 10.
+(Font)                  T1/cmss/m/it --> T1/cmss/bx/it on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/cmtt/m/n --> T1/cmtt/bx/n on input line 10.
+(Font)                  T1/cmtt/m/n --> T1/cmtt/bx/n on input line 11.
 
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-bas
 ic-dictionary/translator-basic-dictionary-English.dict
 Dictionary: translator-basic-dictionary, Language: English 
 )
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-bas
+ic-dictionary/translator-basic-dictionary-French.dict
+Dictionary: translator-basic-dictionary, Language: French 
+)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-bib
 liography-dictionary/translator-bibliography-dictionary-English.dict
 Dictionary: translator-bibliography-dictionary, Language: English 
+)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-bib
+liography-dictionary/translator-bibliography-dictionary-French.dict
+Dictionary: translator-bibliography-dictionary, Language: French 
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-env
 ironment-dictionary/translator-environment-dictionary-English.dict
 Dictionary: translator-environment-dictionary, Language: English 
 )
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-env
+ironment-dictionary/translator-environment-dictionary-French.dict
+Dictionary: translator-environment-dictionary, Language: French 
+)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-mon
 ths-dictionary/translator-months-dictionary-English.dict
 Dictionary: translator-months-dictionary, Language: English 
+)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-mon
+ths-dictionary/translator-months-dictionary-French.dict
+Dictionary: translator-month-dictionary, Language: French 
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-num
 bers-dictionary/translator-numbers-dictionary-English.dict
 Dictionary: translator-numbers-dictionary, Language: English 
 )
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-num
+bers-dictionary/translator-numbers-dictionary-French.dict
+Dictionary: translator-numbers-dictionary, Language: French 
+)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-the
 orem-dictionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 10.
-LaTeX Info: Redefining \degres on input line 10.
-LaTeX Info: Redefining \dots on input line 10.
-LaTeX Info: Redefining \up on input line 10.
- (./slide_martin.nav)
-LaTeX Font Info:    Try loading font information for U+msa on input line 26.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-the
+orem-dictionary/translator-theorem-dictionary-French.dict
+Dictionary: translator-theorem-dictionary, Language: French 
+)
+LaTeX Info: Redefining \includegraphics on input line 11.
+LaTeX Info: Redefining \degres on input line 11.
+LaTeX Info: Redefining \dots on input line 11.
+LaTeX Info: Redefining \up on input line 11.
+\c@lstlisting=\count176
+ (./slide_martin.nav) (./slide_martin.toc)
+
+LaTeX Font Warning: Font shape `T1/cmss/m/n' in size <4> not available
+(Font)              size <5> substituted on input line 15.
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+]
+LaTeX Font Info:    Try loading font information for OMS+cmss on input line 31.
+
+LaTeX Font Info:    No file OMScmss.fd. on input line 31.
+
+
+LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbullet' on input line 31.
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 31.
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 26.
+LaTeX Font Info:    Try loading font information for U+msb on input line 31.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-
-LaTeX Font Warning: Font shape `T1/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 26.
-
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
+) [2
 
 ]
-<bureau.png, id=82, 2055.68pt x 1156.32pt>
-File: bureau.png Graphic file (type png)
- <use bureau.png>
-Package pdftex.def Info: bureau.png used on input line 41.
-(pdftex.def)             Requested size: 142.26378pt x 80.01553pt.
+<images/roller.png, id=162, 513.92pt x 513.92pt>
+File: images/roller.png Graphic file (type png)
+ <use images/roller.png>
+Package pdftex.def Info: images/roller.png used on input line 49.
+(pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 
-<bureau_lab.jpg, id=83, 1027.84pt x 513.92pt>
-File: bureau_lab.jpg Graphic file (type jpg)
- <use bureau_lab.jpg>
-Package pdftex.def Info: bureau_lab.jpg used on input line 41.
-(pdftex.def)             Requested size: 142.26378pt x 71.12491pt.
+<images/roller_lab.jpg, id=163, 513.92pt x 513.92pt>
+File: images/roller_lab.jpg Graphic file (type jpg)
+
+<use images/roller_lab.jpg>
+Package pdftex.def Info: images/roller_lab.jpg used on input line 49.
+(pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
  [3
 
- <./bureau.png (PNG copy)> <./bureau_lab.jpg>] [4
+ <./images/roller.png> <./images/roller_lab.jpg>] [4
+
+] [5
+
+]
+File: images/roller_lab.jpg Graphic file (type jpg)
+ <use images/roller_lab.jpg>
+Package pdftex.def Info: images/roller_lab.jpg used on input line 89.
+(pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
+
+<images/test1.png, id=285, 2055.68pt x 2055.68pt>
+File: images/test1.png Graphic file (type png)
+ <use images/test1.png>
+Package pdftex.def Info: images/test1.png used on input line 89.
+(pdftex.def)             Requested size: 85.35826pt x 85.3499pt.
+
+<images/test2.png, id=286, 2055.68pt x 2055.68pt>
+File: images/test2.png Graphic file (type png)
+ <use images/test2.png>
+Package pdftex.def Info: images/test2.png used on input line 89.
+(pdftex.def)             Requested size: 85.35826pt x 85.3499pt.
+
+<images/roller_fft.jpg, id=287, 513.92pt x 513.92pt>
+File: images/roller_fft.jpg Graphic file (type jpg)
+
+<use images/roller_fft.jpg>
+Package pdftex.def Info: images/roller_fft.jpg used on input line 89.
+(pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
+
+<images/test1_fft.jpg, id=288, 2055.68pt x 2055.68pt>
+File: images/test1_fft.jpg Graphic file (type jpg)
+
+<use images/test1_fft.jpg>
+Package pdftex.def Info: images/test1_fft.jpg used on input line 89.
+(pdftex.def)             Requested size: 85.35826pt x 85.3499pt.
+
+<images/test2_fft.jpg, id=289, 2055.68pt x 2055.68pt>
+File: images/test2_fft.jpg Graphic file (type jpg)
+
+<use images/test2_fft.jpg>
+Package pdftex.def Info: images/test2_fft.jpg used on input line 89.
+(pdftex.def)             Requested size: 85.35826pt x 85.3499pt.
+ [6
+
+ <./images/test1.png> <./images/test2.png> <./images/roller_fft.jpg> <./images/
+test1_fft.jpg> <./images/test2_fft.jpg>]
+<images/fgauss.jpg, id=327, 16.06pt x 16.06pt>
+File: images/fgauss.jpg Graphic file (type jpg)
+ <use images/fgauss.jpg>
+Package pdftex.def Info: images/fgauss.jpg used on input line 106.
+(pdftex.def)             Requested size: 113.81102pt x 113.84833pt.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/m/sc' undefined
+(Font)              using `T1/cmss/m/n' instead on input line 106.
+
+[7
+
+ <./images/fgauss.jpg>]
+<images/roller_resp.jpg, id=369, 497.86pt x 497.86pt>
+File: images/roller_resp.jpg Graphic file (type jpg)
+
+<use images/roller_resp.jpg>
+Package pdftex.def Info: images/roller_resp.jpg used on input line 115.
+(pdftex.def)             Requested size: 142.26378pt x 142.26381pt.
+ [8
+
+ <./images/roller_resp.jpg>] [9
+
+]
+<images/step.png, id=445, 578.16pt x 433.62pt>
+File: images/step.png Graphic file (type png)
+ <use images/step.png>
+Package pdftex.def Info: images/step.png used on input line 152.
+(pdftex.def)             Requested size: 85.35826pt x 64.01463pt.
+
+<images/gaussd1d.png, id=447, 578.16pt x 433.62pt>
+File: images/gaussd1d.png Graphic file (type png)
+ <use images/gaussd1d.png>
+Package pdftex.def Info: images/gaussd1d.png used on input line 152.
+(pdftex.def)             Requested size: 85.35826pt x 64.01463pt.
+
+<images/gaussd.png, id=448, 16.06pt x 16.06pt>
+File: images/gaussd.png Graphic file (type png)
+ <use images/gaussd.png>
+Package pdftex.def Info: images/gaussd.png used on input line 152.
+(pdftex.def)             Requested size: 85.35826pt x 85.38612pt.
+ [10
+
+ <./images/step.png> <./images/gaussd1d.png> <./images/gaussd.png (PNG copy)>]
+File: images/roller_resp.jpg Graphic file (type jpg)
+
+<use images/roller_resp.jpg>
+Package pdftex.def Info: images/roller_resp.jpg used on input line 161.
+(pdftex.def)             Requested size: 113.81102pt x 113.80649pt.
+
+<images/roller_filtered.jpg, id=487, 513.92pt x 513.92pt>
+File: images/roller_filtered.jpg Graphic file (type jpg)
+
+<use images/roller_filtered.jpg>
+Package pdftex.def Info: images/roller_filtered.jpg used on input line 161.
+(pdftex.def)             Requested size: 113.81102pt x 113.80771pt.
+ [11
+
+ <./images/roller_filtered.jpg>]
+<images/projection.jpeg, id=526, 477.4638pt x 433.3791pt>
+File: images/projection.jpeg Graphic file (type jpg)
+
+<use images/projection.jpeg>
+Package pdftex.def Info: images/projection.jpeg used on input line 190.
+(pdftex.def)             Requested size: 113.81102pt x 103.29892pt.
+ [12
+
+ <./images/projection.jpeg>]
+File: images/roller_filtered.jpg Graphic file (type jpg)
+
+<use images/roller_filtered.jpg>
+Package pdftex.def Info: images/roller_filtered.jpg used on input line 195.
+(pdftex.def)             Requested size: 113.81102pt x 113.80771pt.
+
+<images/roller_localised.jpg, id=566, 505.89pt x 505.89pt>
+File: images/roller_localised.jpg Graphic file (type jpg)
+
+<use images/roller_localised.jpg>
+Package pdftex.def Info: images/roller_localised.jpg used on input line 195.
+(pdftex.def)             Requested size: 113.81102pt x 113.80489pt.
+ [13
+
+ <./images/roller_localised.jpg>] [14
+
+]
+File: images/roller.png Graphic file (type png)
+
+<use images/roller.png>
+Package pdftex.def Info: images/roller.png used on input line 213.
+(pdftex.def)             Requested size: 113.81102pt x 113.80771pt.
+ <images/roller_res.jpg, id=642, 505.89pt x 505.89pt>
+File: images/roller_res.jpg Graphic file (type jpg)
+
+<use images/roller_res.jpg>
+Package pdftex.def Info: images/roller_res.jpg used on input line 213.
+(pdftex.def)             Requested size: 113.81102pt x 113.80489pt.
+ [15
+
+ <./images/roller_res.jpg>]
+File: images/roller_res.jpg Graphic file (type jpg)
+
+<use images/roller_res.jpg>
+Package pdftex.def Info: images/roller_res.jpg used on input line 223.
+(pdftex.def)             Requested size: 85.35826pt x 85.35173pt.
+
+<images/roller_bin.jpg, id=679, 473.77pt x 473.77pt>
+File: images/roller_bin.jpg Graphic file (type jpg)
+
+<use images/roller_bin.jpg>
+Package pdftex.def Info: images/roller_bin.jpg used on input line 223.
+(pdftex.def)             Requested size: 85.35826pt x 85.35443pt.
+ [16
+
+ <./images/roller_bin.jpg>]
+Overfull \hbox (1.84178pt too wide) in paragraph at lines 295--295
+[] 
+ []
+
+
+Overfull \hbox (1.84178pt too wide) in paragraph at lines 295--295
+[]  
+ []
+
+
+Overfull \hbox (1.84178pt too wide) in paragraph at lines 295--295
+[] 
+ []
+
+
+Overfull \hbox (1.84178pt too wide) in paragraph at lines 295--295
+[]  
+ []
+
+[17
+
+]
+File: images/roller_bin.jpg Graphic file (type jpg)
+ <use images/roller_bin.jpg>
+Package pdftex.def Info: images/roller_bin.jpg used on input line 331.
+(pdftex.def)             Requested size: 56.9055pt x 56.90054pt.
+
+<images/roller_bin-.jpg, id=754, 473.77pt x 473.77pt>
+File: images/roller_bin-.jpg Graphic file (type jpg)
+
+<use images/roller_bin-.jpg>
+Package pdftex.def Info: images/roller_bin-.jpg used on input line 331.
+(pdftex.def)             Requested size: 56.9055pt x 56.90054pt.
+
+<images/roller_closedbin.jpg, id=755, 473.77pt x 473.77pt>
+File: images/roller_closedbin.jpg Graphic file (type jpg)
+
+<use images/roller_closedbin.jpg>
+Package pdftex.def Info: images/roller_closedbin.jpg used on input line 331.
+(pdftex.def)             Requested size: 56.9055pt x 56.90054pt.
+ [18
+
+ <./images/roller_bin-.jpg> <./images/roller_closedbin.jpg>] <images/roller_con
+tour.jpg, id=792, 473.77pt x 473.77pt>
+File: images/roller_contour.jpg Graphic file (type jpg)
+
+<use images/roller_contour.jpg>
+Package pdftex.def Info: images/roller_contour.jpg used on input line 343.
+(pdftex.def)             Requested size: 142.26378pt x 142.26222pt.
+ [19
+
+ <./images/roller_contour.jpg>] [20
+
+]
+[21
+
+] [22
+
 
 ]
 \tf@nav=\write6
@@ -998,43 +1567,71 @@ Package pdftex.def Info: bureau_lab.jpg used on input line 41.
 \tf@snm=\write8
 \openout8 = `slide_martin.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 51.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 51.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 385.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 385.
  (./slide_martin.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 51.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 51.
-Package rerunfilecheck Info: File `slide_martin.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 385.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 385.
 
+
+Package rerunfilecheck Warning: File `slide_martin.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `slide_martin.out':
+(rerunfilecheck)             Before: 18714558B79599358B97FAF6F516E9B2;504
+(rerunfilecheck)             After:  5207A87F7112B8D12BA98066E822BEF5;463.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 51.
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 385.
  ) 
 Here is how much of TeX's memory you used:
- 17815 strings out of 494953
- 335672 string characters out of 6180978
- 415703 words of memory out of 5000000
- 20665 multiletter control sequences out of 15000+600000
- 17208 words of font info for 44 fonts, out of 8000000 for 9000
+ 20035 strings out of 494924
+ 369144 string characters out of 6179709
+ 451694 words of memory out of 5000000
+ 22774 multiletter control sequences out of 15000+600000
+ 27139 words of font info for 65 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 48i,16n,59p,392b,604s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/
-martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0800.600pk> </home/martin/.te
-xmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1095.600pk> </home/martin/.texmf-var/fo
-nts/pk/ljfour/jknappen/ec/ecss0800.600pk> </home/martin/.texmf-var/fonts/pk/ljf
-our/jknappen/ec/ecss1095.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknapp
-en/ec/ecss0600.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss
-1440.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on slide_martin.pdf (4 pages, 1997677 bytes).
+ 48i,15n,60p,392b,706s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Navigation23} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation34} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Outline0.11} has been referenced but does not exist
+, replaced by a fixed one
+
+ </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1000.600pk> </home/ma
+rtin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0700.600pk> </home/martin/.texm
+f-var/fonts/pk/ljfour/jknappen/ec/ecss0700.600pk> </home/martin/.texmf-var/font
+s/pk/ljfour/jknappen/ec/ecsi0600.600pk> </home/martin/.texmf-var/fonts/pk/ljfou
+r/jknappen/ec/ecrm1095.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknappen
+/ec/ecsi0800.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss08
+00.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1440.600pk> 
+</home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1095.600pk> </home/mar
+tin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1095.600pk> </home/martin/.texmf
+-var/fonts/pk/ljfour/jknappen/ec/ecss1000.600pk> </home/martin/.texmf-var/fonts
+/pk/ljfour/jknappen/ec/ecss0600.600pk></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
+Output written on slide_martin.pdf (22 pages, 16221930 bytes).
 PDF statistics:
- 263 PDF objects out of 1000 (max. 8388607)
- 157 compressed objects within 2 object streams
- 9 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1240 PDF objects out of 1440 (max. 8388607)
+ 957 compressed objects within 10 object streams
+ 58 named destinations out of 1000 (max. 500000)
+ 231 words of extra memory for PDF output out of 10000 (max. 10000000)
 
