@@ -6,6 +6,7 @@ import math
 from random import randrange
 import copy
 import warnings
+import itertools
 
 import matplotlib
 import numpy as np
@@ -17,7 +18,7 @@ from matplotlib.patches import Polygon as mplPoly
 from matplotlib.collections import PatchCollection
 
 
-COMPARISON_EPSILON = 0.000000001
+COMPARISON_EPSILON = 0.0001
 
 
 class vertex:
@@ -45,12 +46,18 @@ class vertex:
 
     def __str__(self):
         return ("({}, {}, {})".format(self.x, self.y, self.z) +
-                ("" if self.isInterior() is not None else " interior"))
+                ("" if not self.isInterior() else " interior"))
 
     def coords(self):
         """ vertex -> float**3
         Returns the tuple of coordinates of <self>."""
         return (self.x, self.y, self.z)
+
+    def markInt(self):
+        """ vertex -> None
+        Marks the vertex as interior."""
+        self.interior = True
+        # print('int')
 
     def isInterior(self):
         """ vertex -> bool"""
@@ -74,13 +81,17 @@ class vertex:
     def markFTraced(self, f):
         """ vertex * face -> None
         Marks <self> as having been traced for the face <f>."""
-        if self.fTraced is None:
-            self.fTraced = [f]
-        else:
-            self.fTraced.append(f)
+        try:
+            self.fTraced.add(f)
+        except AttributeError:
+            self.fTraced = set()
+            self.fTraced.add(f)
 
     def isMarkedFor(self, f):
-        return self.fTraced is not None and f in self.fTraced
+        try:
+            return f in self.fTraced
+        except AttributeError:
+            return False
 
 
 class edge:
@@ -135,7 +146,11 @@ class edge:
         v0 = vector(face.vertices[0])
         vp = vector(self.pvt)
         vn = vector(self.nvt)
-        if normal.dotProduct(vp - v0) * normal.dotProduct(vn - v0) > 0:
+        p = normal.dotProduct(vp - v0) * normal.dotProduct(vn - v0)
+        if p > 0:
+            return False
+        elif abs(p) <= COMPARISON_EPSILON or abs(normal.dotProduct(vp - vn) / (normal.norm() * (vp - vn).norm())) <= COMPARISON_EPSILON:
+            # print('ah')
             return False
         else:
             interVect = vn + (normal.dotProduct(v0 - vn) /
@@ -173,6 +188,23 @@ class edge:
             return self.nFace
         elif self.nFace == fv:
             return self.pFace
+
+    def markIntersectedWith(self, face):
+        """ edge * face -> None
+        Marks <self> as having already been intersected with <face>."""
+        try:
+            self.hasIntersected.add(face)
+        except AttributeError:
+            self.hasIntersected = set()
+            self.hasIntersected.add(face)
+
+    def hasIntersectedWith(self, f):
+        """ edge * face -> bool
+        Returns wether <self> has already been intersected with <f>."""
+        try:
+            return f in self.hasIntersected
+        except AttributeError:
+            return False
 
 
 class face:
@@ -216,24 +248,24 @@ class face:
         return face(newVertices)
 
     def addVertexBetween(self, v1, nV, v2):
-        """ face * vertex * vertex * vertex -> ()
+        """ face * vertex * vertex * vertex -> None
         Adds a new vertex in <self>.vertices between the two vertices given."""
         n = len(self.vertices)
-
-        for i in range(n):
-            if self.vertices[i] == v1:
-                if self.vertices[(i + 1) % n] == v2:
-                    self.vertices.insert((i + 1) % n, nV)
-                    return nV
-                elif self.vertices[(i - 1) % n] == v2:
-                    self.vertices.insert(i, nV)
-                    return nV
-                else:
-                    # print(v1, v2, self)
-                    raise ValueError('Vertices given are not '
-                                     'adjacent in the face')
-        # print(v1, self)
-        raise ValueError('<v1> is not even in the face')
+        if nV not in self.vertices:
+            for i in range(n):
+                if self.vertices[i] == v1:
+                    if self.vertices[(i + 1) % n] == v2:
+                        self.vertices.insert((i + 1) % n, nV)
+                        return nV
+                    elif self.vertices[(i - 1) % n] == v2:
+                        self.vertices.insert(i, nV)
+                        return nV
+                    else:
+                        # print(v1, v2, self)
+                        raise ValueError('Vertices given are not '
+                                         'adjacent in the face')
+            # # print(v1, self)
+            raise ValueError('<v1> is not even in the face')
 
     def isOnInteriorSide(self, v):
         """ face * vertex -> bool
@@ -250,6 +282,14 @@ class face:
         """ face * edge -> bool
         Returns wether <self> contains <e> in its list of vertices."""
         return any(e.nvt in [self.vertices[i-2], self.vertices[i]] and self.vertices[i-1] == e.pvt for i in range(len(self.vertices)))
+
+    def hasNoDoubleVertices(self):
+        """ face -> bool
+        Ensures <self> has no double vertices."""
+        assert all(self.vertices.count(v) == 1 for v in self.vertices)
+        return (all(all(v1 == v2 or v1.dist(v2) > COMPARISON_EPSILON for v2 in self.vertices)
+                   for v1 in self.vertices) and
+                all(self.vertices.count(v) == 1 for v in self.vertices))
 
 
 class polyhedron:
@@ -377,7 +417,7 @@ class polyhedron:
             x, y, z = arg1
         elif type(arg1) is vector:
             x, y, z = arg1.coords()
-        elif type(arg1) is float:
+        elif type(arg1) is float or type(arg1) is int:
             x, y, z = arg1, arg2, arg3
         elif type(arg1) is vertex:
             try:
@@ -387,7 +427,7 @@ class polyhedron:
                 self.vertices.append(arg1)
             return newV
         else:
-            raise ValueError('bad argument type:' + str(type(arg1)))
+            raise ValueError('bad argument type: ' + str(type(arg1)))
         try:
             newV = self.getVertex(x, y, z, COMPARISON_EPSILON)
         except ValueError:
@@ -656,7 +696,7 @@ class polyhedron:
         newE.pFace = f
         return (newE, newV)
 
-    def translateSweep(self, vect, epsilon=0):
+    def translateSweep(self, vect, epsilon=COMPARISON_EPSILON):
         """ polyhedron * vector -> ()
         Sweeps the polyhedron by translating it following <vect>:
             vertices are transformed to edges, edges to quadrilaterals,
@@ -672,7 +712,7 @@ class polyhedron:
                                      c[2] + vect.z),
                           epsilon)
 
-    def rotateSweep(self, rotVect, rotCenter, epsilon=0):
+    def rotateSweep(self, rotVect, rotCenter, epsilon=COMPARISON_EPSILON):
         """ polyhedron * vector * (float * float * float) * float -> ()
         Sweeps the polyhedron by rotating it around <rotVect> and <rotCenter>:
             vertices are transformed to edges,
@@ -698,7 +738,7 @@ class polyhedron:
                     rotCenter[2] + newVect.z)
         return self.sweep(rot, epsilon)
 
-    def sweep(self, f, epsilon=0):
+    def sweep(self, f, epsilon=COMPARISON_EPSILON):
         """ polyhedron * vector *
                 ((float * float * float) -> (float * float * float)) *
                 float
@@ -748,7 +788,7 @@ class polyhedron:
                 pass
         self.vertices.extend(filter(lambda x: x not in excludeV, newVertices))
 
-    def plot(self, plotEdges=False, emphaseEdges=[], col=('b', 'k', 'r')):
+    def plot(self, plotEdges=False, emphaseEdges=[], col=('b', 'k', 'r'), lims=None, ort=False):
         """ polyhedron -> ()
         Plots the polyhedron using matplotlib."""
         ax = a3.Axes3D(plt.figure())
@@ -757,12 +797,21 @@ class polyhedron:
         ax.set_zlabel('z')
         ax.dist = 30
         ax.azim = -140
-        ax.set_xlim([min(v.x for v in self.vertices),
-                     max(v.x for v in self.vertices)])
-        ax.set_ylim([min(v.y for v in self.vertices),
-                     max(v.y for v in self.vertices)])
-        ax.set_zlim([min(v.z for v in self.vertices),
-                     max(v.z for v in self.vertices)])
+        if lims is None:
+            lims = [0, 0, 0]
+            lims[0] = [min(v.x for v in self.vertices),
+                       max(v.x for v in self.vertices)]
+            lims[1] = [min(v.y for v in self.vertices),
+                       max(v.y for v in self.vertices)]
+            lims[2] = [min(v.z for v in self.vertices),
+                       max(v.z for v in self.vertices)]
+        if ort:
+            ma = max(lims[i][1] for i in range(3))
+            mi = min(lims[i][0] for i in range(3))
+            lims = [[mi, ma]] * 3
+        ax.set_xlim(lims[0])
+        ax.set_ylim(lims[1])
+        ax.set_zlim(lims[2])
         for f in self.faces:
             face = a3.art3d.Poly3DCollection([[v.coords()
                                                for v in f.vertices]])
@@ -816,7 +865,8 @@ class polyhedron:
         assert self.pnFacesInPoly()
         polyInter = polyIntersection.fromPolyhedron(poly1, poly2)
         assert all(all(v in polyInter.poly1.vertices for v in f.vertices) for f in polyInter.poly1.faces)
-        # This handles the case of one polyhedron inside the poly2
+        assert all(all(v in polyInter.poly2.vertices for v in f.vertices) for f in polyInter.poly2.faces)
+        # This handles the case of one polyhedron inside the other
         if not bypassInclusionTest:
             if len(polyInter.inter1) + len(polyInter.inter2) == 0:
                 if all(f.isOnInteriorSide(poly1.vertices[0]) for f in poly2.faces):
@@ -825,10 +875,13 @@ class polyhedron:
                     return poly2
                 else:
                     return polyhedron([], [], [])
-        assert all(all(v in polyInter.poly2.vertices for v in f.vertices) for f in polyInter.poly2.faces)
         assert self.pnFacesInPoly() and self.pnFacesInPoly()
+        # print('step 1')
+        assert polyInter.nonDoubleIntersectors()
         polyInter.createIntersectorVertices()
+        # print('step 2')
         polyInter.buildEdges()
+        # print('step 3')
         polyInter.buildFaces()
         return polyInter.result
 
@@ -851,7 +904,7 @@ class polyhedron:
             projOfN = vector(planeLineIntersect(focalPoint, vertOfN, equ))
             pvtProj = vector(planeLineIntersect(focalPoint, e.pvt, equ))
             nvtProj = vector(planeLineIntersect(focalPoint, e.nvt, equ))
-            # print((projOfP - fVect), vector(vertOfP) - fVect)
+            # # print((projOfP - fVect), vector(vertOfP) - fVect)
             # assert ((projOfP - fVect) * vector(vertOfP) - fVect).norm() < COMPARISON_EPSILON
             nvtReduced = vector((nvtProj - fVect).dotProduct(Z),
                                 (nvtProj - fVect).dotProduct(Y), 0)
@@ -881,11 +934,10 @@ class polyhedron:
         assert result.pnFacesInPoly()
         i = 0
         for s in sils:
-            print(i)
             # print(i)
             assert result.pnFacesInPoly()
             result = result.intersection(s.cone(length), True)
-            result.plot()
+            # result.plot()
             i += 1
         return result
 
@@ -931,6 +983,24 @@ class intersector:
                         "" if self.sTraced else "not ",
                         "" if self.iTraced else "not "))
 
+    def isSTraced(self):
+        """intersector -> bool
+        Returns wether the intersector has been sTraced."""
+        try:
+            return self.sTraced
+        except AttributeError:
+            self.sTraced = False
+            return False
+
+    def isITraced(self):
+        """intersector -> bool
+        Returns wether the intersector has been iTraced."""
+        try:
+            return self.iTraced
+        except AttributeError:
+            self.iTraced = False
+            return False
+
 
 class polyIntersection:
     """class used for polyhedron intersection"""
@@ -972,7 +1042,7 @@ class polyIntersection:
                 any(inter.v == v for inter in self.inter2))
 
     def addIntersection(self, el1, el2):
-        """ face/edge * face/edge -> ()
+        """ face/edge * face/edge -> edge
         Alters <self> to account for the intersection between <el1> and <el2>.
         The intersector object is added to <self>.intersectors,
             and the piercing edge is split.
@@ -989,7 +1059,9 @@ class polyIntersection:
                                                    [el1.nFace,
                                                     el1.pFace,
                                                     el2]))
-                    # print('intersected')
+                    return newEdge
+                    # # print('intersected')
+                el1.markIntersectedWith(el2)
             else:
                 raise TypeError('The arguments given must '
                                 'be an edge and a face')
@@ -1002,7 +1074,9 @@ class polyIntersection:
                                                    [el2.nFace,
                                                     el2.pFace,
                                                     el1]))
-                    # print('intersected')
+                    return newEdge
+                    # # print('intersected')
+                el2.markIntersectedWith(el1)
             else:
                 raise TypeError('The arguments given must '
                                 'be an edge and a face')
@@ -1019,43 +1093,43 @@ class polyIntersection:
         pInters = self.getIntersectorList(inter.pe.pFace.vertices)
         otherI1 = next(filter(lambda x: x is not None and x.f == inter.f and x != inter,
                               pInters),
-                       False)
-        if otherI1 is False:
+                       None)
+        if otherI1 is None:
             # The pFace does not intersect inter.f a second time,
             # looking for a place where inter.f intersects the pFace
             otherI1 = next(filter(lambda x: x is not None and x.f == inter.pe.pFace,
                                   otherFInters),
-                           False)
-            if otherI1 is False:
+                           None)
+            if otherI1 is None:
                 # polyhedron(inter.f.vertices + inter.pe.pFace.vertices,
                 #            inter.pe.pFace.edges() + inter.f.edges(),
                 #            [inter.f, inter.pe.pFace]).plot(True, col=('none', 'k', 'r'))
-                # print(inter.f, '\n\n', inter.pe.pFace)
+                # # print(inter.f, '\n\n', inter.pe.pFace)
                 assert all(v in self.poly1.vertices for v in inter.f.vertices) or all(v in self.poly2.vertices for v in inter.f.vertices)
                 assert self.poly1.facesInVertices() and self.poly2.facesInVertices()
                 assert self.poly1.pnFacesInPoly() and self.poly2.pnFacesInPoly()
                 assert self.poly1.nonDoubleVertices() and self.poly2.nonDoubleVertices()
-                # print('\n', [(i, i.f) for i in filter(lambda x: x is not False, pInters)])
-                # print([sum(min(v.dist(v2) for v2 in inter.f.vertices) for v in i.f.vertices) for i in filter(lambda x: x is not False, pInters)])
-                # print('\n', [(i, i.f) for i in filter(lambda x: x is not False, otherFInters)])
-                # print([sum(min(v.dist(v2) for v2 in inter.pe.pFace.vertices) for v in i.f.vertices) for i in filter(lambda x: x is not False, otherFInters)])
+                # # print('\n', [(i, i.f) for i in filter(lambda x: x is not False, pInters)])
+                # # print([sum(min(v.dist(v2) for v2 in inter.f.vertices) for v in i.f.vertices) for i in filter(lambda x: x is not False, pInters)])
+                # # print('\n', [(i, i.f) for i in filter(lambda x: x is not False, otherFInters)])
+                # # print([sum(min(v.dist(v2) for v2 in inter.pe.pFace.vertices) for v in i.f.vertices) for i in filter(lambda x: x is not False, otherFInters)])
                 raise ValueError('No intersector found')
         # Second intersector
         nInters = self.getIntersectorList(inter.pe.nFace.vertices)
         otherI2 = next(filter(lambda x: x is not None and x.f == inter.f and x != inter,
                               nInters),
-                       False)
-        if otherI2 is False:
+                       None)
+        if otherI2 is None:
             # The nFace does not intersect inter.f a second time,
             # looking for a place where inter.f intersects the nFace
             otherI2 = next(filter(lambda x: x is not None and x.f == inter.pe.nFace,
                                   otherFInters),
-                           False)
-            if otherI2 is False:
+                           None)
+            if otherI2 is None:
                 polyhedron(inter.f.vertices + inter.pe.nFace.vertices,
                            inter.pe.nFace.edges() + inter.f.edges(),
                            [inter.f, inter.pe.nFace]).plot(True, col=('none', 'k', 'r'))
-                # print(inter.f, inter.pe.pFace)
+                # # print(inter.f, inter.pe.pFace)
                 raise ValueError('No intersector found')
         inter.adjacents = (otherI1, otherI2)
         return (otherI1, otherI2)
@@ -1064,32 +1138,67 @@ class polyIntersection:
         """ polyhedron * polyhedron -> polyIntersection
         Builds the polyIntersection object for poly1 and poly2."""
         polyInt = polyIntersection(poly1, poly2, [], [])
-        for e1 in poly1.edges:  # WARNING: The list of edges can change, things can get messy.
-            for f2 in poly2.faces:
-                assert all(all(v in poly1.vertices for v in f.vertices) for f in poly1.faces)
-                polyInt.addIntersection(e1, f2)
+        originalEdges1 = copy.copy(poly1.edges)
         originalEdges2 = copy.copy(poly2.edges)
-        for e2 in originalEdges2:
-            for f1 in poly1.faces:
-                polyInt.addIntersection(f1, e2)
+        assert all(all(v in poly1.vertices for v in f.vertices) for f in poly1.faces)
+        assert all(f.hasNoDoubleVertices() for f in polyInt.poly1.faces)
+        assert all(f.hasNoDoubleVertices() for f in polyInt.poly2.faces)
+        assert all(all(v in polyInt.poly1.vertices for v in f.vertices) for f in polyInt.poly1.faces)
+        assert all(all(v in polyInt.poly2.vertices for v in f.vertices) for f in polyInt.poly2.faces)
+        while len(originalEdges1) + len(originalEdges2) > 0:
+            newEdges1 = []
+            newEdges2 = []
+            for e1 in originalEdges1:  # WARNING: The list of edges can change, things can get messy.
+                for f2 in poly2.faces:
+                    if not e1.hasIntersectedWith(f2):
+                        assert all(all(v in poly1.vertices for v in f.vertices) for f in poly1.faces)
+                        assert all(f.hasNoDoubleVertices() for f in polyInt.poly1.faces)
+                        assert all(f.hasNoDoubleVertices() for f in polyInt.poly2.faces)
+                        try:
+                            assert polyInt.nonDoubleIntersectors()
+                        except:
+                            pass
+                            # # print('second test:', next((str(x[0]), str(x[1])) for x in itertools.product(polyInt.inter1 + polyInt.inter2, polyInt.inter1 + polyInt.inter2) if x[0] != x[1] and x[0].v == x[1].v and x[0].f == x[1].f))
+                            # print(next((str(x[0]), str(x[1])) for x in itertools.product(polyInt.inter1 + polyInt.inter2, polyInt.inter1 + polyInt.inter2) if x[0] != x[1] and x[0].v == x[1].v))
+                            # assert False
+                        ne = polyInt.addIntersection(e1, f2)
+                        if ne is not None:
+                            ne.markIntersectedWith(f2)
+                            newEdges1.append(ne)
+            for e2 in originalEdges2:
+                for f1 in poly1.faces:
+                    if not e2.hasIntersectedWith(f1):
+                        ne = polyInt.addIntersection(f1, e2)
+                        if ne is not None:
+                            ne.markIntersectedWith(f1)
+                            newEdges1.append(ne)
+            originalEdges1 = newEdges1
+            originalEdges2 = newEdges2
+            assert all(all(v in polyInt.poly1.vertices for v in f.vertices) for f in polyInt.poly1.faces)
+            assert all(all(v in polyInt.poly2.vertices for v in f.vertices) for f in polyInt.poly2.faces)
         return polyInt
 
     def buildEdges(self):
-        """ polyIntersection -> ()
+        """ polyIntersection -> None
         Builds the edges of the result."""
         assert self.poly1.pnFacesInPoly() and self.poly2.pnFacesInPoly()
+        assert self.nonDoubleIntersectors()
+        # print('2.1')
         for i in self.inter1:
+            assert self.nonDoubleIntersectors()
+            # print('test')
             assert all(all(v in self.poly1.vertices for v in f.vertices) for f in self.poly1.faces)
-            if not i.sTraced:
+            if not i.isSTraced():
                 self.traceSurface(i)
+        # print('2.2')
         for i in self.inter2:
-            if not i.sTraced:
+            if not i.isSTraced():
                 self.traceSurface(i)
         for i in self.inter1:
-            if not i.iTraced:
+            if not i.isITraced():
                 self.traceInterior(i)
         for i in self.inter2:
-            if not i.iTraced:
+            if not i.isITraced():
                 self.traceInterior(i)
 
     def traceSurface(self, inter):
@@ -1097,8 +1206,14 @@ class polyIntersection:
         Traces the surface loop that <inter> belongs to,
         and adds it to <self>.result.
         Marks the intersector that have been processed."""
+        assert self.nonDoubleIntersectors()
         assert self.poly1.pnFacesInPoly() and self.poly2.pnFacesInPoly()
+        assert all(f.hasNoDoubleVertices() for f in self.poly1.faces)
+        assert all(f.hasNoDoubleVertices() for f in self.poly2.faces)
+        assert self.nonDoubleVertices()
         i = self.nextIntersectors(inter)[0]
+        assert i.v != inter.v
+        assert i.v.dist(inter.v) != 0
         lastI = inter
         self.result.addEdge(self.newVertex(lastI), self.newVertex(i))
         i.sTraced = True
@@ -1116,13 +1231,18 @@ class polyIntersection:
     def newVertex(self, inter):
         """ polyIntersection * intersector/vertex -> vertex
         Returns the new vertex for <inter> (and creates it if needed)."""
-        vert = inter.v if type(inter) is intersector else inter
-        if inter.nV is None:
+        try:
+            if inter.nV is None:
+                raise AttributeError
+            return inter.nV
+        except AttributeError:
+            vert = inter.v if type(inter) is intersector else inter
             inter.nV = self.result.addVertex(vert.x, vert.y, vert.z)
-        return inter.nV
+            assert inter.nV is not None
+            return inter.nV
 
     def createIntersectorVertices(self):
-        """ polyIntersection -> ()
+        """ polyIntersection -> None
         Adds the vertices corresponding to the intersectors to the result."""
         for i in self.inter1 + self.inter2:
             self.result.addVertex(self.newVertex(i))
@@ -1139,7 +1259,7 @@ class polyIntersection:
         else:
             vert = inter.ne.other(inter.v)
         nI = self.getIntersector(vert)
-        if nI is not False:
+        if nI is not None:
             self.result.addEdge(self.newVertex(inter), self.newVertex(nI))
             nI.iTraced = True
         else:
@@ -1148,8 +1268,8 @@ class polyIntersection:
             else:
                 poly = self.poly2
             newVert = self.newVertex(vert)
-            vert.interior = True
-            newVert.interior = True
+            vert.markInt()
+            newVert.markInt()
             queue = [(vert, newVert)]
             done = []
             while len(queue) > 0:
@@ -1159,14 +1279,14 @@ class polyIntersection:
                     if vert in [e.pvt, e.nvt]:
                         otherV = e.other(vert)
                         otherI = self.getIntersector(otherV)
-                        if otherI is not False:
+                        if otherI is not None:
                             otherNV = self.newVertex(otherI)
                             self.result.addEdge(newVert, otherNV)
                             otherI.iTraced = True
                         elif otherV not in done:
                             otherNV = self.newVertex(otherV)
-                            otherNV.interior = True
-                            otherV.interior = True
+                            otherNV.markInt()
+                            otherV.markInt()
                             self.result.addEdge(newVert, otherNV)
                             queue.append((otherV, otherNV))
                 done.append(vert)
@@ -1189,9 +1309,9 @@ class polyIntersection:
         initialI = self.getIntersector(initialV)
         assert initialI is not None  # This checks that the vertex was actually an intersection
         # This part determines which side of the face is the way to go
-        if (self.getIntersector(face.vertices[(vi + 1) % n]) is True or face.vertices[(vi + 1) % n]).isInterior() is not None:
+        if self.getIntersector(face.vertices[(vi + 1) % n]) is not None or face.vertices[(vi + 1) % n].isInterior():
             step = 1
-        elif (self.getIntersector(face.vertices[(vi - 1) % n]) is True or face.vertices[(vi - 1) % n]).isInterior() is not None:
+        elif self.getIntersector(face.vertices[(vi - 1) % n]) is not None or face.vertices[(vi - 1) % n].isInterior():
             step = -1
         else:
             raise ValueError('The vertex given has no adjacent interior or intersector vertex')
@@ -1203,16 +1323,17 @@ class polyIntersection:
             while (face.vertices[i]).isInterior():
                 newFace.append(self.newVertex(face.vertices[i]))
                 face.vertices[i].markFTraced(face)
+                # print('fTracing', i)
                 i += step
             # Tracing the surface
             newFace.append(self.newVertex(face.vertices[i]))
             face.vertices[i].markFTraced(face)
             lastI = self.getIntersector(face.vertices[i])
             potentialInters = self.nextIntersectors(lastI)
-            if abs((vector(potentialInters[0].v) - vector(lastI.v))\
+            if abs((vector(potentialInters[0].v) - vector(lastI.v))
                .dotProduct(face.normalVect())) < COMPARISON_EPSILON:
                inter = potentialInters[0]
-            elif abs((vector(potentialInters[1].v) - vector(lastI.v))\
+            elif abs((vector(potentialInters[1].v) - vector(lastI.v))
                .dotProduct(face.normalVect())) < COMPARISON_EPSILON:
                inter = potentialInters[1]
             else:
@@ -1241,7 +1362,7 @@ class polyIntersection:
             f = self.poly1.faces[fi]
             for vi in range(len(f.vertices)):
                 v = f.vertices[vi]
-                if self.getIntersector(v) is not None and not v.isMarkedFor(f) :
+                if self.getIntersector(v) is not None and not v.isMarkedFor(f):
                     self.faceTrace(1, fi, vi)
             v = f.vertices[0]
             if v.isInterior() and not v.isMarkedFor(f):
@@ -1262,6 +1383,13 @@ class polyIntersection:
         <f> must be completely interior."""
         assert all(v.isInterior() for v in f.vertices)
         self.result.addFace([self.newVertex(v) for v in f.vertices])
+
+    def nonDoubleVertices(self):
+        return self.poly1.nonDoubleVertices() and self.poly2.nonDoubleVertices()
+
+    def nonDoubleIntersectors(self):
+        return True
+        # return all(all(i1 == i2 or i1.v != i2.v for i1 in self.inter1 + self.inter2) for i2 in self.inter1 + self.inter2)
 
 
 class vector:
