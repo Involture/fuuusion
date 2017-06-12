@@ -1,0 +1,266 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[french]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{varioref}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+	
+
+\newtheorem{lem}{Lemme}
+\newtheorem{theo}{Théorème}
+\labelformat{theo}{le théorème~#1}
+\labelformat{lem}{le lemme~#1}
+
+\title{Démonstration}
+
+\begin{document}
+Nous nous plaçons dans le $\mathbb{R}$-espace vectoriel $E = \mathbb{R}^{3}$, muni de sa structure d'espace euclidien canonique, pour laquelle le produit scalaire sera noté $(\cdot|\cdot)$
+
+
+Pour tout $x\in E$, on définit le projecteur de foyer $x$ comme :
+
+\[\begin{array}{ccccc}
+p_{x} & : & E\setminus\{x\} & \to & S(x, 1) \\
+ & & y & \mapsto & x  + \frac{1}{\norm{y - x}} \cdot (y - x) \\
+\end{array}\]
+
+où $S(x, 1)$ est  la sphère de centre $x$ et de rayon $1$.
+
+
+On définira la silhouette d'une  partie $A$ de $E$ vue depuis un point $x$ comme son image directe par $p_{x}$.
+
+\textit{Note : Cela ne correspond pas exactement à une photographie, qui elle est une projection sur un plan. Toutefois, on admettra que si un objet est entièrement du coté du plan focal opposé au foyer (ce qui est toujours vérifié pour une photographie), le "cône" reconstruit à partir de sa photographie est le même que celui reconstruit à partir de la projection sphérique, et que donc la définition de l'enveloppe visuelle que l'on va donner ici correspond donc bien à la définition "naturelle".}
+
+On définit ensuite le cône de sommet $x$ et de silhouette $A \subset S(x, 1)$ comme suit:
+
+\[C(x,A) = \{\,x + t\cdot{}(y - x), y\in{}A, t\in\mathbb{R}+\,\}\]
+
+On peut alors définir l'enveloppe visuelle d'une partie $A$ de $E$ selon un ensemble de points de vues $V$ :
+
+\[ev(V, A) = \bigcap_{x\in{}V}C(x,p_{x}(A))\]
+
+On notera aussi $conv(A)$ l'enveloppe convexe de $a$, et on admettra que :
+
+\[conv(A) = \{\,\sum_{i=1}^{n} \lambda_{i} x_{i}| n\in{}\mathbb{N}^{*}, (x_{i})_{1\leqslant i \leqslant n} \in E^{n}, \, (\lambda_{i})_{1\leqslant i \leqslant n} \in [0, 1]^{n}\text{ t.q. } \sum_{i=1}^{n} \lambda_{i} = 1\}\]
+
+On montre dans un premier temps \ref{lem1}:
+
+\begin{lem}\label{lem1}
+
+\textbf{Si} $A$ est un fermé de $E$, et il existe $b \in E$ et $M \in \mathbb{R}$ tels que $A \subset B_{o}(b, M)$,
+
+\textbf{Alors} $ev(S(b,M), A) \subset B_{o}(b, M)$
+
+\end{lem}
+
+\begin{proof}
+
+On supposera, quitte à faire effectuer une translation à $A$, que $b = 0$
+
+Supposons qu'il existe $x \in ev(S(0,M), A)$ tel que $\norm{x} \geqslant M$
+
+\begin{itemize}
+\item Si $\norm{x} > M$ 
+
+On considère $\beta$ un vecteur orthogonal à $x$ de norme $1$ ($\beta$ existe car $E$ est un espace euclidien de dimension $3$)
+
+On pose $y = \frac{M^{2}}{\norm{x}^{2}} \cdot x + M \sqrt{1 - \frac{M^{2}}{\norm{x}^{2}}} \cdot \beta$
+
+On remarque que 
+
+\[\begin{array}{ccl}
+\norm{y}^{2} & = & \frac{M^{4}}{\norm{x}^{2}} + M^{2} (1 -\frac{M^{2}}{\norm{x}^{2}}) \\
+             & = &  M^{2}\\
+\end{array}\]
+
+Donc que $y \in S(0, M)$
+
+Et que
+
+\[\begin{array}{ccl}
+(y|x - y) & = & (y|x) - \norm{y}^{2}\\
+          & = & M^{2} - M^{2}\\
+          & = & 0\\
+\end{array}\]
+
+Or $y \in S(0, M)$ donc $x \in C(y, p_{y}(A))$, donc il existe $u\in p_{y}(A)$ et $t\in \mathbb{R}+$ tels que $x = y + t \cdot (u - y)$.
+
+Comme $\norm{x} > M$, $t\neq 0$
+
+Donc $u - y = \frac{1}{t} \cdot (x - y)$, et donc $(u - y|y) = 0$
+
+De plus $u \in p_{y}(A)$ donc il existe $v \in A$ tel que $u = y + \frac{1}{\norm{v -  y}} \cdot (v - y)$
+
+Donc $v = y + \norm{v - y} \cdot (u - y))$
+
+Comme $(u - y|y) = 0$,
+
+\[\begin{array}{ccl}
+\norm{v}^{2} & = & \norm{y}^{2} + \norm{v - y}^{2} \cdot \norm{u - y}^{2} \\
+     & \geqslant & M^{2} \\
+\end{array}\]
+
+
+Or, par hypothèse, $v \in A$ implique $\norm{v} < M$
+
+On a une contradiction.
+
+\item Si  $\norm{x} = M$
+
+$A$ est fermé et borné car inclus dans $B_{o}(0, M)$, donc $A$ est compact (On a $dim(E) = 3$).
+
+Et comme $u \mapsto \norm{u}$ est continue, elle admet un maximum $n_{m}$ sur $A$. Il existe donc $x_{0} \in A$ tel que $\norm{x_{0}} = n_{m}$
+
+$x_{0} \in B_{o}(0, M)$ donc $n_{m} < M$
+
+Soit $y$ un vecteur de $S(0, M)$ tel que $\norm{y - x} < \frac{M - n_{m}}{2}$ et $y \neq x$
+
+$y \in S(0, M)$ donc $x \in C(y, p_{y}(A))$
+
+Donc il existe $v \in A$ et $t \in \mathbb{R}+$ tel que $x = y + \frac{t}{\norm{v - y}} \cdot (v - y)$
+
+$x \neq y$ donc $t \neq 0$ et $v = y + \frac{\norm{v - y}}{t} \cdot (x - y)$
+
+Notons $\lambda = \frac{\norm{v - y}}{t}$
+
+On note $f(x) = \norm{y}^{2} + x^{2} \cdot \norm{x - y}^{2} + 2 x (y|x - y)$
+
+(On a alors $\norm{v}^{2} = f(\lambda)$)
+
+Or $f'(x) = 2 x \norm{x - y}^{2} + 2(y|x - y)$
+Donc $f(x)$ atteint un minimum en $x = \frac{(y|y - x)}{\norm{x - y}^2} = \frac{\norm{y}^{2} - (y|x)}{\norm{x}^{2} + \norm{y}^{2} - 2 (x|y)} = \frac{1}{2}$ (Car $\norm{x} = \norm{y}$)
+
+Ainsi $\norm{v} \geqslant \norm{y + \frac{1}{2} (x - y)} \geqslant \norm{y} - \frac{1}{2} \norm{x - y} > n_{m}$
+Or $v \in A$  donc $\norm{v} \leqslant n_{m}$
+On a encore une contradiction.
+\end{itemize}
+Dans les deux cas on a une contradiction.
+Donc $\norm{x} < M$
+\end{proof}
+
+
+On montre alors \ref{th1} :
+
+\begin{theo}\label{th1}
+
+L'enveloppe visuelle d'un fermé $A$ de $E$ vu depuis une sphère englobant A est incluse dans l'enveloppe convexe de $A$.
+
+En d'autres termes, 
+
+$\forall A \subset E \text{ t.q. $A$ fermé et borné, } \forall (b, M) \in E \times \mathbb{R} \text{t.q.} (\forall x \in A, |x| \leqslant M)$,
+
+$ev(S(b, M), A) \subset conv(A)$
+
+\end{theo}
+
+
+\begin{proof}
+Soit $A$ un fermé de $E$
+
+On considérera $A$ non vide (Si $A$ est vide, $ev(S(b, M), A) = conv(A) = A = \varnothing$)
+
+Soit $a \in ev(S(b, M), A)$
+
+Quitte à effectuer une translation sur $A$ et $b$, on va considérer que $a = 0_{E}$.
+
+\begin{itemize}
+\item Si $0 \in A$, immédiatement $0 \in conv(A)$
+\item Si $0 \notin A$, on a que $\forall x \in S(b, M), 0 \in C(x, p_{x}(A))$
+
+Donc $\exists t \in \mathbb{R}+, \exists y\in p_{x}(A) \text{t.q.} 0 = x + t \cdot (y - x)$
+
+Or $y \in p_{x}(A)$ donc il existe $z$ dans $A$ tel que $p_{x}(z) = y$, soit
+
+\[y - x = \frac{1}{\norm{z - x}} \cdot (z - x)\]
+
+
+Soit $x_{0} \in S(0, 1)$
+
+On note alors
+\[\begin{array}{ccccc}
+d& : & \mathbb{R} & \to & E \\
+ & & t & \mapsto & t \cdot x_{0} \\
+\end{array}\]
+
+$d(\mathbb{R})$ est la droite passant par $x_{0}$  et par $0$.
+
+De plus $A \subset B_{o}(b, M)$ et $0 \in ev(S(b, M), A)$ donc $\norm{0 - b} < M$
+
+Ainsi $\norm{d(0) - b} < M$, et comme $\lim_{t \to +\infty}\norm{d(t)} = +\infty$ et $t \mapsto \norm{d(t) - b}$ est une application continue,
+
+selon le théorème des valeurs intermédiaires, $\exists t_{1} \in \mathbb{R}\setminus\{0\} \text{ tel que } \norm{d(t_{1})} = M$
+
+On note $x_{1} = d(t_{1})$
+
+Comme $0 \in C(x_{1}, p_{x_{1}}(A))$, il existe $v \in A$ et $\lambda \in \mathbb{R}+$ tels que $0 = x_{1} + \lambda (v - x_{1})$
+
+$\lambda \neq 0$ donc $v = \frac{\lambda - 1}{\lambda} \cdot x_{1} = t_{1} \cdot (1 - \frac{1}{\lambda}) x_{0}$
+
+Ainsi, selon le signe de $t_{1} \cdot (1 - \frac{1}{\lambda})$, on aura $p_{0}(v) = x_{0}$ ou $p_{0}(v) = - x_{0}$
+
+Cela est vrai pour tout $x_{0}$ dans $S(0, 1)$ donc, en notant $P = p_{0}(A)$ et $P' = \{-a, a \in P \}$, $P \cup P' = S(0, 1)$
+
+On cherche alors à montrer que $ P \cap P' \neq \varnothing$
+
+Comme $A$ est fermé et borné en dimension finie, $A$ est compact, et comme $p_{0}$ est continue, $P = p_{0}(A)$ est compact aussi.
+
+Et comme $a \mapsto -a$ est continue, $P'$ est compact aussi.
+
+Soit alors $u \in P$ et $v$ un vecteur orthogonal à u de norme $1$
+
+On note 
+\[\begin{array}{ccccc}
+\gamma & : & [0, 1] & \to & S(0, 1) \\
+ & & t & cos(t\pi) \cdot u + sin(t\pi) \cdot v \\
+\end{array}\]
+
+$\gamma$ est continue, donc $\gamma^{-1}(P)$ et $\gamma^{-1}(P')$ sont fermés.
+
+$\gamma(0) = u \in P$ donc $\gamma^{-1}(P) \neq \varnothing$ et on peut donc considérer $t = \sup \gamma^{-1}(P) = \max \gamma^{-1}(P)$ (Car $\gamma^{-1}(P)$ est fermé)
+
+\begin{itemize}
+\item Si $t = 1$, $-u \in P$, et comme on a aussi $u \in P$, $u \in P \cap P'$
+\item Si $t < 1$, il existe $n_{0} \in \mathbb{N}$ tel que $\forall n \geqslant n_{0}, t + \frac{1}{n} \leqslant 1$
+Alors $(\gamma(t + \frac{1}{n}))_{n \geqslant n_{0}}$ est une suite d'éléments qui ne sont pas dans $P$, et donc qui sont dans $P'$ (car ils sont dans $S(0, 1)$)
+
+
+Comme $\gamma$ est continue, elle converge vers $\gamma(t)$, et comme $P'$ est fermé, on a donc $\gamma(t) \in P'$
+
+Donc $\gamma(t) \in P \cap P'$
+\end{itemize}
+
+On a donc que $P \cap P'$ est non vide
+
+Soit $q$ un élément de $P \cap P'$
+
+On a $q \in p_{0}(A)$ donc il existe $\mu \in \mathbb{R}+$ tel que $\mu q \in A$
+
+De même $-q \in p_{0}(A)$ donc il existe $\nu \in \mathbb{R}+$ tel que - $\nu q \in A$
+
+$0_{E} \notin A$ donc $\mu \neq 0$ et $\nu \neq 0$
+
+on note $\alpha = \frac{\frac{1}{\mu}}{\frac{1}{\mu} + \frac{1}{\nu}}$ (on a $\alpha \in [0, 1]$)
+
+Ainsi $0_{E} = \alpha \cdot \mu q + (1 - \alpha) \cdot (- \nu  q)$
+
+Donc $0_{E} \in \{c \cdot u + (1 - c) \cdot v, c \in [0, 1], (u, v) \in A^{2} \}$
+
+
+Et donc $0_{E} \in conv(A)$
+\end{itemize}
+\end{proof}
+\end{document}
