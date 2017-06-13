@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.6.8)  12 JUN 2017 16:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.6.8)  13 JUN 2017 06:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -380,72 +380,380 @@ Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
-)) (./martin_report.aux)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/03/03 v2.15a AMS math features
+\@mathmargin=\skip51
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen106
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen107
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count95
+LaTeX Info: Redefining \frac on input line 199.
+\uproot@=\count96
+\leftroot@=\count97
+LaTeX Info: Redefining \overline on input line 297.
+\classnum@=\count98
+\DOTSCASE@=\count99
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen108
+LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
+\macc@depth=\count100
+\c@MaxMatrixCols=\count101
+\dotsspace@=\muskip10
+\c@parentequation=\count102
+\dspbrk@lvl=\count103
+\tag@help=\toks19
+\row@=\count104
+\column@=\count105
+\maxfields@=\count106
+\andhelp@=\toks20
+\eqnshift@=\dimen109
+\alignsep@=\dimen110
+\tagshift@=\dimen111
+\tagwidth@=\dimen112
+\totwidth@=\dimen113
+\lineht@=\dimen114
+\@envbody=\toks21
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2735.
+LaTeX Info: Redefining \] on input line 2736.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/preprint/fullpage.sty
+Package: fullpage 1999/02/23 1.1 (PWD)
+\FP@margin=\skip54
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2015/08/19 v1.8n multicolumn formatting (FMi)
+\c@tracingmulticols=\count107
+\mult@box=\box28
+\multicol@leftmargin=\dimen115
+\c@unbalance=\count108
+\c@collectmore=\count109
+\doublecol@number=\count110
+\multicoltolerance=\count111
+\multicolpretolerance=\count112
+\full@width=\dimen116
+\page@free=\dimen117
+\premulticols=\dimen118
+\postmulticols=\dimen119
+\multicolsep=\skip55
+\multicolbaselineskip=\skip56
+\partial@page=\box29
+\last@line=\box30
+\maxbalancingoverflow=\dimen120
+\mult@rightbox=\box31
+\mult@grightbox=\box32
+\mult@gfirstbox=\box33
+\mult@firstbox=\box34
+\@tempa=\box35
+\@tempa=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\@tempa=\box50
+\@tempa=\box51
+\c@columnbadness=\count113
+\c@finalcolumnbadness=\count114
+\last@try=\dimen121
+\multicolovershoot=\dimen122
+\multicolundershoot=\dimen123
+\mult@nat@firstbox=\box52
+\colbreak@box=\box53
+\mc@col@check@num=\count115
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 95.
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count116
+))
+\Gin@req@height=\dimen124
+\Gin@req@width=\dimen125
+)
+(./martin_report.aux)
 \openout1 = `martin_report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Info: Redefining \degres on input line 10.
-LaTeX Info: Redefining \dots on input line 10.
-LaTeX Info: Redefining \up on input line 10.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 14.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 14.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 14.
-(./martin_report.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 4.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 4.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Info: Redefining \degres on input line 14.
+LaTeX Info: Redefining \dots on input line 14.
+LaTeX Info: Redefining \up on input line 14.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count117
+\scratchdimen=\dimen126
+\scratchbox=\box54
+\nofMPsegments=\count118
+\nofMParguments=\count119
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count120
+\MPscratchDim=\dimen127
+\MPnumerator=\count121
+\makeMPintoPDFobject=\count122
+\everyMPtoPDFconversion=\toks24
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+(./martin_report.toc)
 \tf@toc=\write3
 \openout3 = `martin_report.toc'.
 
- [1
 
+
+LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <6.49994> not available
+(Font)              size <6> substituted on input line 66.
+
+[1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 1077) in paragraph at lines 61--61
-[]\T1/cmr/bx/n/12 Approximation de la sil-houette
+<images/roller.png, id=15, 513.92pt x 513.92pt>
+File: images/roller.png Graphic file (type png)
+ <use images/roller.png>
+Package pdftex.def Info: images/roller.png used on input line 83.
+(pdftex.def)             Requested size: 85.35774pt x 85.35826pt.
+
+<images/roller_lab.jpg, id=16, 513.92pt x 513.92pt>
+File: images/roller_lab.jpg Graphic file (type jpg)
+
+<use images/roller_lab.jpg>
+Package pdftex.def Info: images/roller_lab.jpg used on input line 94.
+(pdftex.def)             Requested size: 56.89993pt x 56.9055pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
+[]\T1/cmr/m/n/10 Calcul des
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
+\T1/cmr/m/n/10 com-po-santes
+ []
 
- [2
+<images/roller_resp.jpg, id=17, 497.86pt x 497.86pt>
+File: images/roller_resp.jpg Graphic file (type jpg)
 
-]
-(./martin_report.aux) ) 
+<use images/roller_resp.jpg>
+Package pdftex.def Info: images/roller_resp.jpg used on input line 95.
+(pdftex.def)             Requested size: 56.89944pt x 56.9055pt.
+
+<images/roller_filtered.jpg, id=18, 513.92pt x 513.92pt>
+File: images/roller_filtered.jpg Graphic file (type jpg)
+
+<use images/roller_filtered.jpg>
+Package pdftex.def Info: images/roller_filtered.jpg used on input line 96.
+(pdftex.def)             Requested size: 56.89993pt x 56.9055pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--97
+[]\T1/cmr/m/n/10 Lissage pa-ra-
+ []
+
+<images/roller_localised.jpg, id=19, 505.89pt x 505.89pt>
+File: images/roller_localised.jpg Graphic file (type jpg)
+
+<use images/roller_localised.jpg>
+Package pdftex.def Info: images/roller_localised.jpg used on input line 97.
+(pdftex.def)             Requested size: 56.89857pt x 56.9055pt.
+
+Underfull \hbox (badness 1859) in paragraph at lines 98--98
+[]\T1/cmr/m/n/10 On somme les 20 com-po-santes ob-te-nues $\OT1/cmr/m/n/10 [(2[
+] +
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--98
+[]\T1/cmr/m/n/10 coefficients
+ []
+
+
+Underfull \hbox (badness 3849) in paragraph at lines 98--98
+\T1/cmr/m/n/10 de som-ma-
+ []
+
+<images/roller_res.jpg, id=20, 505.89pt x 505.89pt>
+File: images/roller_res.jpg Graphic file (type jpg)
+
+<use images/roller_res.jpg>
+Package pdftex.def Info: images/roller_res.jpg used on input line 98.
+(pdftex.def)             Requested size: 56.89857pt x 56.9055pt.
+
+<images/roller_bin.jpg, id=21, 473.77pt x 473.77pt>
+File: images/roller_bin.jpg Graphic file (type jpg)
+
+<use images/roller_bin.jpg>
+Package pdftex.def Info: images/roller_bin.jpg used on input line 99.
+(pdftex.def)             Requested size: 56.90054pt x 56.9055pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--100
+[]\T1/cmr/m/n/10 filtres de
+ []
+
+<images/roller_closedbin.jpg, id=22, 473.77pt x 473.77pt>
+File: images/roller_closedbin.jpg Graphic file (type jpg)
+
+<use images/roller_closedbin.jpg>
+Package pdftex.def Info: images/roller_closedbin.jpg used on input line 100.
+(pdftex.def)             Requested size: 56.90054pt x 56.9055pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--101
+[]\T1/cmr/m/n/10 Approximation
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--101
+[]\T1/cmr/m/n/10 seuille
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--101
+\T1/cmr/m/n/10 d'ap-proxi-
+ []
+
+<images/roller_poly.jpg, id=23, 602.25pt x 803.0pt>
+File: images/roller_poly.jpg Graphic file (type jpg)
+
+<use images/roller_poly.jpg>
+Package pdftex.def Info: images/roller_poly.jpg used on input line 101.
+(pdftex.def)             Requested size: 42.67642pt x 56.9055pt.
+ [2 <./images/roller.png>] [3 <./images/roller_lab.jpg> <./images/roller_resp.j
+pg> <./images/roller_filtered.jpg> <./images/roller_localised.jpg> <./images/ro
+ller_res.jpg> <./images/roller_bin.jpg> <./images/roller_closedbin.jpg> <./imag
+es/roller_poly.jpg>] (./martin_report.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.49994pt have occurred.
+
+ ) 
 Here is how much of TeX's memory you used:
- 1879 strings out of 494924
- 22722 string characters out of 6179709
- 87116 words of memory out of 5000000
- 5201 multiletter control sequences out of 15000+600000
- 11766 words of font info for 30 fonts, out of 8000000 for 9000
+ 3897 strings out of 494924
+ 51128 string characters out of 6179709
+ 131198 words of memory out of 5000000
+ 7118 multiletter control sequences out of 15000+600000
+ 15194 words of font info for 38 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 28i,6n,30p,244b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ec
-bx1200.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600
-pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home
-/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/martin/.t
-exmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/martin/.texmf-var/f
-onts/pk/ljfour/jknappen/ec/ecrm1728.600pk>
-Output written on martin_report.pdf (2 pages, 54157 bytes).
+ 37i,14n,30p,928b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/
+martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </home/martin/.te
+xmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/martin/.texmf-var/fo
+nts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/martin/.texmf-var/fonts/pk/ljf
+our/jknappen/ec/ecbx1440.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknapp
+en/ec/ecrm1000.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm
+1200.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmsy7.pfb>
+Output written on martin_report.pdf (3 pages, 758704 bytes).
 PDF statistics:
- 206 PDF objects out of 1000 (max. 8388607)
- 30 compressed objects within 1 object stream
+ 280 PDF objects out of 1000 (max. 8388607)
+ 61 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

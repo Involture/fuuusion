@@ -1,10 +1,8 @@
-\BOOKMARK [2][]{Outline0.1}{Complexite}{}% 1
-\BOOKMARK [2][]{Outline0.2}{LAB}{}% 2
-\BOOKMARK [2][]{Outline0.3}{Texture}{}% 3
-\BOOKMARK [2][]{Outline0.4}{Filtrage}{}% 4
-\BOOKMARK [2][]{Outline0.5}{Localisation}{}% 5
-\BOOKMARK [2][]{Outline0.6}{Sommation des reponses}{}% 6
-\BOOKMARK [2][]{Outline0.7}{Seuillage}{}% 7
-\BOOKMARK [2][]{Outline0.8}{Op\351rations topologiques}{}% 8
-\BOOKMARK [2][]{Outline0.9}{Contours}{}% 9
-\BOOKMARK [2][]{Outline0.10}{Annexe}{}% 10
+\BOOKMARK [2][]{Outline0.1}{Espace LAB}{}% 1
+\BOOKMARK [2][]{Outline0.2}{Filtrage fr\351quentiel : Texture}{}% 2
+\BOOKMARK [2][]{Outline0.3}{Filtrage spatial : Bordures}{}% 3
+\BOOKMARK [2][]{Outline0.4}{Lissage parabolique}{}% 4
+\BOOKMARK [2][]{Outline0.5}{Sommation des r\351ponses}{}% 5
+\BOOKMARK [2][]{Outline0.6}{Seuillage}{}% 6
+\BOOKMARK [2][]{Outline0.7}{Op\351rations topologiques}{}% 7
+\BOOKMARK [2][]{Outline0.8}{Approximation polygonale}{}% 8

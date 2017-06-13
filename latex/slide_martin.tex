@@ -4,36 +4,82 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
-\usepackage{listings}
 
 \usetheme{Hannover}
 
+\title{Reconstitution 3D à partir de photographies : Détection de contour}
+\author{}
+\date{}
+
 \begin{document}
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
 
 \begin{frame}
-	\tableofcontents
+	\maketitle
+	\vspace{-3cm}
+	Extraction de la silhouette\\
+	\medskip
+	\includegraphics[width=2cm]{images/roller.png} \; \includegraphics[width=2cm]{images/roller_poly.jpg}\\
+	Intersection des silhouettes\\
+	\medskip
+	\includegraphics[height=2cm]{images/silhouettes.jpg}
 \end{frame}
 
-\section{Complexite}
+\begin{frame}
+	\frametitle{Choix des Types}
+	\textbf{Type} : Flottant-4octet, Complex-8octet
+	\smallskip
+	\begin{itemize}
+		\item Plus rapide : processeur à opérations flottantes
+		\item Pas de dépassement : exposant sur 8-bits $\longrightarrow \text{max} =  10^{256}$
+	\end{itemize}
+	\bigskip
+	\textbf{Structure} : \\
+	\smallskip
+	Tableaux numpy à 5 dimensions : \\
+	\begin{tabular}{|c|c|c|c|l|}
+		\hline
+		1 & 2 & 3 & 4 & 5 \\ \hline
+		$dx$ & $dy$ & $x$ & $y$ & $i$ \\ \hline
+		\multicolumn{2}{|l|}{index voisinage} & \multicolumn{2}{|l|}{index image} & composantes \\
+		\hline
+	\end{tabular}
+\end{frame}
 
 \begin{frame}
+	\frametitle{Complexité}
+	\textbf{Temporelle} \\
+	\smallskip
 	En théorie :
 	\begin{itemize}
-		\item Opérations vectorielles : GPU. \;\;\;\;\; $\nu(n)$
+		\item Opérations vectorielles : GPU. \;\;\; $\longrightarrow$ noté $\nu(n)$
 		\item Autres : CPU.
 	\end{itemize}
 	En pratique :
 	\begin{itemize}
-		\item Opération vectorielles : numpy, boucles sous-jacentes en C.
+		\item Opérations vectorielles : numpy, boucles en C.
 		\item Autres : python
 	\end{itemize}
-	Objectif : Vectoriser au maximum les opérations.
+	Objectif : Vectoriser au maximum les opérations. \\
+	\bigskip
+	\textbf{Spatiale} \\
+	\smallskip
+	Vectorisation $\longrightarrow$ Complexité spatiale très grande :\\
+	$\theta(t^2 \cdot n^2) \approx (8\text{octet} \cdot 1000 \cdot 1\text{Mpix} = 8 \text{Gib})$ \\
+	\smallskip
+	Coût de copie : Relativement élevé $\approx \nu(n^2)$\\
+	Manipulation bas niveau du hardware (registres vectorielle du GPU) $\longrightarrow$ rapide
 \end{frame}
 
-\section{LAB}
+\begin{frame}
+	\frametitle{Procédé Général}
+	\tableofcontents
+\end{frame}
+
+\section{Espace LAB}
 
 \begin{frame}
-	\frametitle{LAB}
+	\frametitle{Espace LAB}
 	\begin{columns}
 		\begin{column}{5cm}
 			$$L = \frac{R + G + B}{3}$$
@@ -45,102 +91,115 @@
 			\includegraphics[width=3cm]{images/roller_lab.jpg}
 		\end{column}
 	\end{columns}
-	Complexité : $\theta(\nu(h \cdot l))$
+	Complexité : $\theta(\nu(n^2))$
 \end{frame}
 
-\section{Texture}
+\section{Filtrage fréquentiel : Texture}
 
 \begin{frame}
-	\frametitle{Transformée de Fourier}
+	\frametitle{\mbox{1\up{er} Filtrage - Domaine fréquentiel - Texture}}
+	\framesubtitle{Procédé}
+	\underline{Convolution} par un \textbf{filtre gaussien} $\longleftrightarrow$ \underline{Multiplication} dans le domaine fréquentielle.
+	\begin{figure}
+		\includegraphics[width=2cm]{images/roller_subim.jpg} \; \includegraphics[width=2cm]{images/roller_subimfft.jpg} \;
+		\includegraphics[width=2cm]{images/roller_subimf.jpg} \; \includegraphics[width=2cm]{images/roller_subimresp.jpg}\\
+		\caption{Sous-image \; - \; Transformée \; - \; Filtre \; - \; Réponse}
+	\end{figure}
+	\bigskip
+	Sommation de tous les pixels $\longrightarrow$ valeur de texture.\\
+	\medskip
+	Complexité spatiale : $\theta(t^2 \cdot n^2)$
+\end{frame}
+
+\begin{frame}
+	\frametitle{\mbox{1\up{er} Filtrage - Domaine fréquentiel - Texture}}
+	\framesubtitle{Transformée de Fourier}
 	Définition :
 	\begin{itemize}
 		\item Continue :\; $F(f)(s) = \frac{1}{\sqrt{2\pi}} \int_a^b e^{- 2i\pi sx} \cdot f(x) \, \mathrm dx$ \\
 		\item Discrete :\; $FD(u)(k) = \frac{1}{\sqrt{N}} \sum\limits_{n = 0}^{n = N - 1} e^{-2i\pi \frac{kn}{N}} \cdot u{n}$
 	\end{itemize}
-	Propriétés
-	\begin{itemize}
-		\item Involutive : $F(F(f)) = f$ \; $DF(DF(u)) = u$
-		\item Symétrie : $u \text{réelle} \implies DF(u) \text{paire}$
-		\item Convolution : $u \star v = DF(u) \cdot DF(v)$ (Au facteur près)
-	\end{itemize}
+	\medskip
+	Propriété de convolution : $u \star v = DF^{-1}(DF(u) \cdot DF(v))$ (Au facteur près)\\
+	\medskip
 	Complexité temporelle
 	\begin{itemize}
-		\item Sur un vecteur : $\theta(l \cdot \nu(l))$
-		\item Sur une image : $\theta((h \cdot  l) (\nu(h) + \nu(l))$
+		\item Sur un vecteur : $\theta(n \cdot \nu(n))$
+		\item Sur une image : $\theta(n \nu(n^2))$
 	\end{itemize}
-	Complexité spatiale : En place
-
-\end{frame}
-
-\begin{frame}[allowframebreaks]
-	\frametitle{Transformée de Fourier rapide}
-	Diviser pour régner\\
-	Complexité temporelle
+	\medskip
+	Complexité spatiale : En place \\
+	\medskip
+	\textbf{Transformée de Fourier rapide} : Diviser pour régner
 	\begin{itemize}
-		\item Sur un vecteur : $\theta(\log_2(l)\nu(l))$
-		\item Sur une image : $\theta(\log_2(h)\nu(l \cdot h) + \log_2(l)\nu(h \cdot l))$
+		\item Sur un vecteur : $\theta(\log_2(n)\nu(n))$
+		\item Sur une image : $\theta(\log_2(n)\nu(n^2))$
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Exemples}
-	\includegraphics[width=3cm]{images/roller_lab.jpg} \includegraphics[width=3cm]{images/test1.png} \includegraphics[width=3cm]{images/test2.png} \\ 
-	\includegraphics[width=3cm]{images/roller_fft.jpg} \includegraphics[width=3cm]{images/test1_fft.jpg} \includegraphics[width=3cm]{images/test2_fft.jpg}	
+	\frametitle{\mbox{1\up{er} Filtrage - Domaine fréquentiel - Texture}}
+	\framesubtitle{Exemples}
+	\includegraphics[width=3cm]{images/test2.png} \includegraphics[width=3cm]{images/test1.png} \includegraphics[width=3cm]{images/roller_lab.jpg} \\ 
+	\includegraphics[width=3cm]{images/test2_fft.jpg} \includegraphics[width=3cm]{images/test1_fft.jpg} \includegraphics[width=3cm]{images/roller_fft.jpg}	
 \end{frame}
 
 \begin{frame}
-	\frametitle{Filtres de convolution}
-	\begin{columns}
-		\begin{column}{5cm}
-			Gaussienne d'orientation et d'écart type variable
-			$$g(x) = e^{\frac{-x^2}{\sigma^2}}$$
-		\end{column}
-		\begin{column}{5cm}
-			\begin{figure}[!h]
-				\centering
-				\includegraphics[width=4cm]{images/fgauss.jpg}
-				\caption{taille : 16, $\theta$ : $\frac{\pi}{6}$, $\sigma$ : 4}
-			\end{figure}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Exemples}
+	\frametitle{\mbox{1\up{er} Filtrage - Domaine fréquentiel - Texture}}
+	\framesubtitle{Résultats}
 	\begin{figure}
 		\centering
 		\includegraphics[width=5cm]{images/roller_resp.jpg}
-		\caption{tailled : 16, $\theta$ : $\frac{\pi}{2}$, $\sigma$ : 4}
+		\caption{taille : 16, $\theta$ : $\frac{\pi}{2}$, $\sigma$ : 4}
 	\end{figure}
 \end{frame}
 
-\section{Filtrage}
+\section{Filtrage spatial : Bordures}
 
 \begin{frame}
-	\frametitle{Procédé}
-	\begin{itemize}
-		\item Multiplication du voisinage de chaque pixel par le filter (centré sur le pixel)
-		\item Sommation de toutes les valeures
-	\end{itemize}
-	En pratique : 
-	\begin{itemize}
-		\item On "décale" l'image de quelques pixels pour chaque coordonnée du filtre
-		\item On multiplie chaque image décalée par le coefficient du filtre correspondant
-		\item On ajoute les image ainsi obtenues
-	\end{itemize}
-	Complexité:
+	\frametitle{\mbox{2\up{ème} Filtrage - Domaine spatial - Bordures}}
+	\framesubtitle{Procédé}
+	Pour chaque pixel : somme pondérée des pixels du voisinage.\\
+	\textbf{Exemple} : gradient simple \\
+	\medskip
+	\begin{tabular}{|ccc|}
+		\hline
+		$35$ & $42$ & $27$ \\
+		$11$ & $12$ & $14$ \\
+		$0$ & $7$ & $4$ \\
+		\hline
+	\end{tabular}
+	\begin{tabular}{|ccc|}
+		\hline
+		$1$ & $1$ & $1$ \\
+		$0$ & $0$ & $0$ \\
+		$-1$ & $-1$ & $-1$ \\
+		\hline
+	\end{tabular}
+	\begin{tabular}{|ccc|}
+		\hline
+		$35$ & $42$ & $27$ \\
+		$0$ & $0$ & $0$ \\
+		$0$ & $-7$ & $-4$ \\
+		\hline
+	\end{tabular} \\
+	\medskip
+	$\longrightarrow$ 93 \\
+	\bigskip
+	\textbf{Complexité} :
 	\begin{itemize}
 		\item Spatiale : En place
-		\item Temporelle : $\theta(t^2 \cdot \nu(l \cdot h))$
+		\item Temporelle : $\theta(t^2\nu(n^2))$
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Filtre de Canny}
+	\frametitle{\mbox{2\up{ème} Filtrage - Domaine spatial - Bordures}}
+	\framesubtitle{Filtre de Canny}
 	\begin{columns}
 		\begin{column}{5cm}
-			Filtre optimal pour les aretes en "pas" 
-			Dérivée d'une gaussienne:
+			Filtre optimal pour les arêtes en "pas"\\
+			\textbf{Dérivée d'une gaussienne} :
 			$$h(x) = x \cdot e^{-\frac{x^2}{\sigma^2}}$$
 		\end{column}
 		\begin{column}{5cm}
@@ -152,7 +211,8 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Exemples}
+	\frametitle{\mbox{2\up{ème} Filtrage - Domaine spatial - Bordures}}
+	\framesubtitle{Résultats}
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width=4cm]{images/roller_resp.jpg} \; \includegraphics[width = 4cm]{images/roller_filtered.jpg}
@@ -160,43 +220,39 @@
 	\end{figure}
 \end{frame}
 
-\section{Localisation}
+\section{Lissage parabolique}
 
 \begin{frame}
-	\begin{columns}
-		\begin{column}{5cm}
-			Complexité Temporelle
-			\begin{itemize}
-				\item Projection : $\theta(\nu(t^2))$
-				\item Approximation parabolique :
-					\begin{itemize}
-						\item Calcul des sommes : $\theta(t^2 \cdot \nu(h \cdot l))$
-						\item Résolution des systèmes : $\theta(\nu(h \cdot l))$
-					\end{itemize}
-				\item Localisation : $\theta(\nu(h \cdot l))$
-				\item Total temporel : $\theta(\nu(h \cdot l))$
-			\end{itemize}
-			Complexité spatiale : $\theta(t^2 \cdot h \cdot l)$
-		\end{column}
-		\begin{column}{5cm}
-			\begin{figure}[!h]
-				\includegraphics[width=4cm]{images/projection.jpeg}
-				\caption{Projection}
-			\end{figure}
-			Approximation parabolique : $ax^2 + bx + c = 0$\\
-			Localisation: $\hat{f}(x) = c^+ \cdot \frac{2a^-}{|b|}$
-		\end{column}
-	\end{columns}
+	\frametitle{Lissage parabolique}
+	\framesubtitle{Procédé}
+	Approximation parabolique du voisinage: $$ax^2 + bx + c = 0$$
+	Fonction lissée : $$\frac{c}{\text{distance au max local}} = \frac{c^+}{\left(\frac{|b|}{2a^+}\right)}$$
+	Procédé : \\
+	\smallskip
+	\begin{tabular}{|c|l|r|}
+		\hline
+		& Opération & complexité \\ \hline
+		1 & Génération du voisinage & selon hardware \\ \hline
+		2 & Projection des coordonées & $\theta(\nu(t^2))$ \\ \hline
+		3 & Etablissement du system & $\theta(t^2 \nu(n^2))$ \\ \hline
+		4 & Pivot de gauss & $\theta(t^2 \nu(n^2))$ \\ \hline
+		5 & Calcul de la fonction lissée & $\theta(\nu(n^2))$ \\ \hline
+		& Total & $\theta(\nu(n^2))$ \\
+		\hline
+	\end{tabular}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Exemple}
+	\frametitle{Lissage parabolique}
+	\framesubtitle{Résultats}
 	\includegraphics[width=4cm]{images/roller_filtered.jpg} \; \includegraphics[width=4cm]{images/roller_localised.jpg}
 \end{frame}
 
-\section{Sommation des reponses}
+\section{Sommation des réponses}
 
 \begin{frame}
+	\frametitle{Sommation des réponses}
+	\framesubtitle{Procédé}
 	30 composantes:
 	\begin{itemize}
 		\item 3 couleurs + 3 couleurs * 4 directions = 15 composantes avant filtrage
@@ -208,16 +264,22 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Exemple}
+	\frametitle{Sommation des réponses}
+	\frametitle{Résultats}
 	\includegraphics[width=4cm]{images/roller.png} \; \includegraphics[width = 4cm]{images/roller_res.jpg}
 \end{frame}
 
 \section{Seuillage}
 
 \begin{frame}
-	Conversion en image binaire par seuillage:\\
-	1 si I > seuil\\
-	0 sinon\\
+	\frametitle{Seuillage}
+	Conversion en image binaire par seuillage :
+	\begin{align}
+		\begin{cases}
+			1 & \text{si } I>0 \\
+			0 & \text{sinon}
+		\end{cases}
+	\end{align}
 	\bigskip
 	\includegraphics[width=3cm]{images/roller_res.jpg} \; \includegraphics[width=3cm]{images/roller_bin.jpg}
 \end{frame}
@@ -225,7 +287,8 @@
 \section{Opérations topologiques}
 
 \begin{frame}
-	\frametitle{Définition}
+	\frametitle{Opérations binaires - Topologie}
+	\framesubtitle{Définitions}
 	Même procédé de filtrage mais sur des images binaires
 	\begin{columns}[T]
 		\begin{column}{3cm}
@@ -295,9 +358,10 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Opérations binaires - Topologie}
+	\framesubtitle{Résultats}
 	\begin{columns}
 		\begin{column}{5cm}
-			\frametitle{Exemples}
 			Erosion par : \\
 			\medskip
 			\begin{tabular}{|l|c|r|}
@@ -330,10 +394,11 @@
 	\end{columns}
 \end{frame}
 
-\section{Contours}
+\section{Approximation polygonale}
 
 \begin{frame}
-	\frametitle{Parcours du contour}
+	\frametitle{Approximation polygonale}
+	\framesubtitle{Parcours du contour}
 	Parcours dans le sens trigonométrique\\
 	Départ du pixel le plus en haut\\
 	Direction initiale : Bas \\
@@ -343,7 +408,8 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Approximation affine}
+	\frametitle{Approximation polygonale}
+	\framesubtitle{Approximation polygonale}
 	Initialisation : Point le plus haut - Point le plus bas\\
 	Sur chaque segment, successivement :
 	\begin{itemize}
@@ -353,10 +419,16 @@
 	\end{itemize}
 \end{frame}
 
-\section{Annexe}
+\begin{frame}
+	\frametitle{Conclusion}
+	\includegraphics[height=3cm]{images/roller.png} \; \includegraphics[height=3cm]{images/roller_poly.jpg} \\
+	\bigskip
+	Précision : moyenne \\
+	Temps : moyen $\approx$ 45s\\
+\end{frame}
 
 \begin{frame}[allowframebreaks]
-	\frametitle{Transformée de Fourier rapide}
+	\frametitle{Annexe - Transformée de Fourier rapide}
 	Notation :
 	\begin{itemize}
 		\item $N = 2p$
