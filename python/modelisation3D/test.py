@@ -21,14 +21,14 @@ c1 = wep.simpleCube()
 #     # c3.plot()
 # print(time.time() - t0)
 
-lims = [0, 0, 0]
-lims[0] = [min(v.x for v in c1.vertices),
-           max(v.x for v in c1.vertices)]
-lims[1] = [min(v.y for v in c1.vertices),
-           max(v.y for v in c1.vertices)]
-lims[2] = [min(v.z for v in c1.vertices),
-           max(v.z for v in c1.vertices)]
-
+# lims = [0, 0, 0]
+# lims[0] = [min(v.x for v in c1.vertices),
+#            max(v.x for v in c1.vertices)]
+# lims[1] = [min(v.y for v in c1.vertices),
+#            max(v.y for v in c1.vertices)]
+# lims[2] = [min(v.z for v in c1.vertices),
+#            max(v.z for v in c1.vertices)]
+# 
 assert c1.pnFacesInPoly()
 un = copy.deepcopy(c1)
 sils = []
@@ -42,6 +42,7 @@ for i in range(m):
                                    (math.pi + i * 2 * math.pi / m,
                                     0,
                                     0)))
+    print(sils[-1].segments)
     un.union(sils[-1].cone(2))
     # sils[-1].plot()
     # # sils[-1].cone(2).plot()

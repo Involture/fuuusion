@@ -38,10 +38,10 @@ p_{x} & : & E\setminus\{x\} & \to & S(x, 1) \\
  & & y & \mapsto & x  + \frac{1}{\norm{y - x}} \cdot (y - x) \\
 \end{array}\]
 
-où $S(x, 1)$ est  la sphère de centre $x$ et de rayon $1$.
+(On notera $S(x, 1)$, $B_{o}(x, 1)$ et $B_{f}(x, 1)$ respectivement la sphère, la boule ouverte et la boule fermée de centre $x$ et de rayon $1$)
 
 
-On définira la silhouette d'une  partie $A$ de $E$ vue depuis un point $x$ comme son image directe par $p_{x}$.
+On définit la silhouette d'une  partie $A$ de $E$ vue depuis un point $x$ comme son image directe par $p_{x}$.
 
 \textit{Note : Cela ne correspond pas exactement à une photographie, qui elle est une projection sur un plan. Toutefois, on admettra que si un objet est entièrement du coté du plan focal opposé au foyer (ce qui est toujours vérifié pour une photographie), le "cône" reconstruit à partir de sa photographie est le même que celui reconstruit à partir de la projection sphérique, et que donc la définition de l'enveloppe visuelle que l'on va donner ici correspond donc bien à la définition "naturelle".}
 
@@ -57,13 +57,12 @@ On notera aussi $conv(A)$ l'enveloppe convexe de $a$, et on admettra que :
 
 \[conv(A) = \{\,\sum_{i=1}^{n} \lambda_{i} x_{i}| n\in{}\mathbb{N}^{*}, (x_{i})_{1\leqslant i \leqslant n} \in E^{n}, \, (\lambda_{i})_{1\leqslant i \leqslant n} \in [0, 1]^{n}\text{ t.q. } \sum_{i=1}^{n} \lambda_{i} = 1\}\]
 
-On montre dans un premier temps \ref{lem1}:
-
+J'ai montré dans un premier temps \ref{lem1}:\\*
 \begin{lem}\label{lem1}
 
 \textbf{Si} $A$ est un fermé de $E$, et il existe $b \in E$ et $M \in \mathbb{R}$ tels que $A \subset B_{o}(b, M)$,
 
-\textbf{Alors} $ev(S(b,M), A) \subset B_{o}(b, M)$
+\[\textbf{Alors } ev(S(b,M), A) \subset B_{o}(b, M)\]
 
 \end{lem}
 
@@ -119,6 +118,8 @@ Or, par hypothèse, $v \in A$ implique $\norm{v} < M$
 
 On a une contradiction.
 
+\bigskip
+
 \item Si  $\norm{x} = M$
 
 $A$ est fermé et borné car inclus dans $B_{o}(0, M)$, donc $A$ est compact (On a $dim(E) = 3$).
@@ -145,25 +146,44 @@ f & : & \mathbb{R} & \to & \mathbb{R} \\
 
 Or $f'(\lambda) = 2 \lambda \norm{x - y}^{2} + 2(y|x - y)$
 
-Donc $f(\lambda)$ atteint un minimum en \[\lambda = \frac{(y|y - x)}{\norm{x - y}^2} = \frac{\norm{y}^{2} - (y|x)}{\norm{x}^{2} + \norm{y}^{2} - 2 (x|y)} = \frac{1}{2}\] (Car $\norm{x} = \norm{y}$)
+Donc $f(\lambda)$ atteint un minimum en
+\[\lambda = \frac{(y|y - x)}{\norm{x - y}^2} = \frac{\norm{y}^{2} - (y|x)}{\norm{x}^{2} + \norm{y}^{2} - 2 (x|y)} = \frac{1}{2}\]
+(Car $\norm{x} = \norm{y}$)
 
-Ainsi $\norm{v} \geqslant \norm{y + \frac{1}{2} (x - y)} \geqslant \norm{y} - \frac{1}{2} \norm{x - y} > n_{m}$
+\medskip
+
+Ainsi 
+\begin{align*}
+\norm{v}^{2} &= f(\frac{\norm{v - y}}{t}) \\
+             &\geqslant f(\frac{1}{2}) \\
+             &\geqslant \norm{y + \frac{1}{2} (x - y)}^{2} \\
+             &\geqslant (\norm{y} - \frac{1}{2} \norm{x - y})^{2} \\
+\end{align*}
+
+Donc $\norm{v} \geqslant \norm{y} - \frac{1}{2} \norm{x - y}$
+
+Or, par construction de y, $\norm{y - x} < \frac{M - n_{m}}{2}$
+
+Donc $\norm{v} > n_{m}$
+
 Or $v \in A$  donc $\norm{v} \leqslant n_{m}$
 On a encore une contradiction.
 \end{itemize}
+
+\medskip
+
 Dans les deux cas on a une contradiction.
 Donc $\norm{x} < M$
 \end{proof}
 
+\bigskip
 
-On montre alors \ref{th1} :
-
+J'ai ensuite montré \ref{th1} :\\*
 \begin{theo}\label{th1}
 
 L'enveloppe visuelle d'un fermé $A$ de $E$ vu depuis une sphère englobant A est incluse dans l'enveloppe convexe de $A$.
 
 En d'autres termes, 
-
 \begin{gather*}
 \forall A \subset E \text{ t.q. $A$ fermé et borné, } \forall (b, M) \in E \times \mathbb{R} \text{ t.q. } A \subset B_{o}(b, M), \\
 \text{On a } ev(S(b, M), A) \subset conv(A)
@@ -182,6 +202,7 @@ Quitte à effectuer une translation sur $A$ et $b$, on va considérer que $a = 0
 
 \begin{itemize}
 \item Si $0 \in A$, immédiatement $0 \in conv(A)$
+\bigskip
 \item Si $0 \notin A$, on a que $\forall x \in S(b, M), 0 \in C(x, p_{x}(A))$
 
 Donc \[\exists t \in \mathbb{R}+, \exists y\in p_{x}(A) \text{ t.q. } 0 = x + t \cdot (y - x)\]
@@ -217,7 +238,7 @@ Ainsi, selon le signe de $t_{1} \cdot (1 - \frac{1}{\lambda})$, on aura $p_{0}(v
 
 Cela est vrai pour tout $x_{0}$ dans $S(0, 1)$ donc, en notant $P = p_{0}(A)$ et $P' = \{-a, a \in P \}$, $P \cup P' = S(0, 1)$
 
-\medskip
+\bigskip
 
 On cherche alors à montrer que $ P \cap P' \neq \varnothing$
 
@@ -239,6 +260,7 @@ $\gamma(0) = u \in P$ donc $\gamma^{-1}(P) \neq \varnothing$ et on peut donc con
 
 \begin{itemize}
 \item Si $t = 1$, $-u \in P$, et comme on a aussi $u \in P$, $u \in P \cap P'$
+\medskip
 \item Si $t < 1$, il existe $n_{0} \in \mathbb{N}$ tel que $\forall n \geqslant n_{0}, t + \frac{1}{n} \leqslant 1$
 Alors $(\gamma(t + \frac{1}{n}))_{n \geqslant n_{0}}$ est une suite d'éléments qui ne sont pas dans $P$, et donc qui sont dans $P'$ (car ils sont dans $S(0, 1)$)
 
@@ -250,7 +272,7 @@ Donc $\gamma(t) \in P \cap P'$
 
 On a donc que $P \cap P'$ est non vide
 
-\medskip
+\bigskip
 
 Soit $q$ un élément de $P \cap P'$
 
