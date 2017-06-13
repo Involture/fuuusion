@@ -1,13 +1,14 @@
 import math
 import pdb
 import time
+import copy
 
 import wep
 
 c1 = wep.simpleCube()
-c1.translate(wep.vector(-1 / 2, -1 / 2, -1 / 2))
-c1.apply(wep.rotateFunction((0.5, 0.5, 0.5), wep.vector(1, 0.8, 3)))
-    
+# c1.translate(wep.vector(-1 / 2, -1 / 2, -1 / 2))
+# c1.apply(wep.rotateFunction((0.5, 0.5, 0.5), wep.vector(1, 0.8, 3)))
+
 
 # t0 = time.time()
 # for i in range(100):
@@ -29,9 +30,9 @@ lims[2] = [min(v.z for v in c1.vertices),
            max(v.z for v in c1.vertices)]
 
 assert c1.pnFacesInPoly()
-
+un = copy.deepcopy(c1)
 sils = []
-m = 2
+m = 5
 
 for i in range(m):
     sils.append(c1.silhouettePhoto((2 * math.cos(2 * i * math.pi / m),
@@ -41,6 +42,7 @@ for i in range(m):
                                    (math.pi + i * 2 * math.pi / m,
                                     0,
                                     0)))
+    un.union(sils[-1].cone(2))
     # sils[-1].plot()
     # # sils[-1].cone(2).plot()
     # u = sils[-1].cone(1).union(c1)
@@ -53,7 +55,7 @@ for i in range(m):
     #            max(v.z for v in u.vertices)]
     # u.plot(ort=True)
     # c1.plot(lims=lims, ort=True)
-
+# un.plot()
 
 assert sils[0].cone(15).pnFacesInPoly()
 # pdb.set_trace()
