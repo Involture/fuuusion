@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.6.8)  13 JUN 2017 06:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.6.8)  13 JUN 2017 16:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -612,148 +612,145 @@ LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <6.49994> not available
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+
+LaTeX Warning: Command \' invalid in math mode on input line 77.
+
+Missing character: There is no é in font cmr10!
 <images/roller.png, id=15, 513.92pt x 513.92pt>
 File: images/roller.png Graphic file (type png)
  <use images/roller.png>
-Package pdftex.def Info: images/roller.png used on input line 83.
+Package pdftex.def Info: images/roller.png used on input line 84.
 (pdftex.def)             Requested size: 85.35774pt x 85.35826pt.
 
 <images/roller_lab.jpg, id=16, 513.92pt x 513.92pt>
 File: images/roller_lab.jpg Graphic file (type jpg)
 
 <use images/roller_lab.jpg>
-Package pdftex.def Info: images/roller_lab.jpg used on input line 94.
+Package pdftex.def Info: images/roller_lab.jpg used on input line 102.
 (pdftex.def)             Requested size: 56.89993pt x 56.9055pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--95
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
 []\T1/cmr/m/n/10 Calcul des
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--95
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
 \T1/cmr/m/n/10 com-po-santes
  []
 
-<images/roller_resp.jpg, id=17, 497.86pt x 497.86pt>
-File: images/roller_resp.jpg Graphic file (type jpg)
+<images/roller_respn.jpg, id=17, 497.86pt x 497.86pt>
+File: images/roller_respn.jpg Graphic file (type jpg)
 
-<use images/roller_resp.jpg>
-Package pdftex.def Info: images/roller_resp.jpg used on input line 95.
+<use images/roller_respn.jpg>
+Package pdftex.def Info: images/roller_respn.jpg used on input line 107.
 (pdftex.def)             Requested size: 56.89944pt x 56.9055pt.
 
-<images/roller_filtered.jpg, id=18, 513.92pt x 513.92pt>
-File: images/roller_filtered.jpg Graphic file (type jpg)
+<images/roller_filteredn.jpg, id=18, 501.875pt x 501.875pt>
+File: images/roller_filteredn.jpg Graphic file (type jpg)
 
-<use images/roller_filtered.jpg>
-Package pdftex.def Info: images/roller_filtered.jpg used on input line 96.
-(pdftex.def)             Requested size: 56.89993pt x 56.9055pt.
+<use images/roller_filteredn.jpg>
+Package pdftex.def Info: images/roller_filteredn.jpg used on input line 112.
+(pdftex.def)             Requested size: 56.89883pt x 56.9055pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--97
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
 []\T1/cmr/m/n/10 Lissage pa-ra-
  []
 
-<images/roller_localised.jpg, id=19, 505.89pt x 505.89pt>
-File: images/roller_localised.jpg Graphic file (type jpg)
+<images/roller_localisedn.jpg, id=19, 505.89pt x 505.89pt>
+File: images/roller_localisedn.jpg Graphic file (type jpg)
 
-<use images/roller_localised.jpg>
-Package pdftex.def Info: images/roller_localised.jpg used on input line 97.
+<use images/roller_localisedn.jpg>
+Package pdftex.def Info: images/roller_localisedn.jpg used on input line 117.
 (pdftex.def)             Requested size: 56.89857pt x 56.9055pt.
 
-Underfull \hbox (badness 1859) in paragraph at lines 98--98
+Underfull \hbox (badness 1859) in paragraph at lines 120--121
 []\T1/cmr/m/n/10 On somme les 20 com-po-santes ob-te-nues $\OT1/cmr/m/n/10 [(2[
 ] +
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 98--98
+Underfull \hbox (badness 10000) in paragraph at lines 121--122
 []\T1/cmr/m/n/10 coefficients
  []
 
 
-Underfull \hbox (badness 3849) in paragraph at lines 98--98
+Underfull \hbox (badness 3849) in paragraph at lines 121--122
 \T1/cmr/m/n/10 de som-ma-
  []
 
-<images/roller_res.jpg, id=20, 505.89pt x 505.89pt>
-File: images/roller_res.jpg Graphic file (type jpg)
+<images/roller_resn.jpg, id=20, 500.87125pt x 500.87125pt>
+File: images/roller_resn.jpg Graphic file (type jpg)
 
-<use images/roller_res.jpg>
-Package pdftex.def Info: images/roller_res.jpg used on input line 98.
-(pdftex.def)             Requested size: 56.89857pt x 56.9055pt.
+<use images/roller_resn.jpg>
+Package pdftex.def Info: images/roller_resn.jpg used on input line 122.
+(pdftex.def)             Requested size: 56.89967pt x 56.9055pt.
 
-<images/roller_bin.jpg, id=21, 473.77pt x 473.77pt>
-File: images/roller_bin.jpg Graphic file (type jpg)
+<images/roller_binn.jpg, id=21, 473.77pt x 473.77pt>
+File: images/roller_binn.jpg Graphic file (type jpg)
 
-<use images/roller_bin.jpg>
-Package pdftex.def Info: images/roller_bin.jpg used on input line 99.
+<use images/roller_binn.jpg>
+Package pdftex.def Info: images/roller_binn.jpg used on input line 127.
 (pdftex.def)             Requested size: 56.90054pt x 56.9055pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--100
+Underfull \hbox (badness 10000) in paragraph at lines 131--132
 []\T1/cmr/m/n/10 filtres de
  []
 
-<images/roller_closedbin.jpg, id=22, 473.77pt x 473.77pt>
-File: images/roller_closedbin.jpg Graphic file (type jpg)
+<images/roller_closedbinn.jpg, id=22, 473.77pt x 473.77pt>
+File: images/roller_closedbinn.jpg Graphic file (type jpg)
 
-<use images/roller_closedbin.jpg>
-Package pdftex.def Info: images/roller_closedbin.jpg used on input line 100.
+<use images/roller_closedbinn.jpg>
+Package pdftex.def Info: images/roller_closedbinn.jpg used on input line 132.
 (pdftex.def)             Requested size: 56.90054pt x 56.9055pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--101
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
 []\T1/cmr/m/n/10 Approximation
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--101
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
 []\T1/cmr/m/n/10 seuille
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--101
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
 \T1/cmr/m/n/10 d'ap-proxi-
  []
 
-<images/roller_poly.jpg, id=23, 602.25pt x 803.0pt>
-File: images/roller_poly.jpg Graphic file (type jpg)
-
-<use images/roller_poly.jpg>
-Package pdftex.def Info: images/roller_poly.jpg used on input line 101.
-(pdftex.def)             Requested size: 42.67642pt x 56.9055pt.
- [2 <./images/roller.png>] [3 <./images/roller_lab.jpg> <./images/roller_resp.j
-pg> <./images/roller_filtered.jpg> <./images/roller_localised.jpg> <./images/ro
-ller_res.jpg> <./images/roller_bin.jpg> <./images/roller_closedbin.jpg> <./imag
-es/roller_poly.jpg>] (./martin_report.aux)
+[2 <./images/roller.png>] [3 <./images/roller_lab.jpg> <./images/roller_respn.j
+pg> <./images/roller_filteredn.jpg> <./images/roller_localisedn.jpg> <./images/
+roller_resn.jpg> <./images/roller_binn.jpg> <./images/roller_closedbinn.jpg>]
+(./martin_report.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.49994pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 3897 strings out of 494924
- 51128 string characters out of 6179709
+ 3898 strings out of 494924
+ 51096 string characters out of 6179709
  131198 words of memory out of 5000000
  7118 multiletter control sequences out of 15000+600000
- 15194 words of font info for 38 fonts, out of 8000000 for 9000
+ 15698 words of font info for 41 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 37i,14n,30p,928b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/
-martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </home/martin/.te
-xmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/martin/.texmf-var/fo
-nts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/martin/.texmf-var/fonts/pk/ljf
-our/jknappen/ec/ecbx1440.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknapp
-en/ec/ecrm1000.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm
-1200.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy7.pfb>
-Output written on martin_report.pdf (3 pages, 758704 bytes).
+ 37i,14n,30p,939b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </home/
+martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/martin/.te
+xmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/martin/.texmf-var/fo
+nts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/martin/.texmf-var/fonts/pk/ljf
+our/jknappen/ec/ecrm1000.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknapp
+en/ec/ecrm1200.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm
+1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on martin_report.pdf (3 pages, 741707 bytes).
 PDF statistics:
- 280 PDF objects out of 1000 (max. 8388607)
- 61 compressed objects within 1 object stream
+ 261 PDF objects out of 1000 (max. 8388607)
+ 57 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
