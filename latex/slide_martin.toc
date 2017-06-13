@@ -1,12 +1,10 @@
 \beamer@endinputifotherversion {3.36pt}
 \select@language {french}
-\beamer@sectionintoc {1}{Complexite}{2}{0}{1}
-\beamer@sectionintoc {2}{LAB}{3}{0}{2}
-\beamer@sectionintoc {3}{Texture}{4}{0}{3}
-\beamer@sectionintoc {4}{Filtrage}{9}{0}{4}
-\beamer@sectionintoc {5}{Localisation}{12}{0}{5}
-\beamer@sectionintoc {6}{Sommation des reponses}{14}{0}{6}
-\beamer@sectionintoc {7}{Seuillage}{16}{0}{7}
-\beamer@sectionintoc {8}{Op\IeC {\'e}rations topologiques}{17}{0}{8}
-\beamer@sectionintoc {9}{Contours}{19}{0}{9}
-\beamer@sectionintoc {10}{Annexe}{21}{0}{10}
+\beamer@sectionintoc {1}{Espace LAB}{5}{0}{1}
+\beamer@sectionintoc {2}{Filtrage fr\IeC {\'e}quentiel : Texture}{6}{0}{2}
+\beamer@sectionintoc {3}{Filtrage spatial : Bordures}{10}{0}{3}
+\beamer@sectionintoc {4}{Lissage parabolique}{13}{0}{4}
+\beamer@sectionintoc {5}{Sommation des r\IeC {\'e}ponses}{15}{0}{5}
+\beamer@sectionintoc {6}{Seuillage}{17}{0}{6}
+\beamer@sectionintoc {7}{Op\IeC {\'e}rations topologiques}{18}{0}{7}
+\beamer@sectionintoc {8}{Approximation polygonale}{20}{0}{8}

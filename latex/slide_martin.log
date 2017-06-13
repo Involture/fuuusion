@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.6.8)  12 JUN 2017 16:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.6.8)  13 JUN 2017 02:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1058,31 +1058,6 @@ Now handling font encoding PD1 ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count161
-\lst@gtempboxa=\box53
-\lst@token=\toks46
-\lst@length=\count162
-\lst@currlwidth=\dimen191
-\lst@column=\count163
-\lst@pos=\count164
-\lst@lostspace=\dimen192
-\lst@width=\dimen193
-\lst@newlines=\count165
-\lst@lineno=\count166
-\lst@maxwidth=\dimen194
-
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count167
-\lst@skipnumbers=\count168
-\lst@framebox=\box54
-)
-(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2015/06/04 1.6 listings configuration
-))
-Package: listings 2015/06/04 1.6 (Carsten Heinz)
-
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/theme/beamerthemeHannove
 r.sty
 Package: beamerthemeHannover 2010/06/17  (rcs-revision d02a7cf4d8ae)
@@ -1090,8 +1065,8 @@ Package: beamerthemeHannover 2010/06/17  (rcs-revision d02a7cf4d8ae)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/outer/beamerouterthemesi
 debar.sty
 Package: beamerouterthemesidebar 2010/06/17  (rcs-revision d02a7cf4d8ae)
-\beamer@sidebarwidth=\dimen195
-\beamer@headheight=\dimen196
+\beamer@sidebarwidth=\dimen191
+\beamer@headheight=\dimen192
 )
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/color/beamercolorthemese
 ahorse.sty
@@ -1103,20 +1078,20 @@ Package: beamerinnerthemecircles 2010/06/17  (rcs-revision d02a7cf4d8ae)
 )) (./slide_martin.aux)
 \openout1 = `slide_martin.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1154,17 +1129,17 @@ LaTeX Font Info:    ... okay on input line 11.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count169
-\scratchdimen=\dimen197
-\scratchbox=\box55
-\nofMPsegments=\count170
-\nofMParguments=\count171
-\everyMPshowfont=\toks47
-\MPscratchCnt=\count172
-\MPscratchDim=\dimen198
-\MPnumerator=\count173
-\makeMPintoPDFobject=\count174
-\everyMPtoPDFconversion=\toks48
+\scratchcounter=\count161
+\scratchdimen=\dimen193
+\scratchbox=\box53
+\nofMPsegments=\count162
+\nofMParguments=\count163
+\everyMPshowfont=\toks46
+\MPscratchCnt=\count164
+\MPscratchDim=\dimen194
+\MPnumerator=\count165
+\makeMPintoPDFobject=\count166
+\everyMPtoPDFconversion=\toks47
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -1181,8 +1156,8 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box56
-Package hyperref Info: Link coloring OFF on input line 11.
+\AtBeginShipoutBox=\box54
+Package hyperref Info: Link coloring OFF on input line 14.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1190,58 +1165,58 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count175
+\c@section@level=\count167
 )
-LaTeX Info: Redefining \ref on input line 11.
-LaTeX Info: Redefining \pageref on input line 11.
-LaTeX Info: Redefining \nameref on input line 11.
+LaTeX Info: Redefining \ref on input line 14.
+LaTeX Info: Redefining \pageref on input line 14.
+LaTeX Info: Redefining \nameref on input line 14.
 
 (./slide_martin.out) (./slide_martin.out)
 \@outlinefile=\write5
 \openout5 = `slide_martin.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 11.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 14.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 11.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 14.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/cmr/m/n on input line 11.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 11.
+(Font)                  OT1/cmss/m/n --> T1/cmr/m/n on input line 14.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> T1/cmss/bx/n on input line 11.
+(Font)                  OT1/cmr/bx/n --> T1/cmss/bx/n on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> T1/cmss/bx/n on input line 11.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 11.
+(Font)                  OT1/cmr/bx/n --> T1/cmss/bx/n on input line 14.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/cmss/m/n on input line 11.
+(Font)                  OT1/cmss/m/n --> T1/cmss/m/n on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/cmss/m/n on input line 11.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 11.
+(Font)                  OT1/cmss/bx/n --> T1/cmss/m/n on input line 14.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> T1/cmss/m/it on input line 11.
+(Font)                  OT1/cmr/m/it --> T1/cmss/m/it on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> T1/cmss/m/it on input line 11.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 11.
+(Font)                  OT1/cmr/bx/it --> T1/cmss/m/it on input line 14.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 11.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 11.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 14.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/cmss/m/n --> T1/cmss/bx/n on input line 11.
+(Font)                  T1/cmss/m/n --> T1/cmss/bx/n on input line 14.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/cmss/m/it --> T1/cmss/bx/it on input line 11.
+(Font)                  T1/cmss/m/it --> T1/cmss/bx/it on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/cmr/bx/n on input line 11.
+(Font)                  OT1/cmss/bx/n --> T1/cmr/bx/n on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/cmss/bx/n --> T1/cmss/bx/n on input line 11.
+(Font)                  T1/cmss/bx/n --> T1/cmss/bx/n on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/cmss/m/n --> T1/cmss/bx/n on input line 11.
+(Font)                  T1/cmss/m/n --> T1/cmss/bx/n on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/cmss/m/it --> T1/cmss/bx/it on input line 11.
+(Font)                  T1/cmss/m/it --> T1/cmss/bx/it on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/cmtt/m/n --> T1/cmtt/bx/n on input line 11.
+(Font)                  T1/cmtt/m/n --> T1/cmtt/bx/n on input line 14.
 
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-bas
 ic-dictionary/translator-basic-dictionary-English.dict
@@ -1291,270 +1266,594 @@ Dictionary: translator-theorem-dictionary, Language: English
 orem-dictionary/translator-theorem-dictionary-French.dict
 Dictionary: translator-theorem-dictionary, Language: French 
 )
-LaTeX Info: Redefining \includegraphics on input line 11.
-LaTeX Info: Redefining \degres on input line 11.
-LaTeX Info: Redefining \dots on input line 11.
-LaTeX Info: Redefining \up on input line 11.
-\c@lstlisting=\count176
- (./slide_martin.nav) (./slide_martin.toc)
+LaTeX Info: Redefining \includegraphics on input line 14.
+LaTeX Info: Redefining \degres on input line 14.
+LaTeX Info: Redefining \dots on input line 14.
+LaTeX Info: Redefining \up on input line 14.
+ (./slide_martin.nav) <images/roller.png, id=45, 513.92pt x 513.92pt>
+File: images/roller.png Graphic file (type png)
+ <use images/roller.png>
+Package pdftex.def Info: images/roller.png used on input line 26.
+(pdftex.def)             Requested size: 56.9055pt x 56.89993pt.
+
+<images/roller_poly.jpg, id=46, 602.25pt x 803.0pt>
+File: images/roller_poly.jpg Graphic file (type jpg)
+
+<use images/roller_poly.jpg>
+Package pdftex.def Info: images/roller_poly.jpg used on input line 26.
+(pdftex.def)             Requested size: 56.9055pt x 75.86919pt.
+
+
+LaTeX Warning: File `images/silhouettes.jpg' not found on input line 26.
+
+
+! Package pdftex.def Error: File `images/silhouettes.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.26 \end{frame}
+                
+? 
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 26.
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
 
 LaTeX Font Warning: Font shape `T1/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 15.
+(Font)              size <5> substituted on input line 26.
+
+
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-]
-LaTeX Font Info:    Try loading font information for OMS+cmss on input line 31.
+ <./images/roller.png> <./images/roller_poly.jpg>]
+LaTeX Font Info:    Try loading font information for OMS+cmss on input line 47.
 
-LaTeX Font Info:    No file OMScmss.fd. on input line 31.
+LaTeX Font Info:    No file OMScmss.fd. on input line 47.
 
 
 LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbullet' on input line 31.
+(Font)              for symbol `textbullet' on input line 47.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 31.
+LaTeX Font Info:    Try loading font information for U+msa on input line 47.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 31.
+LaTeX Font Info:    Try loading font information for U+msb on input line 47.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [2
+)
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[2
 
 ]
-<images/roller.png, id=162, 513.92pt x 513.92pt>
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[3
+
+] (./slide_martin.toc)
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[4
+
+]
 File: images/roller.png Graphic file (type png)
  <use images/roller.png>
-Package pdftex.def Info: images/roller.png used on input line 49.
+Package pdftex.def Info: images/roller.png used on input line 95.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 
-<images/roller_lab.jpg, id=163, 513.92pt x 513.92pt>
+<images/roller_lab.jpg, id=213, 513.92pt x 513.92pt>
 File: images/roller_lab.jpg Graphic file (type jpg)
 
 <use images/roller_lab.jpg>
-Package pdftex.def Info: images/roller_lab.jpg used on input line 49.
-(pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
- [3
-
- <./images/roller.png> <./images/roller_lab.jpg>] [4
-
-] [5
-
-]
-File: images/roller_lab.jpg Graphic file (type jpg)
- <use images/roller_lab.jpg>
-Package pdftex.def Info: images/roller_lab.jpg used on input line 89.
+Package pdftex.def Info: images/roller_lab.jpg used on input line 95.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 
-<images/test1.png, id=285, 2055.68pt x 2055.68pt>
-File: images/test1.png Graphic file (type png)
- <use images/test1.png>
-Package pdftex.def Info: images/test1.png used on input line 89.
-(pdftex.def)             Requested size: 85.35826pt x 85.3499pt.
-
-<images/test2.png, id=286, 2055.68pt x 2055.68pt>
-File: images/test2.png Graphic file (type png)
- <use images/test2.png>
-Package pdftex.def Info: images/test2.png used on input line 89.
-(pdftex.def)             Requested size: 85.35826pt x 85.3499pt.
-
-<images/roller_fft.jpg, id=287, 513.92pt x 513.92pt>
-File: images/roller_fft.jpg Graphic file (type jpg)
-
-<use images/roller_fft.jpg>
-Package pdftex.def Info: images/roller_fft.jpg used on input line 89.
-(pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
-
-<images/test1_fft.jpg, id=288, 2055.68pt x 2055.68pt>
-File: images/test1_fft.jpg Graphic file (type jpg)
-
-<use images/test1_fft.jpg>
-Package pdftex.def Info: images/test1_fft.jpg used on input line 89.
-(pdftex.def)             Requested size: 85.35826pt x 85.3499pt.
-
-<images/test2_fft.jpg, id=289, 2055.68pt x 2055.68pt>
-File: images/test2_fft.jpg Graphic file (type jpg)
-
-<use images/test2_fft.jpg>
-Package pdftex.def Info: images/test2_fft.jpg used on input line 89.
-(pdftex.def)             Requested size: 85.35826pt x 85.3499pt.
- [6
-
- <./images/test1.png> <./images/test2.png> <./images/roller_fft.jpg> <./images/
-test1_fft.jpg> <./images/test2_fft.jpg>]
-<images/fgauss.jpg, id=327, 16.06pt x 16.06pt>
-File: images/fgauss.jpg Graphic file (type jpg)
- <use images/fgauss.jpg>
-Package pdftex.def Info: images/fgauss.jpg used on input line 106.
-(pdftex.def)             Requested size: 113.81102pt x 113.84833pt.
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
 
 
-LaTeX Font Warning: Font shape `T1/cmss/m/sc' undefined
-(Font)              using `T1/cmss/m/n' instead on input line 106.
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[5
+
+ <./images/roller_lab.jpg>]
+<images/roller_subim.jpg, id=247, 16.06pt x 16.06pt>
+File: images/roller_subim.jpg Graphic file (type jpg)
+
+<use images/roller_subim.jpg>
+Package pdftex.def Info: images/roller_subim.jpg used on input line 112.
+(pdftex.def)             Requested size: 56.9055pt x 56.91019pt.
+
+<images/roller_subimfft.jpg, id=248, 16.06pt x 16.06pt>
+File: images/roller_subimfft.jpg Graphic file (type jpg)
+
+<use images/roller_subimfft.jpg>
+Package pdftex.def Info: images/roller_subimfft.jpg used on input line 112.
+(pdftex.def)             Requested size: 56.9055pt x 56.91019pt.
+
+<images/roller_subimf.jpg, id=249, 16.06pt x 16.06pt>
+File: images/roller_subimf.jpg Graphic file (type jpg)
+
+<use images/roller_subimf.jpg>
+Package pdftex.def Info: images/roller_subimf.jpg used on input line 112.
+(pdftex.def)             Requested size: 56.9055pt x 56.91019pt.
+
+<images/roller_subimresp.jpg, id=250, 16.06pt x 16.06pt>
+File: images/roller_subimresp.jpg Graphic file (type jpg)
+
+<use images/roller_subimresp.jpg>
+Package pdftex.def Info: images/roller_subimresp.jpg used on input line 112.
+(pdftex.def)             Requested size: 56.9055pt x 56.91019pt.
+
+Overfull \hbox (42.90375pt too wide) in paragraph at lines 112--112
+ []|[]|  
+ []
+
+
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[6
+
+ <./images/roller_subim.jpg> <./images/roller_subimfft.jpg> <./images/roller_su
+bimf.jpg> <./images/roller_subimresp.jpg>]
+Overfull \hbox (42.90375pt too wide) in paragraph at lines 138--138
+ []|[]|  
+ []
+
+
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
 
 [7
 
- <./images/fgauss.jpg>]
-<images/roller_resp.jpg, id=369, 497.86pt x 497.86pt>
+] <images/test2.png, id=330, 513.92pt x 513.92pt>
+File: images/test2.png Graphic file (type png)
+ <use images/test2.png>
+Package pdftex.def Info: images/test2.png used on input line 145.
+(pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
+
+<images/test1.png, id=331, 513.92pt x 513.92pt>
+File: images/test1.png Graphic file (type png)
+ <use images/test1.png>
+Package pdftex.def Info: images/test1.png used on input line 145.
+(pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
+File: images/roller_lab.jpg Graphic file (type jpg)
+
+<use images/roller_lab.jpg>
+Package pdftex.def Info: images/roller_lab.jpg used on input line 145.
+(pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
+
+<images/test2_fft.jpg, id=332, 2055.68pt x 2055.68pt>
+File: images/test2_fft.jpg Graphic file (type jpg)
+
+<use images/test2_fft.jpg>
+Package pdftex.def Info: images/test2_fft.jpg used on input line 145.
+(pdftex.def)             Requested size: 85.35826pt x 85.3499pt.
+
+<images/test1_fft.jpg, id=333, 2055.68pt x 2055.68pt>
+File: images/test1_fft.jpg Graphic file (type jpg)
+
+<use images/test1_fft.jpg>
+Package pdftex.def Info: images/test1_fft.jpg used on input line 145.
+(pdftex.def)             Requested size: 85.35826pt x 85.3499pt.
+
+<images/roller_fft.jpg, id=334, 513.92pt x 513.92pt>
+File: images/roller_fft.jpg Graphic file (type jpg)
+
+<use images/roller_fft.jpg>
+Package pdftex.def Info: images/roller_fft.jpg used on input line 145.
+(pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
+
+Overfull \hbox (42.90375pt too wide) in paragraph at lines 145--145
+ []|[]|  
+ []
+
+
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[8
+
+ <./images/test2.png> <./images/test1.png> <./images/test2_fft.jpg> <./images/t
+est1_fft.jpg> <./images/roller_fft.jpg>]
+<images/roller_resp.jpg, id=368, 497.86pt x 497.86pt>
 File: images/roller_resp.jpg Graphic file (type jpg)
 
 <use images/roller_resp.jpg>
-Package pdftex.def Info: images/roller_resp.jpg used on input line 115.
+Package pdftex.def Info: images/roller_resp.jpg used on input line 155.
 (pdftex.def)             Requested size: 142.26378pt x 142.26381pt.
- [8
 
- <./images/roller_resp.jpg>] [9
+Overfull \hbox (42.90375pt too wide) in paragraph at lines 155--155
+ []|[]|  
+ []
 
-]
-<images/step.png, id=445, 578.16pt x 433.62pt>
+
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[9
+
+ <./images/roller_resp.jpg>]
+Overfull \hbox (35.39595pt too wide) in paragraph at lines 194--194
+ []|[]|  
+ []
+
+
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[10
+
+] <images/step.png, id=440, 578.16pt x 433.62pt>
 File: images/step.png Graphic file (type png)
  <use images/step.png>
-Package pdftex.def Info: images/step.png used on input line 152.
+Package pdftex.def Info: images/step.png used on input line 211.
 (pdftex.def)             Requested size: 85.35826pt x 64.01463pt.
 
-<images/gaussd1d.png, id=447, 578.16pt x 433.62pt>
+<images/gaussd1d.png, id=442, 578.16pt x 433.62pt>
 File: images/gaussd1d.png Graphic file (type png)
  <use images/gaussd1d.png>
-Package pdftex.def Info: images/gaussd1d.png used on input line 152.
+Package pdftex.def Info: images/gaussd1d.png used on input line 211.
 (pdftex.def)             Requested size: 85.35826pt x 64.01463pt.
 
-<images/gaussd.png, id=448, 16.06pt x 16.06pt>
+<images/gaussd.png, id=443, 16.06pt x 16.06pt>
 File: images/gaussd.png Graphic file (type png)
  <use images/gaussd.png>
-Package pdftex.def Info: images/gaussd.png used on input line 152.
+Package pdftex.def Info: images/gaussd.png used on input line 211.
 (pdftex.def)             Requested size: 85.35826pt x 85.38612pt.
- [10
+
+Overfull \hbox (35.39595pt too wide) in paragraph at lines 211--211
+ []|[]|  
+ []
+
+
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[11
 
  <./images/step.png> <./images/gaussd1d.png> <./images/gaussd.png (PNG copy)>]
 File: images/roller_resp.jpg Graphic file (type jpg)
-
-<use images/roller_resp.jpg>
-Package pdftex.def Info: images/roller_resp.jpg used on input line 161.
+ <use images/roller_resp.jpg>
+Package pdftex.def Info: images/roller_resp.jpg used on input line 221.
 (pdftex.def)             Requested size: 113.81102pt x 113.80649pt.
 
-<images/roller_filtered.jpg, id=487, 513.92pt x 513.92pt>
+<images/roller_filtered.jpg, id=480, 513.92pt x 513.92pt>
 File: images/roller_filtered.jpg Graphic file (type jpg)
 
 <use images/roller_filtered.jpg>
-Package pdftex.def Info: images/roller_filtered.jpg used on input line 161.
+Package pdftex.def Info: images/roller_filtered.jpg used on input line 221.
 (pdftex.def)             Requested size: 113.81102pt x 113.80771pt.
- [11
+
+Overfull \hbox (35.39595pt too wide) in paragraph at lines 221--221
+ []|[]|  
+ []
+
+
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[12
 
  <./images/roller_filtered.jpg>]
-<images/projection.jpeg, id=526, 477.4638pt x 433.3791pt>
-File: images/projection.jpeg Graphic file (type jpg)
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
 
-<use images/projection.jpeg>
-Package pdftex.def Info: images/projection.jpeg used on input line 190.
-(pdftex.def)             Requested size: 113.81102pt x 103.29892pt.
- [12
 
- <./images/projection.jpeg>]
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[13
+
+]
 File: images/roller_filtered.jpg Graphic file (type jpg)
-
-<use images/roller_filtered.jpg>
-Package pdftex.def Info: images/roller_filtered.jpg used on input line 195.
+ <use images/roller_filtered.jpg>
+Package pdftex.def Info: images/roller_filtered.jpg used on input line 249.
 (pdftex.def)             Requested size: 113.81102pt x 113.80771pt.
 
-<images/roller_localised.jpg, id=566, 505.89pt x 505.89pt>
+<images/roller_localised.jpg, id=551, 505.89pt x 505.89pt>
 File: images/roller_localised.jpg Graphic file (type jpg)
 
 <use images/roller_localised.jpg>
-Package pdftex.def Info: images/roller_localised.jpg used on input line 195.
+Package pdftex.def Info: images/roller_localised.jpg used on input line 249.
 (pdftex.def)             Requested size: 113.81102pt x 113.80489pt.
- [13
 
- <./images/roller_localised.jpg>] [14
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[14
+
+ <./images/roller_localised.jpg>]
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[15
 
 ]
 File: images/roller.png Graphic file (type png)
-
-<use images/roller.png>
-Package pdftex.def Info: images/roller.png used on input line 213.
+ <use images/roller.png>
+Package pdftex.def Info: images/roller.png used on input line 270.
 (pdftex.def)             Requested size: 113.81102pt x 113.80771pt.
- <images/roller_res.jpg, id=642, 505.89pt x 505.89pt>
+
+<images/roller_res.jpg, id=620, 505.89pt x 505.89pt>
 File: images/roller_res.jpg Graphic file (type jpg)
 
 <use images/roller_res.jpg>
-Package pdftex.def Info: images/roller_res.jpg used on input line 213.
+Package pdftex.def Info: images/roller_res.jpg used on input line 270.
 (pdftex.def)             Requested size: 113.81102pt x 113.80489pt.
- [15
+
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[16
 
  <./images/roller_res.jpg>]
 File: images/roller_res.jpg Graphic file (type jpg)
-
-<use images/roller_res.jpg>
-Package pdftex.def Info: images/roller_res.jpg used on input line 223.
+ <use images/roller_res.jpg>
+Package pdftex.def Info: images/roller_res.jpg used on input line 285.
 (pdftex.def)             Requested size: 85.35826pt x 85.35173pt.
 
-<images/roller_bin.jpg, id=679, 473.77pt x 473.77pt>
+<images/roller_bin.jpg, id=654, 473.77pt x 473.77pt>
 File: images/roller_bin.jpg Graphic file (type jpg)
 
 <use images/roller_bin.jpg>
-Package pdftex.def Info: images/roller_bin.jpg used on input line 223.
+Package pdftex.def Info: images/roller_bin.jpg used on input line 285.
 (pdftex.def)             Requested size: 85.35826pt x 85.35443pt.
- [16
 
- <./images/roller_bin.jpg>]
-Overfull \hbox (1.84178pt too wide) in paragraph at lines 295--295
-[] 
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
  []
 
 
-Overfull \hbox (1.84178pt too wide) in paragraph at lines 295--295
-[]  
- []
-
-
-Overfull \hbox (1.84178pt too wide) in paragraph at lines 295--295
-[] 
- []
-
-
-Overfull \hbox (1.84178pt too wide) in paragraph at lines 295--295
-[]  
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
  []
 
 [17
 
+ <./images/roller_bin.jpg>]
+Overfull \hbox (1.84178pt too wide) in paragraph at lines 358--358
+[] 
+ []
+
+
+Overfull \hbox (1.84178pt too wide) in paragraph at lines 358--358
+[]  
+ []
+
+
+Overfull \hbox (1.84178pt too wide) in paragraph at lines 358--358
+[] 
+ []
+
+
+Overfull \hbox (1.84178pt too wide) in paragraph at lines 358--358
+[]  
+ []
+
+
+Overfull \vbox (4.51117pt too high) detected at line 358
+ []
+
+
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[18
+
 ]
 File: images/roller_bin.jpg Graphic file (type jpg)
  <use images/roller_bin.jpg>
-Package pdftex.def Info: images/roller_bin.jpg used on input line 331.
+Package pdftex.def Info: images/roller_bin.jpg used on input line 395.
 (pdftex.def)             Requested size: 56.9055pt x 56.90054pt.
 
-<images/roller_bin-.jpg, id=754, 473.77pt x 473.77pt>
+<images/roller_bin-.jpg, id=723, 473.77pt x 473.77pt>
 File: images/roller_bin-.jpg Graphic file (type jpg)
 
 <use images/roller_bin-.jpg>
-Package pdftex.def Info: images/roller_bin-.jpg used on input line 331.
+Package pdftex.def Info: images/roller_bin-.jpg used on input line 395.
 (pdftex.def)             Requested size: 56.9055pt x 56.90054pt.
 
-<images/roller_closedbin.jpg, id=755, 473.77pt x 473.77pt>
+<images/roller_closedbin.jpg, id=724, 473.77pt x 473.77pt>
 File: images/roller_closedbin.jpg Graphic file (type jpg)
 
 <use images/roller_closedbin.jpg>
-Package pdftex.def Info: images/roller_closedbin.jpg used on input line 331.
+Package pdftex.def Info: images/roller_closedbin.jpg used on input line 395.
 (pdftex.def)             Requested size: 56.9055pt x 56.90054pt.
- [18
 
- <./images/roller_bin-.jpg> <./images/roller_closedbin.jpg>] <images/roller_con
-tour.jpg, id=792, 473.77pt x 473.77pt>
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[19
+
+ <./images/roller_bin-.jpg> <./images/roller_closedbin.jpg>]
+<images/roller_contour.jpg, id=759, 473.77pt x 473.77pt>
 File: images/roller_contour.jpg Graphic file (type jpg)
 
 <use images/roller_contour.jpg>
-Package pdftex.def Info: images/roller_contour.jpg used on input line 343.
+Package pdftex.def Info: images/roller_contour.jpg used on input line 408.
 (pdftex.def)             Requested size: 142.26378pt x 142.26222pt.
- [19
 
- <./images/roller_contour.jpg>] [20
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
 
-]
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[20
+
+ <./images/roller_contour.jpg>]
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
 [21
 
-] [22
+]
+File: images/roller.png Graphic file (type png)
+ <use images/roller.png>
+Package pdftex.def Info: images/roller.png used on input line 428.
+(pdftex.def)             Requested size: 85.35774pt x 85.35826pt.
+File: images/roller_poly.jpg Graphic file (type jpg)
+ <use images/roller_poly.jpg>
+Package pdftex.def Info: images/roller_poly.jpg used on input line 428.
+(pdftex.def)             Requested size: 64.01463pt x 85.35826pt.
+
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[22
+
+]
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[23
+
+]
+Overfull \hbox (3.47588pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Reconstitution 
+ []
+
+
+Overfull \hbox (3.38159pt too wide) has occurred while \output is active
+ []\T1/cmss/m/n/6 Approximation 
+ []
+
+[24
 
 
 ]
@@ -1567,20 +1866,14 @@ Package pdftex.def Info: images/roller_contour.jpg used on input line 343.
 \tf@snm=\write8
 \openout8 = `slide_martin.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 385.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 385.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 457.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 457.
  (./slide_martin.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 385.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 385.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 457.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 457.
+Package rerunfilecheck Info: File `slide_martin.out' has not changed.
+(rerunfilecheck)             Checksum: 18AC53CBFBC3747C3E85E03E99770FE6;453.
 
-
-Package rerunfilecheck Warning: File `slide_martin.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `slide_martin.out':
-(rerunfilecheck)             Before: 18714558B79599358B97FAF6F516E9B2;504
-(rerunfilecheck)             After:  5207A87F7112B8D12BA98066E822BEF5;463.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
@@ -1588,50 +1881,41 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 385.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 457.
  ) 
 Here is how much of TeX's memory you used:
- 20035 strings out of 494924
- 369144 string characters out of 6179709
- 451694 words of memory out of 5000000
- 22774 multiletter control sequences out of 15000+600000
- 27139 words of font info for 65 fonts, out of 8000000 for 9000
+ 18727 strings out of 494924
+ 351373 string characters out of 6179709
+ 433379 words of memory out of 5000000
+ 21471 multiletter control sequences out of 15000+600000
+ 27973 words of font info for 66 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 48i,15n,60p,392b,706s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Navigation23} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Navigation34} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{Outline0.11} has been referenced but does not exist
-, replaced by a fixed one
-
- </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1000.600pk> </home/ma
-rtin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0700.600pk> </home/martin/.texm
-f-var/fonts/pk/ljfour/jknappen/ec/ecss0700.600pk> </home/martin/.texmf-var/font
-s/pk/ljfour/jknappen/ec/ecsi0600.600pk> </home/martin/.texmf-var/fonts/pk/ljfou
-r/jknappen/ec/ecrm1095.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknappen
-/ec/ecsi0800.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss08
-00.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1440.600pk> 
-</home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1095.600pk> </home/mar
-tin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1095.600pk> </home/martin/.texmf
--var/fonts/pk/ljfour/jknappen/ec/ecss1000.600pk> </home/martin/.texmf-var/fonts
-/pk/ljfour/jknappen/ec/ecss0600.600pk></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on slide_martin.pdf (22 pages, 16221930 bytes).
+ 48i,18n,60p,392b,703s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0700.600pk> </home/
+martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0700.600pk> </home/martin/.te
+xmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0600.600pk> </home/martin/.texmf-var/fo
+nts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/martin/.texmf-var/fonts/pk/ljf
+our/jknappen/ec/ecsi0800.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknapp
+en/ec/ecss0900.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss
+1000.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1095.600pk
+> </home/martin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0800.600pk> </home/m
+artin/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsx1095.600pk> </home/martin/.tex
+mf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/martin/.texmf-var/fon
+ts/pk/ljfour/jknappen/ec/ecss1095.600pk> </home/martin/.texmf-var/fonts/pk/ljfo
+ur/jknappen/ec/ecss1440.600pk> </home/martin/.texmf-var/fonts/pk/ljfour/jknappe
+n/ec/ecss0600.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on slide_martin.pdf (24 pages, 2258087 bytes).
 PDF statistics:
- 1240 PDF objects out of 1440 (max. 8388607)
- 957 compressed objects within 10 object streams
- 58 named destinations out of 1000 (max. 500000)
- 231 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1322 PDF objects out of 1440 (max. 8388607)
+ 942 compressed objects within 10 object streams
+ 57 named destinations out of 1000 (max. 500000)
+ 222 words of extra memory for PDF output out of 10000 (max. 10000000)
 

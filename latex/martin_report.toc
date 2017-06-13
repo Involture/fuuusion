@@ -1,11 +1,12 @@
 \select@language {french}
-\contentsline {section}{\numberline {1}Introduction}{2}
-\contentsline {section}{\numberline {2}Corps}{2}
-\contentsline {subsection}{\numberline {2.1}Passage dans l'espace colorim\IeC {\'e}trique LAB.}{2}
-\contentsline {subsection}{\numberline {2.2}Calcul de la transform\IeC {\'e}e de Fourier du voisinage de chaque point.}{2}
-\contentsline {subsection}{\numberline {2.3}Calcul des composantes de texture.}{2}
-\contentsline {subsection}{\numberline {2.4}Filtrage dans le domaine spatial par des filtres de Canny.}{2}
-\contentsline {subsection}{\numberline {2.5}Localisation des contours.}{2}
-\contentsline {subsection}{\numberline {2.6}Op\IeC {\'e}rations topologiques : Epuration et fermeture du contour.}{2}
-\contentsline {subsection}{\numberline {2.7}Parcours de la silhouette.}{2}
-\contentsline {subsection}{\numberline {2.8}Approximation de la silhouette par un polygone.}{2}
+\contentsline {section}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {2}Choix d'impl\IeC {\'e}mentation}{1}
+\contentsline {subsection}{\numberline {2.1}Types et structures}{1}
+\contentsline {subsubsection}{\numberline {2.1.1}Type}{1}
+\contentsline {subsubsection}{\numberline {2.1.2}Structure}{2}
+\contentsline {subsubsection}{\numberline {2.1.3}Complexit\IeC {\'e}}{2}
+\contentsline {paragraph}{Complexit\IeC {\'e} temporelle.}{2}
+\contentsline {paragraph}{Complexit\IeC {\'e} spatiale.}{2}
+\contentsline {paragraph}{Co\IeC {\^u}t de copie}{2}
+\contentsline {section}{\numberline {3}Proc\IeC {\'e}d\IeC {\'e} et R\IeC {\'e}sultats}{2}
+\contentsline {section}{\numberline {4}Conclusion}{2}
