@@ -904,8 +904,8 @@ class polyhedron:
             projOfN = vector(planeLineIntersect(focalPoint, vertOfN, equ))
             pvtProj = vector(planeLineIntersect(focalPoint, e.pvt, equ))
             nvtProj = vector(planeLineIntersect(focalPoint, e.nvt, equ))
-            # # print((projOfP - fVect), vector(vertOfP) - fVect)
-            # assert ((projOfP - fVect) * vector(vertOfP) - fVect).norm() < COMPARISON_EPSILON
+            print((projOfP - fVect), vector(vertOfP) - fVect)
+            assert ((projOfP - fVect) * vector(vertOfP) - fVect).norm() < COMPARISON_EPSILON
             nvtReduced = vector((nvtProj - fVect).dotProduct(Z),
                                 (nvtProj - fVect).dotProduct(Y), 0)
             pvtReduced = vector((pvtProj - fVect).dotProduct(Z),
