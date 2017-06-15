@@ -5,11 +5,9 @@
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage[cm]{fullpage}
+\usepackage{fullpage}
 \usepackage{multicol}
 \usepackage{graphicx}
-\usepackage{color}
-\usepackage[colorlinks=true, allcolors=black]{hyperref}
 
 \author{Martin Janin}
 \title{Modèle 3D d'un objet à partir de photographies: Extraction de silhouette}
@@ -28,13 +26,11 @@ Le travail effectué est celui prévu. La majorité de l'étude a été concentr
 \bigskip
 \bigskip
 
+\begin{multicols}{2}
+
 \section{Introduction}
 
-Le travail consiste en l'implémentation complète d'un script d'extraction de silhouette en python. Celle-ci a entraîné une réflexion importante sur l'optimisation du programme, de la manière d'implémenter les différentes étapes jusqu'au choix des types et structures utilisés.
-
-\pagebreak
-
-\begin{multicols}{2}
+Le travail consiste en l'implémentation complète d'un script d'extraction de silhouette en python. Celle-ci a entraîné une réflexion importante sur l'optimisation du programme, de la manière d'implémenter les différentes étapes jusqu'au choix des types et structures utilisés. On détaillera d'abord les choix d'implémentation avant de présenter succintement le procédé, trop complexe pour être complètement expliqué ici.
 
 \section{Choix d'implémentation}
 
@@ -86,12 +82,9 @@ Il faut noter enfin, que lorsqu'il s'agit d'effectuer des opérations sur le voi
 
 \section{Procédé et Résultats}
 
-On prend pour exemple l'image ci-dessous.
-\begin{figure*}
-	\centering
-	\raisebox{-0.5\height}{\includegraphics[height=3cm]{images/roller.png}}
-\end{figure*}
-Détaillons les différentes étapes de ce procédé. Les différentes étapes ainsi que leurs résultats sont résumé dans un \hyperref[tab]{tableau en fin de document}
+L'image que l'on va prendre pour exemple est l'image ci-dessous. \\
+\;\;\; \raisebox{-0.5\height}{\includegraphics[height=3cm]{images/roller.png}} \\
+Détaillons les différentes étapes de ce procédé.
 
 \subsection{Convertion dans l'espace LAB}
 
@@ -160,7 +153,6 @@ Afin d'améliorer l'image binaire obtenue, on réalise des opérations topologiq
 \end{itemize}
 On réalise alors, les opérations suivantes sur l'image binaire :\\
 Une érosion par :\\
-\medskip
 \begin{tabular}{|l|c|r|}
 	\hline
 	0 & 1 & 0 \\ \hline
@@ -168,9 +160,7 @@ Une érosion par :\\
 	0 & 1 & 0 \\
 	\hline
 \end{tabular}\\
-\medskip
 Séquentiellement, des fermetures par:\\
-\medskip
 \begin{tabular}{|l|c|c|c|r|}
 	\hline
 	0 & 0 & 0 & 0 & 0 \\ \hline
@@ -180,24 +170,17 @@ Séquentiellement, des fermetures par:\\
 	0 & 0 & 0 & 0 & 0 \\
 	\hline
 \end{tabular}\\
-\medskip
 Auquel on applique des rotations dans 8 directions différentes.
 
 \subsection{Approximation polygonale}
 
-On extrait d'abord le contour extérieur de l'image obtenue en partant du point le plus haut et en se déplaçant de pixel en pixel. On attribut des priorité aux directions de déplacement afin de parcourir effectivement le contour extérieur dans le sens trigonométrique. Par exemple si le sens de déplacement courant est \texttt{Bas}, on appliquera comme ordre de priorité : \texttt{Gauche - Bas - Droite - Haut}.
-Une fois ce contour obtenu, on cherche à l'approximer par un polygone de tel sorte que la distance maximale entre le contour et le polygone soit inférieure à un seuil donné. Pour celà, on initialise le polygone par un segment alant du point le plus haut au point le plus bas puis on itère le procédé suivant sur chaque segment :
-\begin{itemize}
-	\item On calcul $D$ la distance maximale du segment au contour
-	\item Si $D > \mathtt{seuil}$ on coupe le segment en deux en ajoutant au polygone le point le plus éloigné du segment.
-\end{itemize}
+test
 
 \section{Conclusion}
 	Le résultat obtenu, bien qu'imprécis permet ensuite, en combinant les silhouettes obtenues de plusieurs points de vues, de reconstituer le modèle 3D de l'objet. On a vu comment numpy pouvait permettre par la vectorisation (virtuelle), d'effectuer des opérations complexes sur des millions de données. L'optimisation spatiale et temporelle rigoureuse permet de mener à bien des calculs complexes (transformée de Fourier) en un temps raisonnable ($\approx 45s$)
 
 \end{multicols}
 
-\begin{figure}
 \newcommand{\tabinc}[2] {
 	\smash{\raisebox{-1\height}{\includegraphics[height=#1]{#2}}}\vspace{#1}
 	}
@@ -247,8 +230,5 @@ Une fois ce contour obtenu, on cherche à l'approximer par un polygone de tel so
 		& \\
 	\hline
 \end{tabular}
-\caption{Tableau Récapitulatif}
-	\label{tab}
-\end{figure}
 
 \end{document}

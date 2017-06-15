@@ -1,0 +1,19 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Choix d'impl\351mentation}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Types et structures}{section.2}% 3
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Type}{subsection.2.1}% 4
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Structure}{subsection.2.1}% 5
+\BOOKMARK [2][-]{subsection.2.2}{Complexit\351}{section.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Complexit\351 temporelle}{subsection.2.2}% 7
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Complexit\351 spatiale}{subsection.2.2}% 8
+\BOOKMARK [3][-]{subsubsection.2.2.3}{Co\373t de copie}{subsection.2.2}% 9
+\BOOKMARK [1][-]{section.3}{Proc\351d\351 et R\351sultats}{}% 10
+\BOOKMARK [2][-]{subsection.3.1}{Convertion dans l'espace LAB}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.2}{1er Filtrage - Domaine fr\351quentiel - Calcul des composantes de texture}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.3}{2\350me Filtrage - Domaine spatial - D\351tection des bordures}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.4}{Lissage parabolique}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.5}{Sommation des composantes}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.6}{Seuillage}{section.3}% 16
+\BOOKMARK [2][-]{subsection.3.7}{Op\351rations topologiques}{section.3}% 17
+\BOOKMARK [2][-]{subsection.3.8}{Approximation polygonale}{section.3}% 18
+\BOOKMARK [1][-]{section.4}{Conclusion}{}% 19
