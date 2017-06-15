@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.6.8)  13 JUN 2017 02:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.6.8)  13 JUN 2017 16:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1276,12 +1276,12 @@ File: images/roller.png Graphic file (type png)
 Package pdftex.def Info: images/roller.png used on input line 26.
 (pdftex.def)             Requested size: 56.9055pt x 56.89993pt.
 
-<images/roller_poly.jpg, id=46, 602.25pt x 803.0pt>
-File: images/roller_poly.jpg Graphic file (type jpg)
+<images/roller_contourn.jpg, id=46, 473.77pt x 473.77pt>
+File: images/roller_contourn.jpg Graphic file (type jpg)
 
-<use images/roller_poly.jpg>
-Package pdftex.def Info: images/roller_poly.jpg used on input line 26.
-(pdftex.def)             Requested size: 56.9055pt x 75.86919pt.
+<use images/roller_contourn.jpg>
+Package pdftex.def Info: images/roller_contourn.jpg used on input line 26.
+(pdftex.def)             Requested size: 56.9055pt x 56.90054pt.
 
 
 LaTeX Warning: File `images/silhouettes.jpg' not found on input line 26.
@@ -1316,7 +1316,7 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
- <./images/roller.png> <./images/roller_poly.jpg>]
+ <./images/roller.png> <./images/roller_contourn.jpg>]
 LaTeX Font Info:    Try loading font information for OMS+cmss on input line 47.
 
 LaTeX Font Info:    No file OMScmss.fd. on input line 47.
@@ -1399,31 +1399,31 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 File: images/roller_subim.jpg Graphic file (type jpg)
 
 <use images/roller_subim.jpg>
-Package pdftex.def Info: images/roller_subim.jpg used on input line 112.
+Package pdftex.def Info: images/roller_subim.jpg used on input line 115.
 (pdftex.def)             Requested size: 56.9055pt x 56.91019pt.
 
 <images/roller_subimfft.jpg, id=248, 16.06pt x 16.06pt>
 File: images/roller_subimfft.jpg Graphic file (type jpg)
 
 <use images/roller_subimfft.jpg>
-Package pdftex.def Info: images/roller_subimfft.jpg used on input line 112.
+Package pdftex.def Info: images/roller_subimfft.jpg used on input line 115.
 (pdftex.def)             Requested size: 56.9055pt x 56.91019pt.
 
 <images/roller_subimf.jpg, id=249, 16.06pt x 16.06pt>
 File: images/roller_subimf.jpg Graphic file (type jpg)
 
 <use images/roller_subimf.jpg>
-Package pdftex.def Info: images/roller_subimf.jpg used on input line 112.
+Package pdftex.def Info: images/roller_subimf.jpg used on input line 115.
 (pdftex.def)             Requested size: 56.9055pt x 56.91019pt.
 
 <images/roller_subimresp.jpg, id=250, 16.06pt x 16.06pt>
 File: images/roller_subimresp.jpg Graphic file (type jpg)
 
 <use images/roller_subimresp.jpg>
-Package pdftex.def Info: images/roller_subimresp.jpg used on input line 112.
+Package pdftex.def Info: images/roller_subimresp.jpg used on input line 115.
 (pdftex.def)             Requested size: 56.9055pt x 56.91019pt.
 
-Overfull \hbox (42.90375pt too wide) in paragraph at lines 112--112
+Overfull \hbox (42.90375pt too wide) in paragraph at lines 115--115
  []|[]|  
  []
 
@@ -1441,7 +1441,7 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 
  <./images/roller_subim.jpg> <./images/roller_subimfft.jpg> <./images/roller_su
 bimf.jpg> <./images/roller_subimresp.jpg>]
-Overfull \hbox (42.90375pt too wide) in paragraph at lines 138--138
+Overfull \hbox (42.90375pt too wide) in paragraph at lines 141--141
  []|[]|  
  []
 
@@ -1460,42 +1460,42 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 ] <images/test2.png, id=330, 513.92pt x 513.92pt>
 File: images/test2.png Graphic file (type png)
  <use images/test2.png>
-Package pdftex.def Info: images/test2.png used on input line 145.
+Package pdftex.def Info: images/test2.png used on input line 148.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 
 <images/test1.png, id=331, 513.92pt x 513.92pt>
 File: images/test1.png Graphic file (type png)
  <use images/test1.png>
-Package pdftex.def Info: images/test1.png used on input line 145.
+Package pdftex.def Info: images/test1.png used on input line 148.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: images/roller_lab.jpg Graphic file (type jpg)
 
 <use images/roller_lab.jpg>
-Package pdftex.def Info: images/roller_lab.jpg used on input line 145.
+Package pdftex.def Info: images/roller_lab.jpg used on input line 148.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 
 <images/test2_fft.jpg, id=332, 2055.68pt x 2055.68pt>
 File: images/test2_fft.jpg Graphic file (type jpg)
 
 <use images/test2_fft.jpg>
-Package pdftex.def Info: images/test2_fft.jpg used on input line 145.
+Package pdftex.def Info: images/test2_fft.jpg used on input line 148.
 (pdftex.def)             Requested size: 85.35826pt x 85.3499pt.
 
 <images/test1_fft.jpg, id=333, 2055.68pt x 2055.68pt>
 File: images/test1_fft.jpg Graphic file (type jpg)
 
 <use images/test1_fft.jpg>
-Package pdftex.def Info: images/test1_fft.jpg used on input line 145.
+Package pdftex.def Info: images/test1_fft.jpg used on input line 148.
 (pdftex.def)             Requested size: 85.35826pt x 85.3499pt.
 
 <images/roller_fft.jpg, id=334, 513.92pt x 513.92pt>
 File: images/roller_fft.jpg Graphic file (type jpg)
 
 <use images/roller_fft.jpg>
-Package pdftex.def Info: images/roller_fft.jpg used on input line 145.
+Package pdftex.def Info: images/roller_fft.jpg used on input line 148.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 
-Overfull \hbox (42.90375pt too wide) in paragraph at lines 145--145
+Overfull \hbox (42.90375pt too wide) in paragraph at lines 148--148
  []|[]|  
  []
 
@@ -1513,14 +1513,14 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 
  <./images/test2.png> <./images/test1.png> <./images/test2_fft.jpg> <./images/t
 est1_fft.jpg> <./images/roller_fft.jpg>]
-<images/roller_resp.jpg, id=368, 497.86pt x 497.86pt>
-File: images/roller_resp.jpg Graphic file (type jpg)
+<images/roller_respn.jpg, id=368, 497.86pt x 497.86pt>
+File: images/roller_respn.jpg Graphic file (type jpg)
 
-<use images/roller_resp.jpg>
-Package pdftex.def Info: images/roller_resp.jpg used on input line 155.
+<use images/roller_respn.jpg>
+Package pdftex.def Info: images/roller_respn.jpg used on input line 158.
 (pdftex.def)             Requested size: 142.26378pt x 142.26381pt.
 
-Overfull \hbox (42.90375pt too wide) in paragraph at lines 155--155
+Overfull \hbox (42.90375pt too wide) in paragraph at lines 158--158
  []|[]|  
  []
 
@@ -1536,8 +1536,8 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 
 [9
 
- <./images/roller_resp.jpg>]
-Overfull \hbox (35.39595pt too wide) in paragraph at lines 194--194
+ <./images/roller_respn.jpg>]
+Overfull \hbox (35.39595pt too wide) in paragraph at lines 197--197
  []|[]|  
  []
 
@@ -1556,22 +1556,22 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 ] <images/step.png, id=440, 578.16pt x 433.62pt>
 File: images/step.png Graphic file (type png)
  <use images/step.png>
-Package pdftex.def Info: images/step.png used on input line 211.
+Package pdftex.def Info: images/step.png used on input line 214.
 (pdftex.def)             Requested size: 85.35826pt x 64.01463pt.
 
 <images/gaussd1d.png, id=442, 578.16pt x 433.62pt>
 File: images/gaussd1d.png Graphic file (type png)
  <use images/gaussd1d.png>
-Package pdftex.def Info: images/gaussd1d.png used on input line 211.
+Package pdftex.def Info: images/gaussd1d.png used on input line 214.
 (pdftex.def)             Requested size: 85.35826pt x 64.01463pt.
 
 <images/gaussd.png, id=443, 16.06pt x 16.06pt>
 File: images/gaussd.png Graphic file (type png)
  <use images/gaussd.png>
-Package pdftex.def Info: images/gaussd.png used on input line 211.
+Package pdftex.def Info: images/gaussd.png used on input line 214.
 (pdftex.def)             Requested size: 85.35826pt x 85.38612pt.
 
-Overfull \hbox (35.39595pt too wide) in paragraph at lines 211--211
+Overfull \hbox (35.39595pt too wide) in paragraph at lines 214--214
  []|[]|  
  []
 
@@ -1588,19 +1588,19 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 [11
 
  <./images/step.png> <./images/gaussd1d.png> <./images/gaussd.png (PNG copy)>]
-File: images/roller_resp.jpg Graphic file (type jpg)
- <use images/roller_resp.jpg>
-Package pdftex.def Info: images/roller_resp.jpg used on input line 221.
+File: images/roller_respn.jpg Graphic file (type jpg)
+ <use images/roller_respn.jpg>
+Package pdftex.def Info: images/roller_respn.jpg used on input line 224.
 (pdftex.def)             Requested size: 113.81102pt x 113.80649pt.
 
-<images/roller_filtered.jpg, id=480, 513.92pt x 513.92pt>
-File: images/roller_filtered.jpg Graphic file (type jpg)
+<images/roller_filteredn.jpg, id=480, 501.875pt x 501.875pt>
+File: images/roller_filteredn.jpg Graphic file (type jpg)
 
-<use images/roller_filtered.jpg>
-Package pdftex.def Info: images/roller_filtered.jpg used on input line 221.
-(pdftex.def)             Requested size: 113.81102pt x 113.80771pt.
+<use images/roller_filteredn.jpg>
+Package pdftex.def Info: images/roller_filteredn.jpg used on input line 224.
+(pdftex.def)             Requested size: 113.81102pt x 113.80533pt.
 
-Overfull \hbox (35.39595pt too wide) in paragraph at lines 221--221
+Overfull \hbox (35.39595pt too wide) in paragraph at lines 224--224
  []|[]|  
  []
 
@@ -1616,7 +1616,7 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 
 [12
 
- <./images/roller_filtered.jpg>]
+ <./images/roller_filteredn.jpg>]
 Overfull \hbox (3.47588pt too wide) has occurred while \output is active
  []\T1/cmss/m/n/6 Reconstitution 
  []
@@ -1629,16 +1629,16 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 [13
 
 ]
-File: images/roller_filtered.jpg Graphic file (type jpg)
- <use images/roller_filtered.jpg>
-Package pdftex.def Info: images/roller_filtered.jpg used on input line 249.
-(pdftex.def)             Requested size: 113.81102pt x 113.80771pt.
+File: images/roller_filteredn.jpg Graphic file (type jpg)
+ <use images/roller_filteredn.jpg>
+Package pdftex.def Info: images/roller_filteredn.jpg used on input line 252.
+(pdftex.def)             Requested size: 113.81102pt x 113.80533pt.
 
-<images/roller_localised.jpg, id=551, 505.89pt x 505.89pt>
-File: images/roller_localised.jpg Graphic file (type jpg)
+<images/roller_localisedn.jpg, id=551, 505.89pt x 505.89pt>
+File: images/roller_localisedn.jpg Graphic file (type jpg)
 
-<use images/roller_localised.jpg>
-Package pdftex.def Info: images/roller_localised.jpg used on input line 249.
+<use images/roller_localisedn.jpg>
+Package pdftex.def Info: images/roller_localisedn.jpg used on input line 252.
 (pdftex.def)             Requested size: 113.81102pt x 113.80489pt.
 
 Overfull \hbox (3.47588pt too wide) has occurred while \output is active
@@ -1652,7 +1652,7 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 
 [14
 
- <./images/roller_localised.jpg>]
+ <./images/roller_localisedn.jpg>]
 Overfull \hbox (3.47588pt too wide) has occurred while \output is active
  []\T1/cmss/m/n/6 Reconstitution 
  []
@@ -1667,15 +1667,15 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 ]
 File: images/roller.png Graphic file (type png)
  <use images/roller.png>
-Package pdftex.def Info: images/roller.png used on input line 270.
+Package pdftex.def Info: images/roller.png used on input line 273.
 (pdftex.def)             Requested size: 113.81102pt x 113.80771pt.
 
-<images/roller_res.jpg, id=620, 505.89pt x 505.89pt>
-File: images/roller_res.jpg Graphic file (type jpg)
+<images/roller_resn.jpg, id=620, 500.87125pt x 500.87125pt>
+File: images/roller_resn.jpg Graphic file (type jpg)
 
-<use images/roller_res.jpg>
-Package pdftex.def Info: images/roller_res.jpg used on input line 270.
-(pdftex.def)             Requested size: 113.81102pt x 113.80489pt.
+<use images/roller_resn.jpg>
+Package pdftex.def Info: images/roller_resn.jpg used on input line 273.
+(pdftex.def)             Requested size: 113.81102pt x 113.80699pt.
 
 Overfull \hbox (3.47588pt too wide) has occurred while \output is active
  []\T1/cmss/m/n/6 Reconstitution 
@@ -1688,17 +1688,17 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 
 [16
 
- <./images/roller_res.jpg>]
-File: images/roller_res.jpg Graphic file (type jpg)
- <use images/roller_res.jpg>
-Package pdftex.def Info: images/roller_res.jpg used on input line 285.
-(pdftex.def)             Requested size: 85.35826pt x 85.35173pt.
+ <./images/roller_resn.jpg>]
+File: images/roller_resn.jpg Graphic file (type jpg)
+ <use images/roller_resn.jpg>
+Package pdftex.def Info: images/roller_resn.jpg used on input line 288.
+(pdftex.def)             Requested size: 85.35826pt x 85.35333pt.
 
-<images/roller_bin.jpg, id=654, 473.77pt x 473.77pt>
-File: images/roller_bin.jpg Graphic file (type jpg)
+<images/roller_binn.jpg, id=654, 473.77pt x 473.77pt>
+File: images/roller_binn.jpg Graphic file (type jpg)
 
-<use images/roller_bin.jpg>
-Package pdftex.def Info: images/roller_bin.jpg used on input line 285.
+<use images/roller_binn.jpg>
+Package pdftex.def Info: images/roller_binn.jpg used on input line 288.
 (pdftex.def)             Requested size: 85.35826pt x 85.35443pt.
 
 Overfull \hbox (3.47588pt too wide) has occurred while \output is active
@@ -1712,28 +1712,28 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 
 [17
 
- <./images/roller_bin.jpg>]
-Overfull \hbox (1.84178pt too wide) in paragraph at lines 358--358
+ <./images/roller_binn.jpg>]
+Overfull \hbox (1.84178pt too wide) in paragraph at lines 361--361
 [] 
  []
 
 
-Overfull \hbox (1.84178pt too wide) in paragraph at lines 358--358
+Overfull \hbox (1.84178pt too wide) in paragraph at lines 361--361
 []  
  []
 
 
-Overfull \hbox (1.84178pt too wide) in paragraph at lines 358--358
+Overfull \hbox (1.84178pt too wide) in paragraph at lines 361--361
 [] 
  []
 
 
-Overfull \hbox (1.84178pt too wide) in paragraph at lines 358--358
+Overfull \hbox (1.84178pt too wide) in paragraph at lines 361--361
 []  
  []
 
 
-Overfull \vbox (4.51117pt too high) detected at line 358
+Overfull \vbox (4.51117pt too high) detected at line 361
  []
 
 
@@ -1749,23 +1749,23 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 [18
 
 ]
-File: images/roller_bin.jpg Graphic file (type jpg)
- <use images/roller_bin.jpg>
-Package pdftex.def Info: images/roller_bin.jpg used on input line 395.
+File: images/roller_binn.jpg Graphic file (type jpg)
+ <use images/roller_binn.jpg>
+Package pdftex.def Info: images/roller_binn.jpg used on input line 398.
 (pdftex.def)             Requested size: 56.9055pt x 56.90054pt.
 
-<images/roller_bin-.jpg, id=723, 473.77pt x 473.77pt>
-File: images/roller_bin-.jpg Graphic file (type jpg)
+<images/roller_bin-n.jpg, id=723, 473.77pt x 473.77pt>
+File: images/roller_bin-n.jpg Graphic file (type jpg)
 
-<use images/roller_bin-.jpg>
-Package pdftex.def Info: images/roller_bin-.jpg used on input line 395.
+<use images/roller_bin-n.jpg>
+Package pdftex.def Info: images/roller_bin-n.jpg used on input line 398.
 (pdftex.def)             Requested size: 56.9055pt x 56.90054pt.
 
-<images/roller_closedbin.jpg, id=724, 473.77pt x 473.77pt>
-File: images/roller_closedbin.jpg Graphic file (type jpg)
+<images/roller_closedbinn.jpg, id=724, 473.77pt x 473.77pt>
+File: images/roller_closedbinn.jpg Graphic file (type jpg)
 
-<use images/roller_closedbin.jpg>
-Package pdftex.def Info: images/roller_closedbin.jpg used on input line 395.
+<use images/roller_closedbinn.jpg>
+Package pdftex.def Info: images/roller_closedbinn.jpg used on input line 398.
 (pdftex.def)             Requested size: 56.9055pt x 56.90054pt.
 
 Overfull \hbox (3.47588pt too wide) has occurred while \output is active
@@ -1779,12 +1779,11 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 
 [19
 
- <./images/roller_bin-.jpg> <./images/roller_closedbin.jpg>]
-<images/roller_contour.jpg, id=759, 473.77pt x 473.77pt>
-File: images/roller_contour.jpg Graphic file (type jpg)
+ <./images/roller_bin-n.jpg> <./images/roller_closedbinn.jpg>]
+File: images/roller_contourn.jpg Graphic file (type jpg)
 
-<use images/roller_contour.jpg>
-Package pdftex.def Info: images/roller_contour.jpg used on input line 408.
+<use images/roller_contourn.jpg>
+Package pdftex.def Info: images/roller_contourn.jpg used on input line 411.
 (pdftex.def)             Requested size: 142.26378pt x 142.26222pt.
 
 Overfull \hbox (3.47588pt too wide) has occurred while \output is active
@@ -1798,7 +1797,7 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 
 [20
 
- <./images/roller_contour.jpg>]
+]
 Overfull \hbox (3.47588pt too wide) has occurred while \output is active
  []\T1/cmss/m/n/6 Reconstitution 
  []
@@ -1811,15 +1810,6 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 [21
 
 ]
-File: images/roller.png Graphic file (type png)
- <use images/roller.png>
-Package pdftex.def Info: images/roller.png used on input line 428.
-(pdftex.def)             Requested size: 85.35774pt x 85.35826pt.
-File: images/roller_poly.jpg Graphic file (type jpg)
- <use images/roller_poly.jpg>
-Package pdftex.def Info: images/roller_poly.jpg used on input line 428.
-(pdftex.def)             Requested size: 64.01463pt x 85.35826pt.
-
 Overfull \hbox (3.47588pt too wide) has occurred while \output is active
  []\T1/cmss/m/n/6 Reconstitution 
  []
@@ -1866,11 +1856,11 @@ Overfull \hbox (3.38159pt too wide) has occurred while \output is active
 \tf@snm=\write8
 \openout8 = `slide_martin.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 457.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 457.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 459.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 459.
  (./slide_martin.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 457.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 457.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 459.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 459.
 Package rerunfilecheck Info: File `slide_martin.out' has not changed.
 (rerunfilecheck)             Checksum: 18AC53CBFBC3747C3E85E03E99770FE6;453.
 
@@ -1881,13 +1871,13 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 457.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 459.
  ) 
 Here is how much of TeX's memory you used:
- 18727 strings out of 494924
- 351373 string characters out of 6179709
- 433379 words of memory out of 5000000
- 21471 multiletter control sequences out of 15000+600000
+ 18722 strings out of 494924
+ 351291 string characters out of 6179709
+ 433380 words of memory out of 5000000
+ 21467 multiletter control sequences out of 15000+600000
  27973 words of font info for 66 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  48i,18n,60p,392b,703s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1912,10 +1902,10 @@ exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on slide_martin.pdf (24 pages, 2258087 bytes).
+Output written on slide_martin.pdf (24 pages, 2240606 bytes).
 PDF statistics:
  1322 PDF objects out of 1440 (max. 8388607)
  942 compressed objects within 10 object streams
  57 named destinations out of 1000 (max. 500000)
- 222 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 217 words of extra memory for PDF output out of 10000 (max. 10000000)
 

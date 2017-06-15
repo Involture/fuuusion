@@ -19,7 +19,7 @@
 	\vspace{-3cm}
 	Extraction de la silhouette\\
 	\medskip
-	\includegraphics[width=2cm]{images/roller.png} \; \includegraphics[width=2cm]{images/roller_poly.jpg}\\
+	\includegraphics[width=2cm]{images/roller.png} \; \includegraphics[width=2cm]{images/roller_contourn.jpg}\\
 	Intersection des silhouettes\\
 	\medskip
 	\includegraphics[height=2cm]{images/silhouettes.jpg}
@@ -58,7 +58,7 @@
 	En pratique :
 	\begin{itemize}
 		\item Opérations vectorielles : numpy, boucles en C.
-		\item Autres : python
+		\item Autres : Python
 	\end{itemize}
 	Objectif : Vectoriser au maximum les opérations. \\
 	\bigskip
@@ -68,7 +68,7 @@
 	$\theta(t^2 \cdot n^2) \approx (8\text{octet} \cdot 1000 \cdot 1\text{Mpix} = 8 \text{Gib})$ \\
 	\smallskip
 	Coût de copie : Relativement élevé $\approx \nu(n^2)$\\
-	Manipulation bas niveau du hardware (registres vectorielle du GPU) $\longrightarrow$ rapide
+	Manipulation bas niveau du hardware (registres vectoriels du GPU) $\longrightarrow$ rapide
 \end{frame}
 
 \begin{frame}
@@ -99,11 +99,14 @@
 \begin{frame}
 	\frametitle{\mbox{1\up{er} Filtrage - Domaine fréquentiel - Texture}}
 	\framesubtitle{Procédé}
-	\underline{Convolution} par un \textbf{filtre gaussien} $\longleftrightarrow$ \underline{Multiplication} dans le domaine fréquentielle.
+	\begin{tabular}{rcl}
+		\textbf{Convolution}& $\Longleftrightarrow$ & \textbf{Multiplicatioin} \\
+		dans le domaine spatial & & dans le domaine fréquentiel \\
+	\end{tabular}
 	\begin{figure}
 		\includegraphics[width=2cm]{images/roller_subim.jpg} \; \includegraphics[width=2cm]{images/roller_subimfft.jpg} \;
 		\includegraphics[width=2cm]{images/roller_subimf.jpg} \; \includegraphics[width=2cm]{images/roller_subimresp.jpg}\\
-		\caption{Sous-image \; - \; Transformée \; - \; Filtre \; - \; Réponse}
+		\caption{Sous-image \; - \; Transformée \; - \; Filtre Gaussien \; - \; Réponse}
 	\end{figure}
 	\bigskip
 	Sommation de tous les pixels $\longrightarrow$ valeur de texture.\\
@@ -149,7 +152,7 @@
 	\framesubtitle{Résultats}
 	\begin{figure}
 		\centering
-		\includegraphics[width=5cm]{images/roller_resp.jpg}
+		\includegraphics[width=5cm]{images/roller_respn.jpg}
 		\caption{taille : 16, $\theta$ : $\frac{\pi}{2}$, $\sigma$ : 4}
 	\end{figure}
 \end{frame}
@@ -215,7 +218,7 @@
 	\framesubtitle{Résultats}
 	\begin{figure}[!h]
 		\centering
-		\includegraphics[width=4cm]{images/roller_resp.jpg} \; \includegraphics[width = 4cm]{images/roller_filtered.jpg}
+		\includegraphics[width=4cm]{images/roller_respn.jpg} \; \includegraphics[width = 4cm]{images/roller_filteredn.jpg}
 		\caption{$\theta$ : $\frac{pi}{2}$, $\sigma$ : 1}
 	\end{figure}
 \end{frame}
@@ -225,7 +228,7 @@
 \begin{frame}
 	\frametitle{Lissage parabolique}
 	\framesubtitle{Procédé}
-	Approximation parabolique du voisinage: $$ax^2 + bx + c = 0$$
+	Approximation parabolique du voisinage: $ax^2 + bx + c$ \\
 	Fonction lissée : $$\frac{c}{\text{distance au max local}} = \frac{c^+}{\left(\frac{|b|}{2a^+}\right)}$$
 	Procédé : \\
 	\smallskip
@@ -233,8 +236,8 @@
 		\hline
 		& Opération & complexité \\ \hline
 		1 & Génération du voisinage & selon hardware \\ \hline
-		2 & Projection des coordonées & $\theta(\nu(t^2))$ \\ \hline
-		3 & Etablissement du system & $\theta(t^2 \nu(n^2))$ \\ \hline
+		2 & Calcul de la coordonnée sur $u_\theta$ & $\theta(\nu(t^2))$ \\ \hline
+		3 & Etablissement du systeme & $\theta(t^2 \nu(n^2))$ \\ \hline
 		4 & Pivot de gauss & $\theta(t^2 \nu(n^2))$ \\ \hline
 		5 & Calcul de la fonction lissée & $\theta(\nu(n^2))$ \\ \hline
 		& Total & $\theta(\nu(n^2))$ \\
@@ -245,7 +248,7 @@
 \begin{frame}
 	\frametitle{Lissage parabolique}
 	\framesubtitle{Résultats}
-	\includegraphics[width=4cm]{images/roller_filtered.jpg} \; \includegraphics[width=4cm]{images/roller_localised.jpg}
+	\includegraphics[width=4cm]{images/roller_filteredn.jpg} \; \includegraphics[width=4cm]{images/roller_localisedn.jpg}
 \end{frame}
 
 \section{Sommation des réponses}
@@ -266,7 +269,7 @@
 \begin{frame}
 	\frametitle{Sommation des réponses}
 	\frametitle{Résultats}
-	\includegraphics[width=4cm]{images/roller.png} \; \includegraphics[width = 4cm]{images/roller_res.jpg}
+	\includegraphics[width=4cm]{images/roller.png} \; \includegraphics[width = 4cm]{images/roller_resn.jpg}
 \end{frame}
 
 \section{Seuillage}
@@ -281,7 +284,7 @@
 		\end{cases}
 	\end{align}
 	\bigskip
-	\includegraphics[width=3cm]{images/roller_res.jpg} \; \includegraphics[width=3cm]{images/roller_bin.jpg}
+	\includegraphics[width=3cm]{images/roller_resn.jpg} \; \includegraphics[width=3cm]{images/roller_binn.jpg}
 \end{frame}
 
 \section{Opérations topologiques}
@@ -387,9 +390,9 @@
 			Auquel on applique des rotations dans 8 directions différentes
 		\end{column}
 		\begin{column}{5cm}
-			\includegraphics[width=2cm]{images/roller_bin.jpg}\\
-			\includegraphics[width=2cm]{images/roller_bin-.jpg}\\
-			\includegraphics[width=2cm]{images/roller_closedbin.jpg}
+			\includegraphics[width=2cm]{images/roller_binn.jpg}\\
+			\includegraphics[width=2cm]{images/roller_bin-n.jpg}\\
+			\includegraphics[width=2cm]{images/roller_closedbinn.jpg}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -404,7 +407,7 @@
 	Direction initiale : Bas \\
 	Priorités de déplacement : Gauche - Bas - Droite - Haut\\
 	\bigskip
-	\includegraphics[width=5cm]{images/roller_contour.jpg}
+	\includegraphics[width=5cm]{images/roller_contourn.jpg}
 \end{frame}
 
 \begin{frame}
@@ -421,7 +424,6 @@
 
 \begin{frame}
 	\frametitle{Conclusion}
-	\includegraphics[height=3cm]{images/roller.png} \; \includegraphics[height=3cm]{images/roller_poly.jpg} \\
 	\bigskip
 	Précision : moyenne \\
 	Temps : moyen $\approx$ 45s\\

@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2017.6.12)  15 JUN 2017 14:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2017.6.12)  15 JUN 2017 17:51
 entering extended mode
-**"C:/Users/Amaury/Documents/Docs. spé/TIPE/fuuusion/Maths/demo_ev_in_conv_TET
-RA.tex"
+**"C:/Users/Amaury/Documents/Docs. spé/TIPE/fuuusion/livrables/Rapport/rapport
+_ENS.tex"
 
-("C:/Users/Amaury/Documents/Docs. spé/TIPE/fuuusion/Maths/demo_ev_in_conv_TETR
-A.tex"
+("C:/Users/Amaury/Documents/Docs. spé/TIPE/fuuusion/livrables/Rapport/rapport_
+ENS.tex"
 LaTeX2e <2016/03/31>
 Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
@@ -230,6 +230,47 @@ Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen123
 \Gin@req@width=\dimen124
 )
+("C:\Program Files\MiKTeX 2.9\tex\latex\subfig\subfig.sty"
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption.sty"
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen125
+\captionmargin@=\dimen126
+\captionwidth=\dimen127
+\caption@tempdima=\dimen128
+\caption@indent=\dimen129
+\caption@parindent=\dimen130
+\caption@hangindent=\dimen131
+)
+\c@ContinuedFloat=\count109
+)
+\c@KVtest=\count110
+\sf@farskip=\skip56
+\sf@captopadj=\dimen132
+\sf@capskip=\skip57
+\sf@nearskip=\skip58
+\c@subfigure=\count111
+\c@subfigure@save=\count112
+\c@lofdepth=\count113
+\c@subtable=\count114
+\c@subtable@save=\count115
+\c@lotdepth=\count116
+\sf@top=\skip59
+\sf@bottom=\skip60
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\wrapfig\wrapfig.sty"
+\wrapoverhang=\dimen133
+\WF@size=\dimen134
+\c@WF@wrappedlines=\count117
+\WF@box=\box28
+\WF@everypar=\toks34
+Package: wrapfig 2003/01/31  v 3.6
+)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
 Package: hyperref 2016/05/21 v6.83p Hypertext links for LaTeX
 
@@ -282,19 +323,19 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
-\@linkdim=\dimen125
-\Hy@linkcounter=\count109
-\Hy@pagecounter=\count110
+\@linkdim=\dimen135
+\Hy@linkcounter=\count118
+\Hy@pagecounter=\count119
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
 File: pd1enc.def 2016/05/21 v6.83p Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count111
+\Hy@SavedSpaceFactor=\count120
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
-Package hyperref Info: Option `colorlinks' set `false' on input line 4362.
+Package hyperref Info: Option `colorlinks' set `true' on input line 4362.
 Package hyperref Info: Hyper figures OFF on input line 4486.
 Package hyperref Info: Link nesting OFF on input line 4491.
 Package hyperref Info: Hyper index ON on input line 4494.
@@ -302,72 +343,71 @@ Package hyperref Info: Plain pages OFF on input line 4501.
 Package hyperref Info: Backreferencing OFF on input line 4506.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4735.
-\c@Hy@tempcnt=\count112
+\c@Hy@tempcnt=\count121
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5088.
-\XeTeXLinkMargin=\dimen126
-\Fld@menulength=\count113
-\Field@Width=\dimen127
-\Fld@charsize=\dimen128
+\XeTeXLinkMargin=\dimen136
+\Fld@menulength=\count122
+\Field@Width=\dimen137
+\Fld@charsize=\dimen138
 Package hyperref Info: Hyper figures OFF on input line 6342.
 Package hyperref Info: Link nesting OFF on input line 6347.
 Package hyperref Info: Hyper index ON on input line 6350.
 Package hyperref Info: backreferencing OFF on input line 6357.
-Package hyperref Info: Link coloring OFF on input line 6362.
+Package hyperref Info: Link coloring ON on input line 6360.
 Package hyperref Info: Link coloring with OCG OFF on input line 6367.
 Package hyperref Info: PDF/A mode OFF on input line 6372.
 LaTeX Info: Redefining \ref on input line 6412.
 LaTeX Info: Redefining \pageref on input line 6416.
-\Hy@abspage=\count114
-\c@Item=\count115
-\c@Hfootnote=\count116
+\Hy@abspage=\count123
+\c@Item=\count124
+\c@Hfootnote=\count125
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
 File: hpdftex.def 2016/05/21 v6.83p Hyperref driver for pdfTeX
-\Fld@listcount=\count117
-\c@bookmark@seq@number=\count118
+\Fld@listcount=\count126
+\c@bookmark@seq@number=\count127
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip56
+\Hy@SectionHShift=\skip61
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\varioref.sty"
 Package: varioref 2016/02/16 v1.5c package for extended references (FMi)
-\c@vrcnt=\count119
+\c@vrcnt=\count128
 )
-\c@lem=\count120
-\c@theo=\count121
+\c@lem=\count129
+\c@theo=\count130
+ (rapport_ENS.aux)
+\openout1 = `rapport_ENS.aux'.
 
-(demo_ev_in_conv_TETRA.aux)
-\openout1 = `demo_ev_in_conv_TETRA.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Info: Redefining \degres on input line 29.
-LaTeX Info: Redefining \dots on input line 29.
-LaTeX Info: Redefining \up on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Info: Redefining \degres on input line 32.
+LaTeX Info: Redefining \dots on input line 32.
+LaTeX Info: Redefining \up on input line 32.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\ucsencs.def"
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
@@ -408,17 +448,17 @@ File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count122
-\scratchdimen=\dimen129
-\scratchbox=\box28
-\nofMPsegments=\count123
-\nofMParguments=\count124
-\everyMPshowfont=\toks34
-\MPscratchCnt=\count125
-\MPscratchDim=\dimen130
-\MPnumerator=\count126
-\makeMPintoPDFobject=\count127
-\everyMPtoPDFconversion=\toks35
+\scratchcounter=\count131
+\scratchdimen=\dimen139
+\scratchbox=\box29
+\nofMPsegments=\count132
+\nofMParguments=\count133
+\everyMPshowfont=\toks35
+\MPscratchCnt=\count134
+\MPscratchDim=\dimen140
+\MPnumerator=\count135
+\makeMPintoPDFobject=\count136
+\everyMPtoPDFconversion=\toks36
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -430,8 +470,22 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-\AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring OFF on input line 29.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: wrapfig package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\AtBeginShipoutBox=\box30
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2016/05/09 v1.1c Standard LaTeX Color (DPC)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 144.
+)
+Package hyperref Info: Link coloring ON on input line 32.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -439,62 +493,111 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count128
+\c@section@level=\count137
 LaTeX Info: Redefining \Ref on input line 515.
 )
-LaTeX Info: Redefining \ref on input line 29.
-LaTeX Info: Redefining \pageref on input line 29.
-LaTeX Info: Redefining \nameref on input line 29.
+LaTeX Info: Redefining \ref on input line 32.
+LaTeX Info: Redefining \pageref on input line 32.
+LaTeX Info: Redefining \nameref on input line 32.
 
-(demo_ev_in_conv_TETRA.out) (demo_ev_in_conv_TETRA.out)
+(rapport_ENS.out) (rapport_ENS.out)
 \@outlinefile=\write3
-\openout3 = `demo_ev_in_conv_TETRA.out'.
+\openout3 = `rapport_ENS.out'.
 
-LaTeX Info: Redefining \Ref on input line 29.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\uni-0.def"
-File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
-)
-LaTeX Font Info:    Try loading font information for U+msa on input line 30.
+LaTeX Info: Redefining \Ref on input line 32.
+LaTeX Font Info:    Try loading font information for U+msa on input line 34.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 30.
+LaTeX Font Info:    Try loading font information for U+msb on input line 34.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 59--60
-
- []
-
-[1
+("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\uni-0.def"
+File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
+) [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
+("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\uni-32.def"
+File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
+)
+<ScreenSchema1.png, id=39, 596.98032pt x 310.15875pt>
+File: ScreenSchema1.png Graphic file (type png)
+ <use ScreenSchema1.png>
+Package pdftex.def Info: ScreenSchema1.png used on input line 44.
+(pdftex.def)             Requested size: 426.79135pt x 221.73816pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 44--45
+[][] 
+ []
+
+<ScreenSchema2.png, id=40, 548.0475pt x 252.19218pt>
+File: ScreenSchema2.png Graphic file (type png)
+ <use ScreenSchema2.png>
+Package pdftex.def Info: ScreenSchema2.png used on input line 48.
+(pdftex.def)             Requested size: 426.79135pt x 196.3974pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 48--49
+[][] 
+ []
+
+[2 <./ScreenSchema1.png>]
+<ContourDetect.png, id=47, 484.81125pt x 201.00093pt>
+File: ContourDetect.png Graphic file (type png)
+ <use ContourDetect.png>
+Package pdftex.def Info: ContourDetect.png used on input line 54.
+(pdftex.def)             Requested size: 396.7938pt x 164.51817pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--76
 
  []
 
-[2] [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 294.
- [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 294.
- (demo_ev_in_conv_TETRA.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 294.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 294.
-Package rerunfilecheck Info: File `demo_ev_in_conv_TETRA.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 294.
+[3 <./ScreenSchema2.png> <./ContourDetect.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 79--83
+
+ []
+
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 110.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+<WEP.png, id=60, 576.65437pt x 489.32813pt>
+File: WEP.png Graphic file (type png)
+ <use WEP.png>
+Package pdftex.def Info: WEP.png used on input line 117.
+(pdftex.def)             Requested size: 213.39568pt x 181.07843pt.
+ [4] [5 <./WEP.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 293--294
+
+ []
+
+[7] [8]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 408.
+ [9]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 408.
+ (rapport_ENS.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 408.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 408.
+Package rerunfilecheck Info: File `rapport_ENS.out' has not changed.
+(rerunfilecheck)             Checksum: 9AA9DF7260D49736D67BADEE01DA60CB;405.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 408.
  ) 
 Here is how much of TeX's memory you used:
- 8535 strings out of 493335
- 120391 string characters out of 3139257
- 232513 words of memory out of 3000000
- 11947 multiletter control sequences out of 15000+200000
- 12576 words of font info for 32 fonts, out of 3000000 for 9000
+ 10143 strings out of 493335
+ 147080 string characters out of 3139257
+ 256655 words of memory out of 3000000
+ 13498 multiletter control sequences out of 15000+200000
+ 21385 words of font info for 56 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,13n,30p,624b,518s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,13n,42p,1900b,678s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t1.enc}<C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTe
@@ -509,11 +612,16 @@ ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Program Files/
 MiKTeX 2.9/fonts/type1/public/cm-super/sfbi1000.pfb><C:/Program Files/MiKTeX 2.
 9/fonts/type1/public/cm-super/sfbx1000.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/cm-super/sfrm1000.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
-ic/cm-super/sfti1000.pfb>
-Output written on demo_ev_in_conv_TETRA.pdf (4 pages, 205935 bytes).
+ype1/public/cm-super/sfbx1200.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/cm-super/sfbx1440.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-sup
+er/sfrm0700.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm10
+00.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1200.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1728.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfti1000.pfb><C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on rapport_ENS.pdf (9 pages, 559055 bytes).
 PDF statistics:
- 95 PDF objects out of 1000 (max. 8388607)
- 7 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 179 PDF objects out of 1000 (max. 8388607)
+ 20 named destinations out of 1000 (max. 500000)
+ 77 words of extra memory for PDF output out of 10000 (max. 10000000)
 
