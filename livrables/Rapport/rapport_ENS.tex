@@ -94,16 +94,25 @@
     \subsection{L'implémentation en machine}
       Deux principaux types de stockage en mémoire des objets 3D existent :
       \begin{itemize}
-        \item L'approximation par des polyhèdres.
+        \item L'approximation par des polyèdres.
         \item La modélisation par des "voxels", c'est-à-dire des "pixels de volume". L'espace est alors représenté par une grille finie, où chaque case peut prendre plusieurs états, par exemple "remplie" ou "vide".
       \end{itemize}
+      \begin{figure}[h]%
+          \centering
+          \subfloat[Des voxels]{{\includegraphics[width=0.3\linewidth]{Voxels} }}%
+          \qquad
+          \subfloat[Un polyèdre]{{\includegraphics[width=0.3\linewidth]{Polyhedron} }}%
+          \caption{Une comparaison entre polyèdre et voxels}%
+          \label{fig1}%
+      \end{figure}
+
       
-      La modélisation précise que nous avons choisi est la modélisation par "polyhèdre aux arêtes ailées" ("winged edge polyhedron") introduite par B. Baumgart. Elle utilise quatre types d'objets distincts:
+      La modélisation précise que nous avons choisi est la modélisation par "polyèdre aux arêtes ailées" ("winged edge polyhedron") introduite par B. Baumgart. Elle utilise quatre types d'objets distincts:
       \begin{itemize}
-        \item Les objets polyhèdres, qui stockent une liste de faces, une liste de sommets et une liste d'arêtes
+        \item Les objets polyèdres, qui stockent une liste de faces, une liste de sommets et une liste d'arêtes
         \item Les sommets, qui stockent leurs trois coordonnées ainsi qu'un lien vers une de leurs arête
         \item Les faces, qui stockent un lien vers une arête adjacente
-        \item Les arêtes, qui stockent huits liens, nommés selon la figure suivante :
+        \item Les arêtes, qui stockent huits liens, nommés selon la figure \ref{fig1} :
         \begin{itemize}
           \item \texttt{PVT} et \texttt{NVT} pointent vers les sommets aux extrémités de l'arête
           \item \texttt{NFACE} et \texttt{PFACE} pointent vers les faces adjacentes à l'arête
@@ -114,12 +123,14 @@
       \begin{figure}
         \includegraphics[width=0.5\linewidth]{WEP}
         \centering
+        \caption{Les liens que stockent une arête dans le modèle du "winged edge polyhedron"}
+        \label{fig1}
       \end{figure}
 
-      Ainsi un polyhèdre cohérent peut être défini. On remarquera que seuls les sommets possèdent des informations sur les positions des éléments dans l'espace, tandis que les arêtes stockent toutes les informations de structure (quels éléments sont liés auxquels). Les faces, quant à elles, donnent des indication sur le caractère visuel du polyhèdre: ce sont elles qui vont bloquer ou non la lumière, et ainsi elles seront utiles pour simuler une vue de l'objet.
-
-      Cette dissociation des informations stockées en mémoire est intéressante : ainsi, on peut facilement déformer un polyhèdre tout en gardant sa topologie, en appliquant une fonction vectorielle aux seules coordonnées des sommets. 
-
+      Ainsi un polyèdre cohérent peut être défini. On remarquera que seuls les sommets possèdent des informations sur les positions des éléments dans l'espace, tandis que les arêtes stockent toutes les informations de structure (quels éléments sont liés auxquels). Les faces, quant à elles, donnent des indication sur le caractère visuel du polyèdre: ce sont elles qui vont bloquer ou non la lumière, et ainsi elles seront utiles pour simuler une vue de l'objet.\\
+      Cette dissociation des informations stockées en mémoire est intéressante : ainsi, on peut facilement déformer un polyèdre tout en gardant sa topologie, en appliquant une fonction vectorielle aux seules coordonnées des sommets.\\
+      \\
+      \subsection{Les tests effectués}
       A partir de cette modélisation, j’ai réalisé des tests sur l’algorithme d’intersection pour obtenir des informations sur le temps d’exécution de cet algorithme pour divers complexités de polyèdres initiaux. Nous avons préféré une analyse du temps d’exécution pratique plutôt qu’une étude de la complexité théorique. En effet, si cette dernière donne des bonnes informations asymptotiques, elle ne donne aucun contrôle sur la vitesse de convergence, et un algorithme en O(n²) pourra être en pratique beaucoup plus rapide à exécuter qu’un autre qui est en O(n), simplement parce que les n considérés ne deviennent jamais très grands. De plus, une information sur le temps d’exécution, en secondes, est bien plus facilement interprétable qu’une information de complexité. Ainsi, des tests simples sur le programme que j’ai réalisé montrent qu’une intersection simple, avec deux polyèdre ayant de l’ordre de la dizaine de sommets, prend en moyenne 0,15s sur un ordinateur portable, le processeur y étant cadencé à 2 GHz. Ceci, bien sûr, n’est que le temps d’exécution sur une machine particulière, et en utilisant des machines plus puissantes, ce temps pourrait être considérablement réduit. Mais il faut reprendre les objectifs que nous nous étions fixés : nous cherchions un algorithme efficace, qui renvoie des résultats les plus fidèles possibles tout ayant un temps d’exécution le plus court possible. Ici, les résultats obtenus signifient que pour pouvoir reconstituer un modèle 3D avec une précision acceptable, en un temps raisonnable (c’est-à-dire réaliser de l’ordre de 10 à 100 intersections de polyèdres qui possèdent de l’ordre de 1000 sommets), il faudrait une machine très puissante.
 
   \appendix
