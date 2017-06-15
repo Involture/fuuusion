@@ -1,0 +1,11 @@
+This is a school project by
+	- MARTIN JANIN
+	- TIMOTHEE DARCET
+
+We used this repository to work in conjunction on the project.
+The project structure is:
+	- In latex you can find the latex source files for the reports and presentations as well as their compilation environment.
+	- In livrables are the final documents.
+	- In python are the python source files and the results of the scripts.
+	- In maths are some mathematical demonstrations.
+	- In sourcedocs are our references.
