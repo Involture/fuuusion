@@ -1,10 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2017.6.12)  15 JUN 2017 18:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2017.6.12)  15 JUN 2017 21:49
 entering extended mode
-**"C:/Users/Amaury/Documents/Docs. spé/TIPE/fuuusion/livrables/Rapport/rapport
-_ENS.tex"
-
-("C:/Users/Amaury/Documents/Docs. spé/TIPE/fuuusion/livrables/Rapport/rapport_
-ENS.tex"
+**./rapport_ENS.tex
+(rapport_ENS.tex
 LaTeX2e <2016/03/31>
 Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
@@ -386,30 +383,173 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 Package: varioref 2016/02/16 v1.5c package for extended references (FMi)
 \c@vrcnt=\count128
 )
-\c@lem=\count129
-\c@theo=\count130
- (rapport_ENS.aux)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
+\lst@mode=\count129
+\lst@gtempboxa=\box29
+\lst@token=\toks35
+\lst@length=\count130
+\lst@currlwidth=\dimen139
+\lst@column=\count131
+\lst@pos=\count132
+\lst@lostspace=\dimen140
+\lst@width=\dimen141
+\lst@newlines=\count133
+\lst@lineno=\count134
+\lst@maxwidth=\dimen142
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count135
+\lst@skipnumbers=\count136
+\lst@framebox=\box30
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\minted\minted.sty"
+Package: minted 2015/09/09 v2.1 Yet another Pygments shim for LaTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\fancyvrb\fancyvrb.sty"
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count137
+\FV@InFile=\read1
+\FV@TabBox=\box31
+\c@FancyVerbLine=\count138
+\FV@StepNumber=\count139
+\FV@OutFile=\write3
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count140
+\float@exts=\toks36
+\float@box=\box32
+\@float@everytoks=\toks37
+\@floatcapt=\box33
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty"
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count141
+\calc@Bcount=\count142
+\calc@Adimen=\dimen143
+\calc@Bdimen=\dimen144
+\calc@Askip=\skip62
+\calc@Bskip=\skip63
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count143
+\calc@Cskip=\skip64
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\ifplatform\ifplatform.sty"
+Package: ifplatform 2010/10/22 v0.4 Testing for the operating system
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\catchfile.sty"
+Package: catchfile 2016/05/16 v1.7 Catch the contents of a file (HO)
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty"
+Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count144
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\xstring\xstring.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\xstring\xstring.tex"
+\@xs@message=\write4
+\integerpart=\count145
+\decimalpart=\count146
+)
+Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\lineno\lineno.sty"
+Package: lineno 2005/11/02 line numbers on paragraphs v4.41
+\linenopenalty=\count147
+\output=\toks38
+\linenoprevgraf=\count148
+\linenumbersep=\dimen145
+\linenumberwidth=\dimen146
+\c@linenumber=\count149
+\c@pagewiselinenumber=\count150
+\c@LN@truepage=\count151
+\c@internallinenumber=\count152
+\c@internallinenumbers=\count153
+\quotelinenumbersep=\dimen147
+\bframerule=\dimen148
+\bframesep=\dimen149
+\bframebox=\box34
+LaTeX Info: Redefining \\ on input line 3056.
+)
+\minted@appexistsfile=\read2
+\FV@BreakIndent=\dimen150
+\FV@BreakSymbolSepLeft=\dimen151
+\FV@BreakSymbolSepRight=\dimen152
+\FV@BreakSymbolIndentLeft=\dimen153
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 688.
+
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+\FV@BreakSymbolIndentRight=\dimen154
+\c@FancyVerbLineBreakLast=\count154
+\FV@LineBox=\box35
+\FV@LineIndentBox=\box36
+\minted@bgbox=\box37
+\minted@code=\write5
+\c@minted@FancyVerbLineTemp=\count155
+\@float@every@listing=\toks39
+\c@listing=\count156
+)
+runsystem(if not exist "_minted-rapport_ENS" mkdir "_minted-rapport_ENS")...exe
+cuted.
+
+
+(_minted-rapport_ENS/default.pygstyle) (_minted-rapport_ENS/monokai.pygstyle)
+\c@lem=\count157
+\c@theo=\count158
+runsystem(for ^%i in (pygmentize.exe pygmentize.bat pygmentize.cmd) do set >"ra
+pport_ENS.aex" <nul: /p x=^%~$PATH:i>>"rapport_ENS.aex")...executed.
+
+runsystem(del "rapport_ENS.aex")...executed.
+
+
+
+! Package minted Error: You must have `pygmentize' installed to use this packag
+e.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.37 \begin{document}
+                     
+Refer to the installation instructions in the minted documentation for more inf
+ormation.
+
+(rapport_ENS.aux)
 \openout1 = `rapport_ENS.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Info: Redefining \degres on input line 32.
-LaTeX Info: Redefining \dots on input line 32.
-LaTeX Info: Redefining \up on input line 32.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\ucsencs.def"
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Info: Redefining \degres on input line 37.
+LaTeX Info: Redefining \dots on input line 37.
+LaTeX Info: Redefining \up on input line 37.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\ucsencs.def"
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
 *geometry* driver: auto-detecting
@@ -448,17 +588,17 @@ File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count131
-\scratchdimen=\dimen139
-\scratchbox=\box29
-\nofMPsegments=\count132
-\nofMParguments=\count133
-\everyMPshowfont=\toks35
-\MPscratchCnt=\count134
-\MPscratchDim=\dimen140
-\MPnumerator=\count135
-\makeMPintoPDFobject=\count136
-\everyMPtoPDFconversion=\toks36
+\scratchcounter=\count159
+\scratchdimen=\dimen155
+\scratchbox=\box38
+\nofMPsegments=\count160
+\nofMParguments=\count161
+\everyMPshowfont=\toks40
+\MPscratchCnt=\count162
+\MPscratchDim=\dimen156
+\MPnumerator=\count163
+\makeMPintoPDFobject=\count164
+\everyMPtoPDFconversion=\toks41
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -472,10 +612,12 @@ G,.JBIG2,.JB2,.eps]
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box30
+\AtBeginShipoutBox=\box39
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
 Package: color 2016/05/09 v1.1c Standard LaTeX Color (DPC)
@@ -485,7 +627,7 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 144.
 )
-Package hyperref Info: Link coloring ON on input line 32.
+Package hyperref Info: Link coloring ON on input line 37.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -493,24 +635,27 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count137
+\c@section@level=\count165
 LaTeX Info: Redefining \Ref on input line 515.
 )
-LaTeX Info: Redefining \ref on input line 32.
-LaTeX Info: Redefining \pageref on input line 32.
-LaTeX Info: Redefining \nameref on input line 32.
+LaTeX Info: Redefining \ref on input line 37.
+LaTeX Info: Redefining \pageref on input line 37.
+LaTeX Info: Redefining \nameref on input line 37.
 
 (rapport_ENS.out) (rapport_ENS.out)
-\@outlinefile=\write3
-\openout3 = `rapport_ENS.out'.
+\@outlinefile=\write6
+\openout6 = `rapport_ENS.out'.
 
-LaTeX Info: Redefining \Ref on input line 32.
-LaTeX Font Info:    Try loading font information for U+msa on input line 34.
+LaTeX Info: Redefining \Ref on input line 37.
+\c@lstlisting=\count166
+
+(_minted-rapport_ENS/default-pyg-prefix.pygstyle)
+LaTeX Font Info:    Try loading font information for U+msa on input line 39.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 34.
+LaTeX Font Info:    Try loading font information for U+msb on input line 39.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -519,98 +664,124 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
 ) [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] (rapport_ENS.toc)
+\tf@toc=\write7
+\openout7 = `rapport_ENS.toc'.
+
+ [2]
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\uni-32.def"
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
 )
-<ScreenSchema1.png, id=39, 596.98032pt x 310.15875pt>
+<ScreenSchema1.png, id=68, 596.98032pt x 310.15875pt>
 File: ScreenSchema1.png Graphic file (type png)
  <use ScreenSchema1.png>
-Package pdftex.def Info: ScreenSchema1.png used on input line 44.
+Package pdftex.def Info: ScreenSchema1.png used on input line 54.
 (pdftex.def)             Requested size: 426.79135pt x 221.73816pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 44--45
+Overfull \hbox (15.0pt too wide) in paragraph at lines 54--55
 [][] 
  []
 
-<ScreenSchema2.png, id=40, 548.0475pt x 252.19218pt>
+<ScreenSchema2.png, id=69, 548.0475pt x 252.19218pt>
 File: ScreenSchema2.png Graphic file (type png)
  <use ScreenSchema2.png>
-Package pdftex.def Info: ScreenSchema2.png used on input line 48.
+Package pdftex.def Info: ScreenSchema2.png used on input line 58.
 (pdftex.def)             Requested size: 426.79135pt x 196.3974pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 48--49
+Overfull \hbox (15.0pt too wide) in paragraph at lines 58--59
 [][] 
  []
 
-[2 <./ScreenSchema1.png>]
-<ContourDetect.png, id=47, 484.81125pt x 201.00093pt>
+[3 <./ScreenSchema1.png>]
+<ContourDetect.png, id=75, 484.81125pt x 201.00093pt>
 File: ContourDetect.png Graphic file (type png)
  <use ContourDetect.png>
-Package pdftex.def Info: ContourDetect.png used on input line 54.
+Package pdftex.def Info: ContourDetect.png used on input line 64.
 (pdftex.def)             Requested size: 396.7938pt x 164.51817pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 71--76
+Underfull \hbox (badness 10000) in paragraph at lines 81--86
 
  []
 
-[3 <./ScreenSchema2.png> <./ContourDetect.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 79--83
+[4 <./ScreenSchema2.png> <./ContourDetect.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 89--93
 
  []
 
-<Voxels.png, id=62, 220.825pt x 252.945pt>
+<Voxels.png, id=90, 220.825pt x 252.945pt>
 File: Voxels.png Graphic file (type png)
  <use Voxels.png>
-Package pdftex.def Info: Voxels.png used on input line 102.
+Package pdftex.def Info: Voxels.png used on input line 112.
 (pdftex.def)             Requested size: 128.0387pt x 146.6696pt.
 
-<Polyhedron.png, id=64, 249.93375pt x 245.91875pt>
+<Polyhedron.png, id=92, 249.93375pt x 245.91875pt>
 File: Polyhedron.png Graphic file (type png)
  <use Polyhedron.png>
-Package pdftex.def Info: Polyhedron.png used on input line 104.
+Package pdftex.def Info: Polyhedron.png used on input line 114.
 (pdftex.def)             Requested size: 128.0387pt x 125.98726pt.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 117.
 
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [4 <./Voxels.png> <./Polyhedron.png>] <WEP.png, id=80, 576.65437pt x 489.3281
-3pt>
+[5 <./Voxels.png> <./Polyhedron.png>]
+<WEP.png, id=108, 576.65437pt x 489.32813pt>
 File: WEP.png Graphic file (type png)
  <use WEP.png>
-Package pdftex.def Info: WEP.png used on input line 124.
+Package pdftex.def Info: WEP.png used on input line 134.
 (pdftex.def)             Requested size: 213.39568pt x 181.07843pt.
 
-[5 <./WEP.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 181--182
+Underfull \hbox (badness 10000) in paragraph at lines 140--144
 
  []
 
-[6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 302--303
+[6 <./WEP.png>] [7]
+Underfull \hbox (badness 10000) in paragraph at lines 224--225
 
  []
 
 [8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 416.
- [9]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 416.
+Underfull \hbox (badness 10000) in paragraph at lines 345--346
+
+ []
+
+[9] [10]
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o "
+_minted-rapport_ENS/8026D13F6383ED508E87EB92060430E8A8F27ACCC81A0A59900CE35B02B
+67D08.pygtex" "wep.py" )...executed.
+
+
+
+! Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using the kpsewhich option without having PowerShell installed.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.460     \inputminted{python}{wep.py}
+                                      
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, or by using the 
+kpsewhich option without PowerShell.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 461.
+[11]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 461.
  (rapport_ENS.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 416.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 416.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 461.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 461.
 Package rerunfilecheck Info: File `rapport_ENS.out' has not changed.
-(rerunfilecheck)             Checksum: ABB879F5E95CA2C96791BB336BD8B55C;435.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 416.
+(rerunfilecheck)             Checksum: 75BE8793AF3F2E8EF390506C8EDE5F63;597.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 461.
  ) 
 Here is how much of TeX's memory you used:
- 10167 strings out of 493335
- 147432 string characters out of 3139257
- 256893 words of memory out of 3000000
- 13515 multiletter control sequences out of 15000+200000
+ 13762 strings out of 493335
+ 209969 string characters out of 3139257
+ 354784 words of memory out of 3000000
+ 17032 multiletter control sequences out of 15000+200000
  22822 words of font info for 58 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,13n,49p,1900b,678s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,13n,49p,1835b,678s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t1.enc}<C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTe
@@ -634,9 +805,9 @@ er/sfcc1000.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm07
 KTeX 2.9/fonts/type1/public/cm-super/sfrm1728.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/public/cm-super/sfti1000.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
 e1/public/cm-super/sftt1000.pfb>
-Output written on rapport_ENS.pdf (9 pages, 631073 bytes).
+Output written on rapport_ENS.pdf (11 pages, 665403 bytes).
 PDF statistics:
- 197 PDF objects out of 1000 (max. 8388607)
- 23 named destinations out of 1000 (max. 500000)
- 87 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 232 PDF objects out of 1000 (max. 8388607)
+ 31 named destinations out of 1000 (max. 500000)
+ 111 words of extra memory for PDF output out of 10000 (max. 10000000)
 
