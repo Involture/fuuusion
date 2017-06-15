@@ -1,0 +1,13 @@
+\select@language {french}
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
+\contentsline {section}{\numberline {2}Corps principal}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}La m\IeC {\'e}thode de l'enveloppe visuelle}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Une formalisation math\IeC {\'e}matique}{4}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}L'impl\IeC {\'e}mentation en machine}{5}{subsection.2.3}
+\contentsline {paragraph}{Le test d'intersection ar\IeC {\^e}te-face}{6}{section*.4}
+\contentsline {paragraph}{La construction des ar\IeC {\^e}tes}{6}{section*.5}
+\contentsline {subsection}{\numberline {2.4}Les tests effectu\IeC {\'e}s}{7}{subsection.2.4}
+\contentsline {section}{\numberline {3}Conclusion}{7}{section.3}
+\contentsline {section}{\numberline {A}Annexe}{7}{appendix.A}
+\contentsline {section}{\numberline {B}Annexe}{8}{appendix.B}
+\contentsline {section}{\numberline {C}Annexe}{11}{appendix.C}
